@@ -1,0 +1,28 @@
+.item-tab {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    /* justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column; */
+}
+
+.not-selected {
+    background: rgb(5, 151, 165);
+    border-style: none solid solid none;
+    border-color: rgb(73, 175, 189);
+}
+
+.left-selected, .last-item {
+    background: rgb(5, 151, 165);
+    border-style: none none solid none;
+    border-color: rgb(73, 175, 189);
+}
+
+.selected {
+    position: relative;
+    background: rgb(221, 120, 35);
+    border-style: none solid solid solid;
+    border-color: rgb(183, 223, 228);
+}
