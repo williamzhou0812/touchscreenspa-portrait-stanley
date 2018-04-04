@@ -12,19 +12,26 @@ import {
     airportInfoNamespace,
     shiftArray
 } from '../Constants';
+import AccommodationIcon from './icons/ACCOMMODATION_ICON.svg';
+import ActivitiesIcon from './icons/ACTIVITIES_ICON.svg';
+import DestinationsIcon from './icons/DESTINATIONS_ICON.svg';
+import DiningIcon from './icons/DINING_ICON.svg';
+import EventsIcon from './icons/EVENTS_ICON.svg';
+import ServicesIcon from './icons/SERVICES_ICON.svg';
+import MapListIcon from './icons/MAP_LIST_ICON.svg';
 
 class MainTabList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             tabs: [
-                {name: 'SERVICES', path: serviceNamespace},
-                {name: 'MAPS', path: mapListNamespace},
-                {name: 'ACTIVITIES', path: activityNamespace},
-                {name: 'DESTINATIONS', path: destinationNamespace},
-                {name: 'EVENTS', path: eventNamespace},
-                {name: 'DINING', path: diningNamespace},
-                {name: 'HOTELS', path: accomodationNamespace}
+                {name: 'SERVICES', path: serviceNamespace, icon: ServicesIcon},
+                {name: 'MAPS', path: mapListNamespace, icon: MapListIcon},
+                {name: 'ACTIVITIES', path: activityNamespace, icon: ActivitiesIcon},
+                {name: 'DESTINATIONS', path: destinationNamespace, icon: DestinationsIcon},
+                {name: 'EVENTS', path: eventNamespace, icon: EventsIcon},
+                {name: 'DINING', path: diningNamespace, icon: DiningIcon},
+                {name: 'HOTELS', path: accomodationNamespace, icon: AccommodationIcon}
             ],
             sameClicked: false,
             performClick: false
@@ -75,10 +82,6 @@ class MainTabList extends React.Component {
             });
         }
     }
-    shouldShowSelectedStyle() {
-        const { location: { pathname } } = this.props;
-        return !(pathname === airportMapNamespace || pathname === airportInfoNamespace);
-    }
     render() {
         const { tabs } = this.state;
         return(
@@ -89,7 +92,7 @@ class MainTabList extends React.Component {
                     const isLeftOfSelected = i === (this.middle - 1);
                     const isLastItem = i === (tabs.length - 1);
                     return (
-                        <Tab key={i} name={t.name} selected={selected} isLeftOfSelected={isLeftOfSelected}
+                        <Tab key={i} name={t.name} icon={t.icon} selected={selected} isLeftOfSelected={isLeftOfSelected}
                             isLastItem={isLastItem}
                             onClick={() => {
                                  this.clickItem(t, i);

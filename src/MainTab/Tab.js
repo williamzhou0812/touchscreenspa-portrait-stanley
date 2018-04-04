@@ -8,6 +8,7 @@ class Tab extends React.Component {
 
         const {
             name,
+            icon,
             selected,
             isLeftOfSelected,
             isLastItem, 
@@ -44,11 +45,18 @@ class Tab extends React.Component {
         if (selected) {
             return (
                 <div className="item-tab selected" {...other}>
+                    <img
+                        alt=""
+                        src={icon}
+                        style={{
+                            width: "50%"
+                        }}
+                    />
                     <div
                         style={{
                             display: 'flex',
                             justifyContent: 'center',
-                            alignItems: 'center',
+                            alignItems: 'flex-end',
                             fontSize: itemFontSize
                         }}
                     >
@@ -59,11 +67,19 @@ class Tab extends React.Component {
         } else if (isLeftOfSelected) {
             return (
                 <div className="item-tab left-selected" {...other}>
+                    <img
+                        alt=""
+                        src={icon}
+                        style={{
+                            marginTop: 20,
+                            width: "50%"
+                        }}
+                    />
                     <div
                         style={{
                             display: 'flex',
                             justifyContent: 'center',
-                            alignItems: 'center',
+                            alignItems: 'flex-end',
                             fontSize: itemFontSize
                         }}
                     >
@@ -74,11 +90,19 @@ class Tab extends React.Component {
         } else if (isLastItem) {
             return (
                 <div className="item-tab last-item" {...other}>
+                    <img
+                        alt=""
+                        src={icon}
+                        style={{
+                            marginTop: 20,
+                            width: "50%"
+                        }}
+                    />
                     <div
                         style={{
                             display: 'flex',
                             justifyContent: 'center',
-                            alignItems: 'center',
+                            alignItems: 'flex-end',
                             fontSize: itemFontSize
                         }}
                     >
@@ -93,19 +117,20 @@ class Tab extends React.Component {
             // }
             return (
                 <div className="item-tab not-selected" {...other}>
-                    {/* <img
+                    <img
                         alt=""
                         src={icon}
                         style={{
-                            marginBottom: marginBottomIcon,
-                            width: iconWidth
+                            marginTop: 20,
+                            width: "50%"
                         }}
-                    /> */}
+                    />
                     <div
                         style={{
+                            flex: 1,
                             display: 'flex',
                             justifyContent: 'center',
-                            alignItems: 'center',
+                            alignItems: 'flex-end',
                             fontSize: itemFontSize
                         }}
                     >
