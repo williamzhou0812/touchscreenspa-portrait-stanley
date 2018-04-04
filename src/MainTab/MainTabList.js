@@ -25,11 +25,11 @@ class MainTabList extends React.Component {
         super(props);
         this.state = {
             tabs: [
-                {name: 'SERVICES', path: serviceNamespace, icon: ServicesIcon},
-                {name: 'MAPS', path: mapListNamespace, icon: MapListIcon},
+                {name: 'SERVICES', path: serviceNamespace, icon: ServicesIcon, iconWidth: '55%'},
+                {name: 'MAPS', path: mapListNamespace, icon: MapListIcon, iconWidth: '90%'},
                 {name: 'ACTIVITIES', path: activityNamespace, icon: ActivitiesIcon},
-                {name: 'DESTINATIONS', path: destinationNamespace, icon: DestinationsIcon},
-                {name: 'EVENTS', path: eventNamespace, icon: EventsIcon},
+                {name: 'DESTINATIONS', path: destinationNamespace, icon: DestinationsIcon, iconWidth: '70%'},
+                {name: 'EVENTS', path: eventNamespace, icon: EventsIcon, iconWidth: '70%'},
                 {name: 'DINING', path: diningNamespace, icon: DiningIcon},
                 {name: 'HOTELS', path: accomodationNamespace, icon: AccommodationIcon}
             ],
@@ -92,7 +92,8 @@ class MainTabList extends React.Component {
                     const isLeftOfSelected = i === (this.middle - 1);
                     const isLastItem = i === (tabs.length - 1);
                     return (
-                        <Tab key={i} name={t.name} icon={t.icon} selected={selected} isLeftOfSelected={isLeftOfSelected}
+                        <Tab key={i} name={t.name} icon={t.icon} iconWidth={t.iconWidth} 
+                            selected={selected} isLeftOfSelected={isLeftOfSelected}
                             isLastItem={isLastItem}
                             onClick={() => {
                                  this.clickItem(t, i);
