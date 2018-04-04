@@ -34,14 +34,10 @@ class MainTabList extends React.Component {
     middle = 3;
     clickItem(clickedTab, clickIndex) {
         const { tabs } = this.state;
-        console.log(tabs);
-        console.log(clickedTab);
-        console.log(clickIndex);
         if (clickedTab === tabs[this.middle]) {
             this.setState({ sameClicked: true, performClick: true, });
         } else {
             const tempTabs = shiftArray(tabs, this.middle - clickIndex);
-            console.log('Temp_Tabs = ', tempTabs);
             this.setState({
                 tabs: tempTabs,
                 sameClicked: false,
