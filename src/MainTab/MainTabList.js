@@ -85,7 +85,7 @@ class MainTabList extends React.Component {
     render() {
         const { tabs } = this.state;
         return(
-            <div style={{width: "100%", height: "100%", display: "grid", gridTemplateColumns: `repeat(${tabs.length}, 1fr)`}}>
+            <div style={{width: "100%", height: "100%", display: "flex"}}>
                 {tabs.map((t, i) => {
                     // const showSelectedStyle = this.shouldShowSelectedStyle();
                     const selected = i === this.middle;

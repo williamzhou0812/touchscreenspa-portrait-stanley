@@ -9,7 +9,7 @@ class Clock extends React.Component {
             time: "",
             date: ""
         };
-        // this.setDateTime = this.setDateTime.bind(this);
+        this.setDateTime = this.setDateTime.bind(this);
     }
     intervalID;
     setDateTime() {
@@ -20,10 +20,7 @@ class Clock extends React.Component {
     }
     componentDidMount() {
         this.setDateTime();
-        this.intervalID = setInterval(
-            () => this.setDateTime(),
-            1000
-        );
+        this.intervalID = setInterval(this.setDateTime, 1000);
     }
     componentWillUnmount() {
         window.clearInterval(this.intervalID);
@@ -31,7 +28,7 @@ class Clock extends React.Component {
     render() {
         const { date, time } = this.state;
         return (
-            <div style={{display: "flex"}}>
+            <div style={{display: "flex", width: "100%", height: "100%"}}>
                 <div style={{flex: 1, marginLeft: 20}}>{time}</div>
                 <div>|</div>
                 <div style={{flex: 1}}>{date}</div>
