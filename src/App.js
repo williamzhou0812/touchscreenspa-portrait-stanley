@@ -57,14 +57,14 @@ class App extends Component {
                     <div className="App">
                         <img style={{width: "100vw", height: "15vh"}} src={MainLogo} />
                         <div style={{width: "100vw", height: "4vh", display: "grid", gridTemplateColumns: "30% 30% 40%"}}>
-                            <div>AIRPORT INFO</div>
-                            <div>AIRPORT MAP</div>
+                            <div style={{width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>AIRPORT INFO</div>
+                            <div style={{width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>AIRPORT MAP</div>
                             <Clock />
                         </div>
                         <div style={{width: "100vw", height: "8vh"}}>
                             <Route component={MainTabList} />
                         </div>
-                        <div style={{width: "100vw", height: "50vh"}}>
+                        <div style={{width: "100vw", height: "51vh"}}>
                             <Route
                                 exact
                                 path={destinationNamespace}
