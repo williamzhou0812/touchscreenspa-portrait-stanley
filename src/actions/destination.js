@@ -29,12 +29,11 @@ export const fetchDestinationList = () => async dispatch => {
 export const fetchDestinationDetail = (
     id,
     destinationList
-) => async dispatch => {
+) => dispatch => {
     let [data, responseStatus] = [null, 404];
     let toRender = [];
     const desDetailiD = parseInt(id, DECIMAL_RADIX);
-
-    const selectedDestinationDetail = destinationList.find(function(item) {
+    const selectedDestinationDetail = destinationList.find((item) => {
         return item.id === desDetailiD;
     });
 
