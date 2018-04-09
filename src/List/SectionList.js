@@ -46,8 +46,8 @@ class SectionList extends React.Component {
         const { title, namespace } = this.props;
         const { data, images } = this.state;
         return (
-            <div style={{width: "100vw", height: "51vh", display: "flex"}}>
-                <div style={{backgroundColor: HeavyOrange, width: "14vw", height: "51vh", display: "grid", gridTemplateRows: "15% 70% 15%"}}>
+            <div style={{width: "100%", height: "100%", display: "flex"}}>
+                <div style={{backgroundColor: HeavyOrange, width: "14%", height: "100%", display: "grid", gridTemplateRows: "15% 70% 15%"}}>
                     <div style={this.styles.upArrow} onClick={this.goUp}>
                         <img src={UpButton} style={{width: "50%"}}/>
                     </div>
@@ -56,15 +56,15 @@ class SectionList extends React.Component {
                         <img src={DownButton} style={{width: "50%"}} />
                     </div>
                 </div>
-                <div style={{width: "86vw", height: "51vh", overflow: "hidden"}}>
-                    <div style={{width: "90vw", height: "51vh", overflowY: "auto"}}>
-                        <div style={{width: "86vw", height: "51vh", display: "flex", flexDirection: "column"}}>
+                <div style={{width: "86%", height: "100%", overflow: "hidden"}}>
+                    <div style={{height: "100%", overflowY: "auto", marginRight: "-30px"}}>
+                        <div style={{height: "100%", overflow: "auto", paddingRight: "30px"}}>
                             {data.map((item, index) => {
                                 return (
                                     <Link 
                                         key={`${item.id}-${index}`} to={`${namespace}/${item.id}`} 
                                         style={{
-                                            width: "100%", height: "17vh", backgroundImage: `url(${images[index]})`, 
+                                            display: "block", width: "100%", height: "33.33333%", backgroundImage: `url(${images[index]})`, 
                                             backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover", 
                                             display: "flex", flexDirection: "column", justifyContent: "flex-end", overflowY: "hidden"
                                             }}>
