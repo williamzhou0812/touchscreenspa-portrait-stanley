@@ -2,14 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 // import { fetchDestinationDetail } from '../actions/destination';
-import * as destinationAction from '../actions/destination';
+import { fetchDestinationDetail } from '../actions/destination';
 import AllAreas from "./icons/AllAreas.png";
 import { HeavyOrange, destinationNamespace } from "../Constants";
 
 class DestinationDetail extends React.Component {
     retrieveData() {
         const { destinations } = this.props.destinationList;
-        this.props.fetchDestinationDetail(this.props.match.params.id, destinations);
+        fetchDestinationDetail(this.props.match.params.id, destinations);
     }
     componentDidMount() {
         this.retrieveData();
@@ -45,4 +45,4 @@ const mapStateToProps = ({ destinationList, destinationDetail }) => {
     }
 }
 
-export default connect(mapStateToProps, destinationAction)(DestinationDetail);
+export default connect(mapStateToProps, { fetchDestinationDetail })(DestinationDetail);
