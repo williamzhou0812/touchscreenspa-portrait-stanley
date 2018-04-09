@@ -27,8 +27,8 @@ export const airportMapNamespace = '/airportmap';
 export const airportInfoNamespace = '/airportinfo';
 // END OF CONSTANTS FOR SPA ROUTING
 
-export const HOST = '192.168.0.162';
-export const HOST_SPA = '192.168.0.162';
+export const HOST = 'localhost';
+export const HOST_SPA = 'localhost';
 export const PORT = '8000';
 export const PORT_SPA = '3000';
 export const DECIMAL_RADIX = 10;

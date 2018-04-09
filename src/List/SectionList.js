@@ -63,10 +63,14 @@ class SectionList extends React.Component {
                                 return (
                                     <Link 
                                         key={`${item.id}-${index}`} to={`${namespace}/${item.id}`} 
-                                        style={{width: "100%", height: "17vh", backgroundImage: `url(${images[index]})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover", display: "flex", justifyContent: "flex-end"}}>
-                                            <div style={{width: "100%", height: "24%", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "rgh(64,64,65)", backgroundBlendMode: "darken", color: "white"}}>
-                                                {item.title.toUpperCase()}
-                                            </div>
+                                        style={{
+                                            width: "100%", height: "17vh", backgroundImage: `url(${images[index]})`, 
+                                            backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover", 
+                                            display: "flex", flexDirection: "column", justifyContent: "flex-end", overflowY: "hidden"
+                                            }}>
+                                                <div style={{width: "100%", height: "24%", display: "flex", justifyContent: "center", backgroundColor: "rgh(64,64,65)", backgroundBlendMode: "darken", color: "white"}}>
+                                                    {item.title.toUpperCase()}
+                                                </div>
                                     </Link>
                                 )
                             })}
