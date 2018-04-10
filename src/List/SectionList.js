@@ -67,10 +67,14 @@ class SectionList extends React.Component {
                                             display: "block", width: "100%", height: "33.33333%", backgroundImage: `url(${images[index]})`, 
                                             backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover", 
                                             display: "flex", flexDirection: "column", justifyContent: "flex-end", overflowY: "hidden"
+                                        }}>
+                                            <div style={{
+                                                width: "100%", height: "24%", display: "flex", justifyContent: "center", 
+                                                alignItems: "center", backgroundColor: "rgb(64,64,65)", backgroundSize: "cover",
+                                                mixBlendMode: "multiply", textRendering: "optimizeLegibility"
                                             }}>
-                                                <div style={{width: "100%", height: "24%", display: "flex", justifyContent: "center", backgroundColor: "rgh(64,64,65)", backgroundBlendMode: "darken", color: "white"}}>
-                                                    {item.title.toUpperCase()}
-                                                </div>
+                                                <p style={{color: "white", fontSize: "20pt", letterSpacing: "5px"}}>{item.title.toUpperCase()}</p>
+                                            </div>
                                     </Link>
                                 )
                             })}
