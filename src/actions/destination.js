@@ -9,6 +9,10 @@ import {
     activityNamespace,
     DECIMAL_RADIX
 } from '../Constants';
+import AccommodationIcon from '../MainTab/icons/ACCOMMODATION_ICON.svg';
+import ActivitiesIcon from '../MainTab/icons/ACTIVITIES_ICON.svg';
+import DiningIcon from '../MainTab/icons/DINING_ICON.svg';
+import EventsIcon from '../MainTab/icons/EVENTS_ICON.svg';
 
 export const fetchDestinationList = () => async dispatch => {
     const res = await axios.get(createURL('destination/'));
@@ -29,7 +33,9 @@ export const fetchDestinationList = () => async dispatch => {
 export const fetchDestinationDetail = (
     id,
     destinationList
-) => dispatch => {
+) => async dispatch => {
+    console.log(id);
+    console.log(destinationList);
     let [data, responseStatus] = [null, 404];
     let toRender = [];
     const desDetailiD = parseInt(id, DECIMAL_RADIX);
@@ -51,7 +57,8 @@ export const fetchDestinationDetail = (
             title: item.title,
             type: 'EVENT',
             linkTo: linkTo,
-            postLink: postLink
+            postLink: postLink,
+            icon: EventsIcon
         });
     });
     data.accomodationDestination.forEach((item, _) => {
@@ -62,7 +69,8 @@ export const fetchDestinationDetail = (
             title: item.title,
             type: 'HOTEL',
             linkTo: linkTo,
-            postLink: postLink
+            postLink: postLink,
+            icon: AccommodationIcon
         });
     });
     data.restaurantDestination.forEach((item, _) => {
@@ -73,7 +81,8 @@ export const fetchDestinationDetail = (
             title: item.title,
             type: 'DINING',
             linkTo: linkTo,
-            postLink: postLink
+            postLink: postLink,
+            icon: DiningIcon
         });
     });
     data.activityDestinationDestination.forEach((item, _) => {
@@ -85,7 +94,8 @@ export const fetchDestinationDetail = (
             activity: item.activity,
             type: 'ACTIVITIES',
             linkTo: linkTo,
-            postLink: postLink
+            postLink: postLink,
+            icon: ActivitiesIcon
         });
     });
     dispatch({

@@ -47,7 +47,7 @@ class SectionList extends React.Component {
         const { data, images } = this.state;
         return (
             <div style={{width: "100%", height: "100%", display: "flex"}}>
-                <div style={{backgroundColor: HeavyOrange, width: "14%", height: "100%", display: "grid", gridTemplateRows: "15% 70% 15%"}}>
+                <div style={{backgroundColor: HeavyOrange, width: "14%", height: "100%", display: "grid", gridTemplateRows: "15% 70% 15%", boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)", zIndex: 1}}>
                     <div style={this.styles.upArrow} onClick={this.goUp}>
                         <img src={UpButton} style={{width: "50%"}}/>
                     </div>

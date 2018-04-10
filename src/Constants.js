@@ -1,3 +1,10 @@
+import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import LeftIcon from 'material-ui/svg-icons/navigation/chevron-left';
+import RightIcon from 'material-ui/svg-icons/navigation/chevron-right';
+import ImageGallery from 'react-image-gallery';
+import '../node_modules/react-image-gallery/styles/css/image-gallery.css';
+
 export const timezone = "Pacific/Port_Moresby";
 
 //const RGBA color
@@ -7,6 +14,7 @@ export const LightOrange = 'rgb(225, 173, 56)';
 export const HeavyBlue = 'rgb(5, 151, 165)';
 export const MediumBlue = 'rgb(73, 175, 189)';
 export const LightBlue = 'rgba(73, 175, 189, 0.4)';
+export const LightBlueButtonBackground = 'rgb(1, 155, 167)';
 export const ExtraHeavyBlueGreen = 'rgb(5, 140, 155)';
 export const SelectedBorderColor = 'rgb(183, 223, 228)';
 
@@ -33,6 +41,7 @@ export const PORT = '8000';
 export const PORT_SPA = '3000';
 export const DECIMAL_RADIX = 10;
 export const SECTION_LIST_ENTRIES = 3;
+export const SLIDE_INTERVAL = 5000; //Every 5 seconds change image in ImageGallery
 
 export function createURL(namespace) {
     return 'http://' + HOST + ':' + PORT + '/' + namespace;
@@ -92,4 +101,64 @@ export function shiftArray(list, by) {
         // console.log('\n\n');
     });
     return temp;
+}
+
+function gatherImages(images) {
+    return images.map(image => {
+        return { original: image.imageFile };
+    });
+}
+
+export function imageGallery(
+    images,
+    imageWidth,
+    imageHeight,
+    slideInterval = SLIDE_INTERVAL
+) {
+    return (
+        <MuiThemeProvider>
+            <ImageGallery
+                items={gatherImages(images)}
+                autoPlay={true}
+                slideInterval={slideInterval}
+                lazyLoad={true}
+                renderLeftNav={(onClick, _disabled) => (
+                    <LeftIcon
+                        className="image-gallery-left-nav"
+                        onClick={onClick}
+                        color={HeavyOrange}
+                        style={{ padding: 0, height: 64, width: 64 }}
+                    />
+                )}
+                renderRightNav={(onClick, _disabled) => (
+                    <RightIcon
+                        className="image-gallery-right-nav"
+                        onClick={onClick}
+                        color={HeavyOrange}
+                        style={{ padding: 0, height: 64, width: 64 }}
+                    />
+                )}
+                renderItem={item => {
+                    return (
+                        <div className="image-gallery-image">
+                            <img
+                                src={item.original}
+                                alt={item.originalAlt}
+                                srcSet={item.srcSet}
+                                sizes={item.sizes}
+                                title={item.originalTitle}
+                                style={{
+                                    width: imageWidth,
+                                    height: imageHeight
+                                }}
+                            />
+                        </div>
+                    );
+                }}
+                showThumbnails={false}
+                showPlayButton={true}
+                showFullscreenButton={false}
+            />
+        </MuiThemeProvider>
+    );
 }
