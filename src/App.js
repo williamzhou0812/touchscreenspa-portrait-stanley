@@ -30,14 +30,17 @@ import {
 } from './Constants';
 import DestinationList from './Destination/DestinationList';
 import DestinationDetail from './Destination/DestinationDetail';
+import EventList from './Event/EventList';
 
 class App extends Component {
     componentDidMount() {
         this.props.fetchDestinationList();
+        this.props.fetchEventList()
     }
     render() {
         if (
-            this.props.destinationList.statusDestinations !== 200 
+            this.props.destinationList.statusDestinations !== 200 ||
+            this.props.eventList.status !== 200
         ) {
             return (
                 <div className="loadingContainer">
@@ -79,6 +82,11 @@ class App extends Component {
                                 path={destinationNamespace + "/:id"}
                                 component={DestinationDetail}
                             />
+                            <Route
+                                exact
+                                path={eventNamespace}
+                                component={EventList}
+                            />
                             <Redirect from="/" to={destinationNamespace} />
                         </div>
                         <div style={{width: "100vw", height: "16vh"}}>
@@ -114,7 +122,7 @@ function mapStateToProps({
     destinationList,
     accommodationList,
     restaurantList,
-    activityList,
+    eventList,
     map,
     periodList,
     essentialServiceTypeList,
@@ -137,7 +145,7 @@ function mapStateToProps({
         destinationList,
         accommodationList,
         restaurantList,
-        activityList,
+        eventList,
         map,
         periodList,
         essentialServiceTypeList,

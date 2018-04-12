@@ -24,6 +24,7 @@ import specificAdsRestaurantReducer from './specificAdsRestaurantReducer';
 import specificAdsRetailReducer from './specificAdsRetailReducer';
 import specificAdsTransportReducer from './specificAdsTransportReducer';
 import HandoverVideoReducer from './HandoverVideoReducer';
+import eventReducer from './eventReducer'
 
 export default combineReducers({
     windowSize: windowSizeReducer,
@@ -34,7 +35,7 @@ export default combineReducers({
     accommodationList: accommodationReducer,
     restaurantList: diningReducer,
     restaurantDetail: diningDetailReducer,
-    activityList: activityListReducer,
+    eventList: eventReducer,
     activityDestinationList: activityDestinationListReducer,
     activityDestinationDetail: activityDestinationDetailReducer,
     essentialServiceTypeList: essentialServiceTypeListReducer,

@@ -32,6 +32,7 @@ import {
     fetchSpecificAdsRetailList,
     fetchSpecificAdsTransportList
 } from './advertisement';
+import { fetchEventList } from "./event";
 
 export {
     fetchDestinationList,
@@ -61,5 +62,6 @@ export {
     fetchSpecificAdsMiningList,
     fetchSpecificAdsRetailList,
     fetchSpecificAdsTransportList,
-    retrieveHandoverVideo
+    retrieveHandoverVideo,
+    fetchEventList
 };
