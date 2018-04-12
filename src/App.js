@@ -60,7 +60,7 @@ class App extends Component {
                 <Router history={this.props.history}>
                     <div className="App">
                         <img style={{width: "100vw", height: "15vh"}} src={MainLogo} />
-                        <div style={{width: "100vw", height: "4vh", display: "grid", gridTemplateColumns: "30% 30% 40%"}}>
+                        <div style={{width: "100vw", height: "3vh", display: "grid", gridTemplateColumns: "30% 30% 40%"}}>
                             <div style={{width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>AIRPORT INFO</div>
                             <div style={{width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>AIRPORT MAP</div>
                             <Clock />
@@ -68,7 +68,7 @@ class App extends Component {
                         <div style={{width: "100vw", height: "8vh"}}>
                             <Route component={MainTabList} />
                         </div>
-                        <div style={{width: "100vw", height: "51vh"}}>
+                        <div style={{width: "100vw", height: "54vh"}}>
                             <Route
                                 exact
                                 path={destinationNamespace}
@@ -81,7 +81,7 @@ class App extends Component {
                             />
                             <Redirect from="/" to={destinationNamespace} />
                         </div>
-                        <div style={{width: "100vw", height: "18vh"}}>
+                        <div style={{width: "100vw", height: "16vh"}}>
                             Advertisement Section
                         </div>
                         <div style={{width: "100vw", height: "4vh", display: "flex"}}>

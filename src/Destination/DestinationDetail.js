@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import * as actions from '../actions/destination';
 import AllAreas from "./icons/AllAreas.png";
-import { HeavyOrange, destinationNamespace, HeavyBlue, MediumBlue, LightBlueButtonBackground, ExtraHeavyBlueGreen, imageGallery } from "../Constants";
+import { HeavyOrange, destinationNamespace, HeavyBlue, MediumBlue, LightBlueButtonBackground, ExtraHeavyBlueGreen, imageGallery, LightOrange, MediumOrange } from "../Constants";
+import ExportList from './ExploreList'
+import ExploreList from './ExploreList';
 
 class DestinationDetail extends React.Component {
     constructor(props) {
@@ -36,17 +38,23 @@ class DestinationDetail extends React.Component {
         horizontalVerticalCenter: {display: "flex", alignItems: "center", justifyContent: "center"}
     }
     render() {
-        const { destination, status } = this.props.destinationDetail;
+        const { destination, exploreData, status } = this.props.destinationDetail;
         const { explore } = this.state;
         if (explore) {
             return (
                 <div style={{width: "100%", height: "100%", display: "flex"}}>
                     <div onClick={this.returnFromExplore} style={{backgroundColor: HeavyOrange, width: "14%", height: "100%", boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)", zIndex: 1}}>
-                        <img src={AllAreas} style={{width: "33%"}} />
-                        <div style={{color: "white"}}>BACK TO OVERVIEW</div>
+                        <div style={{height: "14%"}}>
+                            <img src={AllAreas} style={{width: "33%"}} />
+                            <div style={{color: "white"}}>BACK TO OVERVIEW</div>
+                        </div>
                     </div>
-                    {(!!destination && status === 200) && (
+                    {(!!destination && exploreData && status === 200) && (
                         <div style={{width: "86%", height: "100%"}}>
+                            <div style={{height: "8%", backgroundColor: LightOrange, color: "white", letterSpacing: 5, ...this.styles.horizontalVerticalCenter, fontSize: "20pt"}}>{destination.title}</div>
+                            <div style={{height: "92%"}}>
+                                <ExploreList data={exploreData} />
+                            </div>
                         </div>
                     )}
                 </div>
