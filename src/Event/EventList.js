@@ -15,6 +15,14 @@ class DestinationList extends React.Component {
                     imageKey="imageEvent"
                     isImageArray={true}
                     namespace={eventNamespace}
+                    renderText={(item) => {
+                        return (
+                            <div style={{height: "100%"}}>
+                                <div style={{height: "33%", display: "flex", alignItems: "flex-end"}}>{item.title.toUpperCase()}</div>
+                                <div style={{height: "33%", display: "flex", alignItems: "flex-end"}}>{item.eventMonth.toUpperCase()}</div>
+                            </div>
+                        );
+                    }}
                 />
             </div>
         );
