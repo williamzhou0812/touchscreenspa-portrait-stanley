@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SectionList from '../List/SectionList';
+import SubsectionList from '../List/SubsectionList';
 import { eventNamespace } from "../Constants";
 
 class DestinationList extends React.Component {
     render() {
-        const { events, images } = this.props.eventList;
+        const { events } = this.props.eventList;
         return (
             <div style={{width: "100%", height: "100%"}}>
-               <SectionList
+               <SubsectionList
                     data={events}
-                    images={images}
-                    title="EVENTS"
+                    sideTitle="EVENTS"
+                    mainTitle="CALENDAR OF EVENTS"
+                    imageKey="imageEvent"
+                    isImageArray={true}
                     namespace={eventNamespace}
                 />
             </div>

@@ -43,7 +43,7 @@ class ExploreList extends React.Component {
                         <div style={{height: "100%", overflow: "auto", paddingRight: "30px"}}>
                             {data.map((item, index) => {
                                 return(
-                                    <div style={{height: itemHeight, color: "white", display: "flex"}}>
+                                    <div key={`${item.id}-${index}`} style={{height: itemHeight, color: "white", display: "flex"}}>
                                         <div style={{width: "33%", height: "100%", backgroundColor: ExtraHeavyBlueGreen, display: "flex"}}>
                                             <div style={{width: "32%", height: "100%", ...this.styles.horizontalVerticalCenter}}>
                                                 <img src={item.icon} style={{width: "43%"}} />
