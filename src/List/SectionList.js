@@ -17,9 +17,9 @@ class SectionList extends React.Component {
         this.goDown = this.goDown.bind(this);
     }
     styles = {
-        upArrow: {borderStyle: "none none solid none", borderColor: LightOrange, width: "14vw", display: "flex", justifyContent: "center", alignItems: "center"},
-        downArrow: {borderStyle: "solid none none none", borderColor: LightOrange, width: "14vw", display: "flex", justifyContent: "center", alignItems: "center"},
-        titleStyle: {fontSize: "28pt", transform: "rotate(-90deg)", color: "white", width: "14vw", display: "flex", justifyContent: "center", alignItems: "center",}
+        upArrow: {borderStyle: "none none solid none", borderColor: LightOrange, height: "14%", display: "flex", justifyContent: "center", alignItems: "center"},
+        downArrow: {borderStyle: "solid none none none", borderColor: LightOrange, height: "14%", display: "flex", justifyContent: "center", alignItems: "center"},
+        titleStyle: {fontSize: "28pt", transform: "rotate(-90deg)", color: "white", flex: 1, display: "flex", justifyContent: "center", alignItems: "center",}
     };
     goUp() {
         const { data, images } = this.state;
@@ -48,7 +48,7 @@ class SectionList extends React.Component {
         const { data, images } = this.state;
         return (
             <div style={{width: "100%", height: "100%", display: "flex"}}>
-                <div style={{backgroundColor: HeavyOrange, width: "14%", height: "100%", display: "grid", gridTemplateRows: "14% 72% 14%", boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)", zIndex: 1}}>
+                <div style={{backgroundColor: HeavyOrange, width: "14%", height: "100%", display: "flex", flexDirection: "column", boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)", zIndex: 1}}>
                     <div style={this.styles.upArrow} onClick={this.goUp}>
                         <img src={UpButton} style={{width: "50%"}}/>
                     </div>
