@@ -19,10 +19,23 @@ function getHeaderImageFromAccommodation(data) {
 export const fetchAccommodationList = () => async dispatch => {
     const res = await axios.get(createURL('destinationaccomodation/'));
     const headerImages = getHeaderImageFromAccommodation(res.data);
+    let dests = res.data.slice();
+    dests.forEach((dest) => {
+        dest.mapHotels = [];
+        dest.accomodationDestination.forEach((acco) => {
+            dest.mapHotels = [...dest.mapHotels, ...acco.imageAccomodation.filter((item) => {
+                return item.title.toLowerCase().includes("map");
+            })];
+            const accommodationImages = acco.imageAccomodation.filter((item) => {
+                return !(item.title.toLowerCase().includes("map")) && !item.isHeaderImage;
+            })
+            acco.imageAccomodation = accommodationImages;
+        });
+    });
     dispatch({
         type: ACCOMMODATION_LIST,
         payload: {
-            accommodations: res.data,
+            accommodations: dests,
             images: headerImages,
             status: res.status
         }
