@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import DownButton from '../interface/DownButton.png';
 import UpButton from '../interface/UpButton.png';
 import { SECTION_LIST_ENTRIES, HeavyOrange, LightOrange, shiftArray } from "../Constants";
+import PropTypes from 'prop-types'
 
 class SectionList extends React.Component {
     constructor(props) {
@@ -85,5 +86,11 @@ class SectionList extends React.Component {
         )
     }
 }
+SectionList.propTypes = {
+    data: PropTypes.array.isRequired,
+    images: PropTypes.array.isRequired,
+    title: PropTypes.string.isRequired,
+    namespace: PropTypes.string.isRequired
+};
 
 export default SectionList;

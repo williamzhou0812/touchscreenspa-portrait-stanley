@@ -41,6 +41,7 @@ export const PORT = '8000';
 export const PORT_SPA = '3000';
 export const DECIMAL_RADIX = 10;
 export const SECTION_LIST_ENTRIES = 3;
+export const SUBSECTION_LIST_ENTRIES = 6;
 export const SLIDE_INTERVAL = 5000; //Every 5 seconds change image in ImageGallery
 
 export function createURL(namespace) {
@@ -138,26 +139,26 @@ export function imageGallery(
                         style={{ padding: 0, height: 64, width: 64 }}
                     />
                 )}
-                renderItem={item => {
-                    return (
-                        <div className="image-gallery-image">
-                            <img
-                                src={item.original}
-                                alt={item.originalAlt}
-                                srcSet={item.srcSet}
-                                sizes={item.sizes}
-                                title={item.originalTitle}
-                                style={{
-                                    width: imageWidth,
-                                    height: imageHeight
-                                }}
-                            />
-                        </div>
-                    );
-                }}
+                // renderItem={item => {
+                //     return (
+                //         <div className="image-gallery-image">
+                //             <img
+                //                 src={item.original}
+                //                 alt={item.originalAlt}
+                //                 srcSet={item.srcSet}
+                //                 sizes={item.sizes}
+                //                 title={item.originalTitle}
+                //                 style={{
+                //                     width: imageWidth,
+                //                     height: imageHeight
+                //                 }}
+                //             />
+                //         </div>
+                //     );
+                // }}
                 showThumbnails={false}
                 showPlayButton={true}
-                showFullscreenButton={false}
+                showFullscreenButton={true}
             />
         </MuiThemeProvider>
     );
