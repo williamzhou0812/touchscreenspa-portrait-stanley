@@ -25,7 +25,7 @@ export const fetchDestinationList = () => async dispatch => {
         payload: {
             destinations: res.data,
             images: randomImages,
-            statusDestinations: res.status
+            status: res.status
         }
     });
 };

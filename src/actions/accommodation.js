@@ -23,8 +23,8 @@ export const fetchAccommodationList = () => async dispatch => {
         type: ACCOMMODATION_LIST,
         payload: {
             accommodations: res.data,
-            accommodationHeaderImages: headerImages,
-            statusAccommodations: res.status
+            images: headerImages,
+            status: res.status
         }
     });
 };

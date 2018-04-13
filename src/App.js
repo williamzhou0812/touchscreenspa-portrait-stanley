@@ -35,12 +35,15 @@ import EventList from './Event/EventList';
 class App extends Component {
     componentDidMount() {
         this.props.fetchDestinationList();
-        this.props.fetchEventList()
+        this.props.fetchEventList();
+        this.props.fetchAccommodationList();
     }
     render() {
         if (
-            this.props.destinationList.statusDestinations !== 200 ||
+            this.props.destinationList.status !== 200 ||
+            this.props.accommodationList.status !== 200 ||
             this.props.eventList.status !== 200
+
         ) {
             return (
                 <div className="loadingContainer">
@@ -75,6 +78,11 @@ class App extends Component {
                             <Route
                                 exact
                                 path={destinationNamespace}
+                                component={DestinationList}
+                            />
+                            <Route
+                                exact
+                                path={accomodationNamespace}
                                 component={DestinationList}
                             />
                             <Route

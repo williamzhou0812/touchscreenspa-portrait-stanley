@@ -15,7 +15,7 @@ class DestinationList extends React.Component {
             return(
                 <SectionList
                     data={this.props.accommodationList.accommodations}
-                    images={this.props.accommodationList.accommodationHeaderImages}
+                    images={this.props.accommodationList.images}
                     title="HOTELS"
                     namespace={accomodationNamespace}
                 />
