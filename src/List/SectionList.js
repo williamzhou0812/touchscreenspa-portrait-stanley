@@ -69,13 +69,15 @@ class SectionList extends React.Component {
                                             backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover", 
                                             display: "flex", flexDirection: "column", justifyContent: "flex-end", overflowY: "hidden"
                                         }}>
-                                            <div style={{
-                                                width: "100%", height: "24%", display: "flex", justifyContent: "center", 
-                                                alignItems: "center", backgroundColor: "rgb(64,64,65)", backgroundSize: "cover",
-                                                mixBlendMode: "multiply", textRendering: "optimizeLegibility"
-                                            }}>
-                                                <p style={{color: "white", fontSize: "20pt", letterSpacing: "5px"}}>{item.title.toUpperCase()}</p>
-                                            </div>
+                                            <div style={{textAlign: "center", position: "relative"}}>
+                                                <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "rgb(64,64,65)", mixBlendMode: "multiply",  }}></div>
+                                                <div style={{ position: "relative", padding: 12, color: "white", fontSize: "20pt", letterSpacing: "5px"}}>{item.title.toUpperCase()}</div>
+                                            </div> 
+                                            {/* Parent with position relative, 1st child with position absolute, 2nd child with position relative. This will make the 1st child top, left, 
+                                            right, bottom, width and height become "based" / "filled" (since it was set with width and height of 100%) to the parent. 
+                                            2nd child, because it was set as position relative, it will become the forefront (aka first layer, since there is no z-ndex) and not be covered
+                                            by the mix blend mode
+                                            */}
                                     </Link>
                                 )
                             })}

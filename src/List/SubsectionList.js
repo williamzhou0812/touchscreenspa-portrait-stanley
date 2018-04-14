@@ -3,7 +3,7 @@ import UpButton from "../Destination/icons/UpExploreButton.png";
 import DownButton from "../Destination/icons/DownExploreButton.png";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { SUBSECTION_LIST_ENTRIES, MediumOrange, shiftArray, ExtraHeavyBlueGreen, HeavyBlue, HeavyOrange, LightOrange, getRandomImage } from "../Constants";
+import { SUBSECTION_LIST_ENTRIES, MediumOrange, shiftArray, ExtraHeavyBlueGreen, HeavyBlue, HeavyOrange, LightOrange, getRandomImage, LightBlue } from "../Constants";
 
 class SubsectionList extends React.Component {
     constructor(props) {
@@ -38,7 +38,7 @@ class SubsectionList extends React.Component {
         const itemHeight = `${100 / numberOfEntries}%`;
         return (
             <div style={{width: "100%", height: "100%", display: "flex"}}>
-                <div style={{backgroundColor: HeavyOrange, width: "14%", height: "100%", boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)", zIndex: 1, display: "flex", flexDirection: "column"}}>
+                <div style={{backgroundColor: HeavyOrange, width: "14%", boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)", zIndex: 1, display: "flex", flexDirection: "column"}}>
                     {sideButtons.length > 0 && sideButtons.map((item, index) => {
                         return (
                             <Link style={{height: "14%"}} key={index} to={item.link}>
@@ -52,7 +52,7 @@ class SubsectionList extends React.Component {
                     </div>
                 </div>
 
-                <div style={{width: "86%", height: "100%"}}>
+                <div style={{width: "86%"}}>
                     <div style={{height: "8%", backgroundColor: LightOrange, color: "white", letterSpacing: 5, ...this.styles.horizontalVerticalCenter, fontSize: "20pt", letterSpacing: 5}}>{mainTitle}</div>
                     <div style={{height: "6%", backgroundColor: MediumOrange, ...this.styles.horizontalVerticalCenter}} onClick={this.goUp}>
                         <img src={UpButton} style={{width: "5%"}} />
@@ -62,12 +62,11 @@ class SubsectionList extends React.Component {
                             <div style={{height: "100%", overflow: "auto", paddingRight: "30px"}}>
                                 {data.map((item, index) => {
                                     const imageSrc = !!isImageArray ? getRandomImage(item[imageKey]) : item[imageKey];
+                                    //TODO: Fix borders
                                     return(
                                         <Link style={{height: itemHeight, color: "white", display: "flex"}} to={`${namespace}/${item.id}`}>
-                                            <div style={{width: "33%", height: "100%"}}>
-                                                <img src={imageSrc} style={{width: "100%", height: "100%"}} />
-                                            </div>
-                                            <div style={{width: "67%", height: "100%", backgroundColor: HeavyBlue, display: "flex", alignItems: "center", paddingLeft: 20}}>
+                                            <div style={{width: "33%", backgroundImage: `url(${imageSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', borderStyle: 'none none solid none', borderColor: LightBlue}} />
+                                            <div style={{width: "67%", backgroundColor: HeavyBlue, display: "flex", alignItems: "center", paddingLeft: 20}}>
                                                 {renderText(item)}
                                             </div>
                                         </Link>
