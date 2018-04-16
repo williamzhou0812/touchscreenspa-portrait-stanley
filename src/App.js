@@ -31,6 +31,7 @@ import {
 import DestinationList from './Destination/DestinationList';
 import DestinationDetail from './Destination/DestinationDetail';
 import EventList from './Event/EventList';
+import EventDetail from "./Event/EventDetail";
 
 class App extends Component {
     componentDidMount() {
@@ -94,6 +95,11 @@ class App extends Component {
                                 exact
                                 path={eventNamespace}
                                 component={EventList}
+                            />
+                            <Route
+                                exact
+                                path={eventNamespace + "/:id"}
+                                component={EventDetail}
                             />
                             <Redirect from="/" to={destinationNamespace} />
                         </div>

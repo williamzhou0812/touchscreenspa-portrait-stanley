@@ -139,23 +139,23 @@ export function imageGallery(
                         style={{ padding: 0, height: 64, width: 64 }}
                     />
                 )}
-                // renderItem={item => {
-                //     return (
-                //         <div className="image-gallery-image">
-                //             <img
-                //                 src={item.original}
-                //                 alt={item.originalAlt}
-                //                 srcSet={item.srcSet}
-                //                 sizes={item.sizes}
-                //                 title={item.originalTitle}
-                //                 style={{
-                //                     width: imageWidth,
-                //                     height: imageHeight
-                //                 }}
-                //             />
-                //         </div>
-                //     );
-                // }}
+                renderItem={item => {
+                    return (
+                        <div className="image-gallery-image">
+                            <img
+                                src={item.original}
+                                alt={item.originalAlt}
+                                srcSet={item.srcSet}
+                                sizes={item.sizes}
+                                title={item.originalTitle}
+                                style={{
+                                    width: imageWidth,
+                                    height: imageHeight
+                                }}
+                            />
+                        </div>
+                    );
+                }}
                 showThumbnails={false}
                 showPlayButton={true}
                 showFullscreenButton={true}

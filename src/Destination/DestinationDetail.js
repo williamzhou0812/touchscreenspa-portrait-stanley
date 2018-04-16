@@ -74,7 +74,7 @@ class DestinationDetail extends React.Component {
                             <div style={{height: "50%"}}>
                                 {destination.imageDestination.length > 1 ? (
                                     <div>
-                                        {imageGallery(destination.imageDestination, "100%", "25.5vh")}
+                                        {imageGallery(destination.imageDestination, "100%", "27vh")}
                                     </div>
                                 ) : (
                                     <img src={destination.imageDestination[0].imageFile} style={{width: "100%", height: "100%"}} />
