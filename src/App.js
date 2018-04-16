@@ -33,6 +33,7 @@ import DestinationDetail from './Destination/DestinationDetail';
 import EventList from './Event/EventList';
 import EventDetail from "./Event/EventDetail";
 import DiningList from "./Dining/DiningList";
+import DiningDetail from "./Dining/DiningDetail";
 
 class App extends Component {
     componentDidMount() {
@@ -108,6 +109,11 @@ class App extends Component {
                                 exact
                                 path={diningNamespace}
                                 component={DiningList}
+                            />
+                            <Route
+                                exact
+                                path={diningNamespace + "/:id"}
+                                component={DiningDetail}
                             />
                             <Redirect from="/" to={destinationNamespace} />
                         </div>

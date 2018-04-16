@@ -15,6 +15,19 @@ class DiningList extends React.Component {
                     imageKey="logo"
                     isImageArray={false}
                     namespace={diningNamespace}
+                    renderText={(item) => {
+                        if (item.cuisine) {
+                            return (
+                                <div style={{height: "100%"}}>
+                                    <div style={{height: "33%", display: "flex", alignItems: "flex-end"}}>{item.title.toUpperCase()}</div>
+                                    <div style={{height: "33%", display: "flex", alignItems: "flex-end"}}>{item.cuisine}</div>
+                                </div>
+                            );
+                        } else {
+                            return item.title.toUpperCase();
+                        }
+                        
+                    }}
                 />
             </div>
         );

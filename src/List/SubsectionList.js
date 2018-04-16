@@ -41,7 +41,7 @@ class SubsectionList extends React.Component {
                 <div style={{backgroundColor: HeavyOrange, width: "14%", boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)", zIndex: 1, display: "flex", flexDirection: "column"}}>
                     {sideButtons.length > 0 && sideButtons.map((item, index) => {
                         return (
-                            <Link style={{height: "14%"}} key={index} to={item.link}>
+                            <Link style={{flexBasis: "14%"}} key={index} to={item.link}>
                                 <img src={item.icon} style={{width: "33%"}} />
                                 <div style={{color: "white"}}>{item.title}</div>
                             </Link>
@@ -65,7 +65,7 @@ class SubsectionList extends React.Component {
                                     const isLastItem = index === (data.length - 1);
                                     //TODO: Fix borders
                                     return(
-                                        <Link style={{height: itemHeight, color: "white", display: "flex"}} to={`${namespace}/${item.id}`}>
+                                        <Link style={{height: itemHeight, color: "white", display: "flex"}} to={`${namespace}/${item.id}`} key={`${item.id}-${index}`}>
                                             <div style={{width: "33%", backgroundImage: `url(${imageSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', borderBottom: isLastItem ? "none" : `1px solid ${LightBlue}`}} />
                                             <div style={{width: "67%", backgroundColor: HeavyBlue, display: "flex", alignItems: "center", paddingLeft: 20, borderBottom: isLastItem ? "none" : "1px solid rgb(183,223,228)"}}>
                                                 {renderText(item)}
