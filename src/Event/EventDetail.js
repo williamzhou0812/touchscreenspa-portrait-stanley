@@ -121,7 +121,7 @@ class EventDetail extends React.Component {
                                     </div>
                                     <div style={{height: "79%"}}>{event.description}</div>
                                 </div>
-                                <div style={{flexBasis: "50%", paddingRight: 20}}>
+                                <div style={{flexBasis: "50%", paddingLeft: 20, paddingRight: 20}}>
                                     <div style={{height: "21%"}} />
                                     <div style={{height: "42%"}}>
                                         {event.phone && <div>CALL TODAY: {event.phone}</div>}
