@@ -44,13 +44,13 @@ class ExploreList extends React.Component {
                             {data.map((item, index) => {
                                 return(
                                     <div key={`${item.id}-${index}`} style={{height: itemHeight, color: "white", display: "flex"}}>
-                                        <div style={{width: "33%", height: "100%", backgroundColor: ExtraHeavyBlueGreen, display: "flex"}}>
-                                            <div style={{width: "32%", height: "100%", ...this.styles.horizontalVerticalCenter}}>
+                                        <div style={{width: "33%", backgroundColor: ExtraHeavyBlueGreen, display: "flex"}}>
+                                            <div style={{width: "32%", ...this.styles.horizontalVerticalCenter}}>
                                                 <img src={item.icon} style={{width: "43%"}} />
                                             </div>
-                                            <div style={{width: "68%", height: "100%", ...this.styles.horizontalVerticalCenter}}>{item.type}</div>
+                                            <div style={{width: "68%", ...this.styles.horizontalVerticalCenter}}>{item.type}</div>
                                         </div>
-                                        <div style={{width: "67%", height: "100%", backgroundColor: HeavyBlue, display: "flex", alignItems: "center", paddingLeft: 20}}>
+                                        <div style={{width: "67%", backgroundColor: HeavyBlue, display: "flex", alignItems: "center", paddingLeft: 20}}>
                                             {item.title.toUpperCase()}
                                         </div>
                                     </div>
