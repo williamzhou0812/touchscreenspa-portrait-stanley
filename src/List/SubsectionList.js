@@ -62,11 +62,12 @@ class SubsectionList extends React.Component {
                             <div style={{height: "100%", overflow: "auto", paddingRight: "30px"}}>
                                 {data.map((item, index) => {
                                     const imageSrc = !!isImageArray ? getRandomImage(item[imageKey]) : item[imageKey];
+                                    const isLastItem = index === (data.length - 1);
                                     //TODO: Fix borders
                                     return(
                                         <Link style={{height: itemHeight, color: "white", display: "flex"}} to={`${namespace}/${item.id}`}>
-                                            <div style={{width: "33%", backgroundImage: `url(${imageSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', borderStyle: 'none none solid none', borderColor: LightBlue}} />
-                                            <div style={{width: "67%", backgroundColor: HeavyBlue, display: "flex", alignItems: "center", paddingLeft: 20}}>
+                                            <div style={{width: "33%", backgroundImage: `url(${imageSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', borderBottom: isLastItem ? "none" : `1px solid ${LightBlue}`}} />
+                                            <div style={{width: "67%", backgroundColor: HeavyBlue, display: "flex", alignItems: "center", paddingLeft: 20, borderBottom: isLastItem ? "none" : "1px solid rgb(183,223,228)"}}>
                                                 {renderText(item)}
                                             </div>
                                         </Link>
