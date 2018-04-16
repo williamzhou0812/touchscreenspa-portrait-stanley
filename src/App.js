@@ -32,18 +32,21 @@ import DestinationList from './Destination/DestinationList';
 import DestinationDetail from './Destination/DestinationDetail';
 import EventList from './Event/EventList';
 import EventDetail from "./Event/EventDetail";
+import DiningList from "./Dining/DiningList";
 
 class App extends Component {
     componentDidMount() {
         this.props.fetchDestinationList();
         this.props.fetchEventList();
         this.props.fetchAccommodationList();
+        this.props.fetchDiningList();
     }
     render() {
         if (
             this.props.destinationList.status !== 200 ||
             this.props.accommodationList.status !== 200 ||
-            this.props.eventList.status !== 200
+            this.props.eventList.status !== 200 ||
+            this.props.restaurantList.status !== 200
 
         ) {
             return (
@@ -100,6 +103,11 @@ class App extends Component {
                                 exact
                                 path={eventNamespace + "/:id"}
                                 component={EventDetail}
+                            />
+                            <Route
+                                exact
+                                path={diningNamespace}
+                                component={DiningList}
                             />
                             <Redirect from="/" to={destinationNamespace} />
                         </div>
