@@ -12,13 +12,13 @@ import {
     airportInfoNamespace,
     shiftArray
 } from '../Constants';
-import AccommodationIcon from './icons/ACCOMMODATION_ICON.svg';
-import ActivitiesIcon from './icons/ACTIVITIES_ICON.svg';
-import DestinationsIcon from './icons/DESTINATIONS_ICON.svg';
-import DiningIcon from './icons/DINING_ICON.svg';
-import EventsIcon from './icons/EVENTS_ICON.svg';
-import ServicesIcon from './icons/SERVICES_ICON.svg';
-import MapListIcon from './icons/MAP_LIST_ICON.svg';
+import AccommodationIcon from './icons/ACCOMMODATION_ICON.png';
+import ActivitiesIcon from './icons/ACTIVITIES_ICON.png';
+import DestinationsIcon from './icons/DESTINATIONS_ICON.png';
+import DiningIcon from './icons/DINING_ICON.png';
+import EventsIcon from './icons/EVENTS_ICON.png';
+import ServicesIcon from './icons/SERVICES_ICON.png';
+import MapListIcon from './icons/MAP_LIST_ICON.png';
 
 class MainTabList extends React.Component {
     constructor(props) {
