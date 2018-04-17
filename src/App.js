@@ -26,7 +26,8 @@ import {
     IDLE_TIME,
     SelectedBorderColor,
     MediumBlue,
-    playRandomSoundEffect
+    playRandomSoundEffect,
+    activityNamespace
 } from './Constants';
 import DestinationList from './Destination/DestinationList';
 import DestinationDetail from './Destination/DestinationDetail';
@@ -37,6 +38,7 @@ import DiningDetail from "./Dining/DiningDetail";
 import HotelList from "./Hotel/HotelList";
 import HotelDetail from "./Hotel/HotelDetail";
 import ServiceInitialList from "./Service/ServiceInitialList";
+import ActivityList from "./Activity/ActivityList";
 
 class App extends Component {
     componentDidMount() {
@@ -44,14 +46,15 @@ class App extends Component {
         this.props.fetchEventList();
         this.props.fetchAccommodationList();
         this.props.fetchDiningList();
+        this.props.fetchActivityList();
     }
     render() {
         if (
             this.props.destinationList.status !== 200 ||
             this.props.accommodationList.status !== 200 ||
             this.props.eventList.status !== 200 ||
-            this.props.restaurantList.status !== 200
-
+            this.props.restaurantList.status !== 200 ||
+            this.props.activityList.status !== 200
         ) {
             return (
                 <div className="loadingContainer">
@@ -133,6 +136,11 @@ class App extends Component {
                                 path={serviceNamespace}
                                 component={ServiceInitialList}
                             />
+                            <Route
+                                exact
+                                path={activityNamespace}
+                                component={ActivityList}
+                            />
                             <Redirect from="/" to={destinationNamespace} />
                         </div>
                         <div style={{width: "100vw", height: "16vh"}}>
@@ -174,7 +182,8 @@ function mapStateToProps({
     essentialServiceTypeList,
     miningServiceTypeList,
     retailServiceTypeList,
-    transportServiceTypeList
+    transportServiceTypeList,
+    activityList
 }) {
     return {
         windowSize,
@@ -197,7 +206,8 @@ function mapStateToProps({
         essentialServiceTypeList,
         miningServiceTypeList,
         retailServiceTypeList,
-        transportServiceTypeList
+        transportServiceTypeList,
+        activityList,
     };
 }
 export default connect(mapStateToProps, actions)(App);

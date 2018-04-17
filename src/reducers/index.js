@@ -36,6 +36,7 @@ export default combineReducers({
     restaurantList: diningReducer,
     restaurantDetail: diningDetailReducer,
     eventList: eventReducer,
+    activityList: activityListReducer,
     activityDestinationList: activityDestinationListReducer,
     activityDestinationDetail: activityDestinationDetailReducer,
     essentialServiceTypeList: essentialServiceTypeListReducer,
