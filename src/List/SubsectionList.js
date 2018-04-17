@@ -40,12 +40,28 @@ class SubsectionList extends React.Component {
             <div style={{width: "100%", height: "100%", display: "flex"}}>
                 <div style={{backgroundColor: HeavyOrange, width: "14%", boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)", zIndex: 1, display: "flex", flexDirection: "column"}}>
                     {sideButtons.length > 0 && sideButtons.map((item, index) => {
-                        return (
-                            <Link style={{flexBasis: "14%"}} key={index} to={item.link}>
-                                <img src={item.icon} style={{width: "33%"}} />
-                                <div style={{color: "white"}}>{item.title}</div>
-                            </Link>
-                        );
+                        if (item.isLink) {
+                            return (
+                                <Link style={{flexBasis: "14%"}} key={index} to={item.link}>
+                                    <img src={item.icon} style={{width: "33%"}} />
+                                    <div style={{color: "white"}}>{item.title}</div>
+                                </Link>
+                            );
+                        } else if (item.isClick) {
+                            return (
+                                <div style={{flexBasis: "14%"}} key={index} onClick={item.onClick}>
+                                    <img src={item.icon} style={{width: "33%"}} />
+                                    <div style={{color: "white"}}>{item.title}</div>
+                                </div>
+                            );
+                        } else {
+                            return (
+                                <div style={{flexBasis: "14%"}} key={index}>
+                                    <img src={item.icon} style={{width: "33%"}} />
+                                    <div style={{color: "white"}}>{item.title}</div>
+                                </div>
+                            );
+                        }
                     })}
                     <div style={{flex: 1, display: "flex", justifyContent: "center", alignItems: "center", fontSize: "28pt", transform: "rotate(-90deg)", color: "white"}}>
                         {sideTitle}

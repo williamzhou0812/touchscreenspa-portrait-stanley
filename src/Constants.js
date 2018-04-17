@@ -4,6 +4,9 @@ import LeftIcon from 'material-ui/svg-icons/navigation/chevron-left';
 import RightIcon from 'material-ui/svg-icons/navigation/chevron-right';
 import ImageGallery from 'react-image-gallery';
 import '../node_modules/react-image-gallery/styles/css/image-gallery.css';
+import Rating from "react-rating";
+import FullStar from 'material-ui/svg-icons/toggle/star';
+import EmptyStar from 'material-ui/svg-icons/toggle/star-border';
 
 export const timezone = "Pacific/Port_Moresby";
 
@@ -35,7 +38,7 @@ export const airportMapNamespace = '/airportmap';
 export const airportInfoNamespace = '/airportinfo';
 // END OF CONSTANTS FOR SPA ROUTING
 
-export const HOST = 'localhost';
+export const HOST = '192.168.0.160';
 export const HOST_SPA = 'localhost';
 export const PORT = '8000';
 export const PORT_SPA = '3000';
@@ -160,6 +163,16 @@ export function imageGallery(
                 showPlayButton={true}
                 showFullscreenButton={true}
             />
+        </MuiThemeProvider>
+    );
+}
+
+export function renderRating(initialRating, starSize=50) {
+    return (
+        <MuiThemeProvider>
+            <Rating emptySymbol={<EmptyStar color="white" style={{width: starSize, height: starSize}} />}
+            fullSymbol={<FullStar color="white" style={{width: starSize, height: starSize}} />}
+            fractions={2} readonly={true} initialRating={initialRating} />
         </MuiThemeProvider>
     );
 }

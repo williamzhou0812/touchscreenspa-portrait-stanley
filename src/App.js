@@ -34,6 +34,7 @@ import EventList from './Event/EventList';
 import EventDetail from "./Event/EventDetail";
 import DiningList from "./Dining/DiningList";
 import DiningDetail from "./Dining/DiningDetail";
+import HotelList from "./Hotel/HotelList";
 
 class App extends Component {
     componentDidMount() {
@@ -94,6 +95,11 @@ class App extends Component {
                                 exact
                                 path={destinationNamespace + "/:id"}
                                 component={DestinationDetail}
+                            />
+                            <Route
+                                exact
+                                path={accomodationNamespace + "/:id"}
+                                component={HotelList}
                             />
                             <Route
                                 exact
