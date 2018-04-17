@@ -9,10 +9,10 @@ import {
     activityNamespace,
     DECIMAL_RADIX
 } from '../Constants';
-import AccommodationIcon from '../MainTab/icons/ACCOMMODATION_ICON.svg';
-import ActivitiesIcon from '../MainTab/icons/ACTIVITIES_ICON.svg';
-import DiningIcon from '../MainTab/icons/DINING_ICON.svg';
-import EventsIcon from '../MainTab/icons/EVENTS_ICON.svg';
+import AccommodationIcon from '../MainTab/icons/ACCOMMODATION_ICON.png';
+import ActivitiesIcon from '../MainTab/icons/ACTIVITIES_ICON.png';
+import DiningIcon from '../MainTab/icons/DINING_ICON.png';
+import EventsIcon from '../MainTab/icons/EVENTS_ICON.png';
 
 export const fetchDestinationList = () => async dispatch => {
     const res = await axios.get(createURL('destination/'));
