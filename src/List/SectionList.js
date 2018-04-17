@@ -44,7 +44,7 @@ class SectionList extends React.Component {
         });
     }
     render() {
-        const { title, namespace, linkFunction } = this.props;
+        const { title, namespace, linkFunction, backgroundPositionValue } = this.props;
         const { data, images } = this.state;
         return (
             <div style={{width: "100%", height: "100%", display: "flex"}}>
@@ -66,7 +66,7 @@ class SectionList extends React.Component {
                                         key={`${item.id}-${index}`} to={linkFunction(namespace, item)}
                                         style={{
                                             display: "block", width: "100%", height: "33.33333%", backgroundImage: `url(${images[index]})`, 
-                                            backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover", 
+                                            backgroundPosition: backgroundPositionValue, backgroundRepeat: "no-repeat", backgroundSize: "cover", 
                                             display: "flex", flexDirection: "column", justifyContent: "flex-end", overflowY: "hidden"
                                         }}>
                                             <div style={{textAlign: "center", position: "relative"}}>
@@ -91,7 +91,8 @@ class SectionList extends React.Component {
 SectionList.defaultProps = {
     linkFunction: (namespace, item) => {
         return `${namespace}/${item.id}`;
-    }
+    },
+    backgroundPositionValue: "center"
 }
 SectionList.propTypes = {
     data: PropTypes.array.isRequired,

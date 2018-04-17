@@ -33,6 +33,7 @@ class ServiceInitialList extends React.Component {
                 linkFunction={(_, item) => {
                     return item.url;
                 }}
+                backgroundPositionValue="top"
             />
         );
     }
