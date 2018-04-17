@@ -52,7 +52,7 @@ class HotelList extends React.Component {
                 renderText={(item) => {
                     return (
                         <div style={{height: "100%"}}>
-                            <div style={{height: "33%", display: "flex", alignItems: "flex-end"}}>{item.title.toUpperCase()}</div>
+                            <div style={{height: "33%", display: "flex", alignItems: "flex-end", paddingTop: 10, paddingBottom: 5}}>{item.title.toUpperCase()}</div>
                             <div style={{height: "33%", display: "flex", alignItems: "flex-end"}}>{renderRating(item.rating, 30)}</div>
                         </div>
                     );
