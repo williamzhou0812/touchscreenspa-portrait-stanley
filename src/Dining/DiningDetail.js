@@ -47,8 +47,8 @@ class DiningDetail extends React.Component {
             return (
                 <div style={{height: "50%", backgroundColor: HeavyOrange, ...this.styles.horizontalVerticalCenter}}>
                     <h1>NO IMAGE FOR THIS RESTAURANT</h1>
-                </div>)
-            ;
+                </div>
+            );
         }
     }
 
