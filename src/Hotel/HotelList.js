@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from "react-redux";
 import { DECIMAL_RADIX, accomodationNamespace, renderRating } from '../Constants';
 import SubsectionList from "../List/SubsectionList";
-import AllAreasIcon from "./icons/AllAreasIcon.png";
+import AllAreasIcon from "../Destination/icons/AllAreas.png";
 import HotelsMapIcon from "./icons/HotelsMapIcon.png";
 
 class HotelList extends React.Component {

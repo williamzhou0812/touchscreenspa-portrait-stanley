@@ -63,10 +63,11 @@ class DestinationDetail extends React.Component {
             return (
                 <div style={{width: "100%", height: "100%", display: "flex"}}>
                     <div style={{backgroundColor: HeavyOrange, width: "14%", height: "100%", boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)", zIndex: 1}}>
-                        <Link style={{width: "100%", height: "8vh"}} to={destinationNamespace}>
+                        <Link style={{height: "14%"}} to={destinationNamespace}>
                             <img src={AllAreas} style={{width: "33%"}} />
                             <div style={{color: "white"}}>ALL AREAS</div>
                         </Link>
+                        <div style={{fontSize: "28pt", transform: "rotate(-90deg)", color: "white", height: "86%", display: "flex", justifyContent: "center", alignItems: "center"}}>DESTINATIONS</div>
                     </div>
     
                     {(!!destination && status === 200) && (

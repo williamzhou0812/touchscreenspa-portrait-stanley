@@ -94,11 +94,12 @@ class EventDetail extends React.Component {
         const event = this.getCurrentEvent();
         return (
             <div style={{width: "100%", height: "100%", display: "flex", color: "white"}}>
-                <div style={{backgroundColor: HeavyOrange, flexBasis: "14%", boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)", zIndex: 1, display: "flex"}}>
-                    <Link style={{flexBasis: "14%"}} to={eventNamespace}>
+                <div style={{backgroundColor: HeavyOrange, width: "14%", boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)", zIndex: 1}}>
+                    <Link style={{height: "14%"}} to={eventNamespace}>
                         <img src={CalendarIcon} style={{width: "33%"}} />
                         <div style={{color: "white"}}>CALENDAR OF EVENTS</div>
                     </Link>
+                    <div style={{fontSize: "28pt", transform: "rotate(-90deg)", color: "white", height: "86%", display: "flex", justifyContent: "center", alignItems: "center"}}>EVENTS</div>
                 </div>
                 {(status === 200 && events && events.length > 0) && (
                     <div style={{flex: 1}}>
