@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Clock from "./Clock";
-import MainLogo from "./interface/main_logo.png";
-import MainTabList from "./MainTab/MainTabList";
+import Clock from './Clock';
+import MainLogo from './interface/main_logo.png';
+import MainTabList from './MainTab/MainTabList';
 import { Redirect, Route, NavLink } from 'react-router-dom';
 import { ConnectedRouter as Router } from 'react-router-redux';
 import { connect } from 'react-redux';
@@ -31,12 +31,12 @@ import {
 import DestinationList from './Destination/DestinationList';
 import DestinationDetail from './Destination/DestinationDetail';
 import EventList from './Event/EventList';
-import EventDetail from "./Event/EventDetail";
-import DiningList from "./Dining/DiningList";
-import DiningDetail from "./Dining/DiningDetail";
-import HotelList from "./Hotel/HotelList";
-import HotelDetail from "./Hotel/HotelDetail";
-import ServiceInitialList from "./Service/ServiceInitialList";
+import EventDetail from './Event/EventDetail';
+import DiningList from './Dining/DiningList';
+import DiningDetail from './Dining/DiningDetail';
+import HotelList from './Hotel/HotelList';
+import HotelDetail from './Hotel/HotelDetail';
+import ServiceInitialList from './Service/ServiceInitialList';
 
 class App extends Component {
     componentDidMount() {
@@ -51,7 +51,6 @@ class App extends Component {
             this.props.accommodationList.status !== 200 ||
             this.props.eventList.status !== 200 ||
             this.props.restaurantList.status !== 200
-
         ) {
             return (
                 <div className="loadingContainer">
@@ -72,17 +71,47 @@ class App extends Component {
         } else {
             return (
                 <Router history={this.props.history}>
-                    <div className="App">
-                        <img style={{width: "100vw", height: "15vh"}} src={MainLogo} />
-                        <div style={{width: "100vw", height: "3vh", display: "grid", gridTemplateColumns: "30% 30% 40%"}}>
-                            <div style={{width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>AIRPORT INFO</div>
-                            <div style={{width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>AIRPORT MAP</div>
+                    <div className="App section--rotate--animation">
+                        <img
+                            style={{ width: '100vw', height: '15vh' }}
+                            src={MainLogo}
+                        />
+                        <div
+                            style={{
+                                width: '100vw',
+                                height: '3vh',
+                                display: 'grid',
+                                gridTemplateColumns: '30% 30% 40%'
+                            }}
+                        >
+                            <div
+                                style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }}
+                            >
+                                AIRPORT INFO
+                            </div>
+                            <div
+                                style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }}
+                            >
+                                AIRPORT MAP
+                            </div>
                             <Clock />
                         </div>
-                        <div style={{width: "100vw", height: "8vh"}}>
+                        <div style={{ width: '100vw', height: '8vh' }}>
                             <Route component={MainTabList} />
                         </div>
-                        <div style={{width: "100vw", height: "54vh"}}>
+                        <div style={{ width: '100vw', height: '54vh' }}>
                             <Route
                                 exact
                                 path={destinationNamespace}
@@ -95,17 +124,19 @@ class App extends Component {
                             />
                             <Route
                                 exact
-                                path={destinationNamespace + "/:id"}
+                                path={destinationNamespace + '/:id'}
                                 component={DestinationDetail}
                             />
                             <Route
                                 exact
-                                path={accomodationNamespace + "/:id"}
+                                path={accomodationNamespace + '/:id'}
                                 component={HotelList}
                             />
                             <Route
                                 exact
-                                path={accomodationNamespace + "/:destid/:accoid"}
+                                path={
+                                    accomodationNamespace + '/:destid/:accoid'
+                                }
                                 component={HotelDetail}
                             />
                             <Route
@@ -115,7 +146,7 @@ class App extends Component {
                             />
                             <Route
                                 exact
-                                path={eventNamespace + "/:id"}
+                                path={eventNamespace + '/:id'}
                                 component={EventDetail}
                             />
                             <Route
@@ -125,7 +156,7 @@ class App extends Component {
                             />
                             <Route
                                 exact
-                                path={diningNamespace + "/:id"}
+                                path={diningNamespace + '/:id'}
                                 component={DiningDetail}
                             />
                             <Route
@@ -135,20 +166,44 @@ class App extends Component {
                             />
                             <Redirect from="/" to={destinationNamespace} />
                         </div>
-                        <div style={{width: "100vw", height: "16vh"}}>
+                        <div style={{ width: '100vw', height: '16vh' }}>
                             Advertisement Section
                         </div>
-                        <div style={{width: "100vw", height: "4vh", display: "flex"}}>
-                            <div style={{flex: 1, display: "flex", alignItems: "center"}}>
-                                <span style={{marginLeft: 20, marginRight: 5}}>&copy;</span>JBG HOSPITALITY 2018
+                        <div
+                            style={{
+                                width: '100vw',
+                                height: '4vh',
+                                display: 'flex'
+                            }}
+                        >
+                            <div
+                                style={{
+                                    flex: 1,
+                                    display: 'flex',
+                                    alignItems: 'center'
+                                }}
+                            >
+                                <span
+                                    style={{ marginLeft: 20, marginRight: 5 }}
+                                >
+                                    &copy;
+                                </span>JBG HOSPITALITY 2018
                             </div>
-                            <div style={{flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", marginRight: 20}}>
+                            <div
+                                style={{
+                                    flex: 1,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'flex-end',
+                                    marginRight: 20
+                                }}
+                            >
                                 WWW.JBG.COM.PG
                             </div>
                         </div>
                     </div>
                 </Router>
-            );   
+            );
         }
     }
 }
