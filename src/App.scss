@@ -7,6 +7,7 @@ a {
     text-align: center;
     width: 100vw;
     height: 100vh;
+    position: relative;
 }
 
 .loadingContainer {
@@ -29,4 +30,10 @@ a {
         padding: 0;
         margin: 0;
     }
+}
+
+.menu--shadow {
+    position: absolute;
+    z-index: 20;
+    left: 0;
 }

@@ -25,30 +25,63 @@ class MainTabList extends React.Component {
         super(props);
         this.state = {
             tabs: [
-                {name: 'SERVICES', path: serviceNamespace, icon: ServicesIcon, iconWidth: '55%'},
-                {name: 'MAPS', path: mapListNamespace, icon: MapListIcon, iconWidth: '90%'},
-                {name: 'ACTIVITIES', path: activityNamespace, icon: ActivitiesIcon},
-                {name: 'DESTINATIONS', path: destinationNamespace, icon: DestinationsIcon, iconWidth: '70%'},
-                {name: 'EVENTS', path: eventNamespace, icon: EventsIcon, iconWidth: '70%'},
-                {name: 'DINING', path: diningNamespace, icon: DiningIcon},
-                {name: 'HOTELS', path: accomodationNamespace, icon: AccommodationIcon}
+                {
+                    name: 'SERVICES',
+                    path: serviceNamespace,
+                    icon: ServicesIcon,
+                    iconWidth: '55%'
+                },
+                {
+                    name: 'MAPS',
+                    path: mapListNamespace,
+                    icon: MapListIcon,
+                    iconWidth: '80%'
+                },
+                {
+                    name: 'ACTIVITIES',
+                    path: activityNamespace,
+                    icon: ActivitiesIcon
+                },
+                {
+                    name: 'DESTINATIONS',
+                    path: destinationNamespace,
+                    icon: DestinationsIcon,
+                    iconWidth: '80%'
+                },
+                {
+                    name: 'EVENTS',
+                    path: eventNamespace,
+                    icon: EventsIcon,
+                    iconWidth: '65%'
+                },
+                {
+                    name: 'DINING',
+                    path: diningNamespace,
+                    icon: DiningIcon,
+                    iconWidth: '65%'
+                },
+                {
+                    name: 'HOTELS',
+                    path: accomodationNamespace,
+                    icon: AccommodationIcon
+                }
             ],
             sameClicked: false,
             performClick: false
-        }
+        };
         this.clickItem = this.clickItem.bind(this);
     }
     middle = 3;
     clickItem(clickedTab, clickIndex) {
         const { tabs } = this.state;
         if (clickedTab === tabs[this.middle]) {
-            this.setState({ sameClicked: true, performClick: true, });
+            this.setState({ sameClicked: true, performClick: true });
         } else {
             const tempTabs = shiftArray(tabs, this.middle - clickIndex);
             this.setState({
                 tabs: tempTabs,
                 sameClicked: false,
-                performClick: true,
+                performClick: true
             });
         }
     }
@@ -60,12 +93,15 @@ class MainTabList extends React.Component {
             if (sameClicked && performClick) {
                 //If clicked on the same main tab even though similar location, force redirect
                 history.replace(tabs[this.middle].path);
-                this.setState({ performClick: false, });
+                this.setState({ performClick: false });
             }
-        } else if (location.pathname !== tabs[this.middle].path && performClick) {
+        } else if (
+            location.pathname !== tabs[this.middle].path &&
+            performClick
+        ) {
             //Only perform redirect if a performClick on one of the Main Tab is done
             history.replace(tabs[this.middle].path);
-            this.setState({ performClick: false, });
+            this.setState({ performClick: false });
         } else if (location.pathname !== tabs[this.middle].path) {
             //Perform tab changing due to automatic redirection
             tabs.forEach((tab, index) => {
@@ -76,7 +112,7 @@ class MainTabList extends React.Component {
                         tabs: tempTabs,
                         tab: tempTabs[this.middle].name,
                         sameClicked: false,
-                        performClick: false,
+                        performClick: false
                     });
                 }
             });
@@ -84,21 +120,26 @@ class MainTabList extends React.Component {
     }
     render() {
         const { tabs } = this.state;
-        return(
-            <div style={{width: "100%", height: "100%", display: "flex"}}>
+        return (
+            <div style={{ width: '100%', height: '100%', display: 'flex' }}>
                 {tabs.map((t, i) => {
                     // const showSelectedStyle = this.shouldShowSelectedStyle();
                     const selected = i === this.middle;
-                    const isLeftOfSelected = i === (this.middle - 1);
-                    const isLastItem = i === (tabs.length - 1);
+                    const isLeftOfSelected = i === this.middle - 1;
+                    const isLastItem = i === tabs.length - 1;
                     return (
-                        <Tab key={i} name={t.name} icon={t.icon} iconWidth={t.iconWidth} 
-                            selected={selected} isLeftOfSelected={isLeftOfSelected}
+                        <Tab
+                            key={i}
+                            name={t.name}
+                            icon={t.icon}
+                            iconWidth={t.iconWidth}
+                            selected={selected}
+                            isLeftOfSelected={isLeftOfSelected}
                             isLastItem={isLastItem}
                             onClick={() => {
-                                 this.clickItem(t, i);
-                             }
-                        }/>
+                                this.clickItem(t, i);
+                            }}
+                        />
                     );
                 })}
             </div>

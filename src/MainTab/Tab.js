@@ -50,6 +50,7 @@ class Tab extends React.Component {
                         alt=""
                         src={icon}
                         style={{
+                            marginTop: 10,
                             width: !!iconWidth ? iconWidth : '50%'
                         }}
                     />
@@ -72,7 +73,7 @@ class Tab extends React.Component {
                         alt=""
                         src={icon}
                         style={{
-                            marginTop: 20,
+                            marginTop: 10,
                             width: !!iconWidth ? iconWidth : '50%'
                         }}
                     />
@@ -95,7 +96,7 @@ class Tab extends React.Component {
                         alt=""
                         src={icon}
                         style={{
-                            marginTop: 20,
+                            marginTop: 10,
                             width: !!iconWidth ? iconWidth : '50%'
                         }}
                     />
@@ -122,7 +123,7 @@ class Tab extends React.Component {
                         alt=""
                         src={icon}
                         style={{
-                            marginTop: 20,
+                            marginTop: 10,
                             width: !!iconWidth ? iconWidth : '50%'
                         }}
                     />

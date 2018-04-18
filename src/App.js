@@ -116,6 +116,12 @@ class App extends Component {
                         <div style={{ width: '100vw', height: '8vh' }}>
                             <Route component={MainTabList} />
                         </div>
+                        <img
+                            className="menu--shadow"
+                            src={require(`./MainTab/icons/Button-Shadow.png`)}
+                            alt="sidebar_logo"
+                            width="1080"
+                        />
                         <div style={{ width: '100vw', height: '54vh' }}>
                             <Route
                                 exact
@@ -176,12 +182,12 @@ class App extends Component {
                             />
                             <Route
                                 exact
-                                path={activityNamespace + "/:id"}
+                                path={activityNamespace + '/:id'}
                                 component={ActivityDestinationList}
                             />
                             <Route
                                 exact
-                                path={activityNamespace + "/:id/:destid"}
+                                path={activityNamespace + '/:id/:destid'}
                                 component={ActivityDestinationDetail}
                             />
                             <Redirect from="/" to={destinationNamespace} />
