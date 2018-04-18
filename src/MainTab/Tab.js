@@ -50,9 +50,10 @@ class Tab extends React.Component {
                         alt=""
                         src={icon}
                         style={{
-                            marginTop: 10,
+                            marginTop: '10',
                             width: !!iconWidth ? iconWidth : '50%'
                         }}
+                        className="tab--icon"
                     />
                     <div
                         style={{
@@ -61,6 +62,7 @@ class Tab extends React.Component {
                             alignItems: 'flex-end',
                             fontSize: itemFontSize
                         }}
+                        className="tab--name"
                     >
                         {name}
                     </div>
@@ -76,6 +78,7 @@ class Tab extends React.Component {
                             marginTop: 10,
                             width: !!iconWidth ? iconWidth : '50%'
                         }}
+                        className="tab--icon"
                     />
                     <div
                         style={{
@@ -84,6 +87,7 @@ class Tab extends React.Component {
                             alignItems: 'flex-end',
                             fontSize: itemFontSize
                         }}
+                        className="tab--name"
                     >
                         {name}
                     </div>
@@ -99,6 +103,7 @@ class Tab extends React.Component {
                             marginTop: 10,
                             width: !!iconWidth ? iconWidth : '50%'
                         }}
+                        className="tab--icon"
                     />
                     <div
                         style={{
@@ -107,6 +112,7 @@ class Tab extends React.Component {
                             alignItems: 'flex-end',
                             fontSize: itemFontSize
                         }}
+                        className="tab--name"
                     >
                         {name}
                     </div>
@@ -126,6 +132,7 @@ class Tab extends React.Component {
                             marginTop: 10,
                             width: !!iconWidth ? iconWidth : '50%'
                         }}
+                        className="tab--icon"
                     />
                     <div
                         style={{
@@ -135,6 +142,7 @@ class Tab extends React.Component {
                             alignItems: 'flex-end',
                             fontSize: itemFontSize
                         }}
+                        className="tab--name"
                     >
                         {name}
                     </div>

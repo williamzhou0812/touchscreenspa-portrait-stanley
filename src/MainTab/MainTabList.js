@@ -29,41 +29,43 @@ class MainTabList extends React.Component {
                     name: 'SERVICES',
                     path: serviceNamespace,
                     icon: ServicesIcon,
-                    iconWidth: '55%'
+                    iconWidth: '70px'
                 },
                 {
                     name: 'MAPS',
                     path: mapListNamespace,
                     icon: MapListIcon,
-                    iconWidth: '80%'
+                    iconWidth: '70px'
                 },
                 {
                     name: 'ACTIVITIES',
                     path: activityNamespace,
-                    icon: ActivitiesIcon
+                    icon: ActivitiesIcon,
+                    iconWidth: '70px'
                 },
                 {
                     name: 'DESTINATIONS',
                     path: destinationNamespace,
                     icon: DestinationsIcon,
-                    iconWidth: '80%'
+                    iconWidth: '90px'
                 },
                 {
                     name: 'EVENTS',
                     path: eventNamespace,
                     icon: EventsIcon,
-                    iconWidth: '65%'
+                    iconWidth: '70px'
                 },
                 {
                     name: 'DINING',
                     path: diningNamespace,
                     icon: DiningIcon,
-                    iconWidth: '65%'
+                    iconWidth: '70px'
                 },
                 {
                     name: 'HOTELS',
                     path: accomodationNamespace,
-                    icon: AccommodationIcon
+                    icon: AccommodationIcon,
+                    iconWidth: '70px'
                 }
             ],
             sameClicked: false,

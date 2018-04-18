@@ -3,10 +3,10 @@
     color: white;
     text-align: center;
     text-decoration: none;
-    justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .not-selected {
@@ -27,4 +27,16 @@
     background: rgb(221, 120, 35);
     border-style: none solid solid solid;
     border-color: rgb(183, 223, 228);
+}
+
+.tab--name {
+    position: absolute;
+    bottom: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.tab--icon {
+    position: absolute;
+    top: 20px;
 }
