@@ -1,20 +1,28 @@
-import React from 'react'
-import { connect } from "react-redux";
-import { DECIMAL_RADIX, accomodationNamespace, HeavyOrange, LightBlueButtonBackground, imageGallery, renderRating, ExtraHeavyBlueGreen } from '../Constants';
-import { Link } from "react-router-dom";
-import AllAreasIcon from "../Destination/icons/AllAreas.png";
-import HotelListIcon from "./icons/HotelListIcon.png";
+import React from 'react';
+import { connect } from 'react-redux';
+import {
+    DECIMAL_RADIX,
+    accomodationNamespace,
+    HeavyOrange,
+    LightBlueButtonBackground,
+    imageGallery,
+    renderRating,
+    ExtraHeavyBlueGreen
+} from '../Constants';
+import { Link } from 'react-router-dom';
+import AllAreasIcon from '../Destination/icons/AllAreas.png';
+import HotelListIcon from './icons/HotelListIcon.png';
 
 class HotelDetail extends React.Component {
     destIndex = -1;
     constructor(props) {
         super(props);
-        const accommodation = {...this.getHotelDetail()}
+        const accommodation = { ...this.getHotelDetail() };
         this.state = {
             accommodation,
             map1: false,
             map2: false
-        }
+        };
 
         //Binding methods
         this.openMap1 = this.openMap1.bind(this);
@@ -50,7 +58,9 @@ class HotelDetail extends React.Component {
             });
             this.destIndex = destIndex;
         }
-        const accoIndex = accommodations[destIndex].accomodationDestination.findIndex(element => {
+        const accoIndex = accommodations[
+            destIndex
+        ].accomodationDestination.findIndex(element => {
             return element.id === accoid;
         });
         return accommodations[destIndex].accomodationDestination[accoIndex];
@@ -59,32 +69,51 @@ class HotelDetail extends React.Component {
     componentDidUpdate(prevProps) {
         if (this.props.match.params.accoid !== prevProps.match.params.accoid) {
             this.setState({
-                accommodation: {...this.getHotelDetail()}
+                accommodation: { ...this.getHotelDetail() }
             });
         }
     }
 
     styles = {
-        horizontalVerticalCenter: {display: "flex", justifyContent: "center", alignItems: "center"}
-    }
+        horizontalVerticalCenter: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+        }
+    };
 
     renderImages() {
-        const { imageAccomodation : images } = this.state.accommodation;
+        const { imageAccomodation: images } = this.state.accommodation;
         if (images.length > 1) {
-            return imageGallery(images, "100%", "27vh");
+            return imageGallery(images, '100%', '27vh');
         } else if (images.length === 1) {
-            return <div style={{height: "50%", backgroundImage: `url(${images[0].imageFile})`, backgroundSize: 'cover', backgroundPosition: 'center'}} />;
+            return (
+                <div
+                    style={{
+                        height: '50%',
+                        backgroundImage: `url(${images[0].imageFile})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                    }}
+                />
+            );
         } else {
             return (
-                <div style={{height: "50%", backgroundColor: HeavyOrange, ...this.styles.horizontalVerticalCenter}}>
+                <div
+                    style={{
+                        height: '50%',
+                        backgroundColor: HeavyOrange,
+                        ...this.styles.horizontalVerticalCenter
+                    }}
+                >
                     <h1>NO IMAGE FOR THIS HOTEL</h1>
                 </div>
             );
-        }   
+        }
     }
 
     renderMaps() {
-        const { mapAccomodation : maps } = this.state.accommodation;
+        const { mapAccomodation: maps } = this.state.accommodation;
         if (maps.length === 2) {
             const map1 = maps[0];
             const map2 = maps[1];
@@ -102,48 +131,105 @@ class HotelDetail extends React.Component {
                 </div>
             );
         } else {
-            return (
-                <div />
-            );
+            return <div />;
         }
     }
 
     render() {
         const { accommodations } = this.props;
-        const destName = (this.destIndex > -1) && accommodations[this.destIndex].title.toUpperCase();
-        const destID = (this.destIndex > -1) && accommodations[this.destIndex].id;
+        const destName =
+            this.destIndex > -1 &&
+            accommodations[this.destIndex].title.toUpperCase();
+        const destID = this.destIndex > -1 && accommodations[this.destIndex].id;
         const { accommodation } = this.state;
-        return(
-            <div style={{width: "100%", height: "100%", display: "flex", color: "white"}}>
-                <div style={{backgroundColor: HeavyOrange, width: "14%", height: "100%", boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)", zIndex: 1}}>
-                    <Link style={{height: "14%"}} to={accomodationNamespace}>
-                        <img src={AllAreasIcon} style={{width: "33%"}} />
-                        <div style={{color: "white"}}>ALL AREAS</div>
+        return (
+            <div
+                style={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    color: 'white'
+                }}
+                className="section--bottom--animation"
+            >
+                <div
+                    style={{
+                        backgroundColor: HeavyOrange,
+                        width: '14%',
+                        height: '100%',
+                        boxShadow: '9.899px 0px 7px 0px rgba(0,0,0,0.6)',
+                        zIndex: 1
+                    }}
+                >
+                    <Link style={{ height: '14%' }} to={accomodationNamespace}>
+                        <img src={AllAreasIcon} style={{ width: '33%' }} />
+                        <div style={{ color: 'white' }}>ALL AREAS</div>
                     </Link>
-                    <Link style={{height: "14%"}} to={`${accomodationNamespace}/${destID}`}>
-                        <img src={HotelListIcon} style={{width: "33%"}} />
-                        <div style={{color: "white"}}>{destName} HOTELS}</div>
+                    <Link
+                        style={{ height: '14%' }}
+                        to={`${accomodationNamespace}/${destID}`}
+                    >
+                        <img src={HotelListIcon} style={{ width: '33%' }} />
+                        <div style={{ color: 'white' }}>{destName} HOTELS}</div>
                     </Link>
-                    <div style={{fontSize: "28pt", transform: "rotate(-90deg)", color: "white", height: "72%", ...this.styles.horizontalVerticalCenter}}>HOTELS</div>
+                    <div
+                        style={{
+                            fontSize: '28pt',
+                            transform: 'rotate(-90deg)',
+                            color: 'white',
+                            height: '72%',
+                            ...this.styles.horizontalVerticalCenter
+                        }}
+                    >
+                        HOTELS
+                    </div>
                 </div>
                 {!!accommodation && (
-                    <div style={{width: "86%", height: "100%"}}>
+                    <div style={{ width: '86%', height: '100%' }}>
                         {this.renderImages()}
-                        <div style={{height: "50%"}}>
-                            <div style={{height: "26%", display: "flex"}}>
-                                <div style={{flexBasis: "33%", backgroundImage: `url(${accommodation.logo})`, backgroundSize: "cover", backgroundPosition: "center"}} />
-                                <div style={{flex: 1, backgroundColor: LightBlueButtonBackground}}>
-                                    <div style={{height: "50%", ...this.styles.horizontalVerticalCenter}}>
+                        <div style={{ height: '50%' }}>
+                            <div style={{ height: '26%', display: 'flex' }}>
+                                <div
+                                    style={{
+                                        flexBasis: '33%',
+                                        backgroundImage: `url(${
+                                            accommodation.logo
+                                        })`,
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center'
+                                    }}
+                                />
+                                <div
+                                    style={{
+                                        flex: 1,
+                                        backgroundColor: LightBlueButtonBackground
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            height: '50%',
+                                            ...this.styles
+                                                .horizontalVerticalCenter
+                                        }}
+                                    >
                                         {accommodation.title.toUpperCase()}
                                     </div>
-                                    <div style={{height: "50%"}}>
+                                    <div style={{ height: '50%' }}>
                                         {renderRating(accommodation.rating, 38)}
                                     </div>
                                 </div>
                             </div>
-                            <div style={{height: "74%", display: "flex", backgroundColor: ExtraHeavyBlueGreen}}>
-                                <div style={{width: "50%"}}>{accommodation.description}</div>
-                                <div style={{width: "50%"}}>
+                            <div
+                                style={{
+                                    height: '74%',
+                                    display: 'flex',
+                                    backgroundColor: ExtraHeavyBlueGreen
+                                }}
+                            >
+                                <div style={{ width: '50%' }}>
+                                    {accommodation.description}
+                                </div>
+                                <div style={{ width: '50%' }}>
                                     <div>CALL TODAY: {accommodation.phone}</div>
                                     <div>WEB: {accommodation.website}</div>
                                     <div>EMAIL: {accommodation.email}</div>
@@ -163,7 +249,7 @@ const mapStateToProps = ({ accommodationList }) => {
     const { accommodations } = accommodationList;
     return {
         accommodations
-    }
-}
+    };
+};
 
-export default connect(mapStateToProps,null)(HotelDetail);
+export default connect(mapStateToProps, null)(HotelDetail);

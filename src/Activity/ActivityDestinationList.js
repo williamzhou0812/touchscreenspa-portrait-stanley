@@ -1,10 +1,10 @@
-import React from 'react'
-import { connect } from "react-redux";
-import * as actions from "../actions/activity";
+import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions/activity';
 import { DECIMAL_RADIX, activityNamespace } from '../Constants';
-import SubsectionList from "../List/SubsectionList";
-import  ActivityIcon from "../MainTab/icons/ACTIVITIES_ICON.png";
-import ActivityMapIcon from "../Hotel/icons/HotelsMapIcon.png";
+import SubsectionList from '../List/SubsectionList';
+import ActivityIcon from '../MainTab/icons/ACTIVITIES_ICON.png';
+import ActivityMapIcon from '../Hotel/icons/HotelsMapIcon.png';
 
 class ActivityDestinationList extends React.Component {
     retrieveData() {
@@ -26,15 +26,26 @@ class ActivityDestinationList extends React.Component {
     render() {
         const { activity, status } = this.props;
         return (
-            <div style={{height: "100%"}}>
+            <div
+                style={{ height: '100%' }}
+                className="section--bottom--animation"
+            >
                 {status === 200 && (
                     <SubsectionList
                         data={activity.activityDestinationActivity}
                         imageKey="imageActivityDestination"
                         isImageArray={true}
                         sideButtons={[
-                            {title: "ALL ACTIVITIES", icon: ActivityIcon, isLink: true, link: activityNamespace},
-                            {title: `${activity.title.toUpperCase()} MAP`, icon: ActivityMapIcon}
+                            {
+                                title: 'ALL ACTIVITIES',
+                                icon: ActivityIcon,
+                                isLink: true,
+                                link: activityNamespace
+                            },
+                            {
+                                title: `${activity.title.toUpperCase()} MAP`,
+                                icon: ActivityMapIcon
+                            }
                         ]}
                         sideTitle="ACTIVITIES"
                         mainTitle={activity.title.toUpperCase()}
@@ -53,6 +64,6 @@ const mapStateToProps = ({ activityList, activityDestinationList }) => {
         activities,
         activity,
         status
-    }
-}
-export default connect(mapStateToProps, actions)(ActivityDestinationList)
+    };
+};
+export default connect(mapStateToProps, actions)(ActivityDestinationList);
