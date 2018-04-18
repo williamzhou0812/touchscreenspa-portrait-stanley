@@ -20,6 +20,9 @@ class ActivityDestinationList extends React.Component {
             this.retrieveData();
         }
     }
+    componentWillUnmount() {
+        this.props.resetActivityDestinationList();
+    }
     render() {
         const { activity, status } = this.props;
         return (

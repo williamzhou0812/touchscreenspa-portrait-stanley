@@ -1,4 +1,4 @@
-import { ACTIVITY_LIST, ACTIVITY_DESTINATION_LIST, ACTIVITY_DESTINATION_DETAIL, RESET_ACTIVITY_DESTINATION_DETAIL } from "./types";
+import { ACTIVITY_LIST, ACTIVITY_DESTINATION_LIST, ACTIVITY_DESTINATION_DETAIL, RESET_ACTIVITY_DESTINATION_DETAIL, RESET_ACTIVITY_DESTINATION_LIST } from "./types";
 import axios from 'axios';
 import { createURL, getHeaderImagesNoMap, getRandomImage } from "../Constants";
 
@@ -57,10 +57,15 @@ export const fetchActivityDestinationDetail = (actid, destid, activityList) => d
     let activity = activityList && activityList.find((act) => {
         return act.id === actid;
     });
-    let activityDestination = activity && activity.activityDestinationActivity.find((dest) => {
-        return dest.id === destid
+    let index = -1;
+    let activityDestination = null;
+    activity && activity.activityDestinationActivity.forEach((dest, i) => {
+        if (dest.id === destid) {
+            activityDestination = {...dest};
+            index = i;
+        }
     });
-    if (activity && activityDestination) {
+    if (activity && activityDestination && index > -1) {
         status = 200;
     } else {
         activity = null;
@@ -69,9 +74,10 @@ export const fetchActivityDestinationDetail = (actid, destid, activityList) => d
     dispatch({
         type: ACTIVITY_DESTINATION_DETAIL,
         payload: {
-            activity: activity,
-            activityDestination: activityDestination,
-            status: status
+            activity,
+            activityDestination,
+            index,
+            status
         }
     });
 };
@@ -100,6 +106,16 @@ export const fetchActivityDestinationDetailAvailableData = (destid, activity) =>
             activityDestination,
             index,
             status
+        }
+    });
+};
+
+export const resetActivityDestinationList = () => dispatch => {
+    dispatch({
+        type: RESET_ACTIVITY_DESTINATION_LIST,
+        payload: {
+            activity: null,
+            status: null
         }
     });
 };

@@ -126,6 +126,7 @@ class EventDetail extends React.Component {
                                     <div style={{height: "21%"}} />
                                     <div style={{height: "42%"}}>
                                         {event.phone && <div>CALL TODAY: {event.phone}</div>}
+                                        {event.website && <div>WEBSITE: {event.website}</div>}
                                         {event.email && <div>EMAIL: {event.email}</div>}
                                         {event.location && <div>LOCATION: {event.location}, Papua New Guniea</div>}
                                     </div>

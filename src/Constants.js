@@ -176,3 +176,7 @@ export function renderRating(initialRating, starSize=50) {
         </MuiThemeProvider>
     );
 }
+
+export function removeHttp(website) {
+    return website.replace(/^https?:\/\//i, '');
+}

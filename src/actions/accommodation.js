@@ -1,6 +1,6 @@
 import { ACCOMMODATION_LIST } from './types';
 import axios from 'axios';
-import { createURL, getHeaderImagesNoMap, getRandomImage } from '../Constants';
+import { createURL, getHeaderImagesNoMap, getRandomImage, removeHttp } from '../Constants';
 
 function getHeaderImageFromAccommodation(data) {
     let randomImages = [];
@@ -30,6 +30,7 @@ export const fetchAccommodationList = () => async dispatch => {
                 return !(item.title.toLowerCase().includes("map")) && !item.isHeaderImage;
             })
             acco.imageAccomodation = accommodationImages;
+            acco.website = !!acco.website ? removeHttp(acco.website) : null;
         });
     });
     dispatch({

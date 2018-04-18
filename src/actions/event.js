@@ -1,18 +1,17 @@
 import { EVENT_LIST } from "./types";
 import axios from 'axios';
-import { createURL, getRandomImage } from "../Constants";
+import { createURL, getRandomImage, removeHttp } from "../Constants";
 
 export const fetchEventList = () => async dispatch => {
     const res = await axios.get(createURL('event/'));
-    // let randomImages = [];
-    // res.data.forEach((d, _) => {
-    //     randomImages.push(getRandomImage(d.imageEvent));
-    // });
+    let events = res.data.slice();
+    events.forEach(event => {
+        event.website = !!event.website ? removeHttp(event.website) : null;
+    });
     dispatch({
         type: EVENT_LIST,
         payload: {
-            events: res.data,
-            // images: randomImages,
+            events,
             status: res.status
         }
     });

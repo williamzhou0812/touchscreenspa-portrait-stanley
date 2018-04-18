@@ -1,6 +1,6 @@
 import { DINING_LIST, DINING_DETAIL } from './types';
 import axios from 'axios';
-import { createURL } from '../Constants';
+import { createURL, removeHttp } from '../Constants';
 
 export const fetchDiningList = () => async dispatch => {
     const res = await axios.get(createURL('restaurant/'));
@@ -61,6 +61,7 @@ export const fetchDiningList = () => async dispatch => {
         }
         rest.guide = restGuide;
         rest.displayGuide = displayGuide;
+        rest.website = !!rest.website ? removeHttp(rest.website) : null;
     });
     dispatch({
         type: DINING_LIST,
