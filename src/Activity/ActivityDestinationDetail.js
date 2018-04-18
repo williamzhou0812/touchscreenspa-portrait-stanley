@@ -48,12 +48,12 @@ class ActivityDestinationDetail extends React.Component {
     renderImages() {
         const { imageActivityDestination : images } = this.props.activityDestination;
         if (images.length > 1) {
-            return imageGallery(images, "100%", "27vh");
+            return imageGallery(images, "100%", "22.68vh");
         } else if (images.length === 1) {
-            return <div style={{height: "50%", backgroundImage: `url(${images[0].imageFile})`, backgroundSize: 'cover', backgroundPosition: 'center'}} />;
+            return <div style={{height: "42%", backgroundImage: `url(${images[0].imageFile})`, backgroundSize: 'cover', backgroundPosition: 'center'}} />;
         } else {
             return (
-                <div style={{height: "50%", backgroundColor: HeavyOrange, ...this.styles.horizontalVerticalCenter}}>
+                <div style={{height: "42%", backgroundColor: HeavyOrange, ...this.styles.horizontalVerticalCenter}}>
                     <h1>NO IMAGE FOR THIS ACTIVITY DESTINATION</h1>
                 </div>
             );
@@ -81,7 +81,7 @@ class ActivityDestinationDetail extends React.Component {
             );
         } else {
             return (
-                <div style={{height: "50%", backgroundColor: HeavyOrange, ...this.styles.horizontalVerticalCenter}}>
+                <div style={{height: "100%", backgroundColor: HeavyOrange, ...this.styles.horizontalVerticalCenter}}>
                     <h1>NO TOURS FOR THIS ACTIVITY DESTINATION</h1>
                 </div>
             );
@@ -94,6 +94,7 @@ class ActivityDestinationDetail extends React.Component {
 
     render() {
         const { activity, activityDestination : dest, index, status } = this.props;
+        const tours = (dest && dest.tourActivityDestination) && dest.tourActivityDestination;
         return (
             <div style={{width: "100%", height: "100%", display: "flex", color: "white"}}>
                 <div style={{backgroundColor: HeavyOrange, width: "14%", boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)", zIndex: 1}}>
@@ -118,11 +119,11 @@ class ActivityDestinationDetail extends React.Component {
                 {status === 200 && (
                     <div style={{width: "86%", height: "100%"}}>
                         {this.renderImages()}
-                        <div style={{height: "50%"}}>
-                            <div style={{height: "18%", ...this.styles.horizontalVerticalCenter, backgroundColor: MediumOrange, fontSize: "28pt"}}>
+                        <div style={{height: "58%"}}>
+                            <div style={{height: "16%", ...this.styles.horizontalVerticalCenter, backgroundColor: MediumOrange, fontSize: "28pt"}}>
                                 {activity.title.toUpperCase()}
                             </div>
-                            <div style={{height: "13%", display: "flex"}}>
+                            <div style={{height: "11%", display: "flex"}}>
                                 <Link style={{flexBasis: "14%", ...this.styles.horizontalVerticalCenter, backgroundColor: "rgb(101,199,197)", color: "white"}} to={this.getPrevLink()}>PREVIOUS LOCATION</Link>
                                 <div style={{
                                     flexBasis: "72%", backgroundColor: LightBlueButtonBackground, fontWrap: "bold", fontSize: "20pt", letterSpacing: 5, 
@@ -132,13 +133,13 @@ class ActivityDestinationDetail extends React.Component {
                                 </div>
                                 <Link style={{flexBasis: "14%", ...this.styles.horizontalVerticalCenter, backgroundColor: "rgb(101,199,197)", color: "white"}} to={this.getNextLink()}>NEXT LOCATION</Link>
                             </div>
-                            <div style={{height: "50%", backgroundColor: ExtraHeavyBlueGreen}}>
+                            <div style={{height: tours.length > 2 ? "36%" : "43%", backgroundColor: ExtraHeavyBlueGreen}}>
                                 {dest.description}
                             </div>
                             <div style={{height: "7%", backgroundColor: "rgb(14,154,167)", ...this.styles.horizontalVerticalCenter, borderTop: '1px solid rgb(184,223,228)', borderBottom: '1px solid rgb(184,223,228)'}}>
                                 FOR MORE INFORMATION CONTACT:
                             </div>
-                            <div style={{height: "12%"}}>
+                            <div style={{height: tours.length > 2 ? "30%" : "23%"}}>
                                 {this.renderTours()}
                             </div>
                         </div>
