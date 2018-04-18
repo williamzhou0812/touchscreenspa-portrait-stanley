@@ -5,7 +5,7 @@
 }
 
 .section--up--animation {
-    animation-name: moveInBottom;
+    animation-name: moveInUp;
     animation-duration: 1s;
     animation-timing-function: ease-in;
 }
@@ -33,62 +33,37 @@
 
 @keyframes moveInUp {
     0% {
-        opacity: 0;
         transform: translateY(-100%);
     }
     100% {
-        opacity: 1;
         transform: translateY(0);
     }
 }
 
 @keyframes moveInBottom {
     0% {
-        opacity: 0;
-        transform: translateY(100%);
+        transform: translateY(200%);
     }
     100% {
-        opacity: 1;
         transform: translateY(0);
     }
 }
 
 @keyframes moveInLeft {
     0% {
-        opacity: 0;
         transform: translateX(100%);
     }
     100% {
-        opacity: 1;
         transform: translateX(0);
     }
 }
 
 @keyframes moveInRight {
     0% {
-        opacity: 0;
         transform: translateX(-100%);
     }
     100% {
-        opacity: 1;
         transform: translateX(0);
-    }
-}
-
-@-webkit-keyframes rotateIn {
-    0% {
-        -webkit-transform-origin: center;
-        transform-origin: center;
-        -webkit-transform: rotate3d(0, 0, 1, -200deg);
-        transform: rotate3d(0, 0, 1, -200deg);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform-origin: center;
-        transform-origin: center;
-        -webkit-transform: none;
-        transform: none;
-        opacity: 1;
     }
 }
 
@@ -98,8 +73,9 @@
         transform-origin: center;
         -webkit-transform: rotate3d(0, 0, 1, -200deg);
         transform: rotate3d(0, 0, 1, -200deg);
-        opacity: 0;
+        opacity: 1;
     }
+
     100% {
         -webkit-transform-origin: center;
         transform-origin: center;
