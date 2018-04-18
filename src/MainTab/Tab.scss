@@ -10,12 +10,13 @@
 }
 
 .not-selected {
-    background:rgb(5, 140, 155);
+    background: rgb(5, 140, 155);
     border-style: none solid solid none;
     border-color: rgb(73, 175, 189);
 }
 
-.left-selected, .last-item {
+.left-selected,
+.last-item {
     background: rgb(5, 140, 155);
     border-style: none none solid none;
     border-color: rgb(73, 175, 189);

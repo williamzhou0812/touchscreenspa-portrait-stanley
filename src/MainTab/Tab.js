@@ -12,7 +12,7 @@ class Tab extends React.Component {
             iconWidth,
             selected,
             isLeftOfSelected,
-            isLastItem, 
+            isLastItem,
             isRightOfSelected,
             // fetchDestinationList,
             // fetchDestinationDetail,
@@ -50,7 +50,7 @@ class Tab extends React.Component {
                         alt=""
                         src={icon}
                         style={{
-                            width: !!iconWidth ? iconWidth : "50%"
+                            width: !!iconWidth ? iconWidth : '50%'
                         }}
                     />
                     <div
@@ -73,7 +73,7 @@ class Tab extends React.Component {
                         src={icon}
                         style={{
                             marginTop: 20,
-                            width: !!iconWidth ? iconWidth : "50%"
+                            width: !!iconWidth ? iconWidth : '50%'
                         }}
                     />
                     <div
@@ -96,7 +96,7 @@ class Tab extends React.Component {
                         src={icon}
                         style={{
                             marginTop: 20,
-                            width: !!iconWidth ? iconWidth : "50%"
+                            width: !!iconWidth ? iconWidth : '50%'
                         }}
                     />
                     <div
@@ -123,7 +123,7 @@ class Tab extends React.Component {
                         src={icon}
                         style={{
                             marginTop: 20,
-                            width: !!iconWidth ? iconWidth : "50%"
+                            width: !!iconWidth ? iconWidth : '50%'
                         }}
                     />
                     <div
