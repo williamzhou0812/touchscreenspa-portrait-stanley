@@ -199,12 +199,12 @@ export function getServiceTypeListBasedLocation(pathname, serviceTypes) {
 
 export function getServiceTypeDetailBasedLocation(pathname) {
     if (pathname.includes(essentialNamespace)) {
-        return { title: "ESSENTIAL SERVICES", icon: EssentialIcon, namespace: essentialNamespace };
+        return { title: "ESSENTIAL SERVICES", icon: EssentialIcon, namespace: essentialNamespace, listKey: "essentialServiceServiceType", imageKey: "imageEssentialService", mapKey: "mapEssentialService" };
     } else if (pathname.includes(miningNamespace)) {
-        return { title: "MINING & RESOURCES", icon: MiningIcon, namespace: miningNamespace };
+        return { title: "MINING & RESOURCES", icon: MiningIcon, namespace: miningNamespace, listKey: "miningServiceType", imageKey: "imageMining", mapKey: "mapMining" };
     } else if (pathname.includes(retailNamespace)) {
-        return { title: "RETAIL & SERVICES", icon: RetailIcon, namespace: retailNamespace };
+        return { title: "RETAIL & SERVICES", icon: RetailIcon, namespace: retailNamespace, listKey: "retailServiceType", imageKey: "imageRetail", mapKey: "mapRetail" };
     } else if (pathname.includes(transportNamespace)) {
-        return { title: "CAR HIRE & TRANSPORT", icon: TransportIcon, namespace: transportNamespace };
+        return { title: "CAR HIRE & TRANSPORT", icon: TransportIcon, namespace: transportNamespace, listKey: "transportationServiceType", imageKey: "imageTransportation", mapKey: "mapTransportation" };
     }
 }

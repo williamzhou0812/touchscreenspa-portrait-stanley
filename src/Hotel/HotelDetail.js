@@ -85,12 +85,12 @@ class HotelDetail extends React.Component {
     renderImages() {
         const { imageAccomodation: images } = this.state.accommodation;
         if (images.length > 1) {
-            return imageGallery(images, '100%', '27vh');
+            return imageGallery(images, '100%', '22.68vh');
         } else if (images.length === 1) {
             return (
                 <div
                     style={{
-                        height: '50%',
+                        height: '42%',
                         backgroundImage: `url(${images[0].imageFile})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center'
@@ -101,7 +101,7 @@ class HotelDetail extends React.Component {
             return (
                 <div
                     style={{
-                        height: '50%',
+                        height: '42%',
                         backgroundColor: HeavyOrange,
                         ...this.styles.horizontalVerticalCenter
                     }}
@@ -189,7 +189,7 @@ class HotelDetail extends React.Component {
                 {!!accommodation && (
                     <div style={{ width: '86%', height: '100%' }}>
                         {this.renderImages()}
-                        <div style={{ height: '50%' }}>
+                        <div style={{ height: '58%' }}>
                             <div style={{ height: '26%', display: 'flex' }}>
                                 <div
                                     style={{
