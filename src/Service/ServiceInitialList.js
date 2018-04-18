@@ -5,10 +5,6 @@ import {
     miningNamespace,
     retailNamespace
 } from '../Constants';
-// import EssentialIcon from './icons/ESSENTIAL_ICON.png';
-// import MiningIcon from './icons/MINING_ICON.png';
-// import RetailIcon from './icons/RETAIL_ICON.png';
-// import TransportIcon from './icons/TRANSPORT_ICON.png';
 import EssentialServiceHeader from './images/EssentialServices.jpg';
 import MinesHeader from './images/MinesResources.jpg';
 import RetailHeader from './images/RetailServices.jpg';

@@ -7,6 +7,10 @@ import '../node_modules/react-image-gallery/styles/css/image-gallery.css';
 import Rating from "react-rating";
 import FullStar from 'material-ui/svg-icons/toggle/star';
 import EmptyStar from 'material-ui/svg-icons/toggle/star-border';
+import EssentialIcon from './Service/icons/ESSENTIAL_ICON.png';
+import MiningIcon from './Service/icons/MINING_ICON.png';
+import RetailIcon from './Service/icons/RETAIL_ICON.png';
+import TransportIcon from './Service/icons/TRANSPORT_ICON.png';
 
 export const timezone = "Pacific/Port_Moresby";
 
@@ -179,4 +183,28 @@ export function renderRating(initialRating, starSize=50) {
 
 export function removeHttp(website) {
     return website.replace(/^https?:\/\//i, '');
+}
+
+export function getServiceTypeListBasedLocation(pathname, serviceTypes) {
+    if (pathname.includes(essentialNamespace)) {
+        return { ...serviceTypes.essential };
+    } else if (pathname.includes(miningNamespace)) {
+        return { ...serviceTypes.mining };
+    } else if (pathname.includes(retailNamespace)) {
+        return { ...serviceTypes.retail };
+    } else if (pathname.includes(transportNamespace)) {
+        return { ...serviceTypes.transport };
+    }
+}
+
+export function getServiceTypeDetailBasedLocation(pathname) {
+    if (pathname.includes(essentialNamespace)) {
+        return { title: "ESSENTIAL SERVICES", icon: EssentialIcon, namespace: essentialNamespace };
+    } else if (pathname.includes(miningNamespace)) {
+        return { title: "MINING & RESOURCES", icon: MiningIcon, namespace: miningNamespace };
+    } else if (pathname.includes(retailNamespace)) {
+        return { title: "RETAIL & SERVICES", icon: RetailIcon, namespace: retailNamespace };
+    } else if (pathname.includes(transportNamespace)) {
+        return { title: "CAR HIRE & TRANSPORT", icon: TransportIcon, namespace: transportNamespace };
+    }
 }

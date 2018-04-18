@@ -34,7 +34,7 @@ class SubsectionList extends React.Component {
     }
     render() {
         const { data } = this.state;
-        const { numberOfEntries, sideButtons, sideTitle, mainTitle, imageKey, isImageArray, namespace, renderText } = this.props;
+        const { numberOfEntries, sideButtons, sideTitle, mainTitle, imageKey, isImageArray, namespace, renderText, useBackgroundImage, imgStyle } = this.props;
         const itemHeight = `${100 / numberOfEntries}%`;
         return (
             <div style={{width: "100%", height: "100%", display: "flex"}}>
@@ -82,7 +82,13 @@ class SubsectionList extends React.Component {
                                     //TODO: Fix borders
                                     return(
                                         <Link style={{height: itemHeight, color: "white", display: "flex"}} to={`${namespace}/${item.id}`} key={`${item.id}-${index}`}>
-                                            <div style={{width: "33%", backgroundImage: `url(${imageSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', borderBottom: isLastItem ? "none" : `1px solid ${LightBlue}`}} />
+                                            {useBackgroundImage ? (
+                                                <div style={{width: "33%", backgroundImage: `url(${imageSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', borderBottom: isLastItem ? "none" : `1px solid ${LightBlue}`}} />
+                                            ) : (
+                                                <div style={{width: "33%", borderBottom: isLastItem ? "none" : `1px solid ${LightBlue}`, backgroundColor: HeavyBlue, ...this.styles.horizontalVerticalCenter}}>
+                                                    <img src={imageSrc} style={imgStyle} />
+                                                </div>
+                                            )}
                                             <div style={{width: "67%", backgroundColor: HeavyBlue, display: "flex", alignItems: "center", paddingLeft: 20, borderBottom: isLastItem ? "none" : "1px solid rgb(183,223,228)"}}>
                                                 {renderText(item)}
                                             </div>
@@ -103,7 +109,8 @@ class SubsectionList extends React.Component {
 SubsectionList.defaultProps = {
     numberOfEntries: SUBSECTION_LIST_ENTRIES,
     sideButtons: [],
-    renderText: (item) => item.title.toUpperCase()
+    renderText: (item) => item.title.toUpperCase(),
+    useBackgroundImage: true,
 }
 
 SubsectionList.propTypes = {
@@ -116,6 +123,8 @@ SubsectionList.propTypes = {
     mainTitle: PropTypes.string.isRequired,
     namespace: PropTypes.string.isRequired,
     renderText: PropTypes.func,
+    useBackgroundImage: PropTypes.bool,
+    imgStyle: PropTypes.object,
 };
 
 export default SubsectionList;

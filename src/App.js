@@ -37,6 +37,7 @@ import DiningDetail from './Dining/DiningDetail';
 import HotelList from './Hotel/HotelList';
 import HotelDetail from './Hotel/HotelDetail';
 import ServiceInitialList from './Service/ServiceInitialList';
+import ServiceTypeList from "./Service/ServiceTypeList";
 import ActivityList from './Activity/ActivityList';
 import ActivityDestinationList from './Activity/ActivityDestinationList';
 import ActivityDestinationDetail from './Activity/ActivityDestinationDetail';
@@ -48,6 +49,10 @@ class App extends Component {
         this.props.fetchAccommodationList();
         this.props.fetchDiningList();
         this.props.fetchActivityList();
+        this.props.fetchEssentialTypeList();
+        this.props.fetchMiningTypeList();
+        this.props.fetchRetailTypeList();
+        this.props.fetchTransportTypeList();
     }
     render() {
         if (
@@ -55,7 +60,11 @@ class App extends Component {
             this.props.accommodationList.status !== 200 ||
             this.props.eventList.status !== 200 ||
             this.props.restaurantList.status !== 200 ||
-            this.props.activityList.status !== 200
+            this.props.activityList.status !== 200 ||
+            this.props.essentialServiceTypeList.status !== 200 ||
+            this.props.miningServiceTypeList.status !== 200 ||
+            this.props.retailServiceTypeList.status !== 200 ||
+            this.props.transportServiceTypeList.status !== 200
         ) {
             return (
                 <div className="loadingContainer">
@@ -174,6 +183,26 @@ class App extends Component {
                                 exact
                                 path={serviceNamespace}
                                 component={ServiceInitialList}
+                            />
+                            <Route
+                                exact
+                                path={essentialNamespace}
+                                component={ServiceTypeList}
+                            />
+                            <Route
+                                exact
+                                path={miningNamespace}
+                                component={ServiceTypeList}
+                            />
+                            <Route
+                                exact
+                                path={retailNamespace}
+                                component={ServiceTypeList}
+                            />
+                            <Route
+                                exact
+                                path={transportNamespace}
+                                component={ServiceTypeList}
                             />
                             <Route
                                 exact
