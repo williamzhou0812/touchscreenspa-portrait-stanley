@@ -37,7 +37,7 @@ import DiningDetail from './Dining/DiningDetail';
 import HotelList from './Hotel/HotelList';
 import HotelDetail from './Hotel/HotelDetail';
 import ServiceInitialList from './Service/ServiceInitialList';
-import ServiceTypeList from "./Service/ServiceTypeList";
+import ServiceTypeList from './Service/ServiceTypeList';
 import ActivityList from './Activity/ActivityList';
 import ActivityDestinationList from './Activity/ActivityDestinationList';
 import ActivityDestinationDetail from './Activity/ActivityDestinationDetail';
@@ -228,7 +228,9 @@ class App extends Component {
                             style={{
                                 width: '100vw',
                                 height: '4vh',
-                                display: 'flex'
+                                display: 'flex',
+                                backgroundColor: '#058c9b',
+                                color: 'white'
                             }}
                         >
                             <div
