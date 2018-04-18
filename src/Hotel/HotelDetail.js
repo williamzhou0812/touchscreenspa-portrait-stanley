@@ -174,9 +174,11 @@ class HotelDetail extends React.Component {
                     </Link>
                     <div
                         style={{
-                            fontSize: '28pt',
                             transform: 'rotate(-90deg)',
                             color: 'white',
+                            fontSize: '40pt',
+                            fontWeight: 500,
+                            letterSpacing: '10px',
                             height: '72%',
                             ...this.styles.horizontalVerticalCenter
                         }}

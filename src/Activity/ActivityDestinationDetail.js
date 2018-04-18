@@ -188,12 +188,19 @@ class ActivityDestinationDetail extends React.Component {
                     }}
                 >
                     <Link style={{ height: '14%' }} to={activityNamespace}>
-                        <img src={ActivityIcon} style={{ width: '33%' }} />
+                        <img
+                            src={ActivityIcon}
+                            style={{ width: '33%', paddingTop: '20px' }}
+                        />
                         <div style={{ color: 'white' }}>ALL ACTIVITIES</div>
                     </Link>
                     {status === 200 && (
                         <div>
-                            <div style={{ height: '14%' }}>
+                            <div
+                                style={{
+                                    height: '14%'
+                                }}
+                            >
                                 <img
                                     src={ActivityMapIcon}
                                     style={{ width: '33%' }}
@@ -212,7 +219,7 @@ class ActivityDestinationDetail extends React.Component {
                             >
                                 <img
                                     src={activity.icon}
-                                    style={{ width: '33%' }}
+                                    style={{ width: '33%', paddingTop: '20px' }}
                                 />
                                 <div style={{ color: 'white' }}>
                                     {activity.title.toUpperCase()} AREAS
@@ -228,7 +235,10 @@ class ActivityDestinationDetail extends React.Component {
                             height: '86%',
                             display: 'flex',
                             justifyContent: 'center',
-                            alignItems: 'center'
+                            alignItems: 'center',
+                            fontSize: '40pt',
+                            fontWeight: 500,
+                            letterSpacing: '10px'
                         }}
                     >
                         ACTIVITIES

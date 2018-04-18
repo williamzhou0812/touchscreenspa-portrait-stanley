@@ -109,7 +109,10 @@ class DiningDetail extends React.Component {
                             height: '86%',
                             display: 'flex',
                             justifyContent: 'center',
-                            alignItems: 'center'
+                            alignItems: 'center',
+                            fontSize: '40pt',
+                            fontWeight: 500,
+                            letterSpacing: '10px'
                         }}
                     >
                         DINING

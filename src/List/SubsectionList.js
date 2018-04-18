@@ -80,7 +80,7 @@ class SubsectionList extends React.Component {
                                     <Link
                                         style={{
                                             flexBasis: '14%',
-                                            paddingTop: '15px'
+                                            paddingTop: '20px'
                                         }}
                                         key={index}
                                         to={item.link}
@@ -99,7 +99,7 @@ class SubsectionList extends React.Component {
                                     <div
                                         style={{
                                             flexBasis: '14%',
-                                            paddingTop: '13px'
+                                            paddingTop: '20px'
                                         }}
                                         key={index}
                                         onClick={item.onClick}
@@ -118,7 +118,7 @@ class SubsectionList extends React.Component {
                                     <div
                                         style={{
                                             flexBasis: '14%',
-                                            paddingTop: '13px'
+                                            paddingTop: '20px'
                                         }}
                                         key={index}
                                     >
