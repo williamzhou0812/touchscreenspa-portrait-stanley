@@ -14,10 +14,19 @@ function getHeaderImageFromActivity(data) {
 
 export const fetchActivityList = () => async dispatch => {
     const res = await axios.get(createURL('activity/'));
+    let activities = res.data.slice();
+    activities.forEach((activity) => {
+        activity.mapActivity = [];
+        activity.activityDestinationActivity.forEach((a) => {
+            activity.mapActivity = [...activity.mapActivity, ...a.imageActivityDestination.filter((item) => {
+                return item.title.toLowerCase().includes("map");
+            })];
+        });
+    });
     dispatch({
         type: ACTIVITY_LIST,
         payload: {
-            activities: res.data,
+            activities,
             images: getHeaderImageFromActivity(res.data),
             status: res.status
         }
