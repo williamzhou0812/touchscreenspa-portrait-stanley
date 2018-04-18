@@ -58,13 +58,6 @@ class SectionList extends React.Component {
             data: items,
             images: imgs
         });
-        this.resetAnimationClass();
-
-        setTimeout(() => {
-            document
-                .getElementById('dynamicSectionList')
-                .classList.add('dynamicsection--bottom--animation');
-        }, 1);
     }
     goDown() {
         const { data, images } = this.state;
@@ -76,21 +69,6 @@ class SectionList extends React.Component {
             data: items,
             images: imgs
         });
-        this.resetAnimationClass();
-
-        setTimeout(() => {
-            document
-                .getElementById('dynamicSectionList')
-                .classList.add('dynamicsection--up--animation');
-        }, 1);
-    }
-    resetAnimationClass() {
-        document
-            .getElementById('dynamicSectionList')
-            .classList.remove('dynamicsection--bottom--animation');
-        document
-            .getElementById('dynamicSectionList')
-            .classList.remove('dynamicsection--up--animation');
     }
     render() {
         const {
