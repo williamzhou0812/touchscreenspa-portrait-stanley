@@ -12,7 +12,7 @@ class DestinationList extends React.Component {
     renderDestinationList() {
         const pathname = this.props.location.pathname;
         if (pathname.includes(accomodationNamespace)) {
-            return(
+            return (
                 <SectionList
                     data={this.props.accommodationList.accommodations}
                     images={this.props.accommodationList.images}
@@ -33,7 +33,10 @@ class DestinationList extends React.Component {
     }
     render() {
         return (
-            <div style={{width: "100%", height: "100%"}}>
+            <div
+                className="section--bottom--animation"
+                style={{ width: '100%', height: '100%' }}
+            >
                 {this.renderDestinationList()}
             </div>
         );
@@ -44,8 +47,7 @@ const mapStateToProps = ({ destinationList, accommodationList }) => {
     return {
         destinationList,
         accommodationList
-    }
-}
-
+    };
+};
 
 export default connect(mapStateToProps)(DestinationList);

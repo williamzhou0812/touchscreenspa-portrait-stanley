@@ -1,0 +1,92 @@
+.section--bottom--animation {
+  animation-name: moveInBottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-in; }
+
+.section--up--animation {
+  animation-name: moveInUp;
+  animation-duration: 1s;
+  animation-timing-function: ease-in; }
+
+.section--down--animation {
+  animation-name: moveInUp;
+  animation-duration: 1s;
+  animation-timing-function: ease-in; }
+
+.section--left--animation {
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-in; }
+
+.section--rotate--animation {
+  -webkit-animation-name: rotateIn;
+  animation-name: rotateIn;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+@keyframes moveInUp {
+  0% {
+    transform: translateY(-100%); }
+  100% {
+    transform: translateY(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    transform: translateY(200%); }
+  100% {
+    transform: translateY(0); } }
+
+@keyframes moveInLeft {
+  0% {
+    transform: translateX(100%); }
+  100% {
+    transform: translateX(0); } }
+
+@keyframes moveInRight {
+  0% {
+    transform: translateX(-100%); }
+  100% {
+    transform: translateX(0); } }
+
+@keyframes rotateIn {
+  0% {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, -200deg);
+    transform: rotate3d(0, 0, 1, -200deg);
+    opacity: 1; }
+  100% {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+
+a {
+  text-decoration: none; }
+
+.App {
+  text-align: center;
+  width: 100vw;
+  height: 100vh; }
+
+.loadingContainer {
+  height: 1920px;
+  width: 1080px;
+  display: grid;
+  grid-template-columns: 1fr 500px 1fr;
+  grid-template-rows: 1fr 500px 1fr;
+  background-color: #058c9b;
+  text-align: center;
+  color: white;
+  font-size: 60px;
+  letter-spacing: 10px; }
+
+.loading {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3; }
+  .loading--title {
+    padding: 0;
+    margin: 0; }
