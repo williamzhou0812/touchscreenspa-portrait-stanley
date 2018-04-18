@@ -39,6 +39,7 @@ import HotelList from './Hotel/HotelList';
 import HotelDetail from './Hotel/HotelDetail';
 import ServiceInitialList from './Service/ServiceInitialList';
 import ActivityList from './Activity/ActivityList';
+import ActivityDestinationList from './Activity/ActivityDestinationList';
 
 class App extends Component {
     componentDidMount() {
@@ -172,6 +173,11 @@ class App extends Component {
                                 exact
                                 path={activityNamespace}
                                 component={ActivityList}
+                            />
+                            <Route
+                                exact
+                                path={activityNamespace + "/:id"}
+                                component={ActivityDestinationList}
                             />
                             <Redirect from="/" to={destinationNamespace} />
                         </div>
