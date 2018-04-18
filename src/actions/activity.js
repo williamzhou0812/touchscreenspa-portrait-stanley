@@ -78,10 +78,16 @@ export const fetchActivityDestinationDetail = (actid, destid, activityList) => d
 
 export const fetchActivityDestinationDetailAvailableData = (destid, activity) => dispatch => {
     let status = null;
-    let activityDestination = activity && activity.activityDestinationActivity.find((dest) => {
-        return dest.id === destid;
+    let activityDestination = null;
+    let index = -1;
+    activity && activity.activityDestinationActivity.forEach((dest, i) => {
+        if (dest.id === destid) {
+            activityDestination = {...dest};
+            index = i;
+        }
     });
-    if (activityDestination) {
+    
+    if (activityDestination && index > -1) {
         status = 200;
     } else {
         activity = null;
@@ -90,9 +96,10 @@ export const fetchActivityDestinationDetailAvailableData = (destid, activity) =>
     dispatch({
         type: ACTIVITY_DESTINATION_DETAIL,
         payload: {
-            activity: activity,
-            activityDestination: activityDestination,
-            status: status
+            activity,
+            activityDestination,
+            index,
+            status
         }
     });
 };
