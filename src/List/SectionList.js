@@ -39,13 +39,15 @@ class SectionList extends React.Component {
             alignItems: 'center'
         },
         titleStyle: {
-            fontSize: '28pt',
+            fontSize: '40pt',
             transform: 'rotate(-90deg)',
             color: 'white',
             flex: 1,
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
+            fontWeight: 500,
+            letterSpacing: '10px'
         }
     };
     goUp() {
