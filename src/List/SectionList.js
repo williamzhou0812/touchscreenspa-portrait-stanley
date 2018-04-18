@@ -58,6 +58,13 @@ class SectionList extends React.Component {
             data: items,
             images: imgs
         });
+        this.resetAnimationClass();
+
+        setTimeout(() => {
+            document
+                .getElementById('dynamicSectionList')
+                .classList.add('dynamicsection--bottom--animation');
+        }, 1);
     }
     goDown() {
         const { data, images } = this.state;
@@ -69,6 +76,21 @@ class SectionList extends React.Component {
             data: items,
             images: imgs
         });
+        this.resetAnimationClass();
+
+        setTimeout(() => {
+            document
+                .getElementById('dynamicSectionList')
+                .classList.add('dynamicsection--up--animation');
+        }, 1);
+    }
+    resetAnimationClass() {
+        document
+            .getElementById('dynamicSectionList')
+            .classList.remove('dynamicsection--bottom--animation');
+        document
+            .getElementById('dynamicSectionList')
+            .classList.remove('dynamicsection--up--animation');
     }
     render() {
         const {
@@ -106,6 +128,7 @@ class SectionList extends React.Component {
                 </div>
                 <div
                     style={{ width: '86%', height: '100%', overflow: 'hidden' }}
+                    id="dynamicSectionList"
                 >
                     <div
                         style={{
@@ -172,8 +195,8 @@ class SectionList extends React.Component {
                                                 {item.title.toUpperCase()}
                                             </div>
                                         </div>
-                                        {/* Parent with position relative, 1st child with position absolute, 2nd child with position relative. This will make the 1st child top, left, 
-                                            right, bottom, width and height become "based" / "filled" (since it was set with width and height of 100%) to the parent. 
+                                        {/* Parent with position relative, 1st child with position absolute, 2nd child with position relative. This will make the 1st child top, left,
+                                            right, bottom, width and height become "based" / "filled" (since it was set with width and height of 100%) to the parent.
                                             2nd child, because it was set as position relative, it will become the forefront (aka first layer, since there is no z-ndex) and not be covered
                                             by the mix blend mode
                                             */}
