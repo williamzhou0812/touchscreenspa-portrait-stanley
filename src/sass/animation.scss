@@ -1,25 +1,37 @@
 .section--bottom--animation {
     animation-name: moveInBottom;
-    animation-duration: 1s;
-    animation-timing-function: ease-in;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
 }
 
 .section--up--animation {
     animation-name: moveInUp;
-    animation-duration: 1s;
-    animation-timing-function: ease-in;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
 }
 
-.section--down--animation {
+.dynamicsection--bottom--animation {
+    animation-name: moveInBottom;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+}
+
+.dynamicsection--up--animation {
     animation-name: moveInUp;
-    animation-duration: 1s;
-    animation-timing-function: ease-in;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+}
+
+.section--right--animation {
+    animation-name: moveInRight;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
 }
 
 .section--left--animation {
     animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-in;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
 }
 
 .section--rotate--animation {
@@ -33,7 +45,7 @@
 
 @keyframes moveInUp {
     0% {
-        transform: translateY(-100%);
+        transform: translateY(-200%);
     }
     100% {
         transform: translateY(0);
