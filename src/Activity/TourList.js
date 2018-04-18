@@ -8,7 +8,7 @@ class TourList extends React.Component {
     render() {
         const { data } = this.props;
         return (
-            <div style={{height: "100%", overflowY: "auto"}}>
+            <div style={{height: "100%", overflowY: data.length > 2 ? "auto" : "hidden"}}>
                 {data.map((tour, index) => {
                     const isLastItem = index === data.length - 1;
                     return (
