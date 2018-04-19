@@ -9,7 +9,8 @@ import {
     LightBlueButtonBackground,
     ExtraHeavyBlueGreen,
     imageGallery,
-    DECIMAL_RADIX
+    DECIMAL_RADIX,
+    LightOrange
 } from '../Constants';
 
 class EventDetail extends React.Component {
@@ -138,7 +139,8 @@ class EventDetail extends React.Component {
         mapOrFindButtonText: {
             paddingTop: '10px',
             letterSpacing: '2px'
-        }
+        },
+        removePaddingMargin: { margin: 0, padding: 0 }
     };
 
     render() {
@@ -164,8 +166,32 @@ class EventDetail extends React.Component {
                     }}
                 >
                     <Link style={{ height: '14%' }} to={eventNamespace}>
-                        <img src={CalendarIcon} style={{ width: '33%' }} />
-                        <div style={{ color: 'white' }}>CALENDAR OF EVENTS</div>
+                        <div
+                            style={{
+                                borderStyle: 'none none solid none',
+                                borderColor: LightOrange,
+                                paddingBottom: '5px'
+                            }}
+                        >
+                            <img
+                                src={CalendarIcon}
+                                style={{ width: '33%', paddingTop: '30px' }}
+                            />
+                            <div
+                                style={{
+                                    color: 'white',
+                                    fontSize: '20px',
+                                    letterSpacing: '2px'
+                                }}
+                            >
+                                <p style={this.styles.removePaddingMargin}>
+                                    CALENDAR
+                                </p>
+                                <p style={this.styles.removePaddingMargin}>
+                                    OF EVENTS
+                                </p>
+                            </div>
+                        </div>
                     </Link>
                     <div
                         style={{
