@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from "react-redux";
-import { getServiceTypeListBasedLocation, DECIMAL_RADIX, getServiceTypeDetailBasedLocation } from '../Constants';
+import { getServiceTypeListBasedLocation, DECIMAL_RADIX, getServiceTypeDetailBasedLocation, serviceNamespace } from '../Constants';
+import ServiceTypesIcon from '../Dining/icons/RestaurantListIcon.png';
 import ServiceBranch from './ServiceBranch';
 import SubsectionList from "../List/SubsectionList";
 
@@ -55,6 +56,7 @@ class ServiceList extends React.Component {
                     imageKey="logo"
                     isImageArray={false}
                     sideButtons={[
+                        {title: "SERVICE TYPES", icon: ServiceTypesIcon, link: serviceNamespace, isLink: true},
                         {title: serviceTypeData.title, icon: serviceTypeData.icon, link: serviceTypeData.namespace, isLink: true},
                     ]}
                     sideTitle="SERVICES"

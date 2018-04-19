@@ -1,7 +1,7 @@
 import React from 'react'
-import { imageGallery, HeavyOrange, ExtraHeavyBlueGreen, LightBlueButtonBackground, removeHttp } from '../Constants';
+import { imageGallery, HeavyOrange, ExtraHeavyBlueGreen, LightBlueButtonBackground, removeHttp, serviceNamespace } from '../Constants';
 import { Link } from "react-router-dom";
-
+import ServiceTypesIcon from '../Dining/icons/RestaurantListIcon.png';
 
 class ServiceBranch extends React.Component {
     constructor(props) {
@@ -80,6 +80,10 @@ class ServiceBranch extends React.Component {
         return (
             <div style={{ width: '100%', height: '100%', display: 'flex', color: 'white'}}>
                 <div style={{ backgroundColor: HeavyOrange, width: '14%', boxShadow: '9.899px 0px 7px 0px rgba(0,0,0,0.6)', zIndex: 1}}> 
+                    <Link style={{ height: '14%' }} to={serviceNamespace}>
+                        <img src={ServiceTypesIcon} style={{ width: '33%' }} />
+                        <div style={{ color: 'white' }}>SERVICE TYPES</div>
+                    </Link>
                     <Link style={{ height: '14%' }} to={serviceTypeData.namespace}>
                         <img src={serviceTypeData.icon} style={{ width: '33%' }} />
                         <div style={{ color: 'white' }}>{serviceTypeData.title}</div>
