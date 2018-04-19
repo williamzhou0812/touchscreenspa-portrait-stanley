@@ -79,18 +79,34 @@ class SubsectionList extends React.Component {
                                 return (
                                     <Link
                                         style={{
-                                            flexBasis: '14%',
-                                            paddingTop: '20px'
+                                            flexBasis: '14%'
                                         }}
                                         key={index}
                                         to={item.link}
                                     >
-                                        <img
-                                            src={item.icon}
-                                            style={{ width: '33%' }}
-                                        />
-                                        <div style={{ color: 'white' }}>
-                                            {item.title}
+                                        <div
+                                            style={{
+                                                borderStyle:
+                                                    'none none solid none',
+                                                borderColor: LightOrange,
+                                                paddingBottom: '35px'
+                                            }}
+                                        >
+                                            <img
+                                                src={item.icon}
+                                                style={{
+                                                    width: '33%',
+                                                    paddingTop: '33px'
+                                                }}
+                                            />
+                                            <div
+                                                style={{
+                                                    color: 'white',
+                                                    fontSize: '16px'
+                                                }}
+                                            >
+                                                {item.title}
+                                            </div>
                                         </div>
                                     </Link>
                                 );
@@ -98,18 +114,34 @@ class SubsectionList extends React.Component {
                                 return (
                                     <div
                                         style={{
-                                            flexBasis: '14%',
-                                            paddingTop: '20px'
+                                            flexBasis: '14%'
                                         }}
                                         key={index}
                                         onClick={item.onClick}
                                     >
-                                        <img
-                                            src={item.icon}
-                                            style={{ width: '33%' }}
-                                        />
-                                        <div style={{ color: 'white' }}>
-                                            {item.title}
+                                        <div
+                                            style={{
+                                                borderStyle:
+                                                    'none none solid none',
+                                                borderColor: LightOrange,
+                                                paddingBottom: '28px'
+                                            }}
+                                        >
+                                            <img
+                                                src={item.icon}
+                                                style={{
+                                                    width: '33%',
+                                                    paddingTop: '33px'
+                                                }}
+                                            />
+                                            <div
+                                                style={{
+                                                    color: 'white',
+                                                    fontSize: '16px'
+                                                }}
+                                            >
+                                                {item.title}
+                                            </div>
                                         </div>
                                     </div>
                                 );
@@ -117,17 +149,33 @@ class SubsectionList extends React.Component {
                                 return (
                                     <div
                                         style={{
-                                            flexBasis: '14%',
-                                            paddingTop: '20px'
+                                            flexBasis: '14%'
                                         }}
                                         key={index}
                                     >
-                                        <img
-                                            src={item.icon}
-                                            style={{ width: '33%' }}
-                                        />
-                                        <div style={{ color: 'white' }}>
-                                            {item.title}
+                                        <div
+                                            style={{
+                                                borderStyle:
+                                                    'none none solid none',
+                                                borderColor: LightOrange,
+                                                paddingBottom: '28px'
+                                            }}
+                                        >
+                                            <img
+                                                src={item.icon}
+                                                style={{
+                                                    width: '33%',
+                                                    paddingTop: '33px'
+                                                }}
+                                            />
+                                            <div
+                                                style={{
+                                                    color: 'white',
+                                                    fontSize: '16px'
+                                                }}
+                                            >
+                                                {item.title}
+                                            </div>
                                         </div>
                                     </div>
                                 );
