@@ -50,6 +50,7 @@ class EventDetail extends React.Component {
     }
 
     prevEvent() {
+        console.log('prevEvent');
         const { events } = this.props;
         const { currentEventIndex } = this.state;
         if (currentEventIndex === 0) {
@@ -134,7 +135,8 @@ class EventDetail extends React.Component {
                         backgroundColor: HeavyOrange,
                         width: '14%',
                         boxShadow: '9.899px 0px 7px 0px rgba(0,0,0,0.6)',
-                        zIndex: 1
+                        zIndex: 1,
+                        position: 'relative'
                     }}
                 >
                     <Link style={{ height: '14%' }} to={eventNamespace}>
@@ -146,13 +148,12 @@ class EventDetail extends React.Component {
                             fontSize: '28pt',
                             transform: 'rotate(-90deg)',
                             color: 'white',
-                            height: '86%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
                             fontSize: '40pt',
                             fontWeight: 500,
-                            letterSpacing: '10px'
+                            letterSpacing: '10px',
+                            position: 'absolute',
+                            bottom: 455,
+                            left: -40
                         }}
                     >
                         EVENTS
