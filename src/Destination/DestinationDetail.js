@@ -52,8 +52,27 @@ class DestinationDetail extends React.Component {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
+        },
+        mapButtonStyle: {
+            height: '13%',
+            width: '80%',
+            marginLeft: 10,
+            marginTop: '5%',
+            marginBottom: '5%',
+            borderRadius: '5px',
+            fontSize: '20px',
+            fontWeight: 500,
+            boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.5)',
+            backgroundColor: LightBlueButtonBackground,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+        },
+        mapButtonTextStyle: {
+            paddingTop: '5px'
         }
     };
+
     render() {
         const {
             destination,
@@ -126,7 +145,10 @@ class DestinationDetail extends React.Component {
                             style={{ height: '14%' }}
                             to={destinationNamespace}
                         >
-                            <img src={AllAreas} style={{ width: '33%' }} />
+                            <img
+                                src={AllAreas}
+                                style={{ width: '33%', paddingTop: '20px' }}
+                            />
                             <div style={{ color: 'white' }}>ALL AREAS</div>
                         </Link>
                         <div
@@ -176,31 +198,37 @@ class DestinationDetail extends React.Component {
                                     style={{
                                         height: '50%',
                                         backgroundColor: ExtraHeavyBlueGreen,
-                                        paddingLeft: 20,
+                                        paddingLeft: 35,
                                         color: 'white'
                                     }}
                                 >
                                     <div
                                         style={{
-                                            height: '30%',
+                                            height: '20%',
                                             letterSpacing: '5px',
                                             display: 'flex',
                                             alignItems: 'center',
-                                            fontSize: '28pt'
+                                            fontSize: '40pt',
+                                            fontWeight: 500,
+                                            letterSpacing: '10px'
                                         }}
                                     >
                                         {destination.title}
                                     </div>
                                     <div
                                         style={{
-                                            height: '70%',
+                                            height: '80%',
                                             display: 'flex'
                                         }}
                                     >
                                         <div
                                             style={{
                                                 width: '50%',
-                                                height: '100%'
+                                                height: '100%',
+                                                textAlign: 'left',
+                                                fontSize: '20px',
+                                                lineHeight: '130%',
+                                                letterSpacing: '2px'
                                             }}
                                         >
                                             {destination.description}
@@ -212,11 +240,37 @@ class DestinationDetail extends React.Component {
                                                 marginLeft: 10
                                             }}
                                         >
-                                            <div>
-                                                PROVINCE: {destination.province}
+                                            <div
+                                                style={{
+                                                    marginLeft: 10,
+                                                    fontSize: '20px',
+                                                    lineHeight: '130%',
+                                                    textAlign: 'left',
+                                                    letterSpacing: '2px'
+                                                }}
+                                            >
+                                                <span
+                                                    style={{ fontWeight: 500 }}
+                                                >
+                                                    PROVINCE:
+                                                </span>{' '}
+                                                {destination.province}
                                             </div>
-                                            <div>
-                                                CLOSEST AIRPORT:{' '}
+                                            <div
+                                                style={{
+                                                    marginLeft: 10,
+                                                    fontSize: '20px',
+                                                    lineHeight: '130%',
+                                                    textAlign: 'left',
+                                                    letterSpacing: '2px',
+                                                    paddingTop: '10px'
+                                                }}
+                                            >
+                                                <span
+                                                    style={{ fontWeight: 500 }}
+                                                >
+                                                    CLOSEST AIRPORT:
+                                                </span>{' '}
                                                 {destination.airport}
                                             </div>
                                             <div
@@ -226,48 +280,68 @@ class DestinationDetail extends React.Component {
                                                     width: '80%',
                                                     backgroundColor: HeavyOrange,
                                                     marginLeft: 10,
+                                                    marginTop: '5%',
+                                                    marginBottom: '5%',
+                                                    borderRadius: '5px',
+                                                    fontSize: '20px',
+                                                    fontWeight: 500,
+                                                    boxShadow:
+                                                        '0px 0px 10px 1px rgba(0,0,0,0.5)',
                                                     ...this.styles
                                                         .horizontalVerticalCenter
                                                 }}
                                             >
-                                                EXPLORE
+                                                <span
+                                                    style={
+                                                        this.styles
+                                                            .mapButtonTextStyle
+                                                    }
+                                                >
+                                                    EXPLORE
+                                                </span>
                                             </div>
                                             {destination.mapDestination.length >
                                                 0 && (
                                                 <div
-                                                    style={{
-                                                        height: '17%',
-                                                        width: '80%',
-                                                        marginLeft: 10,
-                                                        backgroundColor: LightBlueButtonBackground,
-                                                        ...this.styles
-                                                            .horizontalVerticalCenter
-                                                    }}
-                                                >
-                                                    {
-                                                        destination
-                                                            .mapDestination[0]
-                                                            .title
+                                                    style={
+                                                        this.styles
+                                                            .mapButtonStyle
                                                     }
+                                                >
+                                                    <span
+                                                        style={
+                                                            this.styles
+                                                                .mapButtonTextStyle
+                                                        }
+                                                    >
+                                                        {
+                                                            destination
+                                                                .mapDestination[0]
+                                                                .title
+                                                        }
+                                                    </span>
                                                 </div>
                                             )}
                                             {destination.mapDestination.length >
                                                 1 && (
                                                 <div
-                                                    style={{
-                                                        height: '17%',
-                                                        width: '80%',
-                                                        marginLeft: 10,
-                                                        backgroundColor: LightBlueButtonBackground,
-                                                        ...this.styles
-                                                            .horizontalVerticalCenter
-                                                    }}
-                                                >
-                                                    {
-                                                        destination
-                                                            .mapDestination[1]
-                                                            .title
+                                                    style={
+                                                        this.styles
+                                                            .mapButtonStyle
                                                     }
+                                                >
+                                                    <span
+                                                        style={
+                                                            this.styles
+                                                                .mapButtonTextStyle
+                                                        }
+                                                    >
+                                                        {
+                                                            destination
+                                                                .mapDestination[1]
+                                                                .title
+                                                        }
+                                                    </span>
                                                 </div>
                                             )}
                                         </div>
