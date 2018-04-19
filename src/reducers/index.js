@@ -23,6 +23,8 @@ import specificAdsMiningReducer from './specificAdsMiningReducer';
 import specificAdsRestaurantReducer from './specificAdsRestaurantReducer';
 import specificAdsRetailReducer from './specificAdsRetailReducer';
 import specificAdsTransportReducer from './specificAdsTransportReducer';
+import specificAdsAccommodationReducer from './specificAdsAccommodationReducer';
+import specificAdsEventReducer from './specificAdsEventReducer';
 import HandoverVideoReducer from './HandoverVideoReducer';
 import eventReducer from './eventReducer'
 
@@ -52,5 +54,7 @@ export default combineReducers({
     specificAdsRestaurantList: specificAdsRestaurantReducer,
     specificAdsRetailList: specificAdsRetailReducer,
     specificAdsTransportList: specificAdsTransportReducer,
+    specificAdsAccommodationList: specificAdsAccommodationReducer,
+    specificAdsEventList: specificAdsEventReducer,
     handoverVideoData: HandoverVideoReducer
 });

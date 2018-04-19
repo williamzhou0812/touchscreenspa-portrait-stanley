@@ -30,7 +30,9 @@ import {
     fetchSpecificAdsEssentialList,
     fetchSpecificAdsMiningList,
     fetchSpecificAdsRetailList,
-    fetchSpecificAdsTransportList
+    fetchSpecificAdsTransportList,
+    fetchSpecificAccommodationList,
+    fetchSpecificAdsEventList
 } from './advertisement';
 import { fetchEventList } from "./event";
 
@@ -62,6 +64,8 @@ export {
     fetchSpecificAdsMiningList,
     fetchSpecificAdsRetailList,
     fetchSpecificAdsTransportList,
+    fetchSpecificAccommodationList,
+    fetchSpecificAdsEventList,
     retrieveHandoverVideo,
     fetchEventList
 };

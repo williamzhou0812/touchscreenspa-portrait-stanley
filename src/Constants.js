@@ -50,6 +50,7 @@ export const DECIMAL_RADIX = 10;
 export const SECTION_LIST_ENTRIES = 3;
 export const SUBSECTION_LIST_ENTRIES = 6;
 export const SLIDE_INTERVAL = 5000; //Every 5 seconds change image in ImageGallery
+export const AD_SLIDE_INTERVAL = 7000; //Every 7 seconds change image in ImageGallery for Advertisements
 
 export function createURL(namespace) {
     return 'http://' + HOST + ':' + PORT + '/' + namespace;
@@ -207,4 +208,80 @@ export function getServiceTypeDetailBasedLocation(pathname) {
     } else if (pathname.includes(transportNamespace)) {
         return { title: "CAR HIRE & TRANSPORT", icon: TransportIcon, namespace: transportNamespace, listKey: "transportationServiceType", imageKey: "imageTransportation", mapKey: "mapTransportation" };
     }
+}
+
+//http://stackoverflow.com/questions/21131224/sorting-json-object-based-on-attribute
+function sortByKey(array, key) {
+    return array.sort(function(a, b) {
+        let x = a[key];
+        let y = b[key];
+        return x < y ? -1 : x > y ? 1 : 0;
+    });
+}
+
+//Separating entries with attribute order value equal to zeroes and greater than zeroes
+function separateItems(array, orderKey) {
+    let others = [];
+    let items = array.slice();
+    let i = items.length - 1;
+    while (true) {
+        if (items[i][orderKey] === 0) {
+            return [items, others];
+        } else {
+            others.push(items.pop());
+        }
+        i -= 1;
+    }
+}
+
+//http://stackoverflow.com/questions/5836833/create-a-array-with-random-values-in-javascript
+export function shuffle(array) {
+    let tmp,
+        current,
+        top = array.length;
+    if (top)
+        while (--top) {
+            current = Math.floor(Math.random() * (top + 1));
+            tmp = array[current];
+            array[current] = array[top];
+            array[top] = tmp;
+        }
+    return array;
+}
+
+//Inserting an item to index 'to' while pushing other items by one
+function insertItem(array, data, to) {
+    array.splice(to, 0, data);
+}
+
+function randomiseItems(array) {
+    let shuffleArray = [];
+    let output = [];
+    array.forEach((_, index) => {
+        shuffleArray.push(index);
+        output.push(index);
+    });
+    shuffleArray = shuffle(shuffleArray);
+    shuffleArray.forEach((item, index) => {
+        output[index] = array[item];
+    });
+    return output;
+}
+
+function combineItems(randomised, constantItems, orderKey) {
+    let output = randomiseItems(randomised);
+    constantItems.forEach((item, _) => {
+        if (item[orderKey] > 0) {
+            insertItem(output, item, item[orderKey] - 1);
+        }
+    });
+    return output;
+}
+
+export function randomiseButKeepOrder(items, orderKey = 'order') {
+    let temp = sortByKey(items, orderKey);
+    let separated = separateItems(temp, orderKey);
+    const randomised = separated[0];
+    const constantItems = separated[1];
+    return combineItems(randomised, constantItems, orderKey);
 }

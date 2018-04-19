@@ -1,6 +1,7 @@
 import {
     ADVERTISEMENT_LIST, FEATURED_ADVERTISEMENT_LIST, SPECIFC_ADS_RESTAURANT_LIST, SPECIFIC_ADS_ACTIVITY_DESTINATION_LIST,
-    SPECIFIC_ADS_ESSENTIAL_LIST, SPECIFIC_ADS_MINING_LIST, SPECIFIC_ADS_RETAIL_LIST, SPECIFIC_ADS_TRANSPORT_LIST
+    SPECIFIC_ADS_ESSENTIAL_LIST, SPECIFIC_ADS_MINING_LIST, SPECIFIC_ADS_RETAIL_LIST, SPECIFIC_ADS_TRANSPORT_LIST,
+    SPECIFIC_ADS_ACCOMMODATION_LIST, SPECIFIC_ADS_EVENT_LIST
 } from './types';
 import axios from 'axios';
 import { createURL } from '../Constants';
@@ -128,6 +129,28 @@ export const fetchSpecificAdsTransportList = () => async dispatch => {
         type: SPECIFIC_ADS_TRANSPORT_LIST,
         payload: {
             transports: res.data,
+            status: res.status
+        }
+    });
+};
+
+export const fetchSpecificAccommodationList = () => async dispatch => {
+    const res = await axios.get(createURL('accomodationsimple/'));
+    dispatch({
+        type: SPECIFIC_ADS_ACCOMMODATION_LIST,
+        payload: {
+            accommodations: res.data,
+            status: res.status
+        }
+    });
+};
+
+export const fetchSpecificAdsEventList = () => async dispatch => {
+    const res = await axios.get(createURL('eventsimple/'));
+    dispatch({
+        type: SPECIFIC_ADS_EVENT_LIST,
+        payload: {
+            events: res.data,
             status: res.status
         }
     });

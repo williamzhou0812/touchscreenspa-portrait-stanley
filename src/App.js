@@ -44,6 +44,7 @@ import ActivityList from './Activity/ActivityList';
 import ActivityDestinationList from './Activity/ActivityDestinationList';
 import ActivityDestinationDetail from './Activity/ActivityDestinationDetail';
 import MapList from "./Maps/MapList";
+import Advertisement from "./Advertisement/Advertisement";
 
 class App extends Component {
     componentDidMount() {
@@ -56,7 +57,17 @@ class App extends Component {
         this.props.fetchMiningTypeList();
         this.props.fetchRetailTypeList();
         this.props.fetchTransportTypeList();
-        this.props.fetchMapList()
+        this.props.fetchMapList();
+        this.props.fetchAdVideoList();
+        this.props.fetchAdvertisementList();
+        this.props.fetchSpecificAdsRestaurantList();
+        this.props.fetchSpecificAdsActivityDestinationList();
+        this.props.fetchSpecificAdsEssentialList();
+        this.props.fetchSpecificAdsMiningList();
+        this.props.fetchSpecificAdsRetailList();
+        this.props.fetchSpecificAdsTransportList();
+        this.props.fetchSpecificAccommodationList();
+        this.props.fetchSpecificAdsEventList();
     }
     render() {
         if (
@@ -69,7 +80,17 @@ class App extends Component {
             this.props.miningServiceTypeList.status !== 200 ||
             this.props.retailServiceTypeList.status !== 200 ||
             this.props.transportServiceTypeList.status !== 200 ||
-            this.props.map.status !== 200
+            this.props.map.status !== 200 ||
+            this.props.adVideoList.status !== 200 ||
+            this.props.advertisementList.status !== 200 ||
+            this.props.specificAdsRestaurantList.status !== 200 ||
+            this.props.specificAdsActivityDestinationList.status !== 200 ||
+            this.props.specificAdsEssentialList.status !== 200 ||
+            this.props.specificAdsMiningList.status !== 200 ||
+            this.props.specificAdsRetailList.status !== 200 ||
+            this.props.specificAdsTransportList.status !== 200 ||
+            this.props.specificAdsAccommodationList.status !== 200 ||
+            this.props.specificAdsEventList.status !== 200
         ) {
             return (
                 <div className="loadingContainer">
@@ -272,7 +293,28 @@ class App extends Component {
                             <Redirect from="/" to={destinationNamespace} />
                         </div>
                         <div style={{ width: '100vw', height: '16vh' }}>
-                            Advertisement Section
+                            {
+                                this.props.adVideoList.status === 200 &&
+                                this.props.advertisementList.status === 200 &&
+                                this.props.specificAdsActivityDestinationList.status === 200 &&
+                                this.props.specificAdsEssentialList.status === 200 &&
+                                this.props.specificAdsMiningList.status === 200 &&
+                                this.props.specificAdsRestaurantList.status === 200 &&
+                                this.props.specificAdsRetailList.status === 200 &&
+                                this.props.specificAdsTransportList.status === 200 && 
+                                this.props.specificAdsAccommodationList.status === 200 &&
+                                this.props.specificAdsEventList.status == 200 && (
+                                    <Route
+                                        render={props => (
+                                            <Advertisement
+                                                // continuePlaying={!isIdle}
+                                                continuePlaying={true}
+                                                {...props}
+                                            />
+                                        )}
+                                    />
+                                )
+                            }
                         </div>
                         <div
                             style={{
@@ -337,6 +379,8 @@ function mapStateToProps({
     miningServiceTypeList,
     retailServiceTypeList,
     transportServiceTypeList,
+    specificAdsAccommodationList,
+    specificAdsEventList,
     activityList
 }) {
     return {
@@ -361,6 +405,8 @@ function mapStateToProps({
         miningServiceTypeList,
         retailServiceTypeList,
         transportServiceTypeList,
+        specificAdsAccommodationList,
+        specificAdsEventList,
         activityList
     };
 }
