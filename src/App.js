@@ -43,6 +43,7 @@ import ServiceDetail from './Service/ServiceDetail';
 import ActivityList from './Activity/ActivityList';
 import ActivityDestinationList from './Activity/ActivityDestinationList';
 import ActivityDestinationDetail from './Activity/ActivityDestinationDetail';
+import MapList from "./Maps/MapList";
 
 class App extends Component {
     componentDidMount() {
@@ -55,6 +56,7 @@ class App extends Component {
         this.props.fetchMiningTypeList();
         this.props.fetchRetailTypeList();
         this.props.fetchTransportTypeList();
+        this.props.fetchMapList()
     }
     render() {
         if (
@@ -66,7 +68,8 @@ class App extends Component {
             this.props.essentialServiceTypeList.status !== 200 ||
             this.props.miningServiceTypeList.status !== 200 ||
             this.props.retailServiceTypeList.status !== 200 ||
-            this.props.transportServiceTypeList.status !== 200
+            this.props.transportServiceTypeList.status !== 200 ||
+            this.props.map.status !== 200
         ) {
             return (
                 <div className="loadingContainer">
@@ -260,6 +263,11 @@ class App extends Component {
                                 exact
                                 path={activityNamespace + '/:id/:destid'}
                                 component={ActivityDestinationDetail}
+                            />
+                            <Route
+                                exact
+                                path={mapListNamespace}
+                                component={MapList}
                             />
                             <Redirect from="/" to={destinationNamespace} />
                         </div>

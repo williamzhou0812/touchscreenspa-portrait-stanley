@@ -58,7 +58,9 @@ class SubsectionList extends React.Component {
             namespace,
             renderText,
             useBackgroundImage,
-            imgStyle
+            imgStyle,
+            itemIsLink,
+            itemOnClick
         } = this.props;
         const itemHeight = `${100 / numberOfEntries}%`;
         return (
@@ -77,34 +79,10 @@ class SubsectionList extends React.Component {
                         sideButtons.map((item, index) => {
                             if (item.isLink) {
                                 return (
-                                    <Link
-                                        style={{
-                                            flexBasis: '14%'
-                                        }}
-                                        key={index}
-                                        to={item.link}
-                                    >
-                                        <div
-                                            style={{
-                                                borderStyle:
-                                                    'none none solid none',
-                                                borderColor: LightOrange,
-                                                paddingBottom: '35px'
-                                            }}
-                                        >
-                                            <img
-                                                src={item.icon}
-                                                style={{
-                                                    width: '33%',
-                                                    paddingTop: '33px'
-                                                }}
-                                            />
-                                            <div
-                                                style={{
-                                                    color: 'white',
-                                                    fontSize: '16px'
-                                                }}
-                                            >
+                                    <Link style={{flexBasis: '14%'}} key={index} to={item.link}>
+                                        <div style={{borderStyle: 'none none solid none', borderColor: LightOrange, paddingBottom: '35px'}}>
+                                            <img src={item.icon} style={{ width: '33%', paddingTop: '33px' }} />
+                                            <div style={{color: 'white', fontSize: '16px' }}>
                                                 {item.title}
                                             </div>
                                         </div>
@@ -112,34 +90,10 @@ class SubsectionList extends React.Component {
                                 );
                             } else if (item.isClick) {
                                 return (
-                                    <div
-                                        style={{
-                                            flexBasis: '14%'
-                                        }}
-                                        key={index}
-                                        onClick={item.onClick}
-                                    >
-                                        <div
-                                            style={{
-                                                borderStyle:
-                                                    'none none solid none',
-                                                borderColor: LightOrange,
-                                                paddingBottom: '28px'
-                                            }}
-                                        >
-                                            <img
-                                                src={item.icon}
-                                                style={{
-                                                    width: '33%',
-                                                    paddingTop: '33px'
-                                                }}
-                                            />
-                                            <div
-                                                style={{
-                                                    color: 'white',
-                                                    fontSize: '16px'
-                                                }}
-                                            >
+                                    <div style={{ flexBasis: '14%' }} key={index} onClick={item.onClick} >
+                                        <div style={{borderStyle: 'none none solid none', borderColor: LightOrange, paddingBottom: '28px'}}>
+                                            <img src={item.icon} style={{width: '33%', paddingTop: '33px'}} />
+                                            <div style={{color: 'white', fontSize: '16px'}}>
                                                 {item.title}
                                             </div>
                                         </div>
@@ -147,33 +101,10 @@ class SubsectionList extends React.Component {
                                 );
                             } else {
                                 return (
-                                    <div
-                                        style={{
-                                            flexBasis: '14%'
-                                        }}
-                                        key={index}
-                                    >
-                                        <div
-                                            style={{
-                                                borderStyle:
-                                                    'none none solid none',
-                                                borderColor: LightOrange,
-                                                paddingBottom: '28px'
-                                            }}
-                                        >
-                                            <img
-                                                src={item.icon}
-                                                style={{
-                                                    width: '33%',
-                                                    paddingTop: '33px'
-                                                }}
-                                            />
-                                            <div
-                                                style={{
-                                                    color: 'white',
-                                                    fontSize: '16px'
-                                                }}
-                                            >
+                                    <div style={{flexBasis: '14%'}} key={index}>
+                                        <div style={{borderStyle: 'none none solid none', borderColor: LightOrange, paddingBottom: '28px'}}>
+                                            <img src={item.icon} style={{width: '33%', paddingTop: '33px'}} />
+                                            <div style={{color: 'white', fontSize: '16px'}}>
                                                 {item.title}
                                             </div>
                                         </div>
@@ -181,139 +112,75 @@ class SubsectionList extends React.Component {
                                 );
                             }
                         })}
-                    <div
-                        style={{
-                            flex: 1,
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            fontSize: '28pt',
-                            transform: 'rotate(-90deg)',
-                            color: 'white',
-                            fontSize: '40pt',
-                            fontWeight: 500,
-                            letterSpacing: '10px'
-                        }}
-                    >
+                    <div style={{flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '28pt', transform: 'rotate(-90deg)', color: 'white', fontSize: '40pt', fontWeight: 500, letterSpacing: '10px'}}>
                         {sideTitle}
                     </div>
                 </div>
-
                 <div style={{ width: '86%' }}>
-                    <div
-                        style={{
-                            height: '8%',
-                            backgroundColor: LightOrange,
-                            color: 'white',
-                            letterSpacing: 5,
-                            ...this.styles.horizontalVerticalCenter,
-                            fontSize: '20pt',
-                            letterSpacing: 5
-                        }}
-                    >
+                    <div style={{height: '8%', backgroundColor: LightOrange, color: 'white', letterSpacing: 5, ...this.styles.horizontalVerticalCenter, fontSize: '20pt', letterSpacing: 5}}>
                         {mainTitle}
                     </div>
-                    <div
-                        style={{
-                            height: '6%',
-                            backgroundColor: MediumOrange,
-                            ...this.styles.horizontalVerticalCenter
-                        }}
-                        onClick={this.goUp}
-                    >
+                    <div style={{height: '6%', backgroundColor: MediumOrange, ...this.styles.horizontalVerticalCenter}} onClick={this.goUp}>
                         <img src={UpButton} style={{ width: '5%' }} />
                     </div>
                     <div style={{ height: '80%', overflow: 'hidden' }}>
-                        <div
-                            style={{
-                                height: '100%',
-                                overflowY: 'auto',
-                                marginRight: '-30px'
-                            }}
-                        >
-                            <div
-                                style={{
-                                    height: '100%',
-                                    overflow: 'auto',
-                                    paddingRight: '30px'
-                                }}
-                            >
+                        <div style={{height: '100%', overflowY: 'auto', marginRight: '-30px'}}>
+                            <div style={{height: '100%', overflow: 'auto', paddingRight: '30px'}}>
                                 {data.map((item, index) => {
-                                    const imageSrc = !!isImageArray
-                                        ? getRandomImage(item[imageKey])
-                                        : item[imageKey];
-                                    const isLastItem =
-                                        index === data.length - 1;
-                                    //TODO: Fix borders
-                                    return (
-                                        <Link
-                                            style={{
-                                                height: itemHeight,
-                                                color: 'white',
-                                                display: 'flex'
-                                            }}
-                                            to={`${namespace}/${item.id}`}
-                                            key={`${item.id}-${index}`}
-                                        >
-                                            {useBackgroundImage ? (
-                                                <div
-                                                    style={{
-                                                        width: '33%',
-                                                        backgroundImage: `url(${imageSrc})`,
-                                                        backgroundSize: 'cover',
-                                                        backgroundPosition:
-                                                            'center',
-                                                        borderBottom: isLastItem
-                                                            ? 'none'
-                                                            : `1px solid ${LightBlue}`
-                                                    }}
-                                                />
-                                            ) : (
-                                                <div
-                                                    style={{
-                                                        width: '33%',
-                                                        borderBottom: isLastItem
-                                                            ? 'none'
-                                                            : `1px solid ${LightBlue}`,
-                                                        backgroundColor: HeavyBlue,
-                                                        ...this.styles
-                                                            .horizontalVerticalCenter
-                                                    }}
-                                                >
-                                                    <img
-                                                        src={imageSrc}
-                                                        style={imgStyle}
-                                                    />
+                                    const imageSrc = !!isImageArray ? getRandomImage(item[imageKey]) : item[imageKey];
+                                    const isLastItem = index === data.length - 1;
+                                    if (itemIsLink) {
+                                        return (
+                                            <Link style={{height: itemHeight, color: 'white', display: 'flex'}} to={`${namespace}/${item.id}`} key={`${item.id}-${index}`}>
+                                                {useBackgroundImage ? (
+                                                    <div style={{width: '33%', backgroundImage: `url(${imageSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`}} />
+                                                ) : (
+                                                    <div style={{width: '33%', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`, backgroundColor: HeavyBlue, ...this.styles.horizontalVerticalCenter}}>
+                                                        <img src={imageSrc} style={imgStyle}/>
+                                                    </div>
+                                                )}
+                                                <div style={{ width: '67%', backgroundColor: HeavyBlue, display: 'flex', alignItems: 'center', paddingLeft: 20, borderBottom: isLastItem ? 'none' : '1px solid rgb(183,223,228)'}}>
+                                                    {renderText(item)}
                                                 </div>
-                                            )}
-                                            <div
-                                                style={{
-                                                    width: '67%',
-                                                    backgroundColor: HeavyBlue,
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    paddingLeft: 20,
-                                                    borderBottom: isLastItem
-                                                        ? 'none'
-                                                        : '1px solid rgb(183,223,228)'
-                                                }}
-                                            >
-                                                {renderText(item)}
+                                            </Link>
+                                        );
+                                    } else if (itemOnClick) {
+                                        return (
+                                            <div style={{height: itemHeight, color: 'white', display: 'flex'}} onClick={itemOnClick} key={`${item.id}-${index}`}>
+                                                {useBackgroundImage ? (
+                                                    <div style={{width: '33%', backgroundImage: `url(${imageSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`}} />
+                                                ) : (
+                                                    <div style={{width: '33%', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`, backgroundColor: HeavyBlue, ...this.styles.horizontalVerticalCenter}}>
+                                                        <img src={imageSrc} style={imgStyle} />
+                                                    </div>
+                                                )}
+                                                <div
+                                                    style={{width: '67%', backgroundColor: HeavyBlue, display: 'flex', alignItems: 'center', paddingLeft: 20, borderBottom: isLastItem ? 'none' : '1px solid rgb(183,223,228)'}}>
+                                                    {renderText(item)}
+                                                </div>
                                             </div>
-                                        </Link>
-                                    );
+                                        );
+                                    } else {
+                                        return (
+                                            <div style={{height: itemHeight, color: 'white', display: 'flex'}} key={`${item.id}-${index}`}>
+                                                {useBackgroundImage ? (
+                                                    <div style={{width: '33%', backgroundImage: `url(${imageSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`}} />
+                                                ) : (
+                                                    <div style={{width: '33%', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`, backgroundColor: HeavyBlue, ...this.styles.horizontalVerticalCenter}}>
+                                                        <img src={imageSrc} style={imgStyle} />
+                                                    </div>
+                                                )}
+                                                <div style={{width: '67%', backgroundColor: HeavyBlue, display: 'flex', alignItems: 'center', paddingLeft: 20, borderBottom: isLastItem ? 'none' : '1px solid rgb(183,223,228)'}}>
+                                                    {renderText(item)}
+                                                </div>
+                                            </div>
+                                        );
+                                    }
                                 })}
                             </div>
                         </div>
                     </div>
-                    <div
-                        style={{
-                            height: '6%',
-                            backgroundColor: MediumOrange,
-                            ...this.styles.horizontalVerticalCenter
-                        }}
-                        onClick={this.goDown}
-                    >
+                    <div style={{height: '6%', backgroundColor: MediumOrange, ...this.styles.horizontalVerticalCenter}} onClick={this.goDown}>
                         <img src={DownButton} style={{ width: '5%' }} />
                     </div>
                 </div>
@@ -325,7 +192,9 @@ SubsectionList.defaultProps = {
     numberOfEntries: SUBSECTION_LIST_ENTRIES,
     sideButtons: [],
     renderText: item => item.title.toUpperCase(),
-    useBackgroundImage: true
+    useBackgroundImage: true,
+    itemIsLink: true,
+    itemOnClick: null,
 };
 
 SubsectionList.propTypes = {
@@ -337,6 +206,8 @@ SubsectionList.propTypes = {
     sideTitle: PropTypes.string.isRequired,
     mainTitle: PropTypes.string.isRequired,
     namespace: PropTypes.string.isRequired,
+    itemIsLink: PropTypes.bool,
+    itemOnClick: PropTypes.function,
     renderText: PropTypes.func,
     useBackgroundImage: PropTypes.bool,
     imgStyle: PropTypes.object
