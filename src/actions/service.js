@@ -5,7 +5,7 @@ import {
     TRANSPORT_TYPE_LIST,
 } from "./types";
 import axios from 'axios';
-import { createURL } from "../Constants";
+import { createURL, getRandomImage } from "../Constants";
 
 //START OF ESSENTIAL SERVICES ACTIONS
 export const fetchEssentialTypeList = () => async dispatch => {
@@ -36,10 +36,23 @@ export const fetchMiningTypeList = () => async dispatch => {
 //START OF RETAIL & SERVICES ACTIONS
 export const fetchRetailTypeList = () => async dispatch => {
     const res = await axios.get(createURL('servicetyperetail/'));
+    let serviceTypes = res.data.slice();
+    serviceTypes.forEach(serviceType => {
+        if (!serviceType.icon) {
+            const images = serviceType.retailServiceType.map(retail => {
+                if (retail.logo) {
+                    return retail.logo;
+                } else {
+                    return null;
+                }
+            });
+            serviceType.icon = getRandomImage(images, false);
+        }
+    });
     dispatch({
         type: RETAIL_TYPE_LIST,
         payload: {
-            serviceTypes: res.data,
+            serviceTypes,
             status: res.status
         }
     });
