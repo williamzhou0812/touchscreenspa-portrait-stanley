@@ -76,7 +76,6 @@ class DestinationDetail extends React.Component {
     render() {
         const {
             destination,
-            exploreData,
             status
         } = this.props.destinationDetail;
         const { explore } = this.state;
@@ -103,9 +102,7 @@ class DestinationDetail extends React.Component {
                             </div>
                         </div>
                     </div>
-                    {!!destination &&
-                        exploreData &&
-                        status === 200 && (
+                    {!!destination && status === 200 && (
                             <div style={{ width: '86%', height: '100%' }}>
                                 <div
                                     style={{
@@ -120,7 +117,7 @@ class DestinationDetail extends React.Component {
                                     {destination.title}
                                 </div>
                                 <div style={{ height: '92%' }}>
-                                    <ExploreList data={exploreData} />
+                                    <ExploreList data={destination.exploreData} />
                                 </div>
                             </div>
                         )}

@@ -7,6 +7,7 @@ import {
     ExtraHeavyBlueGreen,
     HeavyBlue
 } from '../Constants';
+import { Link } from "react-router-dom";
 
 class ExploreList extends React.Component {
     constructor(props) {
@@ -77,7 +78,7 @@ class ExploreList extends React.Component {
                         >
                             {data.map((item, index) => {
                                 return (
-                                    <div
+                                    <Link to={item.linkTo}
                                         key={`${item.id}-${index}`}
                                         style={{
                                             height: itemHeight,
@@ -125,7 +126,7 @@ class ExploreList extends React.Component {
                                         >
                                             {item.title.toUpperCase()}
                                         </div>
-                                    </div>
+                                    </Link>
                                 );
                             })}
                         </div>
