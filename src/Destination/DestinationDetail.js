@@ -142,15 +142,32 @@ class DestinationDetail extends React.Component {
                         }}
                     >
                         <Link
-                            style={{ height: '14%' }}
+                            style={{ height: '18%' }}
                             to={destinationNamespace}
                         >
-                            <img
-                                src={AllAreas}
-                                style={{ width: '33%', paddingTop: '20px' }}
-                            />
-                            <div style={{ color: 'white' }}>ALL AREAS</div>
+                            <div
+                                style={{
+                                    borderStyle: 'none none solid none',
+                                    borderColor: LightOrange,
+                                    paddingBottom: '30px'
+                                }}
+                            >
+                                <img
+                                    src={AllAreas}
+                                    style={{ width: '33%', paddingTop: '30px' }}
+                                />
+                                <div
+                                    style={{
+                                        color: 'white',
+                                        fontSize: '20px',
+                                        letterSpacing: '2px'
+                                    }}
+                                >
+                                    ALL AREAS
+                                </div>
+                            </div>
                         </Link>
+
                         <div
                             style={{
                                 fontSize: '28pt',
