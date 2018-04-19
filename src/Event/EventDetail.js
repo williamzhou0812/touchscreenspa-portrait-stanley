@@ -114,6 +114,30 @@ class EventDetail extends React.Component {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
+        },
+        nextOrPreviousButtonText: {
+            fontSize: '20px',
+            letterSpacing: '3px',
+            paddingTop: '10px'
+        },
+        mapOrFindButtonStyle: {
+            backgroundColor: LightBlueButtonBackground,
+            width: '100%',
+            height: '100%',
+            marginTop: '5%',
+            marginBottom: '5%',
+            borderRadius: '5px',
+            fontSize: '20px',
+            fontWeight: 500,
+            boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.5)',
+            color: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+        },
+        mapOrFindButtonText: {
+            paddingTop: '10px',
+            letterSpacing: '2px'
         }
     };
 
@@ -175,7 +199,14 @@ class EventDetail extends React.Component {
                                         }}
                                         onClick={this.prevEvent}
                                     >
-                                        PREVIOUS EVENT
+                                        <span
+                                            style={
+                                                this.styles
+                                                    .nextOrPreviousButtonText
+                                            }
+                                        >
+                                            PREVIOUS EVENT
+                                        </span>
                                     </div>
                                     <div
                                         style={{
@@ -189,7 +220,15 @@ class EventDetail extends React.Component {
                                                 .horizontalVerticalCenter
                                         }}
                                     >
-                                        {event.title}
+                                        <span
+                                            style={{
+                                                paddingTop: '10px',
+                                                fontSize: '40px',
+                                                letterSpacing: '3px'
+                                            }}
+                                        >
+                                            {event.title}
+                                        </span>
                                     </div>
                                     <div
                                         style={{
@@ -200,7 +239,14 @@ class EventDetail extends React.Component {
                                         }}
                                         onClick={this.nextEvent}
                                     >
-                                        NEXT EVENT
+                                        <span
+                                            style={
+                                                this.styles
+                                                    .nextOrPreviousButtonText
+                                            }
+                                        >
+                                            NEXT EVENT
+                                        </span>
                                     </div>
                                 </div>
                                 <div
@@ -208,7 +254,7 @@ class EventDetail extends React.Component {
                                         height: '87%',
                                         backgroundColor: ExtraHeavyBlueGreen,
                                         display: 'flex',
-                                        paddingLeft: 20
+                                        paddingLeft: 35
                                     }}
                                 >
                                     <div
@@ -224,14 +270,33 @@ class EventDetail extends React.Component {
                                                 height: '21%',
                                                 display: 'flex',
                                                 alignItems: 'center',
-                                                fontWeight: 'bold',
-                                                fontSize: '20pt'
+                                                fontWeight: '500',
+                                                fontSize: '20pt',
+                                                textAlign: 'left'
                                             }}
                                         >
-                                            {event.eventMonth}
+                                            <span
+                                                style={{
+                                                    fontSize: '30px',
+                                                    letterSpacing: '2px'
+                                                }}
+                                            >
+                                                {event.eventMonth}
+                                            </span>
                                         </div>
                                         <div style={{ height: '79%' }}>
-                                            {event.description}
+                                            <p
+                                                style={{
+                                                    textAlign: 'left',
+                                                    letterSpacing: '2px',
+                                                    fontSize: '20px',
+                                                    lineHeight: '130%',
+                                                    marginTop: 0,
+                                                    marginBottom: 0
+                                                }}
+                                            >
+                                                {event.description}
+                                            </p>
                                         </div>
                                     </div>
                                     <div
@@ -242,7 +307,15 @@ class EventDetail extends React.Component {
                                         }}
                                     >
                                         <div style={{ height: '21%' }} />
-                                        <div style={{ height: '42%' }}>
+                                        <div
+                                            style={{
+                                                height: '42%',
+                                                lineHeight: '150%',
+                                                textAlign: 'left',
+                                                letterSpacing: '1px',
+                                                fontSize: '20px'
+                                            }}
+                                        >
                                             {event.phone && (
                                                 <div>
                                                     CALL TODAY: {event.phone}
@@ -265,17 +338,31 @@ class EventDetail extends React.Component {
                                         </div>
                                         <div
                                             style={{
-                                                height: '15%',
+                                                height: '13%',
                                                 ...this.styles
                                                     .horizontalVerticalCenter
                                             }}
                                         >
-                                            SHOW ON MAP
+                                            <div
+                                                style={
+                                                    this.styles
+                                                        .mapOrFindButtonStyle
+                                                }
+                                            >
+                                                <span
+                                                    style={
+                                                        this.styles
+                                                            .mapOrFindButtonText
+                                                    }
+                                                >
+                                                    SHOW ON MAP
+                                                </span>
+                                            </div>
                                         </div>
                                         <div style={{ height: '5%' }} />
                                         <Link
                                             style={{
-                                                height: '15%',
+                                                height: '13%',
                                                 ...this.styles
                                                     .horizontalVerticalCenter
                                             }}
@@ -285,7 +372,21 @@ class EventDetail extends React.Component {
                                                 event.destination
                                             }
                                         >
-                                            FIND A CLOSE HOTEL
+                                            <div
+                                                style={
+                                                    this.styles
+                                                        .mapOrFindButtonStyle
+                                                }
+                                            >
+                                                <span
+                                                    style={
+                                                        this.styles
+                                                            .mapOrFindButtonText
+                                                    }
+                                                >
+                                                    FIND A CLOSE HOTEL
+                                                </span>
+                                            </div>
                                         </Link>
                                     </div>
                                 </div>
