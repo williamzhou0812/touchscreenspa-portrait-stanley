@@ -30,26 +30,48 @@ class ServiceTypeList extends React.Component {
     render() {
         const { title, namespace } = getServiceTypeDetailBasedLocation(this.props.location.pathname);
         const { serviceTypes, status } = this.state;
-        return (
-            <div style={{height: "100%"}}>
-                {status === 200 && 
-                    <SubsectionList
-                        numberOfEntries={4}
-                        data={serviceTypes}
-                        imageKey="icon"
-                        isImageArray={false}
-                        sideButtons={[
-                            {title: "SERVICE TYPES", icon: ServiceTypesIcon, isLink: true, link: serviceNamespace }
-                        ]}
-                        sideTitle="SERVICES"
-                        mainTitle={title}
-                        namespace={namespace}
-                        useBackgroundImage={false}
-                        imgStyle={{width: "50%"}}
-                    />
-                }
-            </div>
-        );
+        if (this.props.location.pathname.includes(retailNamespace)) {
+            //Custom Rule for Retail Service Type List since the image for the list is using the retail logo
+            return (
+                <div style={{height: "100%"}}>
+                    {status === 200 && 
+                        <SubsectionList
+                            numberOfEntries={4}
+                            data={serviceTypes}
+                            imageKey="imageServiceType"
+                            isImageArray={true}
+                            sideButtons={[
+                                {title: "SERVICE TYPES", icon: ServiceTypesIcon, isLink: true, link: serviceNamespace }
+                            ]}
+                            sideTitle="SERVICES"
+                            mainTitle={title}
+                            namespace={namespace}
+                        />
+                    }
+                </div>
+            );
+        } else {
+            return (
+                <div style={{height: "100%"}}>
+                    {status === 200 && 
+                        <SubsectionList
+                            numberOfEntries={4}
+                            data={serviceTypes}
+                            imageKey="icon"
+                            isImageArray={false}
+                            sideButtons={[
+                                {title: "SERVICE TYPES", icon: ServiceTypesIcon, isLink: true, link: serviceNamespace }
+                            ]}
+                            sideTitle="SERVICES"
+                            mainTitle={title}
+                            namespace={namespace}
+                            useBackgroundImage={false}
+                            imgStyle={{width: "50%"}}
+                        />
+                    }
+                </div>
+            );
+        }
     }
 }
 
