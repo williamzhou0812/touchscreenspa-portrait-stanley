@@ -42,6 +42,7 @@ class DestinationList extends React.Component {
                             </div>
                         );
                     }}
+                    randomise={false}
                 />
             </div>
         );

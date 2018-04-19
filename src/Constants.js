@@ -285,3 +285,24 @@ export function randomiseButKeepOrder(items, orderKey = 'order') {
     const constantItems = separated[1];
     return combineItems(randomised, constantItems, orderKey);
 }
+
+export function addNullItemToData(items, minNumber) {
+    if (!items) {
+        return [];
+    }
+    if (items.length === 0) {
+        return [];
+    }
+    if (items.length < minNumber) {
+        // console.log(minNumber);
+        let output = items.slice();
+        for (let i = 0; i < minNumber - items.length; i++) {
+            // console.log(`Index: ${i}, output before appending: `, output);
+            output.push(null);
+        }
+        // console.log('final result: ', output);
+        return output;
+    } else {
+        return [...items];
+    }
+}

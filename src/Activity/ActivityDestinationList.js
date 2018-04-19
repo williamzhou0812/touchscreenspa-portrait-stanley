@@ -50,6 +50,7 @@ class ActivityDestinationList extends React.Component {
                         sideTitle="ACTIVITIES"
                         mainTitle={activity.title.toUpperCase()}
                         namespace={`${activityNamespace}/${activity.id}`}
+                        randomise={false}
                     />
                 )}
             </div>

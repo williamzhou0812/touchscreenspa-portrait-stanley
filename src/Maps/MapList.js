@@ -24,6 +24,7 @@ class MapList extends React.Component {
                     );
                 }}
                 itemIsLink={false}
+                randomise={false}
             />
         );
     }

@@ -12,15 +12,18 @@ import {
     HeavyOrange,
     LightOrange,
     getRandomImage,
-    LightBlue
+    LightBlue,
+    randomiseButKeepOrder,
+    addNullItemToData
 } from '../Constants';
 
 class SubsectionList extends React.Component {
     constructor(props) {
         super(props);
-        const { data } = this.props;
+        const { data, randomise } = this.props;
+
         this.state = {
-            data
+            data: randomise ? randomiseButKeepOrder(data) : data
         };
         this.goUp = this.goUp.bind(this);
         this.goDown = this.goDown.bind(this);
@@ -63,6 +66,10 @@ class SubsectionList extends React.Component {
             itemOnClick
         } = this.props;
         const itemHeight = `${100 / numberOfEntries}%`;
+        let toRender = data.slice();
+        if (data.length < numberOfEntries) {
+            toRender = addNullItemToData(data, numberOfEntries);
+        } 
         return (
             <div style={{ width: '100%', height: '100%', display: 'flex' }}>
                 <div
@@ -126,10 +133,13 @@ class SubsectionList extends React.Component {
                     <div style={{ height: '80%', overflow: 'hidden' }}>
                         <div style={{height: '100%', overflowY: 'auto', marginRight: '-30px'}}>
                             <div style={{height: '100%', overflow: 'auto', paddingRight: '30px'}}>
-                                {data.map((item, index) => {
-                                    const imageSrc = !!isImageArray ? getRandomImage(item[imageKey]) : item[imageKey];
-                                    const isLastItem = index === data.length - 1;
-                                    if (itemIsLink) {
+                                {toRender.map((item, index) => {
+                                    let imageSrc = null;
+                                    if (item) {
+                                        imageSrc = isImageArray ? getRandomImage(item[imageKey]) : item[imageKey];
+                                    }
+                                    const isLastItem = index === toRender.length - 1;
+                                    if (itemIsLink && item) {
                                         return (
                                             <Link style={{height: itemHeight, color: 'white', display: 'flex'}} to={`${namespace}/${item.id}`} key={`${item.id}-${index}`}>
                                                 {useBackgroundImage ? (
@@ -144,7 +154,7 @@ class SubsectionList extends React.Component {
                                                 </div>
                                             </Link>
                                         );
-                                    } else if (itemOnClick) {
+                                    } else if (itemOnClick && item) {
                                         return (
                                             <div style={{height: itemHeight, color: 'white', display: 'flex'}} onClick={itemOnClick} key={`${item.id}-${index}`}>
                                                 {useBackgroundImage ? (
@@ -160,7 +170,7 @@ class SubsectionList extends React.Component {
                                                 </div>
                                             </div>
                                         );
-                                    } else {
+                                    } else if (item) {
                                         return (
                                             <div style={{height: itemHeight, color: 'white', display: 'flex'}} key={`${item.id}-${index}`}>
                                                 {useBackgroundImage ? (
@@ -172,6 +182,20 @@ class SubsectionList extends React.Component {
                                                 )}
                                                 <div style={{width: '67%', backgroundColor: HeavyBlue, display: 'flex', alignItems: 'center', paddingLeft: 20, borderBottom: isLastItem ? 'none' : '1px solid rgb(183,223,228)'}}>
                                                     {renderText(item)}
+                                                </div>
+                                            </div>
+                                        );
+                                    } else {
+                                        //Advertise with us
+                                        return (
+                                            <div style={{height: itemHeight, display: 'flex'}} key={`null-${index}`}>
+                                                <div style={{width: '33%', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`, backgroundColor: "white", ...this.styles.horizontalVerticalCenter, color: "rgb(8,152,163)"}}>
+                                                    YOUR<br/>LOGO<br/>HERE
+                                                </div>
+                                                <div style={{width: '67%', backgroundColor: HeavyBlue, display: 'flex', alignItems: 'center', paddingLeft: 20, borderBottom: isLastItem ? 'none' : '1px solid rgb(183,223,228)', color: "white"}}>
+                                                    Advertise your business here!<br />
+                                                    For more information, contact:<br />
+                                                    touchscreen@jbg.com.pg
                                                 </div>
                                             </div>
                                         );
@@ -195,6 +219,8 @@ SubsectionList.defaultProps = {
     useBackgroundImage: true,
     itemIsLink: true,
     itemOnClick: null,
+    advertiseWithUs: true,
+    randomise: true
 };
 
 SubsectionList.propTypes = {
@@ -210,7 +236,9 @@ SubsectionList.propTypes = {
     itemOnClick: PropTypes.function,
     renderText: PropTypes.func,
     useBackgroundImage: PropTypes.bool,
-    imgStyle: PropTypes.object
+    imgStyle: PropTypes.object,
+    advertiseWithUs: PropTypes.bool,
+    randomise: PropTypes.bool
 };
 
 export default SubsectionList;
