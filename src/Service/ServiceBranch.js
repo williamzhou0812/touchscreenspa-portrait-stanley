@@ -11,7 +11,7 @@ class ServiceBranch extends React.Component {
         let branchIndex = 0;
         if (id) {
             branchIndex = branches.findIndex(branch => {
-                branch.id === id;
+                return branch.id === id;
             });
         }
         this.state = {

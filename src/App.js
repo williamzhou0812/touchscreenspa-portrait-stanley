@@ -39,6 +39,7 @@ import HotelDetail from './Hotel/HotelDetail';
 import ServiceInitialList from './Service/ServiceInitialList';
 import ServiceTypeList from './Service/ServiceTypeList';
 import ServiceList from './Service/ServiceList';
+import ServiceDetail from './Service/ServiceDetail';
 import ActivityList from './Activity/ActivityList';
 import ActivityDestinationList from './Activity/ActivityDestinationList';
 import ActivityDestinationDetail from './Activity/ActivityDestinationDetail';
@@ -197,6 +198,11 @@ class App extends Component {
                             />
                             <Route
                                 exact
+                                path={essentialNamespace + "/:serid/:serid2"}
+                                component={ServiceDetail}
+                            />
+                            <Route
+                                exact
                                 path={miningNamespace}
                                 component={ServiceTypeList}
                             />
@@ -204,6 +210,11 @@ class App extends Component {
                                 exact
                                 path={miningNamespace + "/:serid"}
                                 component={ServiceList}
+                            />
+                            <Route
+                                exact
+                                path={miningNamespace + "/:serid/:serid2"}
+                                component={ServiceDetail}
                             />
                             <Route
                                 exact
@@ -217,6 +228,11 @@ class App extends Component {
                             />
                             <Route
                                 exact
+                                path={retailNamespace + "/:serid/:serid2"}
+                                component={ServiceDetail}
+                            />
+                            <Route
+                                exact
                                 path={transportNamespace}
                                 component={ServiceTypeList}
                             />
@@ -224,6 +240,11 @@ class App extends Component {
                                 exact
                                 path={transportNamespace + "/:serid"}
                                 component={ServiceList}
+                            />
+                            <Route
+                                exact
+                                path={transportNamespace + "/:serid/:serid2"}
+                                component={ServiceDetail}
                             />
                             <Route
                                 exact
