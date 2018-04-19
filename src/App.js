@@ -38,6 +38,7 @@ import HotelList from './Hotel/HotelList';
 import HotelDetail from './Hotel/HotelDetail';
 import ServiceInitialList from './Service/ServiceInitialList';
 import ServiceTypeList from './Service/ServiceTypeList';
+import ServiceList from './Service/ServiceList';
 import ActivityList from './Activity/ActivityList';
 import ActivityDestinationList from './Activity/ActivityDestinationList';
 import ActivityDestinationDetail from './Activity/ActivityDestinationDetail';
@@ -191,8 +192,18 @@ class App extends Component {
                             />
                             <Route
                                 exact
+                                path={essentialNamespace + "/:serid"}
+                                component={ServiceList}
+                            />
+                            <Route
+                                exact
                                 path={miningNamespace}
                                 component={ServiceTypeList}
+                            />
+                            <Route
+                                exact
+                                path={miningNamespace + "/:serid"}
+                                component={ServiceList}
                             />
                             <Route
                                 exact
@@ -201,8 +212,18 @@ class App extends Component {
                             />
                             <Route
                                 exact
+                                path={retailNamespace + "/:serid"}
+                                component={ServiceList}
+                            />
+                            <Route
+                                exact
                                 path={transportNamespace}
                                 component={ServiceTypeList}
+                            />
+                            <Route
+                                exact
+                                path={transportNamespace + "/:serid"}
+                                component={ServiceList}
                             />
                             <Route
                                 exact
