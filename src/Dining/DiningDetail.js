@@ -73,7 +73,20 @@ class DiningDetail extends React.Component {
             );
         }
     }
-
+    styles = {
+        horizontalVerticalCenter: {
+            display: 'flex',
+            justifyContent: 'center'
+        },
+        contactDetailText: {
+            textAlign: 'left',
+            margin: 0,
+            padding: 0,
+            lineHeight: '130%',
+            letterSpacing: '2px',
+            fontSize: '20px'
+        }
+    };
     render() {
         const { restaurant, status } = this.props;
         return (
@@ -126,6 +139,7 @@ class DiningDetail extends React.Component {
                                 style={{
                                     flexBasis: '50%',
                                     backgroundImage: `url(${restaurant.logo})`,
+                                    backgroundRepeat: 'no-repeat',
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center'
                                 }}
@@ -142,20 +156,39 @@ class DiningDetail extends React.Component {
                                         display: 'flex',
                                         flexDirection: 'column',
                                         justifyContent: 'flex-end',
-                                        alignItems: 'center',
-                                        paddingBottom: 20
+                                        paddingBottom: 20,
+                                        paddingTop: '10px',
+                                        paddingLeft: '20px',
+                                        paddingRight: '20px',
+                                        ...this.styles.horizontalVerticalCenter
                                     }}
                                 >
                                     {restaurant.phone && (
-                                        <div>
-                                            CALL TODAY: {restaurant.phone}
-                                        </div>
+                                        <p
+                                            style={
+                                                this.styles.contactDetailText
+                                            }
+                                        >
+                                            CALL TODAY1: {restaurant.phone}
+                                        </p>
                                     )}
                                     {restaurant.website && (
-                                        <div>{restaurant.website}</div>
+                                        <p
+                                            style={
+                                                this.styles.contactDetailText
+                                            }
+                                        >
+                                            {restaurant.website}
+                                        </p>
                                     )}
                                     {restaurant.address && (
-                                        <div>{restaurant.address}</div>
+                                        <p
+                                            style={
+                                                this.styles.contactDetailText
+                                            }
+                                        >
+                                            {restaurant.address}
+                                        </p>
                                     )}
                                 </div>
                                 {restaurant.mapRestaurant.length > 0 && (
@@ -173,7 +206,13 @@ class DiningDetail extends React.Component {
                                                 height: '50%',
                                                 display: 'flex',
                                                 justifyContent: 'center',
-                                                alignItems: 'center'
+                                                alignItems: 'center',
+                                                boxShadow:
+                                                    '0px 0px 10px 1px rgba(0,0,0,0.5)',
+                                                borderRadius: '5px',
+                                                fontSize: '20px',
+                                                fontWeight: 500,
+                                                paddingTop: '5px'
                                             }}
                                         >
                                             {restaurant.mapRestaurant[0].title.toUpperCase()}{' '}
@@ -194,8 +233,12 @@ class DiningDetail extends React.Component {
                                 style={{
                                     flexBasis: '50%',
                                     paddingTop: 20,
-                                    paddingLeft: 20,
-                                    paddingRight: 20
+                                    paddingLeft: 35,
+                                    paddingRight: 20,
+                                    fontSize: '20px',
+                                    lineHeight: '130%',
+                                    letterSpacing: '3px',
+                                    textAlign: 'left'
                                 }}
                             >
                                 {restaurant.description}
