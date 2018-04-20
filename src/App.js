@@ -86,6 +86,7 @@ class App extends Component {
         this.props.fetchSpecificAdsTransportList();
         this.props.fetchSpecificAccommodationList();
         this.props.fetchSpecificAdsEventList();
+        this.props.fetchFeaturedAdvertisementList();
 
         //Set idle timer
         this.idleRef = new idleJS({
@@ -116,7 +117,8 @@ class App extends Component {
             this.props.specificAdsRetailList.status !== 200 ||
             this.props.specificAdsTransportList.status !== 200 ||
             this.props.specificAdsAccommodationList.status !== 200 ||
-            this.props.specificAdsEventList.status !== 200
+            this.props.specificAdsEventList.status !== 200 ||
+            this.props.featuredAdvertisementList.status !== 200
         ) {
             return (
                 <div className="loadingContainer">
@@ -187,7 +189,8 @@ class App extends Component {
                             <div style={{width: "100%", height: "74vh"}}>
                                 {(
                                     this.props.adVideoList.status === 200 &&
-                                    this.props.advertisementList.status === 200
+                                    this.props.advertisementList.status === 200 &&
+                                    this.props.featuredAdvertisementList.status === 200
                                 ) && (
                                     <RestComponent />
                                 )}
