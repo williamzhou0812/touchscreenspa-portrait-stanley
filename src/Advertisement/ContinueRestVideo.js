@@ -9,6 +9,12 @@ class ContinueRestVideo extends React.Component {
         const { handoverVideo } = this.props;
         this.videoElement.src = handoverVideo;
     }
+    componentDidUpdate(prevProps) {
+        const { handoverVideo } = this.props;
+        if (prevProps.handoverVideo !== handoverVideo) {
+            this.videoElement.src = handoverVideo;
+        }
+    }
     handleCanPlay = () => {
         const { handoverVideoTimestamp } = this.props;
         this.videoElement.currentTime = handoverVideoTimestamp;
