@@ -45,8 +45,26 @@ import ActivityDestinationList from './Activity/ActivityDestinationList';
 import ActivityDestinationDetail from './Activity/ActivityDestinationDetail';
 import MapList from "./Maps/MapList";
 import Advertisement from "./Advertisement/Advertisement";
+import idleJS from 'idle-js';
+import RestComponent from './RestMode/RestComponent';
 
 class App extends Component {
+    idleRef = null;
+    constructor(props) {
+        super(props);
+        this.state = {
+            isIdle: false
+        }
+        this.setSPAIdle = this.setSPAIdle.bind(this);
+        this.setSPAActive = this.setSPAActive.bind(this);
+    }
+    setSPAIdle() {
+        this.setState({ isIdle: true });
+    }
+    setSPAActive() {
+        this.setState({ isIdle: false });
+    }
+    
     componentDidMount() {
         this.props.fetchDestinationList();
         this.props.fetchEventList();
@@ -68,8 +86,16 @@ class App extends Component {
         this.props.fetchSpecificAdsTransportList();
         this.props.fetchSpecificAccommodationList();
         this.props.fetchSpecificAdsEventList();
+
+        //Set idle timer
+        this.idleRef = new idleJS({
+            idle: IDLE_TIME,
+            onIdle: this.setSPAIdle,
+            onActive: this.setSPAActive
+        }).start();
     }
     render() {
+        const { isIdle } = this.state;
         if (
             this.props.destinationList.status !== 200 ||
             this.props.accommodationList.status !== 200 ||
@@ -157,199 +183,213 @@ class App extends Component {
                             alt="sidebar_logo"
                             width="1080"
                         />
-                        <div style={{ width: '100vw', height: '54vh' }}>
-                            <Route
-                                exact
-                                path={destinationNamespace}
-                                component={DestinationList}
-                            />
-                            <Route
-                                exact
-                                path={accomodationNamespace}
-                                component={DestinationList}
-                            />
-                            <Route
-                                exact
-                                path={destinationNamespace + '/:id'}
-                                component={DestinationDetail}
-                            />
-                            <Route
-                                exact
-                                path={accomodationNamespace + '/:id'}
-                                component={HotelList}
-                            />
-                            <Route
-                                exact
-                                path={
-                                    accomodationNamespace + '/:destid/:accoid'
-                                }
-                                component={HotelDetail}
-                            />
-                            <Route
-                                exact
-                                path={eventNamespace}
-                                component={EventList}
-                            />
-                            <Route
-                                exact
-                                path={eventNamespace + '/:id'}
-                                component={EventDetail}
-                            />
-                            <Route
-                                exact
-                                path={diningNamespace}
-                                component={DiningList}
-                            />
-                            <Route
-                                exact
-                                path={diningNamespace + '/:id'}
-                                component={DiningDetail}
-                            />
-                            <Route
-                                exact
-                                path={serviceNamespace}
-                                component={ServiceInitialList}
-                            />
-                            <Route
-                                exact
-                                path={essentialNamespace}
-                                component={ServiceTypeList}
-                            />
-                            <Route
-                                exact
-                                path={essentialNamespace + "/:serid"}
-                                component={ServiceList}
-                            />
-                            <Route
-                                exact
-                                path={essentialNamespace + "/:serid/:serid2"}
-                                component={ServiceDetail}
-                            />
-                            <Route
-                                exact
-                                path={miningNamespace}
-                                component={ServiceTypeList}
-                            />
-                            <Route
-                                exact
-                                path={miningNamespace + "/:serid"}
-                                component={ServiceList}
-                            />
-                            <Route
-                                exact
-                                path={miningNamespace + "/:serid/:serid2"}
-                                component={ServiceDetail}
-                            />
-                            <Route
-                                exact
-                                path={retailNamespace}
-                                component={ServiceTypeList}
-                            />
-                            <Route
-                                exact
-                                path={retailNamespace + "/:serid"}
-                                component={ServiceList}
-                            />
-                            <Route
-                                exact
-                                path={retailNamespace + "/:serid/:serid2"}
-                                component={ServiceDetail}
-                            />
-                            <Route
-                                exact
-                                path={transportNamespace}
-                                component={ServiceTypeList}
-                            />
-                            <Route
-                                exact
-                                path={transportNamespace + "/:serid"}
-                                component={ServiceList}
-                            />
-                            <Route
-                                exact
-                                path={transportNamespace + "/:serid/:serid2"}
-                                component={ServiceDetail}
-                            />
-                            <Route
-                                exact
-                                path={activityNamespace}
-                                component={ActivityList}
-                            />
-                            <Route
-                                exact
-                                path={activityNamespace + '/:id'}
-                                component={ActivityDestinationList}
-                            />
-                            <Route
-                                exact
-                                path={activityNamespace + '/:id/:destid'}
-                                component={ActivityDestinationDetail}
-                            />
-                            <Route
-                                exact
-                                path={mapListNamespace}
-                                component={MapList}
-                            />
-                            <Redirect from="/" to={destinationNamespace} />
-                        </div>
-                        <div style={{ width: '100vw', height: '16vh' }}>
-                            {
-                                this.props.adVideoList.status === 200 &&
-                                this.props.advertisementList.status === 200 &&
-                                this.props.specificAdsActivityDestinationList.status === 200 &&
-                                this.props.specificAdsEssentialList.status === 200 &&
-                                this.props.specificAdsMiningList.status === 200 &&
-                                this.props.specificAdsRestaurantList.status === 200 &&
-                                this.props.specificAdsRetailList.status === 200 &&
-                                this.props.specificAdsTransportList.status === 200 && 
-                                this.props.specificAdsAccommodationList.status === 200 &&
-                                this.props.specificAdsEventList.status == 200 && (
+                        {isIdle ? (
+                            <div style={{width: "100%", height: "74vh"}}>
+                                {(
+                                    this.props.adVideoList.status === 200 &&
+                                    this.props.advertisementList.status === 200
+                                ) && (
+                                    <RestComponent />
+                                )}
+                            </div>
+                        ) : (
+                            <div>
+                                <div style={{ width: '100vw', height: '54vh' }}>
                                     <Route
-                                        render={props => (
-                                            <Advertisement
-                                                // continuePlaying={!isIdle}
-                                                continuePlaying={true}
-                                                {...props}
-                                            />
-                                        )}
+                                        exact
+                                        path={destinationNamespace}
+                                        component={DestinationList}
                                     />
-                                )
-                            }
-                        </div>
-                        <div
-                            style={{
-                                width: '100vw',
-                                height: '4vh',
-                                display: 'flex',
-                                backgroundColor: '#058c9b',
-                                color: 'white'
-                            }}
-                        >
-                            <div
-                                style={{
-                                    flex: 1,
-                                    display: 'flex',
-                                    alignItems: 'center'
-                                }}
-                            >
-                                <span
-                                    style={{ marginLeft: 20, marginRight: 5 }}
+                                    <Route
+                                        exact
+                                        path={accomodationNamespace}
+                                        component={DestinationList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={destinationNamespace + '/:id'}
+                                        component={DestinationDetail}
+                                    />
+                                    <Route
+                                        exact
+                                        path={accomodationNamespace + '/:id'}
+                                        component={HotelList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={
+                                            accomodationNamespace + '/:destid/:accoid'
+                                        }
+                                        component={HotelDetail}
+                                    />
+                                    <Route
+                                        exact
+                                        path={eventNamespace}
+                                        component={EventList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={eventNamespace + '/:id'}
+                                        component={EventDetail}
+                                    />
+                                    <Route
+                                        exact
+                                        path={diningNamespace}
+                                        component={DiningList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={diningNamespace + '/:id'}
+                                        component={DiningDetail}
+                                    />
+                                    <Route
+                                        exact
+                                        path={serviceNamespace}
+                                        component={ServiceInitialList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={essentialNamespace}
+                                        component={ServiceTypeList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={essentialNamespace + "/:serid"}
+                                        component={ServiceList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={essentialNamespace + "/:serid/:serid2"}
+                                        component={ServiceDetail}
+                                    />
+                                    <Route
+                                        exact
+                                        path={miningNamespace}
+                                        component={ServiceTypeList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={miningNamespace + "/:serid"}
+                                        component={ServiceList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={miningNamespace + "/:serid/:serid2"}
+                                        component={ServiceDetail}
+                                    />
+                                    <Route
+                                        exact
+                                        path={retailNamespace}
+                                        component={ServiceTypeList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={retailNamespace + "/:serid"}
+                                        component={ServiceList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={retailNamespace + "/:serid/:serid2"}
+                                        component={ServiceDetail}
+                                    />
+                                    <Route
+                                        exact
+                                        path={transportNamespace}
+                                        component={ServiceTypeList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={transportNamespace + "/:serid"}
+                                        component={ServiceList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={transportNamespace + "/:serid/:serid2"}
+                                        component={ServiceDetail}
+                                    />
+                                    <Route
+                                        exact
+                                        path={activityNamespace}
+                                        component={ActivityList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={activityNamespace + '/:id'}
+                                        component={ActivityDestinationList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={activityNamespace + '/:id/:destid'}
+                                        component={ActivityDestinationDetail}
+                                    />
+                                    <Route
+                                        exact
+                                        path={mapListNamespace}
+                                        component={MapList}
+                                    />
+                                    <Redirect from="/" to={destinationNamespace} />
+                                </div>
+                                <div style={{ width: '100vw', height: '16vh' }}>
+                                    {
+                                        !isIdle &&
+                                        this.props.adVideoList.status === 200 &&
+                                        this.props.advertisementList.status === 200 &&
+                                        this.props.specificAdsActivityDestinationList.status === 200 &&
+                                        this.props.specificAdsEssentialList.status === 200 &&
+                                        this.props.specificAdsMiningList.status === 200 &&
+                                        this.props.specificAdsRestaurantList.status === 200 &&
+                                        this.props.specificAdsRetailList.status === 200 &&
+                                        this.props.specificAdsTransportList.status === 200 && 
+                                        this.props.specificAdsAccommodationList.status === 200 &&
+                                        this.props.specificAdsEventList.status == 200 && (
+                                            <Route
+                                                render={props => (
+                                                    <Advertisement
+                                                        // continuePlaying={!isIdle}
+                                                        continuePlaying={true}
+                                                        {...props}
+                                                    />
+                                                )}
+                                            />
+                                        )
+                                    }
+                                </div>
+                                <div
+                                    style={{
+                                        width: '100vw',
+                                        height: '4vh',
+                                        display: 'flex',
+                                        backgroundColor: '#058c9b',
+                                        color: 'white'
+                                    }}
                                 >
-                                    &copy;
-                                </span>JBG HOSPITALITY 2018
+                                    <div
+                                        style={{
+                                            flex: 1,
+                                            display: 'flex',
+                                            alignItems: 'center'
+                                        }}
+                                    >
+                                        <span
+                                            style={{ marginLeft: 20, marginRight: 5 }}
+                                        >
+                                            &copy;
+                                        </span>JBG HOSPITALITY 2018
+                                    </div>
+                                    <div
+                                        style={{
+                                            flex: 1,
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'flex-end',
+                                            marginRight: 20
+                                        }}
+                                    >
+                                        WWW.JBG.COM.PG
+                                    </div>
+                                </div>
                             </div>
-                            <div
-                                style={{
-                                    flex: 1,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'flex-end',
-                                    marginRight: 20
-                                }}
-                            >
-                                WWW.JBG.COM.PG
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </Router>
             );

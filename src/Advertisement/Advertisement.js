@@ -495,8 +495,7 @@ class Advertisement extends React.Component {
                     {status === 200 && this.renderAdvertisementImages()}
                     <div style={{width: "50%", backgroundColor: 'black'}}>
                         {continuePlaying &&
-                        <AdOrRestVideo handoverVideo={handoverVideo} handoverVideoTimestamp={handoverVideoTimestamp}
-                                       handleHandoverVideoFinished={handleHandoverVideoFinished} />
+                        <AdOrRestVideo />
                         }
                     </div>
                 </div>

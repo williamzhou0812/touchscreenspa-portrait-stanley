@@ -17,7 +17,7 @@ class ContinueRestVideo extends React.Component {
         const { handleHandoverVideoFinished } = this.props;
         return (
             <div style={{
-                height: '50vh',
+                height: '100%',
                 backgroundColor: 'black'
             }}>
                 <video

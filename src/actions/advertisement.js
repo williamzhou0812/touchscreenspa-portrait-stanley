@@ -8,7 +8,7 @@ import { createURL } from '../Constants';
 
 export const fetchAdvertisementList = () => async dispatch => {
     const res = await axios.get(createURL('advertisement/'));
-    const advertisements = res.data;
+    const advertisements = res.data.slice();
     const adsDestination = advertisements.filter((item) => {
         return item.destination;
     });
@@ -52,6 +52,7 @@ export const fetchAdvertisementList = () => async dispatch => {
             adsRetail: adsRetail,
             adsTransport: adsTransport,
             adsServices: adsServices,
+            advertisements,
             status: res.status
         }
     });
