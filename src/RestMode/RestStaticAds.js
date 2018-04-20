@@ -31,7 +31,7 @@ export const ReactStaticAds = (props) => {
                                 title={item.originalTitle}
                                 style={{
                                     width: '100%',
-                                    height: "40.7vh"
+                                    height: "33.3vh"
                                 }}
                             />
                         </div>
