@@ -87,6 +87,7 @@ class App extends Component {
         this.props.fetchSpecificAccommodationList();
         this.props.fetchSpecificAdsEventList();
         this.props.fetchFeaturedAdvertisementList();
+        this.props.fetchAirportDetail();
 
         //Set idle timer
         this.idleRef = new idleJS({
@@ -108,6 +109,7 @@ class App extends Component {
             this.props.retailServiceTypeList.status !== 200 ||
             this.props.transportServiceTypeList.status !== 200 ||
             this.props.map.status !== 200 ||
+            this.props.airport.status !== 200 ||
             this.props.adVideoList.status !== 200 ||
             this.props.advertisementList.status !== 200 ||
             this.props.specificAdsRestaurantList.status !== 200 ||
@@ -424,7 +426,8 @@ function mapStateToProps({
     transportServiceTypeList,
     specificAdsAccommodationList,
     specificAdsEventList,
-    activityList
+    activityList,
+    airport
 }) {
     return {
         windowSize,
@@ -450,7 +453,8 @@ function mapStateToProps({
         transportServiceTypeList,
         specificAdsAccommodationList,
         specificAdsEventList,
-        activityList
+        activityList,
+        airport
     };
 }
 export default connect(mapStateToProps, actions)(App);
