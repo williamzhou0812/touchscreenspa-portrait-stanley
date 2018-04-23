@@ -47,6 +47,7 @@ import MapList from "./Maps/MapList";
 import Advertisement from "./Advertisement/Advertisement";
 import idleJS from 'idle-js';
 import RestComponent from './RestMode/RestComponent';
+import AirportInfo from "./Airport/AirportInfo";
 
 class App extends Component {
     idleRef = null;
@@ -154,17 +155,23 @@ class App extends Component {
                                 gridTemplateColumns: '30% 30% 40%'
                             }}
                         >
-                            <div
+                            <NavLink
+                                activeStyle={{backgroundColor: "rgb(243,158,49)", borderStyle: "solid solid solid none", borderWidth: "1px", borderColor: "rgb(104,199,197)"}}
                                 style={{
-                                    width: '100%',
-                                    height: '100%',
                                     display: 'flex',
                                     justifyContent: 'center',
-                                    alignItems: 'center'
+                                    alignItems: 'center',
+                                    borderStyle: "solid solid solid none",
+                                    borderWidth: "1px",
+                                    borderColor: "rgb(104,199,197)",
+                                    backgroundColor: "rgb(13,109,121)",
+                                    textDecoration: "none",
+                                    color: "white"
                                 }}
+                                to={airportInfoNamespace}
                             >
                                 AIRPORT INFO
-                            </div>
+                            </NavLink>
                             <div
                                 style={{
                                     width: '100%',
@@ -331,6 +338,11 @@ class App extends Component {
                                         exact
                                         path={mapListNamespace}
                                         component={MapList}
+                                    />
+                                    <Route
+                                        exact
+                                        path={airportInfoNamespace}
+                                        component={AirportInfo}
                                     />
                                     <Redirect from="/" to={destinationNamespace} />
                                 </div>

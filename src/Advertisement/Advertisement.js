@@ -346,8 +346,11 @@ class Advertisement extends React.Component {
             //Get ads from services
             return this.setAdsStatus(adsServices);
         } else if (airportMapNamespace.includes(currentNamespace) || airportInfoNamespace.includes(currentNamespace)) {
-            //Don't show ads in Airport Info or Maps page
-            this.setState({ showAds: false });
+            //Show random ads in Airport page
+            const allAds = [adsDestination, adsRestaurant, adsEvent, adsAccommodation, adsActivityDestination,
+                adsEssential, adsMining, adsRetail, adsTransport, adsServices];
+            const randomAds = allAds[Math.floor(Math.random() * allAds.length)];
+            return this.setAdsStatus(randomAds);
         } else if (mapListNamespace.includes(currentNamespace)) {
             const allAds = [adsDestination, adsRestaurant, adsEvent, adsAccommodation, adsActivityDestination,
                 adsEssential, adsMining, adsRetail, adsTransport, adsServices];
