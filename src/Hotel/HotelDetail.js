@@ -119,8 +119,44 @@ class HotelDetail extends React.Component {
             const map2 = maps[1];
             return (
                 <div>
-                    <div>{map1.title.toUpperCase()}</div>
-                    <div>{map2.title.toUpperCase()}</div>
+                    <div
+                        style={{
+                            backgroundColor: LightBlueButtonBackground,
+                            width: '100%',
+                            height: '50px',
+                            marginTop: '5%',
+                            marginBottom: '5%',
+                            borderRadius: '5px',
+                            fontSize: '20px',
+                            fontWeight: 500,
+                            boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.5)',
+                            color: 'white',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                    >
+                        {map1.title.toUpperCase()}
+                    </div>
+                    <div
+                        style={{
+                            backgroundColor: LightBlueButtonBackground,
+                            width: '100%',
+                            height: '50px',
+                            marginTop: '5%',
+                            marginBottom: '5%',
+                            borderRadius: '5px',
+                            fontSize: '20px',
+                            fontWeight: 500,
+                            boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.5)',
+                            color: 'white',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                    >
+                        {map2.title.toUpperCase()}
+                    </div>
                 </div>
             );
         } else if (maps.length === 1) {
@@ -210,13 +246,29 @@ class HotelDetail extends React.Component {
                                     <div
                                         style={{
                                             height: '50%',
-                                            ...this.styles
-                                                .horizontalVerticalCenter
+                                            display: 'flex',
+                                            alignItems: 'flex-end',
+                                            textAlign: 'left',
+                                            fontSize: '30px',
+                                            lineHeight: '115%',
+                                            letterSpacing: '3px',
+                                            paddingLeft: 35
                                         }}
                                     >
                                         {accommodation.title.toUpperCase()}
                                     </div>
-                                    <div style={{ height: '50%' }}>
+                                    <div
+                                        style={{
+                                            height: '50%',
+                                            display: 'flex',
+                                            alignItems: 'flex-start',
+                                            textAlign: 'left',
+                                            fontSize: '30px',
+                                            lineHeight: '115%',
+                                            letterSpacing: '3px',
+                                            paddingLeft: 35
+                                        }}
+                                    >
                                         {renderRating(accommodation.rating, 38)}
                                     </div>
                                 </div>
@@ -228,10 +280,34 @@ class HotelDetail extends React.Component {
                                     backgroundColor: ExtraHeavyBlueGreen
                                 }}
                             >
-                                <div style={{ width: '50%' }}>
+                                <div
+                                    style={{
+                                        width: '50%',
+                                        paddingTop: 20,
+                                        paddingLeft: 35,
+                                        paddingRight: 20,
+                                        fontSize: '19px',
+                                        lineHeight: '115%',
+                                        letterSpacing: '3px',
+                                        textAlign: 'left',
+                                        overflow: 'auto',
+                                        maxHeight: '100vh'
+                                    }}
+                                >
                                     {accommodation.description}
                                 </div>
-                                <div style={{ width: '50%' }}>
+                                <div
+                                    style={{
+                                        width: '50%',
+                                        paddingTop: 20,
+                                        paddingLeft: 35,
+                                        paddingRight: 20,
+                                        fontSize: '20px',
+                                        lineHeight: '130%',
+                                        letterSpacing: '3px',
+                                        textAlign: 'left'
+                                    }}
+                                >
                                     <div>CALL TODAY: {accommodation.phone}</div>
                                     <div>WEB: {accommodation.website}</div>
                                     <div>EMAIL: {accommodation.email}</div>

@@ -235,8 +235,8 @@ class DiningDetail extends React.Component {
                                     paddingTop: 20,
                                     paddingLeft: 35,
                                     paddingRight: 20,
-                                    fontSize: '20px',
-                                    lineHeight: '130%',
+                                    fontSize: '19px',
+                                    lineHeight: '115%',
                                     letterSpacing: '3px',
                                     textAlign: 'left'
                                 }}
@@ -247,8 +247,12 @@ class DiningDetail extends React.Component {
                                 style={{
                                     flexBasis: '50%',
                                     paddingTop: 20,
-                                    paddingLeft: 20,
-                                    paddingRight: 20
+                                    paddingLeft: 35,
+                                    paddingRight: 20,
+                                    fontSize: '19px',
+                                    lineHeight: '115%',
+                                    letterSpacing: '3px',
+                                    textAlign: 'left'
                                 }}
                             >
                                 <div>CUISINE: {restaurant.guide.cuisine}</div>
