@@ -43,11 +43,11 @@ import ServiceDetail from './Service/ServiceDetail';
 import ActivityList from './Activity/ActivityList';
 import ActivityDestinationList from './Activity/ActivityDestinationList';
 import ActivityDestinationDetail from './Activity/ActivityDestinationDetail';
-import MapList from "./Maps/MapList";
-import Advertisement from "./Advertisement/Advertisement";
+import MapList from './Maps/MapList';
+import Advertisement from './Advertisement/Advertisement';
 import idleJS from 'idle-js';
 import RestComponent from './RestMode/RestComponent';
-import AirportInfo from "./Airport/AirportInfo";
+import AirportInfo from './Airport/AirportInfo';
 
 class App extends Component {
     idleRef = null;
@@ -55,7 +55,7 @@ class App extends Component {
         super(props);
         this.state = {
             isIdle: false
-        }
+        };
         this.setSPAIdle = this.setSPAIdle.bind(this);
         this.setSPAActive = this.setSPAActive.bind(this);
     }
@@ -65,7 +65,7 @@ class App extends Component {
     setSPAActive() {
         this.setState({ isIdle: false });
     }
-    
+
     componentDidMount() {
         this.props.fetchDestinationList();
         this.props.fetchEventList();
@@ -143,9 +143,14 @@ class App extends Component {
             return (
                 <Router history={this.props.history}>
                     <div className="App section--rotate--animation">
-                        <img
-                            style={{ width: '100vw', height: '15vh' }}
-                            src={MainLogo}
+                        <div
+                            style={{
+                                width: '100vw',
+                                height: '15vh',
+                                backgroundImage: `url(${MainLogo})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover'
+                            }}
                         />
                         <div
                             style={{
@@ -156,17 +161,22 @@ class App extends Component {
                             }}
                         >
                             <NavLink
-                                activeStyle={{backgroundColor: "rgb(243,158,49)", borderStyle: "solid solid solid none", borderWidth: "1px", borderColor: "rgb(104,199,197)"}}
+                                activeStyle={{
+                                    backgroundColor: 'rgb(243,158,49)',
+                                    borderStyle: 'solid solid solid none',
+                                    borderWidth: '1px',
+                                    borderColor: 'rgb(104,199,197)'
+                                }}
                                 style={{
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
-                                    borderStyle: "solid solid solid none",
-                                    borderWidth: "1px",
-                                    borderColor: "rgb(104,199,197)",
-                                    backgroundColor: "rgb(13,109,121)",
-                                    textDecoration: "none",
-                                    color: "white"
+                                    borderStyle: 'solid solid solid none',
+                                    borderWidth: '1px',
+                                    borderColor: 'rgb(104,199,197)',
+                                    backgroundColor: 'rgb(13,109,121)',
+                                    textDecoration: 'none',
+                                    color: 'white'
                                 }}
                                 to={airportInfoNamespace}
                             >
@@ -195,14 +205,12 @@ class App extends Component {
                             width="1080"
                         />
                         {isIdle ? (
-                            <div style={{width: "100%", height: "74vh"}}>
-                                {(
-                                    this.props.adVideoList.status === 200 &&
-                                    this.props.advertisementList.status === 200 &&
-                                    this.props.featuredAdvertisementList.status === 200
-                                ) && (
-                                    <RestComponent />
-                                )}
+                            <div style={{ width: '100%', height: '74vh' }}>
+                                {this.props.adVideoList.status === 200 &&
+                                    this.props.advertisementList.status ===
+                                        200 &&
+                                    this.props.featuredAdvertisementList
+                                        .status === 200 && <RestComponent />}
                             </div>
                         ) : (
                             <div>
@@ -230,7 +238,8 @@ class App extends Component {
                                     <Route
                                         exact
                                         path={
-                                            accomodationNamespace + '/:destid/:accoid'
+                                            accomodationNamespace +
+                                            '/:destid/:accoid'
                                         }
                                         component={HotelDetail}
                                     />
@@ -266,12 +275,15 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path={essentialNamespace + "/:serid"}
+                                        path={essentialNamespace + '/:serid'}
                                         component={ServiceList}
                                     />
                                     <Route
                                         exact
-                                        path={essentialNamespace + "/:serid/:serid2"}
+                                        path={
+                                            essentialNamespace +
+                                            '/:serid/:serid2'
+                                        }
                                         component={ServiceDetail}
                                     />
                                     <Route
@@ -281,12 +293,14 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path={miningNamespace + "/:serid"}
+                                        path={miningNamespace + '/:serid'}
                                         component={ServiceList}
                                     />
                                     <Route
                                         exact
-                                        path={miningNamespace + "/:serid/:serid2"}
+                                        path={
+                                            miningNamespace + '/:serid/:serid2'
+                                        }
                                         component={ServiceDetail}
                                     />
                                     <Route
@@ -296,12 +310,14 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path={retailNamespace + "/:serid"}
+                                        path={retailNamespace + '/:serid'}
                                         component={ServiceList}
                                     />
                                     <Route
                                         exact
-                                        path={retailNamespace + "/:serid/:serid2"}
+                                        path={
+                                            retailNamespace + '/:serid/:serid2'
+                                        }
                                         component={ServiceDetail}
                                     />
                                     <Route
@@ -311,12 +327,15 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path={transportNamespace + "/:serid"}
+                                        path={transportNamespace + '/:serid'}
                                         component={ServiceList}
                                     />
                                     <Route
                                         exact
-                                        path={transportNamespace + "/:serid/:serid2"}
+                                        path={
+                                            transportNamespace +
+                                            '/:serid/:serid2'
+                                        }
                                         component={ServiceDetail}
                                     />
                                     <Route
@@ -331,7 +350,9 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path={activityNamespace + '/:id/:destid'}
+                                        path={
+                                            activityNamespace + '/:id/:destid'
+                                        }
                                         component={ActivityDestinationDetail}
                                     />
                                     <Route
@@ -344,21 +365,33 @@ class App extends Component {
                                         path={airportInfoNamespace}
                                         component={AirportInfo}
                                     />
-                                    <Redirect from="/" to={destinationNamespace} />
+                                    <Redirect
+                                        from="/"
+                                        to={destinationNamespace}
+                                    />
                                 </div>
                                 <div style={{ width: '100vw', height: '16vh' }}>
-                                    {
-                                        !isIdle &&
+                                    {!isIdle &&
                                         this.props.adVideoList.status === 200 &&
-                                        this.props.advertisementList.status === 200 &&
-                                        this.props.specificAdsActivityDestinationList.status === 200 &&
-                                        this.props.specificAdsEssentialList.status === 200 &&
-                                        this.props.specificAdsMiningList.status === 200 &&
-                                        this.props.specificAdsRestaurantList.status === 200 &&
-                                        this.props.specificAdsRetailList.status === 200 &&
-                                        this.props.specificAdsTransportList.status === 200 && 
-                                        this.props.specificAdsAccommodationList.status === 200 &&
-                                        this.props.specificAdsEventList.status == 200 && (
+                                        this.props.advertisementList.status ===
+                                            200 &&
+                                        this.props
+                                            .specificAdsActivityDestinationList
+                                            .status === 200 &&
+                                        this.props.specificAdsEssentialList
+                                            .status === 200 &&
+                                        this.props.specificAdsMiningList
+                                            .status === 200 &&
+                                        this.props.specificAdsRestaurantList
+                                            .status === 200 &&
+                                        this.props.specificAdsRetailList
+                                            .status === 200 &&
+                                        this.props.specificAdsTransportList
+                                            .status === 200 &&
+                                        this.props.specificAdsAccommodationList
+                                            .status === 200 &&
+                                        this.props.specificAdsEventList
+                                            .status == 200 && (
                                             <Route
                                                 render={props => (
                                                     <Advertisement
@@ -368,8 +401,7 @@ class App extends Component {
                                                     />
                                                 )}
                                             />
-                                        )
-                                    }
+                                        )}
                                 </div>
                                 <div
                                     style={{
@@ -388,7 +420,10 @@ class App extends Component {
                                         }}
                                     >
                                         <span
-                                            style={{ marginLeft: 20, marginRight: 5 }}
+                                            style={{
+                                                marginLeft: 20,
+                                                marginRight: 5
+                                            }}
                                         >
                                             &copy;
                                         </span>JBG HOSPITALITY 2018
