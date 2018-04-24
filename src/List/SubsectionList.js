@@ -87,7 +87,10 @@ class SubsectionList extends React.Component {
                             if (item.isLink) {
                                 return (
                                     <Link
-                                        style={{ flexBasis: '14%' }}
+                                        style={{
+                                            flexBasis: '14%',
+                                            textDecoration: 'none'
+                                        }}
                                         key={index}
                                         to={item.link}
                                     >
@@ -255,7 +258,8 @@ class SubsectionList extends React.Component {
                                                 style={{
                                                     height: itemHeight,
                                                     color: 'white',
-                                                    display: 'flex'
+                                                    display: 'flex',
+                                                    textDecoration: 'none'
                                                 }}
                                                 to={`${namespace}/${item.id}`}
                                                 key={`${item.id}-${index}`}

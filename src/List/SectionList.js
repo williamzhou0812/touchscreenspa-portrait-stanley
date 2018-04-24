@@ -142,7 +142,8 @@ class SectionList extends React.Component {
                                             display: 'flex',
                                             flexDirection: 'column',
                                             justifyContent: 'flex-end',
-                                            overflowY: 'hidden'
+                                            overflowY: 'hidden',
+                                            textDecoration: 'none'
                                         }}
                                     >
                                         <div

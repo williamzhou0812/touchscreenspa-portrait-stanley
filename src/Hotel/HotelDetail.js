@@ -198,7 +198,13 @@ class HotelDetail extends React.Component {
                         zIndex: 1
                     }}
                 >
-                    <Link style={{ height: '14%' }} to={accomodationNamespace}>
+                    <Link
+                        style={{
+                            height: '14%',
+                            textDecoration: 'none'
+                        }}
+                        to={accomodationNamespace}
+                    >
                         <div
                             style={{
                                 borderStyle: 'none none solid none',
@@ -216,7 +222,10 @@ class HotelDetail extends React.Component {
                         </div>
                     </Link>
                     <Link
-                        style={{ height: '14%' }}
+                        style={{
+                            height: '14%',
+                            textDecoration: 'none'
+                        }}
                         to={`${accomodationNamespace}/${destID}`}
                     >
                         <div

@@ -4,7 +4,7 @@ import LeftIcon from 'material-ui/svg-icons/navigation/chevron-left';
 import RightIcon from 'material-ui/svg-icons/navigation/chevron-right';
 import ImageGallery from 'react-image-gallery';
 import '../node_modules/react-image-gallery/styles/css/image-gallery.css';
-import Rating from "react-rating";
+import Rating from 'react-rating';
 import FullStar from 'material-ui/svg-icons/toggle/star';
 import EmptyStar from 'material-ui/svg-icons/toggle/star-border';
 import EssentialIcon from './Service/icons/ESSENTIAL_ICON.png';
@@ -12,7 +12,7 @@ import MiningIcon from './Service/icons/MINING_ICON.png';
 import RetailIcon from './Service/icons/RETAIL_ICON.png';
 import TransportIcon from './Service/icons/TRANSPORT_ICON.png';
 
-export const timezone = "Pacific/Port_Moresby";
+export const timezone = 'Pacific/Port_Moresby';
 
 //const RGBA color
 export const HeavyOrange = 'rgb(221, 120, 35)';
@@ -51,7 +51,7 @@ export const SECTION_LIST_ENTRIES = 3;
 export const SUBSECTION_LIST_ENTRIES = 6;
 export const SLIDE_INTERVAL = 5000; //Every 5 seconds change image in ImageGallery
 export const AD_SLIDE_INTERVAL = 7000; //Every 7 seconds change image in ImageGallery for Advertisements
-export const IDLE_TIME = 90000; //1.5 Minutes TIMEOUT
+export const IDLE_TIME = 9000000; //1.5 Minutes TIMEOUT
 
 export function createURL(namespace) {
     return 'http://' + HOST + ':' + PORT + '/' + namespace;
@@ -173,12 +173,26 @@ export function imageGallery(
     );
 }
 
-export function renderRating(initialRating, starSize=50) {
+export function renderRating(initialRating, starSize = 50) {
     return (
         <MuiThemeProvider>
-            <Rating emptySymbol={<EmptyStar color="white" style={{width: starSize, height: starSize}} />}
-            fullSymbol={<FullStar color="white" style={{width: starSize, height: starSize}} />}
-            fractions={2} readonly={true} initialRating={initialRating} />
+            <Rating
+                emptySymbol={
+                    <EmptyStar
+                        color="white"
+                        style={{ width: starSize, height: starSize }}
+                    />
+                }
+                fullSymbol={
+                    <FullStar
+                        color="white"
+                        style={{ width: starSize, height: starSize }}
+                    />
+                }
+                fractions={2}
+                readonly={true}
+                initialRating={initialRating}
+            />
         </MuiThemeProvider>
     );
 }
@@ -201,13 +215,41 @@ export function getServiceTypeListBasedLocation(pathname, serviceTypes) {
 
 export function getServiceTypeDetailBasedLocation(pathname) {
     if (pathname.includes(essentialNamespace)) {
-        return { title: "ESSENTIAL SERVICES", icon: EssentialIcon, namespace: essentialNamespace, listKey: "essentialServiceServiceType", imageKey: "imageEssentialService", mapKey: "mapEssentialService" };
+        return {
+            title: 'ESSENTIAL SERVICES',
+            icon: EssentialIcon,
+            namespace: essentialNamespace,
+            listKey: 'essentialServiceServiceType',
+            imageKey: 'imageEssentialService',
+            mapKey: 'mapEssentialService'
+        };
     } else if (pathname.includes(miningNamespace)) {
-        return { title: "MINING & RESOURCES", icon: MiningIcon, namespace: miningNamespace, listKey: "miningServiceType", imageKey: "imageMining", mapKey: "mapMining" };
+        return {
+            title: 'MINING & RESOURCES',
+            icon: MiningIcon,
+            namespace: miningNamespace,
+            listKey: 'miningServiceType',
+            imageKey: 'imageMining',
+            mapKey: 'mapMining'
+        };
     } else if (pathname.includes(retailNamespace)) {
-        return { title: "RETAIL & SERVICES", icon: RetailIcon, namespace: retailNamespace, listKey: "retailServiceType", imageKey: "imageRetail", mapKey: "mapRetail" };
+        return {
+            title: 'RETAIL & SERVICES',
+            icon: RetailIcon,
+            namespace: retailNamespace,
+            listKey: 'retailServiceType',
+            imageKey: 'imageRetail',
+            mapKey: 'mapRetail'
+        };
     } else if (pathname.includes(transportNamespace)) {
-        return { title: "CAR HIRE & TRANSPORT", icon: TransportIcon, namespace: transportNamespace, listKey: "transportationServiceType", imageKey: "imageTransportation", mapKey: "mapTransportation" };
+        return {
+            title: 'CAR HIRE & TRANSPORT',
+            icon: TransportIcon,
+            namespace: transportNamespace,
+            listKey: 'transportationServiceType',
+            imageKey: 'imageTransportation',
+            mapKey: 'mapTransportation'
+        };
     }
 }
 

@@ -25,7 +25,11 @@ class DestinationList extends React.Component {
                                     style={{
                                         height: '33%',
                                         display: 'flex',
-                                        alignItems: 'flex-end'
+                                        alignItems: 'flex-end',
+                                        paddingTop: 60,
+                                        paddingLeft: 35,
+                                        fontSize: '24px',
+                                        letterSpacing: '3px'
                                     }}
                                 >
                                     {item.title.toUpperCase()}
@@ -34,7 +38,11 @@ class DestinationList extends React.Component {
                                     style={{
                                         height: '33%',
                                         display: 'flex',
-                                        alignItems: 'flex-end'
+                                        alignItems: 'flex-end',
+                                        marginTop: 5,
+                                        marginLeft: 35,
+                                        fontSize: '24px',
+                                        letterSpacing: '3px'
                                     }}
                                 >
                                     {item.eventMonth.toUpperCase()}

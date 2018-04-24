@@ -74,10 +74,7 @@ class DestinationDetail extends React.Component {
     };
 
     render() {
-        const {
-            destination,
-            status
-        } = this.props.destinationDetail;
+        const { destination, status } = this.props.destinationDetail;
         const { explore } = this.state;
         if (explore) {
             return (
@@ -102,7 +99,8 @@ class DestinationDetail extends React.Component {
                             </div>
                         </div>
                     </div>
-                    {!!destination && status === 200 && (
+                    {!!destination &&
+                        status === 200 && (
                             <div style={{ width: '86%', height: '100%' }}>
                                 <div
                                     style={{
@@ -117,7 +115,9 @@ class DestinationDetail extends React.Component {
                                     {destination.title}
                                 </div>
                                 <div style={{ height: '92%' }}>
-                                    <ExploreList data={destination.exploreData} />
+                                    <ExploreList
+                                        data={destination.exploreData}
+                                    />
                                 </div>
                             </div>
                         )}
@@ -139,7 +139,10 @@ class DestinationDetail extends React.Component {
                         }}
                     >
                         <Link
-                            style={{ height: '18%' }}
+                            style={{
+                                height: '18%',
+                                textDecoration: 'none'
+                            }}
                             to={destinationNamespace}
                         >
                             <div
