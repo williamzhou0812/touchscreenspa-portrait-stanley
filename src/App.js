@@ -198,7 +198,7 @@ class App extends Component {
                             >
                                 AIRPORT MAP
                             </div>
-                            <div style={{width: "100%", height: "100%", display: 'flex', justifyContent: 'center', alignItems: 'center', borderStyle: 'solid solid solid none', borderWidth: '1px', borderColor: 'rgb(104,199,197)', backgroundColor: 'rgb(25,151,164)', color: 'white'}}><Clock /></div>
+                            <Clock />
                         </div>
                         <div style={{ width: '100vw', height: '8vh' }}>
                             <Route component={MainTabList} />
