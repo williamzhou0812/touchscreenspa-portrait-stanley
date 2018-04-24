@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { imageGallery, HeavyOrange } from "../Constants";
 import { Modal } from "react-bootstrap";
 import nl2br from "react-nl2br";
+import "./airportmodal.css";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import CloseIcon from 'material-ui/svg-icons/navigation/close';
 
 class AirportInfoModal extends React.Component {
     constructor(props) {
@@ -22,12 +25,12 @@ class AirportInfoModal extends React.Component {
     renderImages() {
         const { otherImages } = this.props;
         if (otherImages.length > 1) {
-            return imageGallery(otherImages, "100%", "15vh")
+            return imageGallery(otherImages, "100%", "280px")
         } else if (otherImages.length === 1) {
-            return <div style={{height: "29%", backgroundImage: `url(${otherImages[0].imageFile})`, backgroundSize: "cover", backgroundPosition: "center"}} />
+            return <div style={{height: "280px", backgroundImage: `url(${otherImages[0].imageFile})`, backgroundSize: "cover", backgroundPosition: "center"}} />
         } else {
             return (
-                <div style={{height: "29%", backgroundColor: HeavyOrange, display: "flex", justifyContent: "center", alignItems: "center"}}>
+                <div style={{height: "280px", backgroundColor: HeavyOrange, display: "flex", justifyContent: "center", alignItems: "center"}}>
                     NO IMAGE FOR AIRPORT INFORMATION
                 </div>
             );
@@ -42,13 +45,21 @@ class AirportInfoModal extends React.Component {
                 <Modal
                     show={showModal}
                     onHide={this.closeModal}
-                    bsSize="large"
                 >
-                    <Modal.Header closeButton>
+                    <Modal.Body>
+                        <div style={{position: "absolute", right: 0, top: 0}}>
+                            <MuiThemeProvider>
+                                <CloseIcon
+                                    onClick={this.closeModal}
+                                    color="white"
+                                    style={{ padding: 0, height: 32, width: 32 }}
+                                />
+                            </MuiThemeProvider>
+                        </div>
                         {this.renderImages()}
-                        <Modal.Title>Airport Information</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>{nl2br(description)}</Modal.Body>
+                        <div style={{height: "88px", backgroundColor: "rgb(13,109,121)", letterSpacing: 5, fontSize: "30pt", display: "flex", justifyContent: "center", alignItems: "center"}}>AIRPORT INFORMATION</div>
+                        <div style={{backgroundColor: "rgb(25,150,162)", padding: 20}}>{nl2br(description)}</div>
+                    </Modal.Body>
                 </Modal>
             </div>
         )
