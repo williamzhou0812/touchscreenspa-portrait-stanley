@@ -318,19 +318,36 @@ class HotelDetail extends React.Component {
                             >
                                 <div
                                     style={{
-                                        width: '50%',
-                                        paddingTop: 20,
-                                        paddingLeft: 35,
-                                        paddingRight: 20,
-                                        fontSize: '19px',
-                                        lineHeight: '115%',
-                                        letterSpacing: '3px',
-                                        textAlign: 'left',
-                                        overflow: 'auto',
-                                        maxHeight: '100vh'
+                                        height: '100%',
+                                        overflow: 'hidden',
+                                        width: '50%'
                                     }}
                                 >
-                                    {accommodation.description}
+                                    <div
+                                        style={{
+                                            height: '100%',
+                                            paddingTop: 20,
+                                            paddingLeft: 35,
+                                            paddingRight: 20,
+                                            fontSize: '19px',
+                                            lineHeight: '115%',
+                                            letterSpacing: '3px',
+                                            textAlign: 'left',
+                                            overflow: 'auto',
+                                            maxHeight: '100vh',
+                                            marginRight: '-40px'
+                                        }}
+                                    >
+                                        <div
+                                            style={{
+                                                height: '100%',
+                                                overflow: 'auto',
+                                                paddingRight: '40px'
+                                            }}
+                                        >
+                                            {accommodation.description}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div
                                     style={{
