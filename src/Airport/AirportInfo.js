@@ -1,23 +1,10 @@
 import React from 'react'
 import { connect } from "react-redux";
-import Modal from "react-bootstrap-modal";
+
 import { HeavyOrange, ExtraHeavyBlueGreen } from '../Constants';
 
+
 class AirportInfo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            infoModal: false
-        }
-        this.openModal = this.openModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
-    }
-    openModal() {
-        this.setState({ infoModal : true });
-    }
-    closeModal() {
-        this.setState({ infoModal : false });
-    }
     styles = {
         horizontalVerticalCenter: {
             display: 'flex',
@@ -29,8 +16,8 @@ class AirportInfo extends React.Component {
         const { mainImage, airport } = this.props;
         return (
             <div style={{ width: '100%', height: '100%', display: 'flex', color: 'white'}}>
-                <div style={{ backgroundColor: HeavyOrange, width: '14%', boxShadow: '9.899px 0px 7px 0px rgba(0,0,0,0.6)', zIndex: 1, ...this.styles.horizontalVerticalCenter}}>
-                    AIRPORT INFO
+                <div style={{ backgroundColor: HeavyOrange, width: '14%', boxShadow: '9.899px 0px 7px 0px rgba(0,0,0,0.6)', zIndex: 1, display: 'flex',}}>
+                    <div style={{flex: 1, width: "100%", fontSize: '40pt', transform: 'rotate(-90deg)', ...this.styles.horizontalVerticalCenter, fontWeight: 500,letterSpacing: '10px'}}>AIRPORT INFO</div>
                 </div>
                 <div style={{width: "86%"}}>
                     <div style={{height: "42%", backgroundImage: `url(${mainImage})`, backgroundSize: "cover", backgroundPosition: "center"}} />
@@ -50,7 +37,8 @@ class AirportInfo extends React.Component {
                                 <div>Managing Director {"&"} CEO</div>
                             </div>
                         </div>
-                        <div style={{height: "25%"}}></div>
+                        <div style={{height: "25%"}}>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,11 +47,10 @@ class AirportInfo extends React.Component {
 }
 
 const mapStateToProps = ({ airport : airportInfo }) => {
-    const { airport, mainImage, otherImages } = airportInfo;
+    const { airport, mainImage } = airportInfo;
     return {
         airport,
-        mainImage,
-        otherImages
+        mainImage
     }
 }
 export default connect(mapStateToProps, null)(AirportInfo);
