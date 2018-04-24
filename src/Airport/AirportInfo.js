@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from "react-redux";
 import { HeavyOrange, ExtraHeavyBlueGreen } from '../Constants';
 import AirportInfoModal from './AirportInfoModal';
+import AirportContactModal from './AirportContactModal'
 
 class AirportInfo extends React.Component {
     styles = {
@@ -38,6 +39,7 @@ class AirportInfo extends React.Component {
                         </div>
                         <div style={{height: "25%"}}>
                             <AirportInfoModal />
+                            <AirportContactModal />
                         </div>
                     </div>
                 </div>
