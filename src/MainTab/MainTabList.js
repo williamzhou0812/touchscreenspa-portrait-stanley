@@ -122,12 +122,13 @@ class MainTabList extends React.Component {
     }
     render() {
         const { tabs } = this.state;
+        const { pathname } = this.props.location;
         return (
             <div style={{ width: '100%', height: '100%', display: 'flex' }}>
                 {tabs.map((t, i) => {
-                    // const showSelectedStyle = this.shouldShowSelectedStyle();
-                    const selected = i === this.middle;
-                    const isLeftOfSelected = i === this.middle - 1;
+                    //Selected style does not come into effect if we are currently in airport info namespace
+                    const selected = i === this.middle && (!(pathname.includes(airportInfoNamespace)));
+                    const isLeftOfSelected = i === this.middle - 1  && (!(pathname.includes(airportInfoNamespace)));
                     const isLastItem = i === tabs.length - 1;
                     return (
                         <Tab
