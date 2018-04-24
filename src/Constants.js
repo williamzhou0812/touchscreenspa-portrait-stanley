@@ -2,8 +2,10 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import LeftIcon from 'material-ui/svg-icons/navigation/chevron-left';
 import RightIcon from 'material-ui/svg-icons/navigation/chevron-right';
+import PlayIcon from 'material-ui/svg-icons/av/play-arrow';
+import PauseIcon from 'material-ui/svg-icons/av/pause';
 import ImageGallery from 'react-image-gallery';
-import '../node_modules/react-image-gallery/styles/css/image-gallery.css';
+import "../node_modules/react-image-gallery/styles/css/image-gallery-no-icon.css";
 import Rating from 'react-rating';
 import FullStar from 'material-ui/svg-icons/toggle/star';
 import EmptyStar from 'material-ui/svg-icons/toggle/star-border';
@@ -148,6 +150,27 @@ export function imageGallery(
                         style={{ padding: 0, height: 64, width: 64 }}
                     />
                 )}
+                renderPlayPauseButton={(onClick, isPlaying) => {
+                    if (isPlaying) {
+                        return (
+                            <PauseIcon
+                                className="image-gallery-play-button active"
+                                onClick={onClick}
+                                color={HeavyOrange}
+                                style={{ padding: 0, height: 64, width: 64 }}
+                            />
+                        );
+                    } else {
+                        return (
+                            <PlayIcon
+                                className="image-gallery-play-button"
+                                onClick={onClick}
+                                color={HeavyOrange}
+                                style={{ padding: 0, height: 64, width: 64 }}
+                            />
+                        );
+                    }
+                }}
                 renderItem={item => {
                     return (
                         <div className="image-gallery-image">
@@ -167,7 +190,7 @@ export function imageGallery(
                 }}
                 showThumbnails={false}
                 showPlayButton={true}
-                showFullscreenButton={true}
+                showFullscreenButton={false}
             />
         </MuiThemeProvider>
     );
