@@ -26,7 +26,11 @@ class DiningList extends React.Component {
                                         style={{
                                             height: '33%',
                                             display: 'flex',
-                                            alignItems: 'flex-end'
+                                            alignItems: 'flex-end',
+                                            paddingTop: 60,
+                                            paddingLeft: 35,
+                                            fontSize: '24px',
+                                            letterSpacing: '3px'
                                         }}
                                     >
                                         {item.title.toUpperCase()}
@@ -35,7 +39,11 @@ class DiningList extends React.Component {
                                         style={{
                                             height: '33%',
                                             display: 'flex',
-                                            alignItems: 'flex-end'
+                                            alignItems: 'flex-end',
+                                            marginTop: 10,
+                                            marginLeft: 35,
+                                            fontSize: '24px',
+                                            letterSpacing: '3px'
                                         }}
                                     >
                                         {item.cuisine}
@@ -43,7 +51,17 @@ class DiningList extends React.Component {
                                 </div>
                             );
                         } else {
-                            return item.title.toUpperCase();
+                            return (
+                                <span
+                                    style={{
+                                        paddingLeft: 35,
+                                        fontSize: '24px',
+                                        letterSpacing: '3px'
+                                    }}
+                                >
+                                    {item.title.toUpperCase()}
+                                </span>
+                            );
                         }
                     }}
                 />

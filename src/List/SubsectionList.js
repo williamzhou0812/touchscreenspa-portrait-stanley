@@ -301,8 +301,10 @@ class SubsectionList extends React.Component {
                                                         width: '67%',
                                                         backgroundColor: HeavyBlue,
                                                         display: 'flex',
+                                                        fontSize: '24px',
+                                                        letterSpacing: '3px',
                                                         alignItems: 'center',
-                                                        paddingLeft: 20,
+                                                        paddingLeft: 35,
                                                         borderBottom: isLastItem
                                                             ? 'none'
                                                             : '1px solid rgb(183,223,228)'
@@ -361,7 +363,9 @@ class SubsectionList extends React.Component {
                                                         backgroundColor: HeavyBlue,
                                                         display: 'flex',
                                                         alignItems: 'center',
-                                                        paddingLeft: 20,
+                                                        paddingLeft: 35,
+                                                        fontSize: '24px',
+                                                        letterSpacing: '3px',
                                                         borderBottom: isLastItem
                                                             ? 'none'
                                                             : '1px solid rgb(183,223,228)'
@@ -419,7 +423,9 @@ class SubsectionList extends React.Component {
                                                         backgroundColor: HeavyBlue,
                                                         display: 'flex',
                                                         alignItems: 'center',
-                                                        paddingLeft: 20,
+                                                        paddingLeft: 35,
+                                                        fontSize: '24px',
+                                                        letterSpacing: '3px',
                                                         borderBottom: isLastItem
                                                             ? 'none'
                                                             : '1px solid rgb(183,223,228)'
