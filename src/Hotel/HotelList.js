@@ -1,9 +1,13 @@
-import React from 'react'
-import { connect } from "react-redux";
-import { DECIMAL_RADIX, accomodationNamespace, renderRating } from '../Constants';
-import SubsectionList from "../List/SubsectionList";
-import AllAreasIcon from "../Destination/icons/AllAreas.png";
-import HotelsMapIcon from "./icons/HotelsMapIcon.png";
+import React from 'react';
+import { connect } from 'react-redux';
+import {
+    DECIMAL_RADIX,
+    accomodationNamespace,
+    renderRating
+} from '../Constants';
+import SubsectionList from '../List/SubsectionList';
+import AllAreasIcon from '../Destination/icons/AllAreas.png';
+import HotelsMapIcon from './icons/HotelsMapIcon.png';
 
 class HotelList extends React.Component {
     constructor(props) {
@@ -16,8 +20,8 @@ class HotelList extends React.Component {
 
         this.state = {
             accommodationIndex,
-            map: false,
-        }
+            map: false
+        };
     }
     retrieveData() {
         const id = parseInt(this.props.match.params.id, DECIMAL_RADIX);
@@ -41,32 +45,60 @@ class HotelList extends React.Component {
             <SubsectionList
                 sideTitle="HOTELS"
                 sideButtons={[
-                    {title: "ALL AREAS", isLink: true, icon: AllAreasIcon, link: accomodationNamespace},
-                    {title: "HOTELS MAP", icon: HotelsMapIcon}
+                    {
+                        title: 'ALL AREAS',
+                        isLink: true,
+                        icon: AllAreasIcon,
+                        link: accomodationNamespace
+                    },
+                    { title: 'HOTELS MAP', icon: HotelsMapIcon }
                 ]}
                 mainTitle={accommodation.title.toUpperCase()}
                 data={accommodation.accomodationDestination}
-                imageKey={"logo"}
+                imageKey={'logo'}
                 isImageArray={false}
                 namespace={`${accomodationNamespace}/${accommodation.id}`}
-                renderText={(item) => {
+                renderText={item => {
                     return (
-                        <div style={{height: "100%"}}>
-                            <div style={{height: "33%", display: "flex", alignItems: "flex-end", paddingTop: 10, paddingBottom: 5}}>{item.title.toUpperCase()}</div>
-                            <div style={{height: "33%", display: "flex", alignItems: "flex-end"}}>{renderRating(item.rating, 30)}</div>
+                        <div style={{ height: '100%' }}>
+                            <div
+                                style={{
+                                    height: '33%',
+                                    display: 'flex',
+                                    alignItems: 'flex-end',
+                                    paddingTop: 60,
+                                    paddingLeft: 35,
+                                    fontSize: '24px',
+                                    letterSpacing: '3px'
+                                }}
+                            >
+                                {item.title.toUpperCase()}
+                            </div>
+                            <div
+                                style={{
+                                    height: '33%',
+                                    display: 'flex',
+                                    alignItems: 'flex-end',
+                                    marginTop: 20,
+                                    marginLeft: 35,
+                                    fontSize: '24px',
+                                    letterSpacing: '3px'
+                                }}
+                            >
+                                {renderRating(item.rating, 50)}
+                            </div>
                         </div>
                     );
                 }}
             />
         );
     }
-
 }
 
 const mapStateToProps = ({ accommodationList }) => {
     const { accommodations } = accommodationList;
     return {
         accommodations
-    }
-}
-export default connect(mapStateToProps, null)(HotelList)
+    };
+};
+export default connect(mapStateToProps, null)(HotelList);

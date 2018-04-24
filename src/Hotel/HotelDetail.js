@@ -7,7 +7,8 @@ import {
     LightBlueButtonBackground,
     imageGallery,
     renderRating,
-    ExtraHeavyBlueGreen
+    ExtraHeavyBlueGreen,
+    LightOrange
 } from '../Constants';
 import { Link } from 'react-router-dom';
 import AllAreasIcon from '../Destination/icons/AllAreas.png';
@@ -198,15 +199,41 @@ class HotelDetail extends React.Component {
                     }}
                 >
                     <Link style={{ height: '14%' }} to={accomodationNamespace}>
-                        <img src={AllAreasIcon} style={{ width: '33%' }} />
-                        <div style={{ color: 'white' }}>ALL AREAS</div>
+                        <div
+                            style={{
+                                borderStyle: 'none none solid none',
+                                borderColor: LightOrange,
+                                paddingBottom: '35px'
+                            }}
+                        >
+                            <img
+                                src={AllAreasIcon}
+                                style={{ width: '33%', paddingTop: '33px' }}
+                            />
+                            <div style={{ color: 'white', fontSize: '16px' }}>
+                                ALL AREAS
+                            </div>
+                        </div>
                     </Link>
                     <Link
                         style={{ height: '14%' }}
                         to={`${accomodationNamespace}/${destID}`}
                     >
-                        <img src={HotelListIcon} style={{ width: '33%' }} />
-                        <div style={{ color: 'white' }}>{destName} HOTELS}</div>
+                        <div
+                            style={{
+                                borderStyle: 'none none solid none',
+                                borderColor: LightOrange,
+                                paddingBottom: '28px'
+                            }}
+                        >
+                            <img
+                                src={HotelListIcon}
+                                style={{ width: '33%', paddingTop: '33px' }}
+                            />
+                            <div style={{ color: 'white', fontSize: '16px' }}>
+                                {destName} HOTELS}
+                            </div>
+                        </div>
                     </Link>
                     <div
                         style={{

@@ -69,7 +69,7 @@ class SubsectionList extends React.Component {
         let toRender = data.slice();
         if (data.length < numberOfEntries) {
             toRender = addNullItemToData(data, numberOfEntries);
-        } 
+        }
         return (
             <div style={{ width: '100%', height: '100%', display: 'flex' }}>
                 <div
@@ -86,10 +86,32 @@ class SubsectionList extends React.Component {
                         sideButtons.map((item, index) => {
                             if (item.isLink) {
                                 return (
-                                    <Link style={{flexBasis: '14%'}} key={index} to={item.link}>
-                                        <div style={{borderStyle: 'none none solid none', borderColor: LightOrange, paddingBottom: '35px'}}>
-                                            <img src={item.icon} style={{ width: '33%', paddingTop: '33px' }} />
-                                            <div style={{color: 'white', fontSize: '16px' }}>
+                                    <Link
+                                        style={{ flexBasis: '14%' }}
+                                        key={index}
+                                        to={item.link}
+                                    >
+                                        <div
+                                            style={{
+                                                borderStyle:
+                                                    'none none solid none',
+                                                borderColor: LightOrange,
+                                                paddingBottom: '38px'
+                                            }}
+                                        >
+                                            <img
+                                                src={item.icon}
+                                                style={{
+                                                    width: '33%',
+                                                    paddingTop: '33px'
+                                                }}
+                                            />
+                                            <div
+                                                style={{
+                                                    color: 'white',
+                                                    fontSize: '16px'
+                                                }}
+                                            >
                                                 {item.title}
                                             </div>
                                         </div>
@@ -97,10 +119,32 @@ class SubsectionList extends React.Component {
                                 );
                             } else if (item.isClick) {
                                 return (
-                                    <div style={{ flexBasis: '14%' }} key={index} onClick={item.onClick} >
-                                        <div style={{borderStyle: 'none none solid none', borderColor: LightOrange, paddingBottom: '28px'}}>
-                                            <img src={item.icon} style={{width: '33%', paddingTop: '33px'}} />
-                                            <div style={{color: 'white', fontSize: '16px'}}>
+                                    <div
+                                        style={{ flexBasis: '14%' }}
+                                        key={index}
+                                        onClick={item.onClick}
+                                    >
+                                        <div
+                                            style={{
+                                                borderStyle:
+                                                    'none none solid none',
+                                                borderColor: LightOrange,
+                                                paddingBottom: '31px'
+                                            }}
+                                        >
+                                            <img
+                                                src={item.icon}
+                                                style={{
+                                                    width: '33%',
+                                                    paddingTop: '33px'
+                                                }}
+                                            />
+                                            <div
+                                                style={{
+                                                    color: 'white',
+                                                    fontSize: '16px'
+                                                }}
+                                            >
                                                 {item.title}
                                             </div>
                                         </div>
@@ -108,10 +152,31 @@ class SubsectionList extends React.Component {
                                 );
                             } else {
                                 return (
-                                    <div style={{flexBasis: '14%'}} key={index}>
-                                        <div style={{borderStyle: 'none none solid none', borderColor: LightOrange, paddingBottom: '28px'}}>
-                                            <img src={item.icon} style={{width: '33%', paddingTop: '33px'}} />
-                                            <div style={{color: 'white', fontSize: '16px'}}>
+                                    <div
+                                        style={{ flexBasis: '14%' }}
+                                        key={index}
+                                    >
+                                        <div
+                                            style={{
+                                                borderStyle:
+                                                    'none none solid none',
+                                                borderColor: LightOrange,
+                                                paddingBottom: '31px'
+                                            }}
+                                        >
+                                            <img
+                                                src={item.icon}
+                                                style={{
+                                                    width: '33%',
+                                                    paddingTop: '33px'
+                                                }}
+                                            />
+                                            <div
+                                                style={{
+                                                    color: 'white',
+                                                    fontSize: '16px'
+                                                }}
+                                            >
                                                 {item.title}
                                             </div>
                                         </div>
@@ -119,68 +184,243 @@ class SubsectionList extends React.Component {
                                 );
                             }
                         })}
-                    <div style={{flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '28pt', transform: 'rotate(-90deg)', color: 'white', fontSize: '40pt', fontWeight: 500, letterSpacing: '10px'}}>
+                    <div
+                        style={{
+                            flex: 1,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            fontSize: '28pt',
+                            transform: 'rotate(-90deg)',
+                            color: 'white',
+                            fontSize: '40pt',
+                            fontWeight: 500,
+                            letterSpacing: '10px'
+                        }}
+                    >
                         {sideTitle}
                     </div>
                 </div>
                 <div style={{ width: '86%' }}>
-                    <div style={{height: '8%', backgroundColor: LightOrange, color: 'white', letterSpacing: 5, ...this.styles.horizontalVerticalCenter, fontSize: '20pt', letterSpacing: 5}}>
+                    <div
+                        style={{
+                            height: '8%',
+                            backgroundColor: LightOrange,
+                            color: 'white',
+                            letterSpacing: 5,
+                            ...this.styles.horizontalVerticalCenter,
+                            fontSize: '20pt',
+                            letterSpacing: 5
+                        }}
+                    >
                         {mainTitle}
                     </div>
-                    <div style={{height: '6%', backgroundColor: MediumOrange, ...this.styles.horizontalVerticalCenter}} onClick={this.goUp}>
+                    <div
+                        style={{
+                            height: '6%',
+                            backgroundColor: MediumOrange,
+                            ...this.styles.horizontalVerticalCenter
+                        }}
+                        onClick={this.goUp}
+                    >
                         <img src={UpButton} style={{ width: '5%' }} />
                     </div>
                     <div style={{ height: '80%', overflow: 'hidden' }}>
-                        <div style={{height: '100%', overflowY: 'auto', marginRight: '-30px'}}>
-                            <div style={{height: '100%', overflow: 'auto', paddingRight: '30px'}}>
+                        <div
+                            style={{
+                                height: '100%',
+                                overflowY: 'auto',
+                                marginRight: '-30px'
+                            }}
+                        >
+                            <div
+                                style={{
+                                    height: '100%',
+                                    overflow: 'auto',
+                                    paddingRight: '30px'
+                                }}
+                            >
                                 {toRender.map((item, index) => {
                                     let imageSrc = null;
                                     if (item) {
-                                        imageSrc = isImageArray ? getRandomImage(item[imageKey]) : item[imageKey];
+                                        imageSrc = isImageArray
+                                            ? getRandomImage(item[imageKey])
+                                            : item[imageKey];
                                     }
-                                    const isLastItem = index === toRender.length - 1;
+                                    const isLastItem =
+                                        index === toRender.length - 1;
                                     if (itemIsLink && item) {
                                         return (
-                                            <Link style={{height: itemHeight, color: 'white', display: 'flex'}} to={`${namespace}/${item.id}`} key={`${item.id}-${index}`}>
+                                            <Link
+                                                style={{
+                                                    height: itemHeight,
+                                                    color: 'white',
+                                                    display: 'flex'
+                                                }}
+                                                to={`${namespace}/${item.id}`}
+                                                key={`${item.id}-${index}`}
+                                            >
                                                 {useBackgroundImage ? (
-                                                    <div style={{width: '33%', backgroundImage: `url(${imageSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`}} />
+                                                    <div
+                                                        style={{
+                                                            width: '33%',
+                                                            backgroundImage: `url(${imageSrc})`,
+                                                            backgroundSize:
+                                                                'cover',
+                                                            backgroundPosition:
+                                                                'center',
+                                                            borderBottom: isLastItem
+                                                                ? 'none'
+                                                                : `1px solid ${LightBlue}`
+                                                        }}
+                                                    />
                                                 ) : (
-                                                    <div style={{width: '33%', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`, backgroundColor: HeavyBlue, ...this.styles.horizontalVerticalCenter}}>
-                                                        <img src={imageSrc} style={imgStyle}/>
+                                                    <div
+                                                        style={{
+                                                            width: '33%',
+                                                            borderBottom: isLastItem
+                                                                ? 'none'
+                                                                : `1px solid ${LightBlue}`,
+                                                            backgroundColor: HeavyBlue,
+                                                            ...this.styles
+                                                                .horizontalVerticalCenter
+                                                        }}
+                                                    >
+                                                        <img
+                                                            src={imageSrc}
+                                                            style={imgStyle}
+                                                        />
                                                     </div>
                                                 )}
-                                                <div style={{ width: '67%', backgroundColor: HeavyBlue, display: 'flex', alignItems: 'center', paddingLeft: 20, borderBottom: isLastItem ? 'none' : '1px solid rgb(183,223,228)'}}>
+                                                <div
+                                                    style={{
+                                                        width: '67%',
+                                                        backgroundColor: HeavyBlue,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        paddingLeft: 20,
+                                                        borderBottom: isLastItem
+                                                            ? 'none'
+                                                            : '1px solid rgb(183,223,228)'
+                                                    }}
+                                                >
                                                     {renderText(item)}
                                                 </div>
                                             </Link>
                                         );
                                     } else if (itemOnClick && item) {
                                         return (
-                                            <div style={{height: itemHeight, color: 'white', display: 'flex'}} onClick={itemOnClick} key={`${item.id}-${index}`}>
+                                            <div
+                                                style={{
+                                                    height: itemHeight,
+                                                    color: 'white',
+                                                    display: 'flex'
+                                                }}
+                                                onClick={itemOnClick}
+                                                key={`${item.id}-${index}`}
+                                            >
                                                 {useBackgroundImage ? (
-                                                    <div style={{width: '33%', backgroundImage: `url(${imageSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`}} />
+                                                    <div
+                                                        style={{
+                                                            width: '33%',
+                                                            backgroundImage: `url(${imageSrc})`,
+                                                            backgroundSize:
+                                                                'cover',
+                                                            backgroundPosition:
+                                                                'center',
+                                                            borderBottom: isLastItem
+                                                                ? 'none'
+                                                                : `1px solid ${LightBlue}`
+                                                        }}
+                                                    />
                                                 ) : (
-                                                    <div style={{width: '33%', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`, backgroundColor: HeavyBlue, ...this.styles.horizontalVerticalCenter}}>
-                                                        <img src={imageSrc} style={imgStyle} />
+                                                    <div
+                                                        style={{
+                                                            width: '33%',
+                                                            borderBottom: isLastItem
+                                                                ? 'none'
+                                                                : `1px solid ${LightBlue}`,
+                                                            backgroundColor: HeavyBlue,
+                                                            ...this.styles
+                                                                .horizontalVerticalCenter
+                                                        }}
+                                                    >
+                                                        <img
+                                                            src={imageSrc}
+                                                            style={imgStyle}
+                                                        />
                                                     </div>
                                                 )}
                                                 <div
-                                                    style={{width: '67%', backgroundColor: HeavyBlue, display: 'flex', alignItems: 'center', paddingLeft: 20, borderBottom: isLastItem ? 'none' : '1px solid rgb(183,223,228)'}}>
+                                                    style={{
+                                                        width: '67%',
+                                                        backgroundColor: HeavyBlue,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        paddingLeft: 20,
+                                                        borderBottom: isLastItem
+                                                            ? 'none'
+                                                            : '1px solid rgb(183,223,228)'
+                                                    }}
+                                                >
                                                     {renderText(item)}
                                                 </div>
                                             </div>
                                         );
                                     } else if (item) {
                                         return (
-                                            <div style={{height: itemHeight, color: 'white', display: 'flex'}} key={`${item.id}-${index}`}>
+                                            <div
+                                                style={{
+                                                    height: itemHeight,
+                                                    color: 'white',
+                                                    display: 'flex'
+                                                }}
+                                                key={`${item.id}-${index}`}
+                                            >
                                                 {useBackgroundImage ? (
-                                                    <div style={{width: '33%', backgroundImage: `url(${imageSrc})`, backgroundSize: 'cover', backgroundPosition: 'center', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`}} />
+                                                    <div
+                                                        style={{
+                                                            width: '33%',
+                                                            backgroundImage: `url(${imageSrc})`,
+                                                            backgroundSize:
+                                                                'cover',
+                                                            backgroundPosition:
+                                                                'center',
+                                                            borderBottom: isLastItem
+                                                                ? 'none'
+                                                                : `1px solid ${LightBlue}`
+                                                        }}
+                                                    />
                                                 ) : (
-                                                    <div style={{width: '33%', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`, backgroundColor: HeavyBlue, ...this.styles.horizontalVerticalCenter}}>
-                                                        <img src={imageSrc} style={imgStyle} />
+                                                    <div
+                                                        style={{
+                                                            width: '33%',
+                                                            borderBottom: isLastItem
+                                                                ? 'none'
+                                                                : `1px solid ${LightBlue}`,
+                                                            backgroundColor: HeavyBlue,
+                                                            ...this.styles
+                                                                .horizontalVerticalCenter
+                                                        }}
+                                                    >
+                                                        <img
+                                                            src={imageSrc}
+                                                            style={imgStyle}
+                                                        />
                                                     </div>
                                                 )}
-                                                <div style={{width: '67%', backgroundColor: HeavyBlue, display: 'flex', alignItems: 'center', paddingLeft: 20, borderBottom: isLastItem ? 'none' : '1px solid rgb(183,223,228)'}}>
+                                                <div
+                                                    style={{
+                                                        width: '67%',
+                                                        backgroundColor: HeavyBlue,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        paddingLeft: 20,
+                                                        borderBottom: isLastItem
+                                                            ? 'none'
+                                                            : '1px solid rgb(183,223,228)'
+                                                    }}
+                                                >
                                                     {renderText(item)}
                                                 </div>
                                             </div>
@@ -188,13 +428,45 @@ class SubsectionList extends React.Component {
                                     } else {
                                         //Advertise with us
                                         return (
-                                            <div style={{height: itemHeight, display: 'flex'}} key={`null-${index}`}>
-                                                <div style={{width: '33%', borderBottom: isLastItem ? 'none' : `1px solid ${LightBlue}`, backgroundColor: "white", ...this.styles.horizontalVerticalCenter, color: "rgb(8,152,163)"}}>
-                                                    YOUR<br/>LOGO<br/>HERE
+                                            <div
+                                                style={{
+                                                    height: itemHeight,
+                                                    display: 'flex'
+                                                }}
+                                                key={`null-${index}`}
+                                            >
+                                                <div
+                                                    style={{
+                                                        width: '33%',
+                                                        borderBottom: isLastItem
+                                                            ? 'none'
+                                                            : `1px solid ${LightBlue}`,
+                                                        backgroundColor:
+                                                            'white',
+                                                        ...this.styles
+                                                            .horizontalVerticalCenter,
+                                                        color: 'rgb(8,152,163)'
+                                                    }}
+                                                >
+                                                    YOUR<br />LOGO<br />HERE
                                                 </div>
-                                                <div style={{width: '67%', backgroundColor: HeavyBlue, display: 'flex', alignItems: 'center', paddingLeft: 20, borderBottom: isLastItem ? 'none' : '1px solid rgb(183,223,228)', color: "white"}}>
-                                                    Advertise your business here!<br />
-                                                    For more information, contact:<br />
+                                                <div
+                                                    style={{
+                                                        width: '67%',
+                                                        backgroundColor: HeavyBlue,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        paddingLeft: 20,
+                                                        borderBottom: isLastItem
+                                                            ? 'none'
+                                                            : '1px solid rgb(183,223,228)',
+                                                        color: 'white'
+                                                    }}
+                                                >
+                                                    Advertise your business
+                                                    here!<br />
+                                                    For more information,
+                                                    contact:<br />
                                                     touchscreen@jbg.com.pg
                                                 </div>
                                             </div>
@@ -204,7 +476,14 @@ class SubsectionList extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div style={{height: '6%', backgroundColor: MediumOrange, ...this.styles.horizontalVerticalCenter}} onClick={this.goDown}>
+                    <div
+                        style={{
+                            height: '6%',
+                            backgroundColor: MediumOrange,
+                            ...this.styles.horizontalVerticalCenter
+                        }}
+                        onClick={this.goDown}
+                    >
                         <img src={DownButton} style={{ width: '5%' }} />
                     </div>
                 </div>
