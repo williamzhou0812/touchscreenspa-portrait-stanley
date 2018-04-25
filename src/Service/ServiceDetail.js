@@ -103,8 +103,8 @@ class ServiceDetail extends React.Component {
                                 <div style={{ color: 'white' }}>{serviceType.title.toUpperCase()}</div>
                             </Link>
                         } 
-                        <div style={{ fontSize: '28pt', transform: 'rotate(-90deg)', color: 'white', height: '86%', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '40pt', fontWeight: 500, letterSpacing: '10px'}}>
-                            SERVICES
+                        <div style={{ fontSize: '28pt', color: 'white', height: '86%', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '40pt', fontWeight: 500, letterSpacing: '10px'}}>
+                            <span style={{transform: 'rotate(-90deg)'}}>SERVICES</span>
                         </div>
                     </div>
                     {status === 200 && 

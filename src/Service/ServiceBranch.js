@@ -88,8 +88,8 @@ class ServiceBranch extends React.Component {
                         <img src={serviceTypeData.icon} style={{ width: '33%' }} />
                         <div style={{ color: 'white' }}>{serviceTypeData.title}</div>
                     </Link>
-                    <div style={{ fontSize: '28pt', transform: 'rotate(-90deg)', color: 'white', height: '86%', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '40pt', fontWeight: 500, letterSpacing: '10px'}}>
-                        SERVICES
+                    <div style={{ fontSize: '28pt', color: 'white', height: '86%', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '40pt', fontWeight: 500, letterSpacing: '10px'}}>
+                        <span style={{transform: 'rotate(-90deg)'}}>SERVICES</span>
                     </div>
                 </div>
                 <div style={{width: "86%"}}>

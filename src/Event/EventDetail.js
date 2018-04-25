@@ -196,17 +196,15 @@ class EventDetail extends React.Component {
                     <div
                         style={{
                             fontSize: '28pt',
-                            transform: 'rotate(-90deg)',
                             color: 'white',
+                            height: '86%',
                             fontSize: '40pt',
                             fontWeight: 500,
                             letterSpacing: '10px',
-                            position: 'absolute',
-                            bottom: 455,
-                            left: -40
+                            ...this.styles.horizontalVerticalCenter
                         }}
                     >
-                        EVENTS
+                        <span style={{transform: 'rotate(-90deg)'}}>EVENTS</span>
                     </div>
                 </div>
                 {status === 200 &&

@@ -17,7 +17,9 @@ class AirportInfo extends React.Component {
         return (
             <div style={{ width: '100%', height: '100%', display: 'flex', color: 'white'}}>
                 <div style={{ backgroundColor: HeavyOrange, width: '14%', boxShadow: '9.899px 0px 7px 0px rgba(0,0,0,0.6)', zIndex: 1, display: 'flex',}}>
-                    <div style={{flex: 1, width: "100%", fontSize: '40pt', transform: 'rotate(-90deg)', ...this.styles.horizontalVerticalCenter, fontWeight: 500,letterSpacing: '10px'}}>AIRPORT INFO</div>
+                    <div style={{flex: 1, width: "100%", fontSize: '40pt', ...this.styles.horizontalVerticalCenter, fontWeight: 500,letterSpacing: '10px'}}>
+                        <span style={{transform: 'rotate(-90deg)'}}>AIRPORT INFO</span>
+                    </div>
                 </div>
                 <div style={{width: "86%"}}>
                     <div style={{height: "42%", backgroundImage: `url(${mainImage})`, backgroundSize: "cover", backgroundPosition: "center"}} />

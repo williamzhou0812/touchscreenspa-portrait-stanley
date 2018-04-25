@@ -171,7 +171,6 @@ class DestinationDetail extends React.Component {
                         <div
                             style={{
                                 fontSize: '28pt',
-                                transform: 'rotate(-90deg)',
                                 color: 'white',
                                 height: '86%',
                                 display: 'flex',
@@ -182,7 +181,7 @@ class DestinationDetail extends React.Component {
                                 letterSpacing: '10px'
                             }}
                         >
-                            DESTINATIONS
+                            <span style={{transform: 'rotate(-90deg)'}}>DESTINATIONS</span>
                         </div>
                     </div>
 

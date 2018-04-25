@@ -194,14 +194,13 @@ class SubsectionList extends React.Component {
                             justifyContent: 'center',
                             alignItems: 'center',
                             fontSize: '28pt',
-                            transform: 'rotate(-90deg)',
                             color: 'white',
                             fontSize: '40pt',
                             fontWeight: 500,
                             letterSpacing: '10px'
                         }}
                     >
-                        {sideTitle}
+                        <span style={{transform: 'rotate(-90deg)'}}>{sideTitle}</span>
                     </div>
                 </div>
                 <div style={{ width: '86%' }}>

@@ -240,13 +240,12 @@ class HotelDetail extends React.Component {
                                 style={{ width: '33%', paddingTop: '33px' }}
                             />
                             <div style={{ color: 'white', fontSize: '16px' }}>
-                                {destName} HOTELS}
+                                {destName} HOTELS
                             </div>
                         </div>
                     </Link>
                     <div
                         style={{
-                            transform: 'rotate(-90deg)',
                             color: 'white',
                             fontSize: '40pt',
                             fontWeight: 500,
@@ -255,7 +254,7 @@ class HotelDetail extends React.Component {
                             ...this.styles.horizontalVerticalCenter
                         }}
                     >
-                        HOTELS
+                        <span style={{transform: 'rotate(-90deg)'}}>HOTELS</span>
                     </div>
                 </div>
                 {!!accommodation && (

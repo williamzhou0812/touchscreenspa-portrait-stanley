@@ -40,7 +40,6 @@ class SectionList extends React.Component {
         },
         titleStyle: {
             fontSize: '40pt',
-            transform: 'rotate(-90deg)',
             color: 'white',
             flex: 1,
             display: 'flex',
@@ -100,7 +99,7 @@ class SectionList extends React.Component {
                         <img src={UpButton} style={{ width: '50%' }} />
                     </div>
                     <div style={this.styles.titleStyle}>
-                        {title.toUpperCase()}
+                        <span style={{transform: 'rotate(-90deg)',}}>{title.toUpperCase()}</span>
                     </div>
                     <div style={this.styles.downArrow} onClick={this.goDown}>
                         <img src={DownButton} style={{ width: '50%' }} />
