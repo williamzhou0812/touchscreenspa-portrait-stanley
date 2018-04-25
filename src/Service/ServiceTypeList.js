@@ -8,7 +8,6 @@ class ServiceTypeList extends React.Component {
     constructor(props) {
         super(props);
         const data = this.retrieveData();
-        console.log(data);
         this.state = {
             serviceTypes: (data.serviceTypes && data.status) ? data.serviceTypes : null,
             status: (data.serviceTypes && data.status) ? data.status : null,
