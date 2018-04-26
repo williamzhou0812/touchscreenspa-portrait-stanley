@@ -172,7 +172,11 @@ class App extends Component {
                                     borderColor: 'rgb(104,199,197)',
                                     backgroundColor: 'rgb(13,109,121)',
                                     textDecoration: 'none',
-                                    color: 'white'
+                                    color: 'white',
+                                    fontSize: '22px',
+                                    fontWeight: 500,
+                                    letterSpacing: '1px',
+                                    paddingTop: '10px'
                                 }}
                                 to={airportInfoNamespace}
                             >
