@@ -148,11 +148,19 @@ class AirportInfo extends React.Component {
                                     flexDirection: 'column'
                                 }}
                             >
-                                <img
-                                    src={airport.directorImage}
-                                    style={{ height: '60%' }}
-                                    alt="Airport Director"
-                                />
+                                <div
+                                    style={{
+                                        border: '1px solid white',
+                                        boxShadow:
+                                            '5px 5px 5px 0px rgba(0,0,0,0.6)'
+                                    }}
+                                >
+                                    <img
+                                        src={airport.directorImage}
+                                        style={{ height: '60%' }}
+                                        alt="Airport Director"
+                                    />
+                                </div>
                                 <div
                                     style={{
                                         fontSize: '20px',
