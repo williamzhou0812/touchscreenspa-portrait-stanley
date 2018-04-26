@@ -47,6 +47,7 @@ class ServiceList extends React.Component {
         } else if (serviceType[listKey].length === 1) {
             //Redirect if service list is only one
             history.replace(`${serviceTypeData.namespace}/${serviceType.id}/${serviceType[listKey][0].id}`);
+            return <div />
         } else {
             return (
                 //Return normal service list
