@@ -184,8 +184,28 @@ class HotelDetail extends React.Component {
         } else if (maps.length === 1) {
             const map1 = maps[0];
             return (
-                <div
-                    style={{
+                // <div
+                //     style={{
+                //         backgroundColor: LightBlueButtonBackground,
+                //         width: '100%',
+                //         height: '50px',
+                //         marginTop: '5%',
+                //         marginBottom: '5%',
+                //         borderRadius: '5px',
+                //         fontSize: '20px',
+                //         fontWeight: 500,
+                //         boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.5)',
+                //         color: 'white',
+                //         display: 'flex',
+                //         alignItems: 'center',
+                //         justifyContent: 'center'
+                //     }}
+                // >
+                //     {map1.title.toUpperCase()}
+                // </div>
+                <MapModal
+                    title={map1.title}
+                    buttonStyle={{
                         backgroundColor: LightBlueButtonBackground,
                         width: '100%',
                         height: '50px',
@@ -200,9 +220,10 @@ class HotelDetail extends React.Component {
                         alignItems: 'center',
                         justifyContent: 'center'
                     }}
-                >
-                    {map1.title.toUpperCase()}
-                </div>
+                    textStyle={{}}
+                    mapImage={map1.mapImage}
+                    rootStyle={{}}
+                />
             );
         } else {
             return <div />;
