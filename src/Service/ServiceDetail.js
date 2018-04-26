@@ -15,6 +15,7 @@ import {
 import ServiceBranch from './ServiceBranch';
 import ServiceTypesIcon from '../Dining/icons/RestaurantListIcon.png';
 import { Link } from 'react-router-dom';
+import MapModal from '../Maps/MapModal';
 
 class ServiceDetail extends React.Component {
     constructor(props) {
@@ -367,32 +368,57 @@ class ServiceDetail extends React.Component {
                                         <div style={{ height: '20%' }}>
                                             {service[serviceTypeData.mapKey]
                                                 .length > 0 && (
-                                                <div
-                                                    style={{
+                                                <MapModal
+                                                    rootStyle={{}}
+                                                    buttonStyle={{
                                                         paddingLeft: '30px',
                                                         paddingRight: '30px'
                                                     }}
-                                                >
-                                                    <div
-                                                        style={{
-                                                            height: '60px',
-                                                            width: '100%',
-                                                            borderRadius: '5px',
-                                                            fontSize: '20px',
-                                                            fontWeight: 500,
-                                                            boxShadow:
-                                                                '0px 0px 10px 1px rgba(0,0,0,0.5)',
-                                                            backgroundColor: LightBlueButtonBackground,
-                                                            display: 'flex',
-                                                            alignItems:
-                                                                'center',
-                                                            justifyContent:
-                                                                'center'
-                                                        }}
-                                                    >
-                                                        SEE MAP
-                                                    </div>
-                                                </div>
+                                                    textStyle={{
+                                                        height: '60px',
+                                                        width: '100%',
+                                                        borderRadius: '5px',
+                                                        fontSize: '20px',
+                                                        fontWeight: 500,
+                                                        boxShadow:
+                                                            '0px 0px 10px 1px rgba(0,0,0,0.5)',
+                                                        backgroundColor: LightBlueButtonBackground,
+                                                        display: 'flex',
+                                                        alignItems:
+                                                            'center',
+                                                        justifyContent:
+                                                            'center'
+                                                    }}
+                                                    buttonTitle="SEE MAP"
+                                                    title={service.title}
+                                                    mapImage={service[serviceTypeData.mapKey][0].mapImage}
+                                                />
+                                                // <div
+                                                //     style={{
+                                                //         paddingLeft: '30px',
+                                                //         paddingRight: '30px'
+                                                //     }}
+                                                // >
+                                                //     <div
+                                                //         style={{
+                                                //             height: '60px',
+                                                //             width: '100%',
+                                                //             borderRadius: '5px',
+                                                //             fontSize: '20px',
+                                                //             fontWeight: 500,
+                                                //             boxShadow:
+                                                //                 '0px 0px 10px 1px rgba(0,0,0,0.5)',
+                                                //             backgroundColor: LightBlueButtonBackground,
+                                                //             display: 'flex',
+                                                //             alignItems:
+                                                //                 'center',
+                                                //             justifyContent:
+                                                //                 'center'
+                                                //         }}
+                                                //     >
+                                                //         SEE MAP
+                                                //     </div>
+                                                // </div>
                                             )}
                                         </div>
                                     </div>
