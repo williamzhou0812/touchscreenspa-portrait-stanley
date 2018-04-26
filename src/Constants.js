@@ -54,6 +54,9 @@ export const SUBSECTION_LIST_ENTRIES = 6;
 export const SLIDE_INTERVAL = 5000; //Every 5 seconds change image in ImageGallery
 export const AD_SLIDE_INTERVAL = 7000; //Every 7 seconds change image in ImageGallery for Advertisements
 export const IDLE_TIME = 90000; //1.5 Minutes TIMEOUT
+export const MAX_ZOOM_LEVEL = 2;
+export const MAP_WIDTH = 1080;
+export const MAP_HEIGHT = 607.5;
 
 export function createURL(namespace) {
     return 'http://' + HOST + ':' + PORT + '/' + namespace;

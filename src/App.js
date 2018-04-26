@@ -43,6 +43,7 @@ import Advertisement from './Advertisement/Advertisement';
 import idleJS from 'idle-js';
 import RestComponent from './RestMode/RestComponent';
 import AirportInfo from './Airport/AirportInfo';
+import AirportMapModal from './Airport/AirportMapModal';
 
 class App extends Component {
     idleRef = null;
@@ -177,22 +178,7 @@ class App extends Component {
                             >
                                 AIRPORT INFO
                             </NavLink>
-                            <div
-                                style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    borderStyle: 'solid solid solid none',
-                                    borderWidth: '1px',
-                                    borderColor: 'rgb(104,199,197)',
-                                    backgroundColor: 'rgb(13,109,121)',
-                                    color: 'white'
-                                }}
-                            >
-                                AIRPORT MAP
-                            </div>
+                            <AirportMapModal />
                             <Clock />
                         </div>
                         <div style={{ width: '100vw', height: '8vh' }}>
