@@ -292,12 +292,17 @@ class ServiceDetail extends React.Component {
                                         style={{
                                             flex: 1,
                                             backgroundColor: LightBlueButtonBackground,
-                                            ...this.styles
-                                                .horizontalVerticalCenter,
+                                            display: 'flex',
+                                            alignItems: 'center',
                                             borderWidth: '1px',
                                             borderStyle:
                                                 'solid none solid solid',
-                                            borderColor: 'rgb(183,223,228)'
+                                            borderColor: 'rgb(183,223,228)',
+                                            paddingLeft: '50px',
+                                            paddingTop: '10px',
+                                            fontSize: '28px',
+                                            fontWeight: '500',
+                                            letterSpacing: '3px'
                                         }}
                                     >
                                         {service.title.toUpperCase()}
@@ -314,39 +319,80 @@ class ServiceDetail extends React.Component {
                                         style={{
                                             width: '50%',
                                             borderRight:
-                                                '2px solid rgb(103,195,209)'
+                                                '2px solid rgb(103,195,209)',
+                                            textAlign: 'left',
+                                            paddingTop: '35px',
+                                            paddingLeft: '50px',
+                                            paddingRight: '50px',
+                                            paddingBottom: '35px',
+                                            fontSize: '20px',
+                                            letterSpacing: '1px'
                                         }}
                                     >
                                         {service.description}
                                     </div>
                                     <div style={{ width: '50%' }}>
-                                        <div style={{ height: '50%' }}>
+                                        <div
+                                            style={{
+                                                height: '80%',
+                                                textAlign: 'left',
+                                                paddingTop: '35px',
+                                                paddingLeft: '50px',
+                                                paddingRight: '50px',
+                                                paddingBottom: '35px',
+                                                fontSize: '20px',
+                                                letterSpacing: '1px'
+                                            }}
+                                        >
                                             {service.phone && (
-                                                <div>
+                                                <p>
                                                     CALL TODAY: {service.phone}
-                                                </div>
+                                                </p>
                                             )}
                                             {service.website && (
-                                                <div>
+                                                <p>
                                                     WEB:{' '}
                                                     {removeHttp(
                                                         service.website
                                                     )}
-                                                </div>
+                                                </p>
                                             )}
                                             {service.email && (
-                                                <div>
-                                                    EMAIL: {service.email}
-                                                </div>
+                                                <p>EMAIL: {service.email}</p>
                                             )}
                                             {service.address && (
-                                                <div>{service.address}</div>
+                                                <p>{service.address}</p>
                                             )}
                                         </div>
-                                        <div style={{ height: '50%' }}>
+                                        <div style={{ height: '20%' }}>
                                             {service[serviceTypeData.mapKey]
                                                 .length > 0 && (
-                                                <div>SEE MAP</div>
+                                                <div
+                                                    style={{
+                                                        paddingLeft: '30px',
+                                                        paddingRight: '30px'
+                                                    }}
+                                                >
+                                                    <div
+                                                        style={{
+                                                            height: '60px',
+                                                            width: '100%',
+                                                            borderRadius: '5px',
+                                                            fontSize: '20px',
+                                                            fontWeight: 500,
+                                                            boxShadow:
+                                                                '0px 0px 10px 1px rgba(0,0,0,0.5)',
+                                                            backgroundColor: LightBlueButtonBackground,
+                                                            display: 'flex',
+                                                            alignItems:
+                                                                'center',
+                                                            justifyContent:
+                                                                'center'
+                                                        }}
+                                                    >
+                                                        SEE MAP
+                                                    </div>
+                                                </div>
                                             )}
                                         </div>
                                     </div>
