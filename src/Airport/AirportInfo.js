@@ -22,6 +22,7 @@ class AirportInfo extends React.Component {
                     display: 'flex',
                     color: 'white'
                 }}
+                className="section--bottom--animation"
             >
                 <div
                     style={{
