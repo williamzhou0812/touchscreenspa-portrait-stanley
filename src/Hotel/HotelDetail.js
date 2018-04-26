@@ -13,6 +13,7 @@ import {
 import { Link } from 'react-router-dom';
 import AllAreasIcon from '../Destination/icons/AllAreas.png';
 import HotelListIcon from './icons/HotelListIcon.png';
+import MapModal from "../Maps/MapModal";
 
 class HotelDetail extends React.Component {
     destIndex = -1;
@@ -20,30 +21,8 @@ class HotelDetail extends React.Component {
         super(props);
         const accommodation = { ...this.getHotelDetail() };
         this.state = {
-            accommodation,
-            map1: false,
-            map2: false
+            accommodation
         };
-
-        //Binding methods
-        this.openMap1 = this.openMap1.bind(this);
-        this.closeMap1 = this.closeMap1.bind(this);
-        this.openMap2 = this.openMap2.bind(this);
-        this.closeMap2 = this.closeMap2.bind(this);
-    }
-
-    openMap1() {
-        this.setState({ map1: true });
-    }
-    closeMap1() {
-        this.setState({ map1: false });
-    }
-
-    openMap2() {
-        this.setState({ map2: true });
-    }
-    closeMap2() {
-        this.setState({ map2: false });
     }
 
     getHotelDetail() {
@@ -120,7 +99,7 @@ class HotelDetail extends React.Component {
             const map2 = maps[1];
             return (
                 <div>
-                    <div
+                    {/* <div
                         style={{
                             backgroundColor: LightBlueButtonBackground,
                             width: '100%',
@@ -157,14 +136,72 @@ class HotelDetail extends React.Component {
                         }}
                     >
                         {map2.title.toUpperCase()}
-                    </div>
+                    </div> */}
+                    <MapModal
+                        title={map1.title}
+                        buttonStyle={{
+                            backgroundColor: LightBlueButtonBackground,
+                            width: '100%',
+                            height: '50px',
+                            marginTop: '5%',
+                            marginBottom: '5%',
+                            borderRadius: '5px',
+                            fontSize: '20px',
+                            fontWeight: 500,
+                            boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.5)',
+                            color: 'white',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                        textStyle={{}}
+                        mapImage={map1.mapImage}
+                        rootStyle={{}}
+                    />
+                    <MapModal
+                        title={map2.title}
+                        buttonStyle={{
+                            backgroundColor: LightBlueButtonBackground,
+                            width: '100%',
+                            height: '50px',
+                            marginTop: '5%',
+                            marginBottom: '5%',
+                            borderRadius: '5px',
+                            fontSize: '20px',
+                            fontWeight: 500,
+                            boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.5)',
+                            color: 'white',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                        textStyle={{}}
+                        mapImage={map2.mapImage}
+                        rootStyle={{}}
+                    />
                 </div>
             );
         } else if (maps.length === 1) {
             const map1 = maps[0];
             return (
-                <div>
-                    <div>{map1.title.toUpperCase()}</div>
+                <div
+                    style={{
+                        backgroundColor: LightBlueButtonBackground,
+                        width: '100%',
+                        height: '50px',
+                        marginTop: '5%',
+                        marginBottom: '5%',
+                        borderRadius: '5px',
+                        fontSize: '20px',
+                        fontWeight: 500,
+                        boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.5)',
+                        color: 'white',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                >
+                    {map1.title.toUpperCase()}
                 </div>
             );
         } else {

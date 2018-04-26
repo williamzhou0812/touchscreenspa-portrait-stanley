@@ -12,6 +12,7 @@ import {
     LightOrange
 } from '../Constants';
 import ExploreList from './ExploreList';
+import MapModal from "../Maps/MapModal";
 
 class DestinationDetail extends React.Component {
     constructor(props) {
@@ -50,8 +51,7 @@ class DestinationDetail extends React.Component {
             justifyContent: 'center'
         },
         mapButtonStyle: {
-            height: '13%',
-            width: '80%',
+            height: "100%",
             marginLeft: 10,
             marginTop: '5%',
             marginBottom: '5%',
@@ -314,46 +314,24 @@ class DestinationDetail extends React.Component {
                                             </div>
                                             {destination.mapDestination.length >
                                                 0 && (
-                                                <div
-                                                    style={
-                                                        this.styles
-                                                            .mapButtonStyle
-                                                    }
-                                                >
-                                                    <span
-                                                        style={
-                                                            this.styles
-                                                                .mapButtonTextStyle
-                                                        }
-                                                    >
-                                                        {
-                                                            destination
-                                                                .mapDestination[0]
-                                                                .title
-                                                        }
-                                                    </span>
+                                                <div style={{height: "13%", width: "80%"}}>
+                                                    <MapModal
+                                                        title={destination.mapDestination[0].title}
+                                                        buttonStyle={this.styles.mapButtonStyle}
+                                                        textStyle={this.styles.mapButtonTextStyle}
+                                                        mapImage={destination.mapDestination[0].mapImage}
+                                                    />
                                                 </div>
                                             )}
                                             {destination.mapDestination.length >
                                                 1 && (
-                                                <div
-                                                    style={
-                                                        this.styles
-                                                            .mapButtonStyle
-                                                    }
-                                                >
-                                                    <span
-                                                        style={
-                                                            this.styles
-                                                                .mapButtonTextStyle
-                                                        }
-                                                    >
-                                                        {
-                                                            destination
-                                                                .mapDestination[1]
-                                                                .title
-                                                        }
-                                                    </span>
+                                                <div style={{height: "13%", width: "80%"}}>
+                                                    <MapModal
+                                                        title={destination.mapDestination[1].title}
+                                                        buttonStyle={this.styles.mapButtonStyle}
+                                                        textStyle={this.styles.mapButtonTextStyle}
+                                                        mapImage={destination.mapDestination[1].mapImage}
+                                                    />
                                                 </div>
                                             )}
                                         </div>

@@ -11,6 +11,7 @@ import {
 } from '../Constants';
 import { Link } from 'react-router-dom';
 import RestaurantListIcon from './icons/RestaurantListIcon.png';
+import MapModal from '../Maps/MapModal'
 
 class DiningDetail extends React.Component {
     constructor(props) {
@@ -198,8 +199,10 @@ class DiningDetail extends React.Component {
                                             paddingRight: 20
                                         }}
                                     >
-                                        <div
-                                            style={{
+                                        <MapModal
+                                            buttonTitle={`${restaurant.title} MAP`}
+                                            title={restaurant.title}
+                                            buttonStyle={{
                                                 backgroundColor: HeavyOrange,
                                                 width: '100%',
                                                 height: '50%',
@@ -213,11 +216,11 @@ class DiningDetail extends React.Component {
                                                 fontWeight: 500,
                                                 paddingTop: '5px'
                                             }}
-                                        >
-                                            {restaurant.mapRestaurant[0].title.toUpperCase()}{' '}
-                                            MAP
-                                        </div>
+                                            textStyle={{}}
+                                            mapImage={restaurant.mapRestaurant[0].mapImage}
+                                        />
                                     </div>
+                                    
                                 )}
                             </div>
                         </div>
