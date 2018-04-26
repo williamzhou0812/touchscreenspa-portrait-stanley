@@ -35,7 +35,11 @@ class TourList extends React.Component {
                             <div
                                 style={{
                                     flex: 1,
-                                    ...this.styles.horizontalVerticalCenter
+                                    ...this.styles.horizontalVerticalCenter,
+                                    fontSize: '22px',
+                                    letterSpacing: '2px',
+                                    textTransform: 'uppercase',
+                                    paddingTop: '10px'
                                 }}
                             >
                                 {tour.title}
@@ -45,7 +49,9 @@ class TourList extends React.Component {
                                     style={{
                                         flex: 1,
                                         ...this.styles.horizontalVerticalCenter,
-                                        flexDirection: 'column'
+                                        flexDirection: 'column',
+                                        fontSize: '18px',
+                                        letterSpacing: '2px'
                                     }}
                                 >
                                     {tour.phone && <div>PH: {tour.phone}</div>}
@@ -58,7 +64,9 @@ class TourList extends React.Component {
                                 <div
                                     style={{
                                         flex: 1,
-                                        ...this.styles.horizontalVerticalCenter
+                                        ...this.styles.horizontalVerticalCenter,
+                                        fontSize: '18px',
+                                        letterSpacing: '2px'
                                     }}
                                 >
                                     E: {tour.email}

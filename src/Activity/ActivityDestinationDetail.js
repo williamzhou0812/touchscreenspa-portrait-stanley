@@ -8,6 +8,7 @@ import {
     imageGallery,
     LightBlueButtonBackground,
     MediumOrange,
+    LightOrange,
     ExtraHeavyBlueGreen,
     removeHttp
 } from '../Constants';
@@ -104,7 +105,11 @@ class ActivityDestinationDetail extends React.Component {
                     <div
                         style={{
                             flex: 1,
-                            ...this.styles.horizontalVerticalCenter
+                            ...this.styles.horizontalVerticalCenter,
+                            fontSize: '22px',
+                            letterSpacing: '2px',
+                            textTransform: 'uppercase',
+                            paddingTop: '10px'
                         }}
                     >
                         {tour.title}
@@ -114,7 +119,9 @@ class ActivityDestinationDetail extends React.Component {
                             style={{
                                 flex: 1,
                                 ...this.styles.horizontalVerticalCenter,
-                                flexDirection: 'column'
+                                flexDirection: 'column',
+                                fontSize: '18px',
+                                letterSpacing: '2px'
                             }}
                         >
                             {tour.phone && <div>PH: {tour.phone}</div>}
@@ -127,7 +134,9 @@ class ActivityDestinationDetail extends React.Component {
                         <div
                             style={{
                                 flex: 1,
-                                ...this.styles.horizontalVerticalCenter
+                                ...this.styles.horizontalVerticalCenter,
+                                fontSize: '18px',
+                                letterSpacing: '2px'
                             }}
                         >
                             E: {tour.email}
@@ -187,42 +196,87 @@ class ActivityDestinationDetail extends React.Component {
                         zIndex: 1
                     }}
                 >
-                    <Link style={{ height: '14%' }} to={activityNamespace}>
-                        <img
-                            src={ActivityIcon}
-                            style={{ width: '33%', paddingTop: '20px' }}
-                        />
-                        <div style={{ color: 'white' }}>ALL ACTIVITIES</div>
+                    <Link
+                        style={{ height: '14%', textDecoration: 'none' }}
+                        to={activityNamespace}
+                    >
+                        <div
+                            style={{
+                                borderStyle: 'none none solid none',
+                                borderColor: LightOrange,
+                                paddingBottom: '35px'
+                            }}
+                        >
+                            <img
+                                src={ActivityIcon}
+                                style={{ width: '33%', paddingTop: '23px' }}
+                            />
+                            <div
+                                style={{
+                                    color: 'white',
+                                    fontSize: '16px',
+                                    paddingTop: '10px'
+                                }}
+                            >
+                                ALL ACTIVITIES
+                            </div>
+                        </div>
                     </Link>
                     {status === 200 && (
                         <div>
                             <div
                                 style={{
-                                    height: '14%'
+                                    height: '14%',
+                                    borderStyle: 'none none solid none',
+                                    borderColor: LightOrange,
+                                    paddingBottom: '28px'
                                 }}
                             >
                                 <img
                                     src={ActivityMapIcon}
-                                    style={{ width: '33%' }}
+                                    style={{ width: '33%', paddingTop: '33px' }}
                                 />
-                                <div style={{ color: 'white' }}>
+                                <div
+                                    style={{ color: 'white', fontSize: '16px' }}
+                                >
                                     {activity.title.toUpperCase()} MAP
                                 </div>
                             </div>
                             <Link
-                                style={{ height: '14%' }}
+                                style={{
+                                    height: '14%',
+                                    textDecoration: 'none'
+                                }}
                                 to={
                                     activityNamespace +
                                     '/' +
                                     this.props.match.params.id
                                 }
                             >
-                                <img
-                                    src={activity.icon}
-                                    style={{ width: '33%', paddingTop: '20px' }}
-                                />
-                                <div style={{ color: 'white' }}>
-                                    {activity.title.toUpperCase()} AREAS
+                                <div
+                                    style={{
+                                        height: '14%',
+                                        borderStyle: 'none none solid none',
+                                        borderColor: LightOrange,
+                                        paddingBottom: '38px'
+                                    }}
+                                >
+                                    <img
+                                        src={activity.icon}
+                                        style={{
+                                            width: '33%',
+                                            paddingTop: '33px'
+                                        }}
+                                    />
+                                    <div
+                                        style={{
+                                            color: 'white',
+                                            fontSize: '16px',
+                                            paddingTop: '10px'
+                                        }}
+                                    >
+                                        {activity.title.toUpperCase()} AREAS
+                                    </div>
                                 </div>
                             </Link>
                         </div>
@@ -230,9 +284,8 @@ class ActivityDestinationDetail extends React.Component {
                     <div
                         style={{
                             fontSize: '28pt',
-                            transform: 'rotate(-90deg)',
                             color: 'white',
-                            height: '86%',
+                            height: '60%',
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
@@ -241,7 +294,9 @@ class ActivityDestinationDetail extends React.Component {
                             letterSpacing: '10px'
                         }}
                     >
-                        ACTIVITIES
+                        <span style={{ transform: 'rotate(-90deg)' }}>
+                            ACTIVITIES
+                        </span>
                     </div>
                 </div>
                 {status === 200 && (
@@ -253,7 +308,9 @@ class ActivityDestinationDetail extends React.Component {
                                     height: '16%',
                                     ...this.styles.horizontalVerticalCenter,
                                     backgroundColor: MediumOrange,
-                                    fontSize: '28pt'
+                                    paddingTop: '10px',
+                                    fontSize: '40px',
+                                    letterSpacing: '3px'
                                 }}
                             >
                                 {activity.title.toUpperCase()}
@@ -264,7 +321,11 @@ class ActivityDestinationDetail extends React.Component {
                                         flexBasis: '14%',
                                         ...this.styles.horizontalVerticalCenter,
                                         backgroundColor: 'rgb(101,199,197)',
-                                        color: 'white'
+                                        color: 'white',
+                                        fontSize: '20px',
+                                        letterSpacing: '3px',
+                                        paddingTop: '10px',
+                                        textDecoration: 'none'
                                     }}
                                     to={this.getPrevLink()}
                                 >
@@ -275,8 +336,10 @@ class ActivityDestinationDetail extends React.Component {
                                         flexBasis: '72%',
                                         backgroundColor: LightBlueButtonBackground,
                                         fontWrap: 'bold',
-                                        fontSize: '20pt',
+                                        fontSize: '35px',
                                         letterSpacing: 5,
+                                        fontWeight: 500,
+                                        paddingTop: '10px',
                                         ...this.styles.horizontalVerticalCenter
                                     }}
                                 >
@@ -287,7 +350,11 @@ class ActivityDestinationDetail extends React.Component {
                                         flexBasis: '14%',
                                         ...this.styles.horizontalVerticalCenter,
                                         backgroundColor: 'rgb(101,199,197)',
-                                        color: 'white'
+                                        color: 'white',
+                                        fontSize: '20px',
+                                        letterSpacing: '3px',
+                                        paddingTop: '10px',
+                                        textDecoration: 'none'
                                     }}
                                     to={this.getNextLink()}
                                 >
@@ -297,7 +364,14 @@ class ActivityDestinationDetail extends React.Component {
                             <div
                                 style={{
                                     height: tours.length > 2 ? '36%' : '43%',
-                                    backgroundColor: ExtraHeavyBlueGreen
+                                    backgroundColor: ExtraHeavyBlueGreen,
+                                    textAlign: 'left',
+                                    letterSpacing: '2px',
+                                    fontSize: '20px',
+                                    lineHeight: '130%',
+                                    paddingTop: '30px',
+                                    paddingLeft: '30px',
+                                    paddingRight: '30px'
                                 }}
                             >
                                 {dest.description}
@@ -308,7 +382,9 @@ class ActivityDestinationDetail extends React.Component {
                                     backgroundColor: 'rgb(14,154,167)',
                                     ...this.styles.horizontalVerticalCenter,
                                     borderTop: '1px solid rgb(184,223,228)',
-                                    borderBottom: '1px solid rgb(184,223,228)'
+                                    borderBottom: '1px solid rgb(184,223,228)',
+                                    fontSize: '20px',
+                                    letterSpacing: '3px'
                                 }}
                             >
                                 FOR MORE INFORMATION CONTACT:
