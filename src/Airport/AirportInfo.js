@@ -151,6 +151,7 @@ class AirportInfo extends React.Component {
                                 <img
                                     src={airport.directorImage}
                                     style={{ height: '60%' }}
+                                    alt="Airport Director"
                                 />
                                 <div
                                     style={{
