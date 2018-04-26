@@ -5,10 +5,10 @@ import ImageGallery from 'react-image-gallery';
 
 export const ReactStaticAds = (props) => {
     const { advertisements : ads } = props;
-    const modifiedImages = randomiseButKeepOrder(ads).map((ad) => {
-        if (ad.imageAdvertisement && ad.imageAdvertisement.length > 0) {
-            return { original: getRandomImage(ad.imageAdvertisement) };       
-        }
+    const modifiedImages = randomiseButKeepOrder(ads).filter(ad => {
+        return ad.imageAdvertisement && ad.imageAdvertisement.length > 0;
+    }).map(ad => {
+        return { original: getRandomImage(ad.imageAdvertisement) };       
     });
     return(
         <div style={{width: "100%", height: "100%"}}>

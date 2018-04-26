@@ -128,7 +128,6 @@ class SectionList extends React.Component {
                                         key={`${item.id}-${index}`}
                                         to={linkFunction(namespace, item)}
                                         style={{
-                                            display: 'block',
                                             width: '100%',
                                             height: '33.33333%',
                                             backgroundImage: `url(${
