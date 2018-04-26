@@ -85,7 +85,9 @@ class AirportContactModal extends React.Component {
                                 backgroundColor: 'rgb(25,150,162)',
                                 padding: 20,
                                 display: 'flex',
-                                flexWrap: 'wrap'
+                                flexWrap: 'wrap',
+                                fontSize: '16px',
+                                letterSpacing: '1px'
                             }}
                         >
                             <div

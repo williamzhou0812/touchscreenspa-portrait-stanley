@@ -113,7 +113,9 @@ class AirportInfoModal extends React.Component {
                         <div
                             style={{
                                 backgroundColor: 'rgb(25,150,162)',
-                                padding: 20
+                                padding: 20,
+                                fontSize: '16px',
+                                letterSpacing: '3px'
                             }}
                         >
                             {nl2br(description)}
