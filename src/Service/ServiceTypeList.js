@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux";
-import { essentialNamespace, miningNamespace, retailNamespace, transportNamespace, getServiceTypeListBasedLocation, getServiceTypeDetailBasedLocation, serviceNamespace } from '../Constants';
+import { retailNamespace, getServiceTypeListBasedLocation, getServiceTypeDetailBasedLocation, serviceNamespace } from '../Constants';
 import SubsectionList from '../List/SubsectionList';
 import ServiceTypesIcon from '../Dining/icons/RestaurantListIcon.png';
 

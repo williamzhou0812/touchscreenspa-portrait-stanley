@@ -8,7 +8,6 @@ import {
     serviceNamespace,
     mapListNamespace,
     activityNamespace,
-    airportMapNamespace,
     airportInfoNamespace,
     shiftArray
 } from '../Constants';

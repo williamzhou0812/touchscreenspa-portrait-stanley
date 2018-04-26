@@ -1,13 +1,12 @@
 import { ACTIVITY_LIST, ACTIVITY_DESTINATION_LIST, ACTIVITY_DESTINATION_DETAIL, RESET_ACTIVITY_DESTINATION_DETAIL, RESET_ACTIVITY_DESTINATION_LIST } from "./types";
 import axios from 'axios';
-import { createURL, getHeaderImagesNoMap, getRandomImage } from "../Constants";
+import { createURL, getHeaderImagesNoMap } from "../Constants";
 
 function getHeaderImageFromActivity(data) {
     let randomImages = [];
     //Getting all images from all accommodations according to destination
     data.forEach((d, _) => {
-        let tempImages = [];
-        randomImages = [...randomImages, ... getHeaderImagesNoMap(d.imageActivity).map(item => item.imageFile)];
+        randomImages = [...randomImages, ...getHeaderImagesNoMap(d.imageActivity).map(item => item.imageFile)];
     });
     return randomImages;
 }

@@ -490,16 +490,14 @@ class Advertisement extends React.Component {
         }
     }
     renderAds() {
-        const { continuePlaying, handoverVideo, handoverVideoTimestamp, handleHandoverVideoFinished } = this.props;
+        const { continuePlaying } = this.props;
         const { showAds, status } = this.state;
         if (showAds) {
             return (
                 <div style={{width: "100%", height: "100%", display: "flex"}}>
                     {status === 200 && this.renderAdvertisementImages()}
                     <div style={{width: "50%", backgroundColor: 'black'}}>
-                        {continuePlaying &&
-                        <AdOrRestVideo />
-                        }
+                        {continuePlaying && <AdOrRestVideo />}
                     </div>
                 </div>
             );

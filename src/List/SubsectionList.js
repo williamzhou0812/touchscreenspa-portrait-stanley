@@ -7,7 +7,6 @@ import {
     SUBSECTION_LIST_ENTRIES,
     MediumOrange,
     shiftArray,
-    ExtraHeavyBlueGreen,
     HeavyBlue,
     HeavyOrange,
     LightOrange,
@@ -108,6 +107,7 @@ class SubsectionList extends React.Component {
                                                     width: '33%',
                                                     paddingTop: '33px'
                                                 }}
+                                                alt=""
                                             />
                                             <div
                                                 style={{
@@ -141,6 +141,7 @@ class SubsectionList extends React.Component {
                                                     width: '33%',
                                                     paddingTop: '33px'
                                                 }}
+                                                alt=""
                                             />
                                             <div
                                                 style={{
@@ -173,6 +174,7 @@ class SubsectionList extends React.Component {
                                                     width: '33%',
                                                     paddingTop: '33px'
                                                 }}
+                                                alt=""
                                             />
                                             <div
                                                 style={{
@@ -193,7 +195,6 @@ class SubsectionList extends React.Component {
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            fontSize: '28pt',
                             color: 'white',
                             fontSize: '40pt',
                             fontWeight: 500,
@@ -209,7 +210,6 @@ class SubsectionList extends React.Component {
                             height: '8%',
                             backgroundColor: LightOrange,
                             color: 'white',
-                            letterSpacing: 5,
                             ...this.styles.horizontalVerticalCenter,
                             fontSize: '20pt',
                             letterSpacing: 5
@@ -225,7 +225,7 @@ class SubsectionList extends React.Component {
                         }}
                         onClick={this.goUp}
                     >
-                        <img src={UpButton} style={{ width: '5%' }} />
+                        <img src={UpButton} style={{ width: '5%' }} alt="Up" />
                     </div>
                     <div style={{ height: '80%', overflow: 'hidden' }}>
                         <div
@@ -292,6 +292,7 @@ class SubsectionList extends React.Component {
                                                         <img
                                                             src={imageSrc}
                                                             style={imgStyle}
+                                                            alt=""
                                                         />
                                                     </div>
                                                 )}
@@ -353,6 +354,7 @@ class SubsectionList extends React.Component {
                                                         <img
                                                             src={imageSrc}
                                                             style={imgStyle}
+                                                            alt=""
                                                         />
                                                     </div>
                                                 )}
@@ -413,6 +415,7 @@ class SubsectionList extends React.Component {
                                                         <img
                                                             src={imageSrc}
                                                             style={imgStyle}
+                                                            alt=""
                                                         />
                                                     </div>
                                                 )}
@@ -495,7 +498,7 @@ class SubsectionList extends React.Component {
                         }}
                         onClick={this.goDown}
                     >
-                        <img src={DownButton} style={{ width: '5%' }} />
+                        <img src={DownButton} style={{ width: '5%' }} alt="Down" />
                     </div>
                 </div>
             </div>

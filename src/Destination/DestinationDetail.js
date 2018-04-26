@@ -6,15 +6,11 @@ import AllAreas from './icons/AllAreas.png';
 import {
     HeavyOrange,
     destinationNamespace,
-    HeavyBlue,
-    MediumBlue,
     LightBlueButtonBackground,
     ExtraHeavyBlueGreen,
     imageGallery,
-    LightOrange,
-    MediumOrange
+    LightOrange
 } from '../Constants';
-import ExportList from './ExploreList';
 import ExploreList from './ExploreList';
 
 class DestinationDetail extends React.Component {
@@ -93,7 +89,7 @@ class DestinationDetail extends React.Component {
                         }}
                     >
                         <div style={{ height: '14%' }}>
-                            <img src={AllAreas} style={{ width: '33%' }} />
+                            <img src={AllAreas} style={{ width: '33%' }} alt="All Areas Icon" />
                             <div style={{ color: 'white' }}>
                                 BACK TO OVERVIEW
                             </div>
@@ -155,6 +151,7 @@ class DestinationDetail extends React.Component {
                                 <img
                                     src={AllAreas}
                                     style={{ width: '33%', paddingTop: '30px' }}
+                                    alt="All Areas Icon"
                                 />
                                 <div
                                     style={{
@@ -170,7 +167,6 @@ class DestinationDetail extends React.Component {
 
                         <div
                             style={{
-                                fontSize: '28pt',
                                 color: 'white',
                                 height: '86%',
                                 display: 'flex',
@@ -207,6 +203,7 @@ class DestinationDetail extends React.Component {
                                                 width: '100%',
                                                 height: '100%'
                                             }}
+                                            alt=""
                                         />
                                     )}
                                 </div>
@@ -221,7 +218,6 @@ class DestinationDetail extends React.Component {
                                     <div
                                         style={{
                                             height: '20%',
-                                            letterSpacing: '5px',
                                             display: 'flex',
                                             alignItems: 'center',
                                             fontSize: '40pt',

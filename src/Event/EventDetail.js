@@ -176,6 +176,7 @@ class EventDetail extends React.Component {
                             <img
                                 src={CalendarIcon}
                                 style={{ width: '33%', paddingTop: '30px' }}
+                                alt="Calendar Icon"
                             />
                             <div
                                 style={{
@@ -195,7 +196,6 @@ class EventDetail extends React.Component {
                     </Link>
                     <div
                         style={{
-                            fontSize: '28pt',
                             color: 'white',
                             height: '86%',
                             fontSize: '40pt',

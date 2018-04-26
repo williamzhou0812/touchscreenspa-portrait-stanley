@@ -1,6 +1,6 @@
 import { EVENT_LIST } from "./types";
 import axios from 'axios';
-import { createURL, getRandomImage, removeHttp } from "../Constants";
+import { createURL, removeHttp } from "../Constants";
 
 export const fetchEventList = () => async dispatch => {
     const res = await axios.get(createURL('event/'));

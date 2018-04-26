@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import DownButton from '../interface/DownButton.png';
 import UpButton from '../interface/UpButton.png';
 import {
-    SECTION_LIST_ENTRIES,
     HeavyOrange,
     LightOrange,
     shiftArray
@@ -96,13 +95,13 @@ class SectionList extends React.Component {
                     }}
                 >
                     <div style={this.styles.upArrow} onClick={this.goUp}>
-                        <img src={UpButton} style={{ width: '50%' }} />
+                        <img src={UpButton} style={{ width: '50%' }} alt="Up" />
                     </div>
                     <div style={this.styles.titleStyle}>
                         <span style={{transform: 'rotate(-90deg)',}}>{title.toUpperCase()}</span>
                     </div>
                     <div style={this.styles.downArrow} onClick={this.goDown}>
-                        <img src={DownButton} style={{ width: '50%' }} />
+                        <img src={DownButton} style={{ width: '50%' }} alt="Down" />
                     </div>
                 </div>
                 <div

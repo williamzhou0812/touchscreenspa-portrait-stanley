@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import ImageGallery from 'react-image-gallery';
-import { shuffle, randomiseButKeepOrder, getRandomImage } from '../Constants';
+import { randomiseButKeepOrder, getRandomImage } from '../Constants';
 
 export const RestInternalAds = (props) => {
     const { ads } = props;

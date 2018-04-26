@@ -36,7 +36,7 @@ class ActivityDestinationDetail extends React.Component {
         this.props.resetActivityDestinationDetail();
     }
     getPrevLink() {
-        const { activity, index, status } = this.props;
+        const { activity, index } = this.props;
         const { activityDestinationActivity: dests } = activity;
         let output = `${activityNamespace}/${this.props.match.params.id}`;
         if (index === 0) {
@@ -46,7 +46,7 @@ class ActivityDestinationDetail extends React.Component {
         }
     }
     getNextLink() {
-        const { activity, index, status } = this.props;
+        const { activity, index } = this.props;
         const { activityDestinationActivity: dests } = activity;
         let output = `${activityNamespace}/${this.props.match.params.id}`;
         if (index === dests.length - 1) {
@@ -171,7 +171,6 @@ class ActivityDestinationDetail extends React.Component {
         const {
             activity,
             activityDestination: dest,
-            index,
             status
         } = this.props;
         const tours =
@@ -210,6 +209,7 @@ class ActivityDestinationDetail extends React.Component {
                             <img
                                 src={ActivityIcon}
                                 style={{ width: '33%', paddingTop: '23px' }}
+                                alt="Activity Icon"
                             />
                             <div
                                 style={{
@@ -235,6 +235,7 @@ class ActivityDestinationDetail extends React.Component {
                                 <img
                                     src={ActivityMapIcon}
                                     style={{ width: '33%', paddingTop: '33px' }}
+                                    alt="Activity Map Icon"
                                 />
                                 <div
                                     style={{ color: 'white', fontSize: '16px' }}
@@ -267,6 +268,7 @@ class ActivityDestinationDetail extends React.Component {
                                             width: '33%',
                                             paddingTop: '33px'
                                         }}
+                                        alt="Activity Icon"
                                     />
                                     <div
                                         style={{
@@ -283,7 +285,6 @@ class ActivityDestinationDetail extends React.Component {
                     )}
                     <div
                         style={{
-                            fontSize: '28pt',
                             color: 'white',
                             height: '60%',
                             display: 'flex',

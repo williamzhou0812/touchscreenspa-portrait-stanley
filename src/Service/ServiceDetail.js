@@ -90,20 +90,20 @@ class ServiceDetail extends React.Component {
                 <div style={{ width: '100%', height: '100%', display: 'flex', color: 'white'}}>
                     <div style={{ backgroundColor: HeavyOrange, width: '14%', boxShadow: '9.899px 0px 7px 0px rgba(0,0,0,0.6)', zIndex: 1}}> 
                         <Link style={{ height: '14%' }} to={serviceNamespace}>
-                            <img src={ServiceTypesIcon} style={{ width: '33%' }} />
+                            <img src={ServiceTypesIcon} style={{ width: '33%' }} alt="Service Types Icon" />
                             <div style={{ color: 'white' }}>SERVICE TYPES</div>
                         </Link>
                         <Link style={{ height: '14%' }} to={serviceTypeData.namespace}>
-                            <img src={serviceTypeData.icon} style={{ width: '33%' }} />
+                            <img src={serviceTypeData.icon} style={{ width: '33%' }} alt="Service Type Icon" />
                             <div style={{ color: 'white' }}>{serviceTypeData.title}</div>
                         </Link>
                         {status === 200 && 
                             <Link style={{ height: '14%' }} to={`${serviceTypeData.namespace}/${serviceType.id}`}>
-                                <img src={serviceType.icon} style={{ width: '33%' }} />
+                                <img src={serviceType.icon} style={{ width: '33%' }} alt="Service List Icon" />
                                 <div style={{ color: 'white' }}>{serviceType.title.toUpperCase()}</div>
                             </Link>
                         } 
-                        <div style={{ fontSize: '28pt', color: 'white', height: '86%', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '40pt', fontWeight: 500, letterSpacing: '10px'}}>
+                        <div style={{ color: 'white', height: '86%', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '40pt', fontWeight: 500, letterSpacing: '10px'}}>
                             <span style={{transform: 'rotate(-90deg)'}}>SERVICES</span>
                         </div>
                     </div>

@@ -59,7 +59,7 @@ class ExploreList extends React.Component {
                     }}
                     onClick={this.goUp}
                 >
-                    <img src={UpButton} style={{ width: '5%' }} />
+                    <img src={UpButton} style={{ width: '5%' }} alt="Up" />
                 </div>
                 <div style={{ height: '88%', overflow: 'hidden' }}>
                     <div
@@ -103,6 +103,7 @@ class ExploreList extends React.Component {
                                                 <img
                                                     src={item.icon}
                                                     style={{ width: '43%' }}
+                                                    alt=""
                                                 />
                                             </div>
                                             <div
@@ -140,7 +141,7 @@ class ExploreList extends React.Component {
                     }}
                     onClick={this.goDown}
                 >
-                    <img src={DownButton} style={{ width: '5%' }} />
+                    <img src={DownButton} style={{ width: '5%' }} alt="Down" />
                 </div>
             </div>
         );

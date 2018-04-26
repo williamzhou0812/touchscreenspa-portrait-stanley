@@ -1,5 +1,5 @@
 import React from 'react';
-import { shuffle, randomiseButKeepOrder, getRandomImage } from '../Constants';
+import { randomiseButKeepOrder, getRandomImage } from '../Constants';
 import { connect } from 'react-redux';
 import ImageGallery from 'react-image-gallery';
 

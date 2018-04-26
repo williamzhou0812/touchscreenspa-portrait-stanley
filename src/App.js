@@ -15,17 +15,12 @@ import {
     destinationNamespace,
     serviceNamespace,
     mapListNamespace,
-    tourNamespace,
     essentialNamespace,
     transportNamespace,
     retailNamespace,
     miningNamespace,
     airportInfoNamespace,
-    airportMapNamespace,
     IDLE_TIME,
-    SelectedBorderColor,
-    MediumBlue,
-    playRandomSoundEffect,
     activityNamespace
 } from './Constants';
 import DestinationList from './Destination/DestinationList';
@@ -396,7 +391,7 @@ class App extends Component {
                                         this.props.specificAdsAccommodationList
                                             .status === 200 &&
                                         this.props.specificAdsEventList
-                                            .status == 200 && (
+                                            .status === 200 && (
                                             <Route
                                                 render={props => (
                                                     <Advertisement

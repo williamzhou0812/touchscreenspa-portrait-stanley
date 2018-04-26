@@ -215,6 +215,7 @@ class HotelDetail extends React.Component {
                             <img
                                 src={AllAreasIcon}
                                 style={{ width: '33%', paddingTop: '33px' }}
+                                alt="All Areas Icon"
                             />
                             <div style={{ color: 'white', fontSize: '16px' }}>
                                 ALL AREAS
@@ -238,6 +239,7 @@ class HotelDetail extends React.Component {
                             <img
                                 src={HotelListIcon}
                                 style={{ width: '33%', paddingTop: '33px' }}
+                                alt="Hotel List Icon"
                             />
                             <div style={{ color: 'white', fontSize: '16px' }}>
                                 {destName} HOTELS

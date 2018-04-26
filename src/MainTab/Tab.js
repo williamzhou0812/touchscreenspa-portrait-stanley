@@ -1,6 +1,5 @@
 import React from 'react';
 import './Tab.css';
-import { MediumBlue, HeavyBlue, ExtraHeavyBlueGreen } from '../Constants';
 
 class Tab extends React.Component {
     render() {

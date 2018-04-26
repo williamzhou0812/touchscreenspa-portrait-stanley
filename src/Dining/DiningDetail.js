@@ -111,12 +111,12 @@ class DiningDetail extends React.Component {
                         <img
                             src={RestaurantListIcon}
                             style={{ width: '33%' }}
+                            alt="Restaurant List Icon"
                         />
                         <div style={{ color: 'white' }}>RESTAURANT LIST</div>
                     </Link>
                     <div
                         style={{
-                            fontSize: '28pt',
                             color: 'white',
                             height: '86%',
                             display: 'flex',
