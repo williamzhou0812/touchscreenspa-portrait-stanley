@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { MAX_ZOOM_LEVEL, MAP_HEIGHT, MAP_WIDTH } from '../Constants';
-import { ReactImageMagnifyTouch } from 'react-image-magnify';
+import ReactImageMagnify from 'react-image-magnify';
 import AirportMap from "../Maps/PortMoresbyAirportMap.png";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CloseIcon from 'material-ui/svg-icons/navigation/close';
@@ -47,19 +47,23 @@ class AirportMapModal extends React.Component {
                             </MuiThemeProvider>
                         </div>
                         <div style={{backgroundColor: "rgb(25,150,162)", fontSize: "28pt", padding: 20, textAlign: "center" }}>MAP OF<br/>PORT MORESBY AIRPORT</div>
-                        <ReactImageMagnifyTouch
-                            largeImage={{
+                        <ReactImageMagnify {...{
+                            smallImage: {
+                                alt: 'Airport Map',
+                                isFluidWidth: true,
+                                src: AirportMap
+                            },
+                            largeImage: {
                                 src: AirportMap,
                                 width: MAX_ZOOM_LEVEL * MAP_WIDTH,
                                 height: MAX_ZOOM_LEVEL * MAP_HEIGHT
-                            }}
-                            smallImage={{
-                                src: AirportMap,
-                                width: MAP_WIDTH,
-                                height: MAP_HEIGHT
-                            }}
-                            isActivatedOnTouch={true}
-                        />
+                            },
+                            enlargedImagePosition: 'over',
+                            isHintEnabled: true,
+                            isActivatedOnTouch: true,
+                            shouldHideHintAfterFirstActivation: false,
+                            hintTextMouse: "Long-Touch to Zoom"
+                        }} />
                         <div style={{backgroundColor: "rgb(13,109,121)", color: "rgb(107,193,209)", padding: 5, textAlign: "center"}}>TAP OUTSIDE OF MAP TO CLOSE</div>
                     </Modal.Body>
                 </Modal>
