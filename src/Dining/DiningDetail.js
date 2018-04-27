@@ -7,11 +7,12 @@ import {
     imageGallery,
     HeavyOrange,
     LightBlueButtonBackground,
-    ExtraHeavyBlueGreen
+    ExtraHeavyBlueGreen,
+    LightOrange
 } from '../Constants';
 import { Link } from 'react-router-dom';
 import RestaurantListIcon from './icons/RestaurantListIcon.png';
-import MapModal from '../Maps/MapModal'
+import MapModal from '../Maps/MapModal';
 
 class DiningDetail extends React.Component {
     constructor(props) {
@@ -108,13 +109,36 @@ class DiningDetail extends React.Component {
                         zIndex: 1
                     }}
                 >
-                    <Link style={{ height: '14%' }} to={diningNamespace}>
-                        <img
-                            src={RestaurantListIcon}
-                            style={{ width: '33%' }}
-                            alt="Restaurant List Icon"
-                        />
-                        <div style={{ color: 'white' }}>RESTAURANT LIST</div>
+                    <Link
+                        style={{
+                            height: '14%',
+                            textDecoration: 'none'
+                        }}
+                        to={diningNamespace}
+                    >
+                        <div
+                            style={{
+                                borderStyle: 'none none solid none',
+                                borderColor: LightOrange,
+                                paddingBottom: '20px'
+                            }}
+                        >
+                            <img
+                                src={RestaurantListIcon}
+                                style={{ width: '33%', paddingTop: '30px' }}
+                                alt="Restaurant List Icon"
+                            />
+                            <div
+                                style={{
+                                    color: 'white',
+                                    letterSpacing: '2px',
+                                    fontSize: '18px',
+                                    paddingTop: '10px'
+                                }}
+                            >
+                                RESTAURANT LIST
+                            </div>
+                        </div>
                     </Link>
                     <div
                         style={{
@@ -128,7 +152,9 @@ class DiningDetail extends React.Component {
                             letterSpacing: '10px'
                         }}
                     >
-                        <span style={{transform: 'rotate(-90deg)'}}>DINING</span>
+                        <span style={{ transform: 'rotate(-90deg)' }}>
+                            DINING
+                        </span>
                     </div>
                 </div>
                 {status === 200 && (
@@ -200,7 +226,9 @@ class DiningDetail extends React.Component {
                                         }}
                                     >
                                         <MapModal
-                                            buttonTitle={`${restaurant.title} MAP`}
+                                            buttonTitle={`${
+                                                restaurant.title
+                                            } MAP`}
                                             title={restaurant.title}
                                             buttonStyle={{
                                                 backgroundColor: HeavyOrange,
@@ -217,10 +245,12 @@ class DiningDetail extends React.Component {
                                                 paddingTop: '5px'
                                             }}
                                             textStyle={{}}
-                                            mapImage={restaurant.mapRestaurant[0].mapImage}
+                                            mapImage={
+                                                restaurant.mapRestaurant[0]
+                                                    .mapImage
+                                            }
                                         />
                                     </div>
-                                    
                                 )}
                             </div>
                         </div>
