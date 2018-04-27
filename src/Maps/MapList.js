@@ -23,7 +23,6 @@ class MapList extends React.Component {
                         </div>
                     );
                 }}
-                itemIsLink={false}
                 randomise={false}
             />
         );

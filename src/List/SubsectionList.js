@@ -61,8 +61,6 @@ class SubsectionList extends React.Component {
             renderText,
             useBackgroundImage,
             imgStyle,
-            itemIsLink,
-            itemOnClick
         } = this.props;
         const itemHeight = `${100 / numberOfEntries}%`;
         let toRender = data.slice();
@@ -251,7 +249,7 @@ class SubsectionList extends React.Component {
                                     }
                                     const isLastItem =
                                         index === toRender.length - 1;
-                                    if (itemIsLink && item) {
+                                    if (item && namespace) {
                                         return (
                                             <Link
                                                 style={{
@@ -313,68 +311,6 @@ class SubsectionList extends React.Component {
                                                     {renderText(item)}
                                                 </div>
                                             </Link>
-                                        );
-                                    } else if (itemOnClick && item) {
-                                        return (
-                                            <div
-                                                style={{
-                                                    height: itemHeight,
-                                                    color: 'white',
-                                                    display: 'flex'
-                                                }}
-                                                onClick={itemOnClick}
-                                                key={`${item.id}-${index}`}
-                                            >
-                                                {useBackgroundImage ? (
-                                                    <div
-                                                        style={{
-                                                            width: '33%',
-                                                            backgroundImage: `url(${imageSrc})`,
-                                                            backgroundSize:
-                                                                'cover',
-                                                            backgroundPosition:
-                                                                'center',
-                                                            borderBottom: isLastItem
-                                                                ? 'none'
-                                                                : `1px solid ${LightBlue}`
-                                                        }}
-                                                    />
-                                                ) : (
-                                                    <div
-                                                        style={{
-                                                            width: '33%',
-                                                            borderBottom: isLastItem
-                                                                ? 'none'
-                                                                : `1px solid ${LightBlue}`,
-                                                            backgroundColor: HeavyBlue,
-                                                            ...this.styles
-                                                                .horizontalVerticalCenter
-                                                        }}
-                                                    >
-                                                        <img
-                                                            src={imageSrc}
-                                                            style={imgStyle}
-                                                            alt=""
-                                                        />
-                                                    </div>
-                                                )}
-                                                <div
-                                                    style={{
-                                                        width: '67%',
-                                                        backgroundColor: HeavyBlue,
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        paddingLeft: 35,
-                                                        fontSize: '24px',
-                                                        letterSpacing: '3px',
-                                                        borderBottom: isLastItem
-                                                            ? 'none'
-                                                            : '1px solid rgb(183,223,228)'
-                                                    }}
-                                                >
-                                                    {renderText(item)}
-                                                </div>
-                                            </div>
                                         );
                                     } else if (item) {
                                         return (
@@ -510,8 +446,6 @@ SubsectionList.defaultProps = {
     sideButtons: [],
     renderText: item => item.title.toUpperCase(),
     useBackgroundImage: true,
-    itemIsLink: true,
-    itemOnClick: null,
     advertiseWithUs: true,
     randomise: true
 };
@@ -525,8 +459,6 @@ SubsectionList.propTypes = {
     sideTitle: PropTypes.string.isRequired,
     mainTitle: PropTypes.string.isRequired,
     namespace: PropTypes.string.isRequired,
-    itemIsLink: PropTypes.bool,
-    itemOnClick: PropTypes.function,
     renderText: PropTypes.func,
     useBackgroundImage: PropTypes.bool,
     imgStyle: PropTypes.object,
