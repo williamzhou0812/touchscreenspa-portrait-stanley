@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as actions from '../actions/destination';
 import AllAreas from './icons/AllAreas.png';
+import BackIcon from './icons/BackIcon.png';
 import {
     HeavyOrange,
     destinationNamespace,
@@ -88,11 +89,22 @@ class DestinationDetail extends React.Component {
                             zIndex: 1
                         }}
                     >
-                        <div style={{ height: '14%' }}>
-                            <img src={AllAreas} style={{ width: '33%' }} alt="All Areas Icon" />
-                            <div style={{ color: 'white' }}>
-                                BACK TO OVERVIEW
+                        <div style={{ height: '14%', }}>
+                            <div style={{
+                                height: "100%",
+                                borderStyle: 'none none solid none',
+                                borderColor: LightOrange,
+                                ...this.styles.horizontalVerticalCenter,
+                                flexDirection: "column"
+                            }}>
+                                <img src={BackIcon} style={{ width: '33%', marginBottom: -10 }} alt="Back To Overview Icon" />
+                                <div style={{ color: 'white', fontSize: "14pt" }}>
+                                    BACK TO OVERVIEW
+                                </div>
                             </div>
+                        </div>
+                        <div style={{height: "86%", ...this.styles.horizontalVerticalCenter, color: 'white', fontSize: '40pt', fontWeight: 500, letterSpacing: '10px'}}>
+                            <span style={{transform: 'rotate(-90deg)'}}>EXPLORE</span>
                         </div>
                     </div>
                     {!!destination &&
