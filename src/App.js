@@ -153,7 +153,7 @@ class App extends Component {
                                 width: '100vw',
                                 height: '3vh',
                                 display: 'grid',
-                                gridTemplateColumns: '30% 30% 40%'
+                                gridTemplateColumns: '28.6% 28.6% 42.8%'
                             }}
                         >
                             <NavLink
