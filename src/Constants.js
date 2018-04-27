@@ -5,7 +5,7 @@ import RightIcon from 'material-ui/svg-icons/navigation/chevron-right';
 import PlayIcon from 'material-ui/svg-icons/av/play-arrow';
 import PauseIcon from 'material-ui/svg-icons/av/pause';
 import ImageGallery from 'react-image-gallery';
-import "../node_modules/react-image-gallery/styles/css/image-gallery-no-icon.css";
+import '../node_modules/react-image-gallery/styles/css/image-gallery-no-icon.css';
 import Rating from 'react-rating';
 import FullStar from 'material-ui/svg-icons/toggle/star';
 import EmptyStar from 'material-ui/svg-icons/toggle/star-border';

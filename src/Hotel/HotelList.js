@@ -8,7 +8,7 @@ import {
 import SubsectionList from '../List/SubsectionList';
 import AllAreasIcon from '../Destination/icons/AllAreas.png';
 import HotelsMapIcon from './icons/HotelsMapIcon.png';
-
+import SidebarMapModel from '../Maps/SidebarMapModel';
 class HotelList extends React.Component {
     constructor(props) {
         super(props);
@@ -51,10 +51,15 @@ class HotelList extends React.Component {
                         icon: AllAreasIcon,
                         link: accomodationNamespace
                     },
-                    { title: 'HOTELS MAP', icon: HotelsMapIcon }
+                    {
+                        title: 'HOTELS MAP',
+                        icon: HotelsMapIcon,
+                        isMap: true
+                    }
                 ]}
                 mainTitle={accommodation.title.toUpperCase()}
                 data={accommodation.accomodationDestination}
+                maps={accommodation.mapHotels}
                 imageKey={'logo'}
                 isImageArray={false}
                 namespace={`${accomodationNamespace}/${accommodation.id}`}

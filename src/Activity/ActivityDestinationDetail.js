@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 import ActivityIcon from '../MainTab/icons/ACTIVITIES_ICON.png';
 import ActivityMapIcon from '../Hotel/icons/HotelsMapIcon.png';
 import TourList from './TourList';
+import SidebarMapModel from '../Maps/SidebarMapModel';
 
 class ActivityDestinationDetail extends React.Component {
     retrieveData() {
@@ -168,11 +169,7 @@ class ActivityDestinationDetail extends React.Component {
     };
 
     render() {
-        const {
-            activity,
-            activityDestination: dest,
-            status
-        } = this.props;
+        const { activity, activityDestination: dest, status } = this.props;
         const tours =
             dest &&
             dest.tourActivityDestination &&
@@ -224,25 +221,15 @@ class ActivityDestinationDetail extends React.Component {
                     </Link>
                     {status === 200 && (
                         <div>
-                            <div
-                                style={{
-                                    height: '14%',
-                                    borderStyle: 'none none solid none',
-                                    borderColor: LightOrange,
-                                    paddingBottom: '28px'
+                            <SidebarMapModel
+                                item={{
+                                    title: `${activity.title.toUpperCase()} MAP`,
+                                    icon: ActivityMapIcon
                                 }}
-                            >
-                                <img
-                                    src={ActivityMapIcon}
-                                    style={{ width: '33%', paddingTop: '33px' }}
-                                    alt="Activity Map Icon"
-                                />
-                                <div
-                                    style={{ color: 'white', fontSize: '16px' }}
-                                >
-                                    {activity.title.toUpperCase()} MAP
-                                </div>
-                            </div>
+                                mainTitle={activity.title.toUpperCase()}
+                                maps={activity.mapActivity}
+                            />
+
                             <Link
                                 style={{
                                     height: '14%',

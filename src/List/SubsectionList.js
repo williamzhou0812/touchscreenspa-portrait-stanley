@@ -15,6 +15,7 @@ import {
     randomiseButKeepOrder,
     addNullItemToData
 } from '../Constants';
+import SidebarMapModel from '../Maps/SidebarMapModel';
 
 class SubsectionList extends React.Component {
     constructor(props) {
@@ -61,6 +62,7 @@ class SubsectionList extends React.Component {
             renderText,
             useBackgroundImage,
             imgStyle,
+            maps
         } = this.props;
         const itemHeight = `${100 / numberOfEntries}%`;
         let toRender = data.slice();
@@ -152,6 +154,14 @@ class SubsectionList extends React.Component {
                                         </div>
                                     </div>
                                 );
+                            } else if (item.isMap) {
+                                return (
+                                    <SidebarMapModel
+                                        item={item}
+                                        mainTitle={mainTitle}
+                                        maps={maps}
+                                    />
+                                );
                             } else {
                                 return (
                                     <div
@@ -199,7 +209,9 @@ class SubsectionList extends React.Component {
                             letterSpacing: '10px'
                         }}
                     >
-                        <span style={{transform: 'rotate(-90deg)'}}>{sideTitle}</span>
+                        <span style={{ transform: 'rotate(-90deg)' }}>
+                            {sideTitle}
+                        </span>
                     </div>
                 </div>
                 <div style={{ width: '86%' }}>
@@ -434,7 +446,11 @@ class SubsectionList extends React.Component {
                         }}
                         onClick={this.goDown}
                     >
-                        <img src={DownButton} style={{ width: '5%' }} alt="Down" />
+                        <img
+                            src={DownButton}
+                            style={{ width: '5%' }}
+                            alt="Down"
+                        />
                     </div>
                 </div>
             </div>

@@ -44,13 +44,15 @@ class ActivityDestinationList extends React.Component {
                             },
                             {
                                 title: `${activity.title.toUpperCase()} MAP`,
-                                icon: ActivityMapIcon
+                                icon: ActivityMapIcon,
+                                isMap: true
                             }
                         ]}
                         sideTitle="ACTIVITIES"
                         mainTitle={activity.title.toUpperCase()}
                         namespace={`${activityNamespace}/${activity.id}`}
                         randomise={false}
+                        maps={activity.mapActivity}
                     />
                 )}
             </div>
