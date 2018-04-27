@@ -5,8 +5,7 @@ import {
     MAP_HEIGHT,
     MAP_WIDTH,
     HeavyOrange,
-    LightOrange,
-    HeavyBlue
+    LightOrange
 } from '../Constants';
 import ReactImageMagnify from 'react-image-magnify';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -145,6 +144,12 @@ class SidebarMapModel extends React.Component {
             </div>
         );
     }
+}
+
+SidebarMapModel.propTypes = {
+    item: PropTypes.object.isRequired,
+    mainTitle: PropTypes.string.isRequired, 
+    maps: PropTypes.array.isRequired
 }
 
 export default SidebarMapModel;

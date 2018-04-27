@@ -8,7 +8,6 @@ import {
 import SubsectionList from '../List/SubsectionList';
 import AllAreasIcon from '../Destination/icons/AllAreas.png';
 import HotelsMapIcon from './icons/HotelsMapIcon.png';
-import SidebarMapModel from '../Maps/SidebarMapModel';
 class HotelList extends React.Component {
     constructor(props) {
         super(props);
