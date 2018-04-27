@@ -115,9 +115,10 @@ class DestinationDetail extends React.Component {
                                         height: '8%',
                                         backgroundColor: LightOrange,
                                         color: 'white',
-                                        letterSpacing: 5,
+                                        letterSpacing: 10,
                                         ...this.styles.horizontalVerticalCenter,
-                                        fontSize: '20pt'
+                                        fontSize: '40pt',
+                                        paddingTop: 20
                                     }}
                                 >
                                     {destination.title}
