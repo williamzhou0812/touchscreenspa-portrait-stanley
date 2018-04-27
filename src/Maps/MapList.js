@@ -143,14 +143,13 @@ class MapList extends React.Component {
                                 {data.map((item, index) => {
                                     const isLastItem = index === data.length - 1;
                                         return (
-                                            <div style={{height: itemHeight}}>
+                                            <div style={{height: itemHeight}} key={`${item.id}-${index}`}>
                                                 <div
                                                     style={{
                                                         height: "100%",
                                                         color: 'white',
                                                         display: 'flex'
                                                     }}
-                                                    key={`${item.id}-${index}`}
                                                     onClick={() => this.openMap(index)}
                                                 >
                                                     <div
