@@ -5,7 +5,8 @@ import {
     MediumOrange,
     shiftArray,
     ExtraHeavyBlueGreen,
-    HeavyBlue
+    HeavyBlue,
+    randomiseItems
 } from '../Constants';
 import { Link } from "react-router-dom";
 
@@ -14,7 +15,7 @@ class ExploreList extends React.Component {
         super(props);
         const { data } = this.props;
         this.state = {
-            data
+            data: randomiseItems(data)
         };
         this.goUp = this.goUp.bind(this);
         this.goDown = this.goDown.bind(this);
@@ -83,14 +84,17 @@ class ExploreList extends React.Component {
                                         style={{
                                             height: itemHeight,
                                             color: 'white',
-                                            display: 'flex'
+                                            display: 'flex',
+                                            textDecoration: "none"
                                         }}
                                     >
                                         <div
                                             style={{
                                                 width: '33%',
                                                 backgroundColor: ExtraHeavyBlueGreen,
-                                                display: 'flex'
+                                                display: 'flex',
+                                                borderRight: "1px solid rgb(4,60,66)",
+                                                borderBottom: "1px solid rgb(4,60,66)"
                                             }}
                                         >
                                             <div
@@ -109,8 +113,8 @@ class ExploreList extends React.Component {
                                             <div
                                                 style={{
                                                     width: '68%',
-                                                    ...this.styles
-                                                        .horizontalVerticalCenter
+                                                    ...this.styles.horizontalVerticalCenter,
+                                                    fontSize: "14pt"
                                                 }}
                                             >
                                                 {item.type}
@@ -122,7 +126,10 @@ class ExploreList extends React.Component {
                                                 backgroundColor: HeavyBlue,
                                                 display: 'flex',
                                                 alignItems: 'center',
-                                                paddingLeft: 20
+                                                paddingLeft: 20,
+                                                borderLeft: "1px solid rgb(184,223,228)",
+                                                borderBottom: "1px solid rgb(184,223,228)",
+                                                fontSize: "16pt"
                                             }}
                                         >
                                             {item.title.toUpperCase()}
