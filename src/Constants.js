@@ -323,7 +323,7 @@ function insertItem(array, data, to) {
     array.splice(to, 0, data);
 }
 
-function randomiseItems(array) {
+export function randomiseItems(array) {
     let shuffleArray = [];
     let output = [];
     array.forEach((_, index) => {
