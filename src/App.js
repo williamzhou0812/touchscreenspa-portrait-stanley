@@ -360,7 +360,14 @@ class App extends Component {
                                         to={destinationNamespace}
                                     />
                                 </div>
-                                <div style={{ width: '100vw', height: '16vh' }}>
+                                <div
+                                    style={{
+                                        width: '100vw',
+                                        height: '16vh',
+                                        zIndex: '99',
+                                        position: 'relative'
+                                    }}
+                                >
                                     {!isIdle &&
                                         this.props.adVideoList.status === 200 &&
                                         this.props.advertisementList.status ===
@@ -399,7 +406,9 @@ class App extends Component {
                                         height: '4vh',
                                         display: 'flex',
                                         backgroundColor: '#058c9b',
-                                        color: 'white'
+                                        color: 'white',
+                                        zIndex: '99',
+                                        position: 'relative'
                                     }}
                                 >
                                     <div
