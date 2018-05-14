@@ -12,7 +12,7 @@ import {
     DECIMAL_RADIX,
     LightOrange
 } from '../Constants';
-import MapModal from '../Maps/MapModal'
+import MapModal from '../Maps/MapModal';
 
 class EventDetail extends React.Component {
     constructor(props) {
@@ -154,7 +154,10 @@ class EventDetail extends React.Component {
                         position: 'relative'
                     }}
                 >
-                    <Link style={{ height: '14%' }} to={eventNamespace}>
+                    <Link
+                        style={{ height: '14%', textDecoration: 'none' }}
+                        to={eventNamespace}
+                    >
                         <div
                             style={{
                                 borderStyle: 'none none solid none',
@@ -193,7 +196,9 @@ class EventDetail extends React.Component {
                             ...this.styles.horizontalVerticalCenter
                         }}
                     >
-                        <span style={{transform: 'rotate(-90deg)'}}>EVENTS</span>
+                        <span style={{ transform: 'rotate(-90deg)' }}>
+                            EVENTS
+                        </span>
                     </div>
                 </div>
                 {status === 200 &&
@@ -349,7 +354,7 @@ class EventDetail extends React.Component {
                                                 </div>
                                             )}
                                         </div>
-                                        {event.mapEvent.length > 0 && 
+                                        {event.mapEvent.length > 0 && (
                                             <div
                                                 style={{
                                                     height: '13%',
@@ -376,19 +381,28 @@ class EventDetail extends React.Component {
                                                 <MapModal
                                                     buttonTitle="SHOW ON MAP"
                                                     title={event.title}
-                                                    buttonStyle={this.styles.mapOrFindButtonStyle}
-                                                    textStyle={this.styles.mapOrFindButtonText}
-                                                    mapImage={event.mapEvent[0].mapImage}
+                                                    buttonStyle={
+                                                        this.styles
+                                                            .mapOrFindButtonStyle
+                                                    }
+                                                    textStyle={
+                                                        this.styles
+                                                            .mapOrFindButtonText
+                                                    }
+                                                    mapImage={
+                                                        event.mapEvent[0]
+                                                            .mapImage
+                                                    }
                                                 />
                                             </div>
-                                        }
+                                        )}
                                         <div style={{ height: '5%' }} />
                                         <Link
                                             style={{
                                                 height: '13%',
                                                 ...this.styles
                                                     .horizontalVerticalCenter,
-                                                textDecoration: "none"
+                                                textDecoration: 'none'
                                             }}
                                             to={
                                                 accomodationNamespace +
