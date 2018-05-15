@@ -27,7 +27,8 @@ import specificAdsAccommodationReducer from './specificAdsAccommodationReducer';
 import specificAdsEventReducer from './specificAdsEventReducer';
 import HandoverVideoReducer from './HandoverVideoReducer';
 import eventReducer from './eventReducer';
-import airportReducer from './airportReducer'
+import airportReducer from './airportReducer';
+import searchDocumentReducer from './searchDocumentReducer';
 
 export default combineReducers({
     windowSize: windowSizeReducer,
@@ -58,5 +59,6 @@ export default combineReducers({
     specificAdsAccommodationList: specificAdsAccommodationReducer,
     specificAdsEventList: specificAdsEventReducer,
     handoverVideoData: HandoverVideoReducer,
-    airport: airportReducer
+    airport: airportReducer,
+    searchDocuments: searchDocumentReducer
 });

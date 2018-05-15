@@ -17,11 +17,7 @@ import {
     fetchRetailTypeList,
     fetchTransportTypeList
 } from './service';
-import {
-    fetchAdVideoList,
-    resetAdVideo,
-    retrieveHandoverVideo
-} from './video';
+import { fetchAdVideoList, resetAdVideo, retrieveHandoverVideo } from './video';
 import {
     fetchAdvertisementList,
     fetchFeaturedAdvertisementList,
@@ -34,8 +30,9 @@ import {
     fetchSpecificAccommodationList,
     fetchSpecificAdsEventList
 } from './advertisement';
-import { fetchEventList } from "./event";
-import { fetchAirportDetail } from "./airport";
+import { fetchEventList } from './event';
+import { fetchAirportDetail } from './airport';
+import { setSearchDocuments } from './search';
 
 export {
     fetchDestinationList,
@@ -69,5 +66,6 @@ export {
     fetchSpecificAdsEventList,
     retrieveHandoverVideo,
     fetchEventList,
-    fetchAirportDetail
+    fetchAirportDetail,
+    setSearchDocuments
 };

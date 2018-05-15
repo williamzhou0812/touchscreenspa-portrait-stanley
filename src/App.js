@@ -44,6 +44,10 @@ import idleJS from 'idle-js';
 import RestComponent from './RestMode/RestComponent';
 import AirportInfo from './Airport/AirportInfo';
 import AirportMapModal from './Airport/AirportMapModal';
+import Search from './Search/Search';
+import lunr from 'lunr';
+import _ from 'lodash';
+export let idx;
 
 class App extends Component {
     idleRef = null;
@@ -93,31 +97,164 @@ class App extends Component {
             onActive: this.setSPAActive
         }).start();
     }
+
+    initialiseSearchEngine() {
+        const {
+            destinationList,
+            accommodationList,
+            eventList,
+            restaurantList,
+            activityList,
+            essentialServiceTypeList,
+            miningServiceTypeList,
+            retailServiceTypeList,
+            transportServiceTypeList,
+            map,
+            airport,
+            adVideoList,
+            advertisementList,
+            specificAdsRestaurantList,
+            specificAdsActivityDestinationList,
+            specificAdsEssentialList,
+            specificAdsMiningList,
+            specificAdsRetailList,
+            specificAdsTransportList,
+            specificAdsAccommodationList,
+            specificAdsEventList,
+            featuredAdvertisementList
+        } = this.props;
+        let documents = [];
+
+        _.map(destinationList.destinations, destination => {
+            documents.push({
+                id: documents.length,
+                link: `destinations/${destination.id}`,
+                title: destination.title,
+                text: `${destination.description} ${destination.airport} ${
+                    destination.province
+                } `
+            });
+        });
+
+        _.map(accommodationList.accommodations, destination => {
+            _.map(destination.accomodationDestination, accommodation => {
+                documents.push({
+                    id: documents.length,
+                    link: `accommodations/${destination.id}/${
+                        accommodation.id
+                    }`,
+                    title: accommodation.title,
+                    text: `${accommodation.description} ${
+                        accommodation.address
+                    }   ${accommodation.phone} ${destination.title}`
+                });
+            });
+        });
+
+        _.map(activityList.activities, activity => {
+            _.map(activity.activityDestinationActivity, eachActivity => {
+                _.map(
+                    eachActivity.tourActivityDestination,
+                    eachTourActivityDestination => {
+                        documents.push({
+                            id: documents.length,
+                            link: `activities/${activity.id}/${
+                                eachActivity.id
+                            }`,
+                            title: eachActivity.title,
+                            text: `${activity.title} ${eachActivity.title}   ${
+                                eachActivity.description
+                            } ${eachTourActivityDestination.title}`
+                        });
+                    }
+                );
+            });
+        });
+
+        _.map(eventList.events, event => {
+            documents.push({
+                id: documents.length,
+                link: `events/${event.id}`,
+                title: event.title,
+                text: `${event.description} ${event.title} ${event.location} `
+            });
+        });
+
+        _.map(restaurantList.restaurants, restaurant => {
+            documents.push({
+                id: documents.length,
+                link: `dining/${restaurant.id}`,
+                title: restaurant.title,
+                text: `${restaurant.description} ${restaurant.address} ${
+                    restaurant.guide.cuisine
+                } restaurant`
+            });
+        });
+
+        console.log(documents);
+
+        this.props.setSearchDocuments(documents);
+
+        idx = lunr(function() {
+            this.ref('id');
+            this.field('title');
+            this.field('text');
+            documents.forEach(function(doc) {
+                this.add(doc);
+            }, this);
+        });
+    }
+
     render() {
         const { isIdle } = this.state;
+        const {
+            destinationList,
+            accommodationList,
+            eventList,
+            restaurantList,
+            activityList,
+            essentialServiceTypeList,
+            miningServiceTypeList,
+            retailServiceTypeList,
+            transportServiceTypeList,
+            map,
+            airport,
+            adVideoList,
+            advertisementList,
+            specificAdsRestaurantList,
+            specificAdsActivityDestinationList,
+            specificAdsEssentialList,
+            specificAdsMiningList,
+            specificAdsRetailList,
+            specificAdsTransportList,
+            specificAdsAccommodationList,
+            specificAdsEventList,
+            featuredAdvertisementList
+        } = this.props;
+
         if (
-            this.props.destinationList.status !== 200 ||
-            this.props.accommodationList.status !== 200 ||
-            this.props.eventList.status !== 200 ||
-            this.props.restaurantList.status !== 200 ||
-            this.props.activityList.status !== 200 ||
-            this.props.essentialServiceTypeList.status !== 200 ||
-            this.props.miningServiceTypeList.status !== 200 ||
-            this.props.retailServiceTypeList.status !== 200 ||
-            this.props.transportServiceTypeList.status !== 200 ||
-            this.props.map.status !== 200 ||
-            this.props.airport.status !== 200 ||
-            this.props.adVideoList.status !== 200 ||
-            this.props.advertisementList.status !== 200 ||
-            this.props.specificAdsRestaurantList.status !== 200 ||
-            this.props.specificAdsActivityDestinationList.status !== 200 ||
-            this.props.specificAdsEssentialList.status !== 200 ||
-            this.props.specificAdsMiningList.status !== 200 ||
-            this.props.specificAdsRetailList.status !== 200 ||
-            this.props.specificAdsTransportList.status !== 200 ||
-            this.props.specificAdsAccommodationList.status !== 200 ||
-            this.props.specificAdsEventList.status !== 200 ||
-            this.props.featuredAdvertisementList.status !== 200
+            destinationList.status !== 200 ||
+            accommodationList.status !== 200 ||
+            eventList.status !== 200 ||
+            restaurantList.status !== 200 ||
+            activityList.status !== 200 ||
+            essentialServiceTypeList.status !== 200 ||
+            miningServiceTypeList.status !== 200 ||
+            retailServiceTypeList.status !== 200 ||
+            transportServiceTypeList.status !== 200 ||
+            map.status !== 200 ||
+            airport.status !== 200 ||
+            adVideoList.status !== 200 ||
+            advertisementList.status !== 200 ||
+            specificAdsRestaurantList.status !== 200 ||
+            specificAdsActivityDestinationList.status !== 200 ||
+            specificAdsEssentialList.status !== 200 ||
+            specificAdsMiningList.status !== 200 ||
+            specificAdsRetailList.status !== 200 ||
+            specificAdsTransportList.status !== 200 ||
+            specificAdsAccommodationList.status !== 200 ||
+            specificAdsEventList.status !== 200 ||
+            featuredAdvertisementList.status !== 200
         ) {
             return (
                 <div className="loadingContainer">
@@ -136,6 +273,8 @@ class App extends Component {
                 </div>
             );
         } else {
+            this.initialiseSearchEngine();
+
             return (
                 <Router history={this.props.history}>
                     <div className="App section--rotate--animation">
@@ -153,7 +292,7 @@ class App extends Component {
                                 width: '100vw',
                                 height: '3vh',
                                 display: 'grid',
-                                gridTemplateColumns: '28.6% 28.6% 42.8%'
+                                gridTemplateColumns: '20% 20% 20% 40%'
                             }}
                         >
                             <NavLink
@@ -183,6 +322,7 @@ class App extends Component {
                                 AIRPORT INFO
                             </NavLink>
                             <AirportMapModal />
+                            <Search />
                             <Clock />
                         </div>
                         <div style={{ width: '100vw', height: '8vh' }}>
