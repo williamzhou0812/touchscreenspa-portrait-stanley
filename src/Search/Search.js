@@ -19,10 +19,12 @@ class Search extends Component {
 
     handleValueChange(val) {
         this.setState({ value: val }, () => {
-            let result = idx.search(`*${val}*`);
+            console.log(`${val}`);
+            let result = idx.search(`${val}`);
+            console.log(result);
             for (var item in result) {
                 var ref = result[item].ref;
-                console.log(this.props.searchDocuments.documents[ref]);
+                //console.log(this.props.searchDocuments.documents[ref]);
             }
         });
     }

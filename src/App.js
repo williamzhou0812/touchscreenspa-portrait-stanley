@@ -108,23 +108,13 @@ class App extends Component {
             essentialServiceTypeList,
             miningServiceTypeList,
             retailServiceTypeList,
-            transportServiceTypeList,
-            map,
-            airport,
-            adVideoList,
-            advertisementList,
-            specificAdsRestaurantList,
-            specificAdsActivityDestinationList,
-            specificAdsEssentialList,
-            specificAdsMiningList,
-            specificAdsRetailList,
-            specificAdsTransportList,
-            specificAdsAccommodationList,
-            specificAdsEventList,
-            featuredAdvertisementList
+            transportServiceTypeList
         } = this.props;
         let documents = [];
 
+        /*
+        * DOCUMENTS FOR DESTINATION
+        */
         _.map(destinationList.destinations, destination => {
             documents.push({
                 id: documents.length,
@@ -132,10 +122,13 @@ class App extends Component {
                 title: destination.title,
                 text: `${destination.description} ${destination.airport} ${
                     destination.province
-                } `
+                } destination`
             });
         });
 
+        /*
+        * DOCUMENTS FOR ACCOMMODATION
+        */
         _.map(accommodationList.accommodations, destination => {
             _.map(destination.accomodationDestination, accommodation => {
                 documents.push({
@@ -146,13 +139,35 @@ class App extends Component {
                     title: accommodation.title,
                     text: `${accommodation.description} ${
                         accommodation.address
-                    }   ${accommodation.phone} ${destination.title}`
+                    }   ${accommodation.phone} ${
+                        destination.title
+                    } accommodation hotel`
                 });
             });
         });
 
+        /*
+        * DOCUMENTS FOR ACTIVITY
+        */
         _.map(activityList.activities, activity => {
+            documents.push({
+                id: documents.length,
+                link: `activities/${activity.id}
+                }`,
+                title: activity.title,
+                text: `${activity.title} activity`
+            });
+
             _.map(activity.activityDestinationActivity, eachActivity => {
+                documents.push({
+                    id: documents.length,
+                    link: `activities/${activity.id}/${eachActivity.id}`,
+                    title: eachActivity.title,
+                    text: `${activity.title} ${eachActivity.title}   ${
+                        eachActivity.description
+                    }  activity`
+                });
+
                 _.map(
                     eachActivity.tourActivityDestination,
                     eachTourActivityDestination => {
@@ -164,22 +179,30 @@ class App extends Component {
                             title: eachActivity.title,
                             text: `${activity.title} ${eachActivity.title}   ${
                                 eachActivity.description
-                            } ${eachTourActivityDestination.title}`
+                            } ${eachTourActivityDestination.title} activity`
                         });
                     }
                 );
             });
         });
 
+        /*
+        * DOCUMENTS FOR EVENT
+        */
         _.map(eventList.events, event => {
             documents.push({
                 id: documents.length,
                 link: `events/${event.id}`,
                 title: event.title,
-                text: `${event.description} ${event.title} ${event.location} `
+                text: `${event.description} ${event.title} ${
+                    event.location
+                } event`
             });
         });
 
+        /*
+        * DOCUMENTS FOR RESTAURANT
+        */
         _.map(restaurantList.restaurants, restaurant => {
             documents.push({
                 id: documents.length,
@@ -187,10 +210,97 @@ class App extends Component {
                 title: restaurant.title,
                 text: `${restaurant.description} ${restaurant.address} ${
                     restaurant.guide.cuisine
-                } restaurant`
+                } restaurant dining`
             });
         });
 
+        /*
+        * DOCUMENTS FOR ESSENTIAL SERVICE
+        */
+        _.map(essentialServiceTypeList.serviceTypes, serviceType => {
+            documents.push({
+                id: documents.length,
+                link: `essential/${serviceType.id}`,
+                title: serviceType.title,
+                text: ` ${serviceType.title} essential service`
+            });
+            _.map(serviceType.essentialServiceServiceType, serviceItem => {
+                documents.push({
+                    id: documents.length,
+                    link: `essential/${serviceType.id}/${serviceItem.id}`,
+                    title: serviceItem.title,
+                    text: `${serviceItem.description} ${
+                        serviceType.title
+                    } essential service`
+                });
+            });
+        });
+
+        /*
+        * DOCUMENTS FOR TRANSPORT SERVICE
+        */
+        _.map(transportServiceTypeList.serviceTypes, serviceType => {
+            documents.push({
+                id: documents.length,
+                link: `transport/${serviceType.id}`,
+                title: serviceType.title,
+                text: ` ${serviceType.title} transport car hire`
+            });
+            _.map(serviceType.transportationServiceType, serviceItem => {
+                documents.push({
+                    id: documents.length,
+                    link: `transport/${serviceType.id}/${serviceItem.id}`,
+                    title: serviceItem.title,
+                    text: `${serviceItem.description} ${
+                        serviceType.title
+                    } transport car hire`
+                });
+            });
+        });
+
+        /*
+        * DOCUMENTS FOR MINING SERVICE
+        */
+        _.map(miningServiceTypeList.serviceTypes, serviceType => {
+            documents.push({
+                id: documents.length,
+                link: `mining`,
+                title: serviceType.title,
+                text: ` ${serviceType.title} mining resource`
+            });
+            _.map(serviceType.miningServiceType, serviceItem => {
+                documents.push({
+                    id: documents.length,
+                    link: `mining/${serviceType.id}/${serviceItem.id}`,
+                    title: serviceItem.title,
+                    text: `${serviceItem.description} ${
+                        serviceType.title
+                    } mining resource`
+                });
+            });
+        });
+
+        /*
+        * DOCUMENTS FOR RETAIL SERVICE
+        */
+        _.map(retailServiceTypeList.serviceTypes, serviceType => {
+            documents.push({
+                id: documents.length,
+                link: `retail`,
+                title: serviceType.title,
+                text: ` ${serviceType.title} retail service`
+            });
+            _.map(serviceType.retailServiceType, serviceItem => {
+                documents.push({
+                    id: documents.length,
+                    link: `retail/${serviceType.id}/${serviceItem.id}`,
+                    title: serviceItem.title,
+                    text: `${serviceItem.description} ${
+                        serviceType.title
+                    } retail service`
+                });
+            });
+        });
         console.log(documents);
 
         this.props.setSearchDocuments(documents);
