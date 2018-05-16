@@ -123,7 +123,8 @@ class App extends Component {
                 title: destination.title,
                 text: `${destination.description} ${destination.airport} ${
                     destination.province
-                } destination`
+                } destination`,
+                data: destination
             });
         });
 
@@ -137,7 +138,8 @@ class App extends Component {
                 title: destination.title,
                 text: `${destination.title} ${
                     destination.description
-                } accommodation hotel`
+                } accommodation hotel`,
+                data: destination
             });
             _.map(destination.accomodationDestination, accommodation => {
                 documents.push({
@@ -150,7 +152,8 @@ class App extends Component {
                         accommodation.address
                     }   ${accommodation.phone} ${
                         destination.title
-                    } accommodation hotel`
+                    } accommodation hotel`,
+                    data: accommodation
                 });
             });
         });
@@ -164,7 +167,8 @@ class App extends Component {
                 link: `activities/${activity.id}
                 }`,
                 title: activity.title,
-                text: `${activity.title} activity`
+                text: `${activity.title} activity`,
+                data: activity
             });
 
             _.map(activity.activityDestinationActivity, eachActivity => {
@@ -174,7 +178,8 @@ class App extends Component {
                     title: eachActivity.title,
                     text: `${activity.title} ${eachActivity.title}   ${
                         eachActivity.description
-                    }  activity`
+                    }  activity`,
+                    data: eachActivity
                 });
 
                 _.map(
@@ -188,7 +193,8 @@ class App extends Component {
                             title: eachActivity.title,
                             text: `${activity.title} ${eachActivity.title}   ${
                                 eachActivity.description
-                            } ${eachTourActivityDestination.title} activity`
+                            } ${eachTourActivityDestination.title} activity`,
+                            data: eachTourActivityDestination
                         });
                     }
                 );
@@ -205,7 +211,8 @@ class App extends Component {
                 title: event.title,
                 text: `${event.description} ${event.title} ${
                     event.location
-                } event`
+                } event`,
+                data: event
             });
         });
 
@@ -219,7 +226,8 @@ class App extends Component {
                 title: restaurant.title,
                 text: `${restaurant.description} ${restaurant.address} ${
                     restaurant.guide.cuisine
-                } restaurant dining`
+                } restaurant dining`,
+                data: restaurant
             });
         });
 
@@ -231,7 +239,8 @@ class App extends Component {
                 id: documents.length,
                 link: `essential/${serviceType.id}`,
                 title: serviceType.title,
-                text: ` ${serviceType.title} essential service`
+                text: ` ${serviceType.title} essential service`,
+                data: serviceType
             });
             _.map(serviceType.essentialServiceServiceType, serviceItem => {
                 documents.push({
@@ -240,7 +249,8 @@ class App extends Component {
                     title: serviceItem.title,
                     text: `${serviceItem.description} ${
                         serviceType.title
-                    } essential service`
+                    } essential service`,
+                    data: serviceItem
                 });
             });
         });
@@ -253,7 +263,8 @@ class App extends Component {
                 id: documents.length,
                 link: `transport/${serviceType.id}`,
                 title: serviceType.title,
-                text: ` ${serviceType.title} transport car hire`
+                text: ` ${serviceType.title} transport car hire`,
+                data: serviceType
             });
             _.map(serviceType.transportationServiceType, serviceItem => {
                 documents.push({
@@ -262,7 +273,8 @@ class App extends Component {
                     title: serviceItem.title,
                     text: `${serviceItem.description} ${
                         serviceType.title
-                    } transport car hire`
+                    } transport car hire`,
+                    data: serviceItem
                 });
             });
         });
@@ -275,7 +287,8 @@ class App extends Component {
                 id: documents.length,
                 link: `mining`,
                 title: serviceType.title,
-                text: ` ${serviceType.title} mining resource`
+                text: ` ${serviceType.title} mining resource`,
+                data: serviceType
             });
             _.map(serviceType.miningServiceType, serviceItem => {
                 documents.push({
@@ -284,7 +297,8 @@ class App extends Component {
                     title: serviceItem.title,
                     text: `${serviceItem.description} ${
                         serviceType.title
-                    } mining resource`
+                    } mining resource`,
+                    data: serviceItem
                 });
             });
         });
@@ -297,7 +311,8 @@ class App extends Component {
                 id: documents.length,
                 link: `retail`,
                 title: serviceType.title,
-                text: ` ${serviceType.title} retail service`
+                text: ` ${serviceType.title} retail service`,
+                data: serviceType
             });
             _.map(serviceType.retailServiceType, serviceItem => {
                 documents.push({
@@ -306,7 +321,8 @@ class App extends Component {
                     title: serviceItem.title,
                     text: `${serviceItem.description} ${
                         serviceType.title
-                    } retail service`
+                    } retail service`,
+                    data: serviceItem
                 });
             });
         });

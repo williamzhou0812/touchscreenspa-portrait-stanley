@@ -1,0 +1,50 @@
+.searchResultContainer {
+    background-color: white;
+    color: white;
+    display: grid;
+    grid-template-rows: 8% 6% auto 5%;
+    grid-template-columns: 100%;
+    overflow: auto;
+
+    &--title {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        background-color: rgb(225, 173, 56);
+        font-size: 20pt;
+        letter-spacing: 5px;
+        line-height: 3.5em;
+    }
+
+    &--up {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+        background-color: rgb(220, 156, 56);
+        font-size: 20pt;
+    }
+
+    &--content {
+        grid-column: 1 / -1;
+        grid-row: 3 / 4;
+        background-color: white;
+        grid-row-gap: 3px;
+
+        display: grid;
+        grid-template-rows: auto;
+
+        grid-template-columns: 100%;
+        overflow: auto;
+        &--resultItem {
+            grid-column: 1 / -1;
+            height: 200px;
+            background-color: rgb(5, 151, 165);
+            font-size: 16pt;
+        }
+    }
+
+    &--down {
+        grid-column: 1 / -1;
+        grid-row: 4 / 5;
+        background-color: rgb(220, 156, 56);
+        font-size: 20pt;
+    }
+}

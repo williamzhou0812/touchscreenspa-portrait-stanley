@@ -26,6 +26,8 @@ class Search extends Component {
                 var ref = result[item].ref;
                 //console.log(this.props.searchDocuments.documents[ref]);
             }
+
+            this.props.setSearchResults(result);
         });
     }
 
