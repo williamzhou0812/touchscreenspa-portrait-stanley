@@ -53,7 +53,7 @@ class Search extends Component {
                         this.handleValueChange(value);
                         this.props.setDisplaySearchResultsBoolean(true);
                     }}
-                    opacity={0.97}
+                    opacity={1}
                     placeholder={' Search '}
                     enabled
                     isDraggable={false}

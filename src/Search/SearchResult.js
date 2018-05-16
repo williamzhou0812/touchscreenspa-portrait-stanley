@@ -20,14 +20,22 @@ class SearchResult extends Component {
 
     renderSearchResultItem() {
         const { searchResult, searchDocuments } = this.props;
-        return _.map(searchResult.results, item => {
+        if (!_.isEmpty(searchResult.results)) {
+            return _.map(searchResult.results, item => {
+                return (
+                    <div className="searchResultContainer--content--resultItem">
+                        <p>{searchDocuments.documents[item.ref].title}</p>
+                        <p>{searchDocuments.documents[item.ref].text}</p>
+                    </div>
+                );
+            });
+        } else {
             return (
-                <div className="searchResultContainer--content--resultItem">
-                    <p>{searchDocuments.documents[item.ref].title}</p>
-                    <p>{searchDocuments.documents[item.ref].text}</p>
+                <div className="searchResultContainer--content--noResultPage">
+                    <p>Sorry, No search results for you !</p>
                 </div>
             );
-        });
+        }
     }
     render() {
         return (

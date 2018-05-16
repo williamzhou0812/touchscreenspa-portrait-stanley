@@ -39,6 +39,12 @@
             background-color: rgb(5, 151, 165);
             font-size: 16pt;
         }
+        &--noResultPage {
+            grid-column: 1 / -1;
+            height: 100%;
+            background-color: rgb(5, 151, 165);
+            font-size: 36pt;
+        }
     }
 
     &--down {
