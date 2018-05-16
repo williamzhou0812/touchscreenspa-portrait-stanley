@@ -18,6 +18,8 @@ import DiningIcon from './icons/DINING_ICON.png';
 import EventsIcon from './icons/EVENTS_ICON.png';
 import ServicesIcon from './icons/SERVICES_ICON.png';
 import MapListIcon from './icons/MAP_LIST_ICON.png';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class MainTabList extends React.Component {
     constructor(props) {
@@ -126,8 +128,12 @@ class MainTabList extends React.Component {
             <div style={{ width: '100%', height: '100%', display: 'flex' }}>
                 {tabs.map((t, i) => {
                     //Selected style does not come into effect if we are currently in airport info namespace
-                    const selected = i === this.middle && (!(pathname.includes(airportInfoNamespace)));
-                    const isLeftOfSelected = i === this.middle - 1  && (!(pathname.includes(airportInfoNamespace)));
+                    const selected =
+                        i === this.middle &&
+                        !pathname.includes(airportInfoNamespace);
+                    const isLeftOfSelected =
+                        i === this.middle - 1 &&
+                        !pathname.includes(airportInfoNamespace);
                     const isLastItem = i === tabs.length - 1;
                     return (
                         <Tab
@@ -140,6 +146,9 @@ class MainTabList extends React.Component {
                             isLastItem={isLastItem}
                             onClick={() => {
                                 this.clickItem(t, i);
+                                this.props.setDisplaySearchResultsBoolean(
+                                    false
+                                );
                             }}
                         />
                     );
@@ -149,4 +158,4 @@ class MainTabList extends React.Component {
     }
 }
 
-export default MainTabList;
+export default connect(null, actions)(MainTabList);

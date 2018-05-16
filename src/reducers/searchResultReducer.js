@@ -1,8 +1,8 @@
-import { DINING_LIST } from '../actions/types';
+import { SEARCH_RESULTS } from '../actions/types';
 
 export default function(state = {}, action) {
     switch (action.type) {
-        case DINING_LIST:
+        case SEARCH_RESULTS:
             return action.payload;
         default:
             return state;

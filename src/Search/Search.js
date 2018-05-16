@@ -49,6 +49,7 @@ class Search extends Component {
                     value={this.state.value}
                     onChange={value => {
                         this.handleValueChange(value);
+                        this.props.setDisplaySearchResultsBoolean(true);
                     }}
                     opacity={0.97}
                     placeholder={' Search '}

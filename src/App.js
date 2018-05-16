@@ -45,6 +45,7 @@ import RestComponent from './RestMode/RestComponent';
 import AirportInfo from './Airport/AirportInfo';
 import AirportMapModal from './Airport/AirportMapModal';
 import Search from './Search/Search';
+import SearchResult from './Search/SearchResult';
 import lunr from 'lunr';
 import _ from 'lodash';
 export let idx;
@@ -347,7 +348,8 @@ class App extends Component {
             specificAdsTransportList,
             specificAdsAccommodationList,
             specificAdsEventList,
-            featuredAdvertisementList
+            featuredAdvertisementList,
+            displaySearchResultsBoolean
         } = this.props;
 
         if (
@@ -391,8 +393,9 @@ class App extends Component {
                 </div>
             );
         } else {
-            this.initialiseSearchEngine();
-
+            if (_.isEmpty(this.props.searchDocuments)) {
+                this.initialiseSearchEngine();
+            }
             return (
                 <Router history={this.props.history}>
                     <div className="App section--rotate--animation">
@@ -436,6 +439,11 @@ class App extends Component {
                                     paddingTop: '10px'
                                 }}
                                 to={airportInfoNamespace}
+                                onClick={() => {
+                                    this.props.setDisplaySearchResultsBoolean(
+                                        false
+                                    );
+                                }}
                             >
                                 AIRPORT INFO
                             </NavLink>
@@ -459,6 +467,89 @@ class App extends Component {
                                         200 &&
                                     this.props.featuredAdvertisementList
                                         .status === 200 && <RestComponent />}
+                            </div>
+                        ) : displaySearchResultsBoolean.boolean === true ? (
+                            <div>
+                                <SearchResult />
+                                <div
+                                    style={{
+                                        width: '100vw',
+                                        height: '16vh',
+                                        zIndex: '99',
+                                        position: 'relative'
+                                    }}
+                                >
+                                    {!isIdle &&
+                                        this.props.adVideoList.status === 200 &&
+                                        this.props.advertisementList.status ===
+                                            200 &&
+                                        this.props
+                                            .specificAdsActivityDestinationList
+                                            .status === 200 &&
+                                        this.props.specificAdsEssentialList
+                                            .status === 200 &&
+                                        this.props.specificAdsMiningList
+                                            .status === 200 &&
+                                        this.props.specificAdsRestaurantList
+                                            .status === 200 &&
+                                        this.props.specificAdsRetailList
+                                            .status === 200 &&
+                                        this.props.specificAdsTransportList
+                                            .status === 200 &&
+                                        this.props.specificAdsAccommodationList
+                                            .status === 200 &&
+                                        this.props.specificAdsEventList
+                                            .status === 200 && (
+                                            <Route
+                                                render={props => (
+                                                    <Advertisement
+                                                        // continuePlaying={!isIdle}
+                                                        continuePlaying={true}
+                                                        {...props}
+                                                    />
+                                                )}
+                                            />
+                                        )}
+                                </div>
+                                <div
+                                    style={{
+                                        width: '100vw',
+                                        height: '4vh',
+                                        display: 'flex',
+                                        backgroundColor: '#058c9b',
+                                        color: 'white',
+                                        zIndex: '99',
+                                        position: 'relative'
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            flex: 1,
+                                            display: 'flex',
+                                            alignItems: 'center'
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                marginLeft: 20,
+                                                marginRight: 5
+                                            }}
+                                        >
+                                            &copy;
+                                        </span>JBG HOSPITALITY 2018
+                                    </div>
+                                    <div
+                                        style={{
+                                            flex: 1,
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'flex-end',
+                                            marginRight: 20
+                                        }}
+                                    >
+                                        WWW.JBG.COM.PG
+                                    </div>
+                                </div>
                             </div>
                         ) : (
                             <div>
@@ -731,7 +822,9 @@ function mapStateToProps({
     specificAdsAccommodationList,
     specificAdsEventList,
     activityList,
-    airport
+    airport,
+    displaySearchResultsBoolean,
+    searchDocuments
 }) {
     return {
         windowSize,
@@ -758,7 +851,9 @@ function mapStateToProps({
         specificAdsAccommodationList,
         specificAdsEventList,
         activityList,
-        airport
+        airport,
+        displaySearchResultsBoolean,
+        searchDocuments
     };
 }
 export default connect(mapStateToProps, actions)(App);

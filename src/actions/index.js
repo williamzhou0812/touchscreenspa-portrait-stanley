@@ -32,7 +32,11 @@ import {
 } from './advertisement';
 import { fetchEventList } from './event';
 import { fetchAirportDetail } from './airport';
-import { setSearchDocuments } from './search';
+import {
+    setSearchDocuments,
+    setDisplaySearchResultsBoolean,
+    setSearchResults
+} from './search';
 
 export {
     fetchDestinationList,
@@ -67,5 +71,7 @@ export {
     retrieveHandoverVideo,
     fetchEventList,
     fetchAirportDetail,
-    setSearchDocuments
+    setSearchDocuments,
+    setDisplaySearchResultsBoolean,
+    setSearchResults
 };
