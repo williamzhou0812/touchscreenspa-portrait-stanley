@@ -130,6 +130,14 @@ class App extends Component {
         * DOCUMENTS FOR ACCOMMODATION
         */
         _.map(accommodationList.accommodations, destination => {
+            documents.push({
+                id: documents.length,
+                link: `accommodations/${destination.id} `,
+                title: destination.title,
+                text: `${destination.title} ${
+                    destination.description
+                } accommodation hotel`
+            });
             _.map(destination.accomodationDestination, accommodation => {
                 documents.push({
                     id: documents.length,
