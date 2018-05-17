@@ -31,6 +31,7 @@ import airportReducer from './airportReducer';
 import searchDocumentReducer from './searchDocumentReducer';
 import searchResultReducer from './searchResultReducer';
 import displaySearchResultsBooleanReducer from './displaySearchResultsBooleanReducer';
+import showKeyboardReducer from './showKeyboardReducer';
 
 export default combineReducers({
     windowSize: windowSizeReducer,
@@ -64,5 +65,6 @@ export default combineReducers({
     airport: airportReducer,
     searchDocuments: searchDocumentReducer,
     searchResult: searchResultReducer,
-    displaySearchResultsBoolean: displaySearchResultsBooleanReducer
+    displaySearchResultsBoolean: displaySearchResultsBooleanReducer,
+    showKeyboard: showKeyboardReducer
 });

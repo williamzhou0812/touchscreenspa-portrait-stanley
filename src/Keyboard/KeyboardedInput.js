@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import Keyboard from './Keyboard';
 
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+
 class KeyboardedInput extends React.Component {
     static propTypes = {
         name: PropTypes.any,
@@ -38,6 +41,7 @@ class KeyboardedInput extends React.Component {
             showKeyboard: false,
             input: null
         };
+        this.props.setShowKeyboard(false);
     }
 
     componentDidMount() {
@@ -63,7 +67,9 @@ class KeyboardedInput extends React.Component {
                     that.props.value.length,
                     that.props.value.length
                 );
-                that.setState({ ...this.state, showKeyboard: true });
+                that.setState({ ...this.state, showKeyboard: true }, () => {
+                    this.props.setShowKeyboard(true);
+                });
             }
         }, 0);
     }
@@ -76,13 +82,17 @@ class KeyboardedInput extends React.Component {
                 !document.activeElement.classList.contains('keyboard') &&
                 !document.activeElement.classList.contains('keyboard-row')
             ) {
-                that.setState({ ...that.state, showKeyboard: false });
+                that.setState({ ...that.state, showKeyboard: false }, () => {
+                    this.props.setShowKeyboard(false);
+                });
             }
         }, 0);
     }
 
     hideKeyboard() {
-        this.setState({ ...this.state, showKeyboard: false });
+        this.setState({ ...this.state, showKeyboard: false }, () => {
+            this.props.setShowKeyboard(false);
+        });
     }
 
     render() {
@@ -121,7 +131,6 @@ class KeyboardedInput extends React.Component {
                             }
                             uppercaseAfterSpace={this.props.uppercaseAfterSpace}
                             keyboardClassName={this.props.keyboardClassName}
-                            showKeyboard={this.state.showKeyboard}
                         />
                     )}
             </div>
@@ -129,4 +138,4 @@ class KeyboardedInput extends React.Component {
     }
 }
 
-export default KeyboardedInput;
+export default connect(null, actions)(KeyboardedInput);

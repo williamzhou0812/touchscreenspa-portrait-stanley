@@ -14,7 +14,10 @@ import LanguageIcon from './icons/LanguageIcon';
 import ShiftIcon from './icons/ShiftIcon';
 import DraggableIcon from './icons/DraggableIcon';
 
-export default class Keyboard extends PureComponent {
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+
+class Keyboard extends PureComponent {
     static propTypes = {
         inputNode: PropTypes.any.isRequired,
         onClick: PropTypes.func,
@@ -241,11 +244,10 @@ export default class Keyboard extends PureComponent {
     }
 
     render() {
-        const { inputNode, secondaryKeyboard } = this.props;
+        const { inputNode, secondaryKeyboard, showKeyboard } = this.props;
         const keys = this.getKeys();
         const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
         const symbolsKeyValue = this.getSymbolsKeyValue();
-        console.log(this.props.showKeyboard);
         return (
             <Draggable
                 disabled={this.props.isDraggable === false}
@@ -257,12 +259,18 @@ export default class Keyboard extends PureComponent {
                             ? this.props.keyboardClassName
                             : ''
                     } ${
-                        this.props.showKeyboard
+                        showKeyboard.showKeyboard
                             ? 'keyboard--bottom--in--animation'
                             : 'keyboard--bottom--out--animation'
                     }`}
                     style={{
-                        opacity: `${this.props.showKeyboard ? 1 : 0}`
+                        opacity: `${
+                            showKeyboard.showKeyboard
+                                ? typeof this.props.opacity !== 'undefined'
+                                  ? this.props.opacity
+                                  : 1
+                                : 0
+                        }`
                     }}
                 >
                     <div className="keyboard-row">
@@ -349,3 +357,11 @@ export default class Keyboard extends PureComponent {
         );
     }
 }
+
+const mapStateToProps = ({ showKeyboard }) => {
+    return {
+        showKeyboard
+    };
+};
+
+export default connect(mapStateToProps, actions)(Keyboard);

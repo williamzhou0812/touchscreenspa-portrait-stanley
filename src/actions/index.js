@@ -37,6 +37,7 @@ import {
     setDisplaySearchResultsBoolean,
     setSearchResults
 } from './search';
+import { setShowKeyboard } from './keyboard';
 
 export {
     fetchDestinationList,
@@ -73,5 +74,6 @@ export {
     fetchAirportDetail,
     setSearchDocuments,
     setDisplaySearchResultsBoolean,
-    setSearchResults
+    setSearchResults,
+    setShowKeyboard
 };

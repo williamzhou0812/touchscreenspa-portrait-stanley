@@ -62,6 +62,7 @@ class App extends Component {
     }
     setSPAIdle() {
         this.setState({ isIdle: true });
+        this.props.setShowKeyboard(false);
     }
     setSPAActive() {
         this.setState({ isIdle: false });
