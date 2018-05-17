@@ -106,8 +106,7 @@ class KeyboardedInput extends React.Component {
                         this.input = e;
                     }}
                 />
-                {this.state.showKeyboard &&
-                    this.props.enabled &&
+                {this.props.enabled &&
                     this.props.readOnly !== true && (
                         <Keyboard
                             hideKeyboard={this.hideKeyboard}
@@ -122,6 +121,7 @@ class KeyboardedInput extends React.Component {
                             }
                             uppercaseAfterSpace={this.props.uppercaseAfterSpace}
                             keyboardClassName={this.props.keyboardClassName}
+                            showKeyboard={this.state.showKeyboard}
                         />
                     )}
             </div>

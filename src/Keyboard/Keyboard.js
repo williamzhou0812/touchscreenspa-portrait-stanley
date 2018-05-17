@@ -178,14 +178,18 @@ export default class Keyboard extends PureComponent {
             uppercaseAfterSpace,
             dataset
         } = this.props;
-        return (
-            inputNode.type !== 'password' &&
-            dataset.type !== 'email' &&
-            ((!inputNode.value.length && isFirstLetterUppercase) ||
-                (inputNode.value.length > 0 &&
-                    inputNode.value[inputNode.value.length - 1] === ' ' &&
-                    uppercaseAfterSpace))
-        );
+        if (inputNode && dataset) {
+            return (
+                inputNode.type !== 'password' &&
+                dataset.type !== 'email' &&
+                ((!inputNode.value.length && isFirstLetterUppercase) ||
+                    (inputNode.value.length > 0 &&
+                        inputNode.value[inputNode.value.length - 1] === ' ' &&
+                        uppercaseAfterSpace))
+            );
+        } else {
+            return null;
+        }
     }
 
     handleBackspaceClick() {
@@ -241,24 +245,24 @@ export default class Keyboard extends PureComponent {
         const keys = this.getKeys();
         const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
         const symbolsKeyValue = this.getSymbolsKeyValue();
-
+        console.log(this.props.showKeyboard);
         return (
             <Draggable
                 disabled={this.props.isDraggable === false}
                 defaultPosition={{ x: 0, y: 0 }}
             >
                 <div
-                    className={`keyboard keyboard-wrapper section--bottom--animation ${
+                    className={`keyboard keyboard-wrapper   ${
                         typeof this.props.keyboardClassName !== 'undefined'
                             ? this.props.keyboardClassName
                             : ''
+                    } ${
+                        this.props.showKeyboard
+                            ? 'keyboard--bottom--in--animation'
+                            : 'keyboard--bottom--out--animation'
                     }`}
                     style={{
-                        opacity: `${
-                            typeof this.props.opacity !== 'undefined'
-                                ? this.props.opacity
-                                : 1
-                        }`
+                        opacity: `${this.props.showKeyboard ? 1 : 0}`
                     }}
                 >
                     <div className="keyboard-row">
@@ -310,12 +314,12 @@ export default class Keyboard extends PureComponent {
                                 onClick={this.handleLanguageClick}
                             />
                         ) : null}
-                        {inputNode.dataset.type === 'email' ? (
+                        {/*inputNode.dataset.type === 'email' ? (
                             <KeyboardButton
                                 value={'@'}
                                 onClick={this.handleLetterButtonClick}
                             />
-                        ) : null}
+                        ) : null*/}
                         {this.props.isDraggable !== false ? (
                             <KeyboardButton
                                 value={<DraggableIcon />}
@@ -328,12 +332,12 @@ export default class Keyboard extends PureComponent {
                             classes="keyboard-space"
                             onClick={this.handleLetterButtonClick}
                         />
-                        {inputNode.dataset.type === 'email' ? (
+                        {/*inputNode.dataset.type === 'email' ? (
                             <KeyboardButton
                                 value={'.'}
                                 onClick={this.handleLetterButtonClick}
                             />
-                        ) : null}
+                        ) : null*/}
                         <KeyboardButton
                             value={String.fromCharCode('8615')}
                             classes="keyboard-submit-button"
