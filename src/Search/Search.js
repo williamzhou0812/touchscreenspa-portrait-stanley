@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 
 import KeyboardedInput from '../Keyboard';
 
-import 'react-touch-screen-keyboard/lib/Keyboard.css';
-import 'react-touch-screen-keyboard/lib/Keyboard.scss';
+import '../Keyboard/Keyboard.css';
 import lunr from 'lunr';
 import './Search.css';
 import { documents, idx } from '../App';

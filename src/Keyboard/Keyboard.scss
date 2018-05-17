@@ -1,91 +1,96 @@
 .keyboard {
-  width: 100%;
-  max-width: 1030px;
-  margin: 0 auto;
-  background: #dadada;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    background-color: rgb(0, 109, 122);
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.5);
 }
 
 .keyboard-wrapper {
-  position:fixed;
-  bottom: 0;
-  z-index: 10000;
-  width: 700px;
-  left: calc(50% - 350px);
+    position: fixed;
+    bottom: 0;
+    z-index: 10000;
+    width: 100vw;
+    height: 20vh;
+    left: 0;
 
-  .keyboard-row {
-    display: flex;
-  }
+    .keyboard-row {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .keyboard-button {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-basis: 100px;
-  font-size: 18px;
-  height: 60px;
-  border-radius: 4px;
-  background-color: #F5F5F5;
-  border: 1px solid #CECECE;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-basis: 100px;
+    font-size: 24px;
+    height: 3.65vh;
+    border-radius: 4px;
+    background-color: rgb(73, 175, 189);
+    border: 1px solid #cecece;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: white;
+    margin: 0.3vw;
 
-  &:focus {
-    outline: none;
-  }
+    &:focus {
+        outline: none;
+    }
 
-  &:disabled {
-    opacity: 0.4;
-    cursor: default;
-  }
+    &:disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
 
-  &:disabled {
-    opacity: 0.4;
-    cursor: default;
-  }
+    &:disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
 
-  &:active {
-    background-color: #cccccc;
-  }
+    &:active {
+        background-color: rgb(103, 193, 210);
+    }
 
-  &.shift-symbols {
-    flex-basis: 210px;
-  }
+    &.shift-symbols {
+        flex-basis: 210px;
+    }
 
-  &.keyboard-numberButton {
-    flex-grow: 1;
-  }
+    &.keyboard-numberButton {
+        flex-grow: 1;
+    }
 
-  &.keyboard-halfButton {
-    flex-basis: 56px;
-  }
+    &.keyboard-halfButton {
+        flex-basis: 56px;
+    }
 
-  &.keyboard-space {
-    flex-grow: 1;
-  }
+    &.keyboard-space {
+        flex-grow: 1;
+    }
 
-  // TODO Should be remove?
-  &.keyboard-utilButton {
-    flex-grow: 2;
-    max-width: 55px;
-  }
+    // TODO Should be remove?
+    &.keyboard-utilButton {
+        flex-grow: 2;
+        max-width: 55px;
+    }
 
-  // TODO Should be remove?
-  &.keyboard-additionalButton {
-    flex-basis: 128px;
-  }
+    // TODO Should be remove?
+    &.keyboard-additionalButton {
+        flex-basis: 128px;
+    }
 
-  &.keyboard-submitButton, &.keyboard-submit-button {
-    flex-basis: 95px;
-    background-color: #63b324;
-    border-color: #63b324;
-    color: #ffffff;
-  }
+    &.keyboard-submitButton,
+    &.keyboard-submit-button {
+        flex-basis: 95px;
+        background-color: rgb(220, 156, 56);
+        border-color: #63b324;
+        color: #ffffff;
+    }
 }
 
 // TODO Should be remove?
 .keyboard-keysSet {
-  display: flex;
-  flex-grow: 1;
+    display: flex;
+    flex-grow: 1;
 }

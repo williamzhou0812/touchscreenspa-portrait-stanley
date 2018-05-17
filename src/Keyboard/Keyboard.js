@@ -248,7 +248,7 @@ export default class Keyboard extends PureComponent {
                 defaultPosition={{ x: 0, y: 0 }}
             >
                 <div
-                    className={`keyboard keyboard-wrapper ${
+                    className={`keyboard keyboard-wrapper section--bottom--animation ${
                         typeof this.props.keyboardClassName !== 'undefined'
                             ? this.props.keyboardClassName
                             : ''
