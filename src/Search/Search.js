@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import KeyboardedInput from 'react-touch-screen-keyboard';
+//import KeyboardedInput from 'react-touch-screen-keyboard';
+
+import KeyboardedInput from '../Keyboard';
+
 import 'react-touch-screen-keyboard/lib/Keyboard.css';
 import 'react-touch-screen-keyboard/lib/Keyboard.scss';
 import lunr from 'lunr';
@@ -7,6 +10,7 @@ import './Search.css';
 import { documents, idx } from '../App';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import _ from 'lodash';
 
 class Search extends Component {
     constructor(props) {
@@ -20,14 +24,14 @@ class Search extends Component {
     handleValueChange(val) {
         this.setState({ value: val }, () => {
             console.log(`${val}`);
-            let result = idx.search(`${val}`);
-            console.log(result);
-            for (var item in result) {
-                var ref = result[item].ref;
-                //console.log(this.props.searchDocuments.documents[ref]);
+            if (!_.isEmpty(val)) {
+                let result = idx.search(`${val}~2`);
+                console.log(result);
+                for (var item in result) {
+                    var ref = result[item].ref;
+                }
+                this.props.setSearchResults(result);
             }
-
-            this.props.setSearchResults(result);
         });
     }
 
