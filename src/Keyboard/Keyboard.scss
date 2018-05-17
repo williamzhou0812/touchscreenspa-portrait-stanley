@@ -24,7 +24,7 @@
     justify-content: space-around;
     align-items: center;
     flex-basis: 100px;
-    font-size: 24px;
+    font-size: 28px;
     height: 3.65vh;
     border-radius: 4px;
     background-color: rgb(73, 175, 189);
@@ -33,6 +33,7 @@
     font-weight: 300;
     color: white;
     margin: 0.3vw;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.5);
 
     &:focus {
         outline: none;

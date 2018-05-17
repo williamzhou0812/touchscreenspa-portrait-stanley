@@ -120,7 +120,7 @@ class App extends Component {
         _.map(destinationList.destinations, destination => {
             documents.push({
                 id: documents.length,
-                link: `destinations/${destination.id}`,
+                link: `/destinations/${destination.id}`,
                 title: destination.title,
                 text: `${destination.description} ${destination.airport} ${
                     destination.province
@@ -135,7 +135,7 @@ class App extends Component {
         _.map(accommodationList.accommodations, destination => {
             documents.push({
                 id: documents.length,
-                link: `accommodations/${destination.id} `,
+                link: `/accommodations/${destination.id} `,
                 title: destination.title,
                 text: `${destination.title} ${
                     destination.description
@@ -145,7 +145,7 @@ class App extends Component {
             _.map(destination.accomodationDestination, accommodation => {
                 documents.push({
                     id: documents.length,
-                    link: `accommodations/${destination.id}/${
+                    link: `/accommodations/${destination.id}/${
                         accommodation.id
                     }`,
                     title: accommodation.title,
@@ -165,7 +165,7 @@ class App extends Component {
         _.map(activityList.activities, activity => {
             documents.push({
                 id: documents.length,
-                link: `activities/${activity.id}
+                link: `/activities/${activity.id}
                 }`,
                 title: activity.title,
                 text: `${activity.title} activity`,
@@ -175,7 +175,7 @@ class App extends Component {
             _.map(activity.activityDestinationActivity, eachActivity => {
                 documents.push({
                     id: documents.length,
-                    link: `activities/${activity.id}/${eachActivity.id}`,
+                    link: `/activities/${activity.id}/${eachActivity.id}`,
                     title: eachActivity.title,
                     text: `${activity.title} ${eachActivity.title}   ${
                         eachActivity.description
@@ -188,7 +188,7 @@ class App extends Component {
                     eachTourActivityDestination => {
                         documents.push({
                             id: documents.length,
-                            link: `activities/${activity.id}/${
+                            link: `/activities/${activity.id}/${
                                 eachActivity.id
                             }`,
                             title: eachActivity.title,
@@ -208,7 +208,7 @@ class App extends Component {
         _.map(eventList.events, event => {
             documents.push({
                 id: documents.length,
-                link: `events/${event.id}`,
+                link: `/events/${event.id}`,
                 title: event.title,
                 text: `${event.description} ${event.title} ${
                     event.location
@@ -223,7 +223,7 @@ class App extends Component {
         _.map(restaurantList.restaurants, restaurant => {
             documents.push({
                 id: documents.length,
-                link: `dining/${restaurant.id}`,
+                link: `/dining/${restaurant.id}`,
                 title: restaurant.title,
                 text: `${restaurant.description} ${restaurant.address} ${
                     restaurant.guide.cuisine
@@ -238,7 +238,7 @@ class App extends Component {
         _.map(essentialServiceTypeList.serviceTypes, serviceType => {
             documents.push({
                 id: documents.length,
-                link: `essential/${serviceType.id}`,
+                link: `/essential/${serviceType.id}`,
                 title: serviceType.title,
                 text: ` ${serviceType.title} essential service`,
                 data: serviceType
@@ -841,7 +841,8 @@ function mapStateToProps({
     activityList,
     airport,
     displaySearchResultsBoolean,
-    searchDocuments
+    searchDocuments,
+    showSearchResults
 }) {
     return {
         windowSize,
@@ -870,7 +871,8 @@ function mapStateToProps({
         activityList,
         airport,
         displaySearchResultsBoolean,
-        searchDocuments
+        searchDocuments,
+        showSearchResults
     };
 }
 export default connect(mapStateToProps, actions)(App);

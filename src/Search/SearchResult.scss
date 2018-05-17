@@ -37,7 +37,20 @@
             grid-column: 1 / -1;
             height: 200px;
             background-color: rgb(5, 151, 165);
-            font-size: 16pt;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
+            text-decoration: none;
+            &--title {
+                font-size: 20pt;
+                text-decoration: none;
+            }
+            &--description {
+                font-size: 16pt;
+                text-align: left;
+                text-decoration: none;
+            }
         }
         &--noResultPage {
             grid-column: 1 / -1;

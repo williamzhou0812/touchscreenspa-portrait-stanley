@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 import './SearchResult.css';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { HeavyOrange } from '../Constants';
 import _ from 'lodash';
-
+import DownButton from '../interface/DownButton.png';
+import UpButton from '../interface/UpButton.png';
+import { LightOrange } from '../Constants';
 class SearchResult extends Component {
     constructor(props) {
         super(props);
@@ -15,6 +17,22 @@ class SearchResult extends Component {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
+        },
+        upArrow: {
+            borderStyle: 'none none solid none',
+            borderColor: LightOrange,
+            height: '14%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        downArrow: {
+            borderStyle: 'solid none none none',
+            borderColor: LightOrange,
+            height: '14%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
         }
     };
 
@@ -23,9 +41,26 @@ class SearchResult extends Component {
         if (!_.isEmpty(searchResult.results)) {
             return _.map(searchResult.results, item => {
                 return (
-                    <div className="searchResultContainer--content--resultItem">
-                        <p>{searchDocuments.documents[item.ref].title}</p>
-                        <p>{searchDocuments.documents[item.ref].text}</p>
+                    <div
+                        key={`${item.ref}`}
+                        className="searchResultContainer--content--resultItem"
+                    >
+                        <Link
+                            to={searchDocuments.documents[item.ref].link}
+                            style={{ textDecoration: 'none', color: 'white' }}
+                            onClick={() => {
+                                this.props.setDisplaySearchResultsBoolean(
+                                    false
+                                );
+                            }}
+                        >
+                            <p className="searchResultContainer--content--resultItem--title">
+                                {searchDocuments.documents[item.ref].title}
+                            </p>
+                            <p className="searchResultContainer--content--resultItem--description">
+                                {searchDocuments.documents[item.ref].text}
+                            </p>
+                        </Link>
                     </div>
                 );
             });
@@ -77,14 +112,32 @@ class SearchResult extends Component {
                         SEARCH RESULTS
                     </div>
 
-                    <div className="searchResultContainer--up">Up Arrow</div>
+                    <div
+                        className="searchResultContainer--up"
+                        tyle={{
+                            ...this.styles.horizontalVerticalCenter
+                        }}
+                        onClick={this.goUp}
+                    >
+                        <img src={UpButton} style={{ width: '5%' }} alt="Up" />
+                    </div>
 
                     <div className="searchResultContainer--content">
                         {this.renderSearchResultItem()}
                     </div>
 
-                    <div className="searchResultContainer--down">
-                        Down Arrow
+                    <div
+                        className="searchResultContainer--down"
+                        tyle={{
+                            ...this.styles.horizontalVerticalCenter
+                        }}
+                        onClick={this.goUp}
+                    >
+                        <img
+                            src={DownButton}
+                            style={{ width: '5%' }}
+                            alt="Up"
+                        />
                     </div>
                 </div>
             </div>
