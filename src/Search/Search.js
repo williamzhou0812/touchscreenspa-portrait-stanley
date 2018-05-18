@@ -43,7 +43,7 @@ class Search extends Component {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    backgroundColor: 'rgb(221,120,35)',
+                    backgroundColor: 'rgb(243, 158, 49)',
                     fontSize: '22px',
                     borderWidth: '1px',
                     borderColor: 'rgb(104,199,197)',
