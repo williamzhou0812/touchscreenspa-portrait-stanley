@@ -8,6 +8,8 @@ import { ConnectedRouter as Router } from 'react-router-redux';
 import { connect } from 'react-redux';
 import * as actions from './actions';
 import ReactLoading from 'react-loading';
+import { Link } from 'react-router-dom';
+
 import {
     accomodationNamespace,
     eventNamespace,
@@ -557,30 +559,38 @@ class App extends Component {
                                         gridTemplateColumns: '6vw 23.5vw 23.5vw'
                                     }}
                                 >
-                                    <div
-                                        style={{
-                                            backgroundColor: 'rgb(13,109,121)',
-                                            borderStyle:
-                                                'solid solid solid none',
-                                            borderWidth: '1px',
-                                            borderColor: 'rgb(104,199,197)'
-                                        }}
-                                        onClick={() => {
-                                            console.log('search icon clicked');
-                                            this.props.setShowSearchBarBoolean(
-                                                true
-                                            );
-                                            this.props.setShowKeyboard(true);
-                                        }}
-                                    >
-                                        <img
-                                            src={search_icon}
+                                    <Link to={searchResultNamespace}>
+                                        <div
                                             style={{
-                                                paddingTop: '5px',
-                                                height: '45px'
+                                                backgroundColor:
+                                                    'rgb(13,109,121)',
+                                                borderStyle:
+                                                    'solid solid solid none',
+                                                borderWidth: '1px',
+                                                borderColor: 'rgb(104,199,197)',
+                                                height: '100%'
                                             }}
-                                        />
-                                    </div>
+                                            onClick={() => {
+                                                console.log(
+                                                    'search icon clicked'
+                                                );
+                                                this.props.setShowSearchBarBoolean(
+                                                    true
+                                                );
+                                                this.props.setShowKeyboard(
+                                                    true
+                                                );
+                                            }}
+                                        >
+                                            <img
+                                                src={search_icon}
+                                                style={{
+                                                    paddingTop: '5px',
+                                                    height: '45px'
+                                                }}
+                                            />
+                                        </div>
+                                    </Link>
                                     <NavLink
                                         activeStyle={{
                                             backgroundColor: 'rgb(243,158,49)',

@@ -57,7 +57,7 @@ class Search extends Component {
                         this.props.setDisplaySearchResultsBoolean(true);
                     }}
                     opacity={1}
-                    placeholder={' Search '}
+                    placeholder={'Start search here ...'}
                     enabled
                     isDraggable={false}
                     inputClassName={'searchInput'}

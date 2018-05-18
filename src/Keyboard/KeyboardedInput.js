@@ -85,6 +85,7 @@ class KeyboardedInput extends React.Component {
             ) {
                 that.setState({ ...that.state, showKeyboard: false }, () => {
                     this.props.setShowKeyboard(false);
+                    this.props.setShowSearchBarBoolean(false);
                 });
             }
         }, 0);
@@ -93,13 +94,14 @@ class KeyboardedInput extends React.Component {
     hideKeyboard() {
         this.setState({ ...this.state, showKeyboard: false }, () => {
             this.props.setShowKeyboard(false);
+            this.props.setShowSearchBarBoolean(false);
         });
     }
 
     render() {
         return (
             <div>
-                <Link to={searchResultNamespace}>
+                <div className="section--right--animation">
                     <input
                         name={this.props.name}
                         className={this.props.inputClassName}
@@ -118,7 +120,7 @@ class KeyboardedInput extends React.Component {
                             this.input = e;
                         }}
                     />
-                </Link>
+                </div>
                 {this.props.enabled &&
                     this.props.readOnly !== true && (
                         <Keyboard
@@ -141,4 +143,11 @@ class KeyboardedInput extends React.Component {
     }
 }
 
-export default connect(null, actions)(KeyboardedInput);
+const mapStateToProps = ({ showKeyboard, showSearchBarBoolean }) => {
+    return {
+        showKeyboard,
+        showSearchBarBoolean
+    };
+};
+
+export default connect(mapStateToProps, actions)(KeyboardedInput);
