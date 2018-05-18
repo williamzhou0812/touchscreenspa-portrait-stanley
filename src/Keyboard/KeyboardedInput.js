@@ -5,7 +5,8 @@ import Keyboard from './Keyboard';
 
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-
+import { Link } from 'react-router-dom';
+import { searchResultNamespace } from '../Constants';
 class KeyboardedInput extends React.Component {
     static propTypes = {
         name: PropTypes.any,
@@ -98,24 +99,26 @@ class KeyboardedInput extends React.Component {
     render() {
         return (
             <div>
-                <input
-                    name={this.props.name}
-                    className={this.props.inputClassName}
-                    placeholder={this.props.placeholder}
-                    value={this.props.value}
-                    type={this.props.type}
-                    onFocus={this.handleFocus}
-                    onBlur={this.handleFocusLost}
-                    min={this.props.min}
-                    max={this.props.max}
-                    step={this.props.step}
-                    pattern={this.props.pattern}
-                    onChange={this.handleChange}
-                    readOnly={this.props.readOnly === true}
-                    ref={e => {
-                        this.input = e;
-                    }}
-                />
+                <Link to={searchResultNamespace}>
+                    <input
+                        name={this.props.name}
+                        className={this.props.inputClassName}
+                        placeholder={this.props.placeholder}
+                        value={this.props.value}
+                        type={this.props.type}
+                        onFocus={this.handleFocus}
+                        onBlur={this.handleFocusLost}
+                        min={this.props.min}
+                        max={this.props.max}
+                        step={this.props.step}
+                        pattern={this.props.pattern}
+                        onChange={this.handleChange}
+                        readOnly={this.props.readOnly === true}
+                        ref={e => {
+                            this.input = e;
+                        }}
+                    />
+                </Link>
                 {this.props.enabled &&
                     this.props.readOnly !== true && (
                         <Keyboard

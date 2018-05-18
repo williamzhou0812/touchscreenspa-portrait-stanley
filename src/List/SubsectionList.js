@@ -70,7 +70,10 @@ class SubsectionList extends React.Component {
             toRender = addNullItemToData(data, numberOfEntries);
         }
         return (
-            <div style={{ width: '100%', height: '100%', display: 'flex' }}>
+            <div
+                style={{ width: '100%', height: '100%', display: 'flex' }}
+                className="section--bottom--animation"
+            >
                 <div
                     style={{
                         backgroundColor: HeavyOrange,

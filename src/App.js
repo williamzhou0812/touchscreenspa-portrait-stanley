@@ -21,7 +21,8 @@ import {
     miningNamespace,
     airportInfoNamespace,
     IDLE_TIME,
-    activityNamespace
+    activityNamespace,
+    searchResultNamespace
 } from './Constants';
 import DestinationList from './Destination/DestinationList';
 import DestinationDetail from './Destination/DestinationDetail';
@@ -120,7 +121,7 @@ class App extends Component {
         _.map(destinationList.destinations, destination => {
             documents.push({
                 id: documents.length,
-                link: `/destinations/${destination.id}`,
+                link: `${destinationNamespace}/${destination.id}`,
                 title: destination.title,
                 text: `${destination.description} ${destination.airport} ${
                     destination.province
@@ -135,7 +136,7 @@ class App extends Component {
         _.map(accommodationList.accommodations, destination => {
             documents.push({
                 id: documents.length,
-                link: `/accommodations/${destination.id} `,
+                link: `${accomodationNamespace}/${destination.id} `,
                 title: destination.title,
                 text: `${destination.title} ${
                     destination.description
@@ -145,7 +146,7 @@ class App extends Component {
             _.map(destination.accomodationDestination, accommodation => {
                 documents.push({
                     id: documents.length,
-                    link: `/accommodations/${destination.id}/${
+                    link: `${accomodationNamespace}/${destination.id}/${
                         accommodation.id
                     }`,
                     title: accommodation.title,
@@ -165,7 +166,7 @@ class App extends Component {
         _.map(activityList.activities, activity => {
             documents.push({
                 id: documents.length,
-                link: `/activities/${activity.id}
+                link: `${activityNamespace}/${activity.id}
                 }`,
                 title: activity.title,
                 text: `${activity.title} activity`,
@@ -175,7 +176,9 @@ class App extends Component {
             _.map(activity.activityDestinationActivity, eachActivity => {
                 documents.push({
                     id: documents.length,
-                    link: `/activities/${activity.id}/${eachActivity.id}`,
+                    link: `${activityNamespace}/${activity.id}/${
+                        eachActivity.id
+                    }`,
                     title: eachActivity.title,
                     text: `${activity.title} ${eachActivity.title}   ${
                         eachActivity.description
@@ -188,7 +191,7 @@ class App extends Component {
                     eachTourActivityDestination => {
                         documents.push({
                             id: documents.length,
-                            link: `/activities/${activity.id}/${
+                            link: `${activityNamespace}/${activity.id}/${
                                 eachActivity.id
                             }`,
                             title: eachActivity.title,
@@ -208,7 +211,7 @@ class App extends Component {
         _.map(eventList.events, event => {
             documents.push({
                 id: documents.length,
-                link: `/events/${event.id}`,
+                link: `${eventNamespace}/${event.id}`,
                 title: event.title,
                 text: `${event.description} ${event.title} ${
                     event.location
@@ -223,7 +226,7 @@ class App extends Component {
         _.map(restaurantList.restaurants, restaurant => {
             documents.push({
                 id: documents.length,
-                link: `/dining/${restaurant.id}`,
+                link: `${diningNamespace}/${restaurant.id}`,
                 title: restaurant.title,
                 text: `${restaurant.description} ${restaurant.address} ${
                     restaurant.guide.cuisine
@@ -238,7 +241,7 @@ class App extends Component {
         _.map(essentialServiceTypeList.serviceTypes, serviceType => {
             documents.push({
                 id: documents.length,
-                link: `/essential/${serviceType.id}`,
+                link: `${essentialNamespace}/${serviceType.id}`,
                 title: serviceType.title,
                 text: ` ${serviceType.title} essential service`,
                 data: serviceType
@@ -246,7 +249,9 @@ class App extends Component {
             _.map(serviceType.essentialServiceServiceType, serviceItem => {
                 documents.push({
                     id: documents.length,
-                    link: `essential/${serviceType.id}/${serviceItem.id}`,
+                    link: `${essentialNamespace}/${serviceType.id}/${
+                        serviceItem.id
+                    }`,
                     title: serviceItem.title,
                     text: `${serviceItem.description} ${
                         serviceType.title
@@ -262,7 +267,7 @@ class App extends Component {
         _.map(transportServiceTypeList.serviceTypes, serviceType => {
             documents.push({
                 id: documents.length,
-                link: `transport/${serviceType.id}`,
+                link: `${transportNamespace}/${serviceType.id}`,
                 title: serviceType.title,
                 text: ` ${serviceType.title} transport car hire`,
                 data: serviceType
@@ -270,7 +275,9 @@ class App extends Component {
             _.map(serviceType.transportationServiceType, serviceItem => {
                 documents.push({
                     id: documents.length,
-                    link: `transport/${serviceType.id}/${serviceItem.id}`,
+                    link: `${transportNamespace}/${serviceType.id}/${
+                        serviceItem.id
+                    }`,
                     title: serviceItem.title,
                     text: `${serviceItem.description} ${
                         serviceType.title
@@ -286,7 +293,7 @@ class App extends Component {
         _.map(miningServiceTypeList.serviceTypes, serviceType => {
             documents.push({
                 id: documents.length,
-                link: `mining`,
+                link: `${miningNamespace}`,
                 title: serviceType.title,
                 text: ` ${serviceType.title} mining resource`,
                 data: serviceType
@@ -294,7 +301,9 @@ class App extends Component {
             _.map(serviceType.miningServiceType, serviceItem => {
                 documents.push({
                     id: documents.length,
-                    link: `mining/${serviceType.id}/${serviceItem.id}`,
+                    link: `${miningNamespace}/${serviceType.id}/${
+                        serviceItem.id
+                    }`,
                     title: serviceItem.title,
                     text: `${serviceItem.description} ${
                         serviceType.title
@@ -310,7 +319,7 @@ class App extends Component {
         _.map(retailServiceTypeList.serviceTypes, serviceType => {
             documents.push({
                 id: documents.length,
-                link: `retail`,
+                link: `${retailNamespace}`,
                 title: serviceType.title,
                 text: ` ${serviceType.title} retail service`,
                 data: serviceType
@@ -318,7 +327,9 @@ class App extends Component {
             _.map(serviceType.retailServiceType, serviceItem => {
                 documents.push({
                     id: documents.length,
-                    link: `retail/${serviceType.id}/${serviceItem.id}`,
+                    link: `${retailNamespace}/${serviceType.id}/${
+                        serviceItem.id
+                    }`,
                     title: serviceItem.title,
                     text: `${serviceItem.description} ${
                         serviceType.title
@@ -485,89 +496,6 @@ class App extends Component {
                                     this.props.featuredAdvertisementList
                                         .status === 200 && <RestComponent />}
                             </div>
-                        ) : displaySearchResultsBoolean.boolean === true ? (
-                            <div>
-                                <SearchResult />
-                                <div
-                                    style={{
-                                        width: '100vw',
-                                        height: '16vh',
-                                        zIndex: '99',
-                                        position: 'relative'
-                                    }}
-                                >
-                                    {!isIdle &&
-                                        this.props.adVideoList.status === 200 &&
-                                        this.props.advertisementList.status ===
-                                            200 &&
-                                        this.props
-                                            .specificAdsActivityDestinationList
-                                            .status === 200 &&
-                                        this.props.specificAdsEssentialList
-                                            .status === 200 &&
-                                        this.props.specificAdsMiningList
-                                            .status === 200 &&
-                                        this.props.specificAdsRestaurantList
-                                            .status === 200 &&
-                                        this.props.specificAdsRetailList
-                                            .status === 200 &&
-                                        this.props.specificAdsTransportList
-                                            .status === 200 &&
-                                        this.props.specificAdsAccommodationList
-                                            .status === 200 &&
-                                        this.props.specificAdsEventList
-                                            .status === 200 && (
-                                            <Route
-                                                render={props => (
-                                                    <Advertisement
-                                                        // continuePlaying={!isIdle}
-                                                        continuePlaying={true}
-                                                        {...props}
-                                                    />
-                                                )}
-                                            />
-                                        )}
-                                </div>
-                                <div
-                                    style={{
-                                        width: '100vw',
-                                        height: '4vh',
-                                        display: 'flex',
-                                        backgroundColor: '#058c9b',
-                                        color: 'white',
-                                        zIndex: '99',
-                                        position: 'relative'
-                                    }}
-                                >
-                                    <div
-                                        style={{
-                                            flex: 1,
-                                            display: 'flex',
-                                            alignItems: 'center'
-                                        }}
-                                    >
-                                        <span
-                                            style={{
-                                                marginLeft: 20,
-                                                marginRight: 5
-                                            }}
-                                        >
-                                            &copy;
-                                        </span>JBG HOSPITALITY 2018
-                                    </div>
-                                    <div
-                                        style={{
-                                            flex: 1,
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'flex-end',
-                                            marginRight: 20
-                                        }}
-                                    >
-                                        WWW.JBG.COM.PG
-                                    </div>
-                                </div>
-                            </div>
                         ) : (
                             <div>
                                 <div style={{ width: '100vw', height: '54vh' }}>
@@ -720,6 +648,11 @@ class App extends Component {
                                         exact
                                         path={airportInfoNamespace}
                                         component={AirportInfo}
+                                    />
+                                    <Route
+                                        exact
+                                        path={searchResultNamespace}
+                                        component={SearchResult}
                                     />
                                     <Redirect
                                         from="/"

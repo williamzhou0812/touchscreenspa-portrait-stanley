@@ -6,7 +6,7 @@ import KeyboardedInput from '../Keyboard';
 import '../Keyboard/Keyboard.css';
 import lunr from 'lunr';
 import './Search.css';
-import { documents, idx } from '../App';
+import { idx } from '../App';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import _ from 'lodash';

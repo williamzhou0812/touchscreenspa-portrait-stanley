@@ -42,6 +42,8 @@ export const retailNamespace = `${serviceNamespace}/retail`;
 export const miningNamespace = `${serviceNamespace}/mining`;
 export const airportMapNamespace = '/airportmap';
 export const airportInfoNamespace = '/airportinfo';
+export const searchResultNamespace = '/searchresult';
+
 // END OF CONSTANTS FOR SPA ROUTING
 
 export const HOST = '192.168.0.160';
