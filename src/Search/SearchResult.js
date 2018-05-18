@@ -102,7 +102,11 @@ class SearchResult extends Component {
         } else {
             return (
                 <div className="searchResultContainer--content--noResultPage">
-                    <p>Sorry, No search results for you !</p>
+                    {!_.isEmpty(searchResult) ? (
+                        <p>Sorry, No search results for you !</p>
+                    ) : (
+                        <p>Start search by entering keywords !</p>
+                    )}
                 </div>
             );
         }

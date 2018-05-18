@@ -244,7 +244,12 @@ class Keyboard extends PureComponent {
     }
 
     render() {
-        const { inputNode, secondaryKeyboard, showKeyboard } = this.props;
+        const {
+            inputNode,
+            secondaryKeyboard,
+            showKeyboard,
+            showSearchBarBoolean
+        } = this.props;
         const keys = this.getKeys();
         const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
         const symbolsKeyValue = this.getSymbolsKeyValue();
@@ -259,13 +264,15 @@ class Keyboard extends PureComponent {
                             ? this.props.keyboardClassName
                             : ''
                     } ${
-                        showKeyboard.showKeyboard
+                        showKeyboard.showKeyboard ||
+                        showSearchBarBoolean.boolean
                             ? 'keyboard--bottom--in--animation'
                             : 'keyboard--bottom--out--animation'
                     }`}
                     style={{
                         opacity: `${
-                            showKeyboard.showKeyboard
+                            showKeyboard.showKeyboard ||
+                            showSearchBarBoolean.boolean
                                 ? typeof this.props.opacity !== 'undefined'
                                   ? this.props.opacity
                                   : 1
@@ -358,9 +365,10 @@ class Keyboard extends PureComponent {
     }
 }
 
-const mapStateToProps = ({ showKeyboard }) => {
+const mapStateToProps = ({ showKeyboard, showSearchBarBoolean }) => {
     return {
-        showKeyboard
+        showKeyboard,
+        showSearchBarBoolean
     };
 };
 

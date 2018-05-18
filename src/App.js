@@ -49,6 +49,8 @@ import Search from './Search/Search';
 import SearchResult from './Search/SearchResult';
 import lunr from 'lunr';
 import _ from 'lodash';
+import search_icon from './interface/search_icon.png';
+
 export let idx;
 
 class App extends Component {
@@ -56,7 +58,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isIdle: false
+            isIdle: false,
+            searchBarEnable: false
         };
         this.setSPAIdle = this.setSPAIdle.bind(this);
         this.setSPAActive = this.setSPAActive.bind(this);
@@ -543,42 +546,80 @@ class App extends Component {
                                 width: '100vw',
                                 height: '3vh',
                                 display: 'grid',
-                                gridTemplateColumns: '20% 20% 20% 40%'
+                                gridTemplateColumns: '53% 47%'
                             }}
                         >
-                            <NavLink
-                                activeStyle={{
-                                    backgroundColor: 'rgb(243,158,49)',
-                                    borderStyle: 'solid solid solid none',
-                                    borderWidth: '1px',
-                                    borderColor: 'rgb(104,199,197)'
-                                }}
-                                style={{
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    borderStyle: 'solid solid solid none',
-                                    borderWidth: '1px',
-                                    borderColor: 'rgb(104,199,197)',
-                                    backgroundColor: 'rgb(13,109,121)',
-                                    textDecoration: 'none',
-                                    color: 'white',
-                                    fontSize: '22px',
-                                    fontWeight: 500,
-                                    letterSpacing: '1px',
-                                    paddingTop: '10px'
-                                }}
-                                to={airportInfoNamespace}
-                                onClick={() => {
-                                    this.props.setDisplaySearchResultsBoolean(
-                                        false
-                                    );
-                                }}
-                            >
-                                AIRPORT INFO
-                            </NavLink>
-                            <AirportMapModal />
-                            <Search />
+                            {!this.props.showSearchBarBoolean.boolean ? (
+                                <div
+                                    style={{
+                                        width: '100vw',
+                                        display: 'grid',
+                                        gridTemplateColumns: '6vw 23.5vw 23.5vw'
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            backgroundColor: 'rgb(13,109,121)',
+                                            borderStyle:
+                                                'solid solid solid none',
+                                            borderWidth: '1px',
+                                            borderColor: 'rgb(104,199,197)'
+                                        }}
+                                        onClick={() => {
+                                            console.log('search icon clicked');
+                                            this.props.setShowSearchBarBoolean(
+                                                true
+                                            );
+                                            this.props.setShowKeyboard(true);
+                                        }}
+                                    >
+                                        <img
+                                            src={search_icon}
+                                            style={{
+                                                paddingTop: '5px',
+                                                height: '45px'
+                                            }}
+                                        />
+                                    </div>
+                                    <NavLink
+                                        activeStyle={{
+                                            backgroundColor: 'rgb(243,158,49)',
+                                            borderStyle:
+                                                'solid solid solid none',
+                                            borderWidth: '1px',
+                                            borderColor: 'rgb(104,199,197)'
+                                        }}
+                                        style={{
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            borderStyle:
+                                                'solid solid solid none',
+                                            borderWidth: '1px',
+                                            borderColor: 'rgb(104,199,197)',
+                                            backgroundColor: 'rgb(13,109,121)',
+                                            textDecoration: 'none',
+                                            color: 'white',
+                                            fontSize: '22px',
+                                            fontWeight: 500,
+                                            letterSpacing: '1px',
+                                            paddingTop: '10px'
+                                        }}
+                                        to={airportInfoNamespace}
+                                        onClick={() => {
+                                            this.props.setDisplaySearchResultsBoolean(
+                                                false
+                                            );
+                                        }}
+                                    >
+                                        AIRPORT INFO
+                                    </NavLink>
+                                    <AirportMapModal />
+                                </div>
+                            ) : (
+                                <Search />
+                            )}
+
                             <Clock />
                         </div>
                         <div style={{ width: '100vw', height: '8vh' }}>
@@ -877,7 +918,8 @@ function mapStateToProps({
     airport,
     displaySearchResultsBoolean,
     searchDocuments,
-    showSearchResults
+    showSearchResults,
+    showSearchBarBoolean
 }) {
     return {
         windowSize,
@@ -907,7 +949,8 @@ function mapStateToProps({
         airport,
         displaySearchResultsBoolean,
         searchDocuments,
-        showSearchResults
+        showSearchResults,
+        showSearchBarBoolean
     };
 }
 export default connect(mapStateToProps, actions)(App);

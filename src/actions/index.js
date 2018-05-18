@@ -35,7 +35,8 @@ import { fetchAirportDetail } from './airport';
 import {
     setSearchDocuments,
     setDisplaySearchResultsBoolean,
-    setSearchResults
+    setSearchResults,
+    setShowSearchBarBoolean
 } from './search';
 import { setShowKeyboard } from './keyboard';
 
@@ -75,5 +76,6 @@ export {
     setSearchDocuments,
     setDisplaySearchResultsBoolean,
     setSearchResults,
-    setShowKeyboard
+    setShowKeyboard,
+    setShowSearchBarBoolean
 };

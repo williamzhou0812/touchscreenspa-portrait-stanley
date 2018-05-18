@@ -32,6 +32,7 @@ import searchDocumentReducer from './searchDocumentReducer';
 import searchResultReducer from './searchResultReducer';
 import displaySearchResultsBooleanReducer from './displaySearchResultsBooleanReducer';
 import showKeyboardReducer from './showKeyboardReducer';
+import showSearchBarReducer from './showSearchBarReducer';
 
 export default combineReducers({
     windowSize: windowSizeReducer,
@@ -66,5 +67,6 @@ export default combineReducers({
     searchDocuments: searchDocumentReducer,
     searchResult: searchResultReducer,
     displaySearchResultsBoolean: displaySearchResultsBooleanReducer,
-    showKeyboard: showKeyboardReducer
+    showKeyboard: showKeyboardReducer,
+    showSearchBarBoolean: showSearchBarReducer
 });

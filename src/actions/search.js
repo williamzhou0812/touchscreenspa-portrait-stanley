@@ -1,7 +1,8 @@
 import {
     SEARCH_DOCUMENTS,
     DISPLAY_SEARCH_RESULTS_PAGE,
-    SEARCH_RESULTS
+    SEARCH_RESULTS,
+    SHOW_SEARCH_BAR
 } from './types';
 
 export const setSearchDocuments = documents => async dispatch => {
@@ -27,6 +28,15 @@ export const setSearchResults = results => async dispatch => {
         type: SEARCH_RESULTS,
         payload: {
             results: results
+        }
+    });
+};
+
+export const setShowSearchBarBoolean = boolean => async dispatch => {
+    dispatch({
+        type: SHOW_SEARCH_BAR,
+        payload: {
+            boolean: boolean
         }
     });
 };
