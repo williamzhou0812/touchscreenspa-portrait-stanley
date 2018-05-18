@@ -119,6 +119,14 @@ class App extends Component {
         * DOCUMENTS FOR DESTINATION
         */
         _.map(destinationList.destinations, destination => {
+            let imagelink;
+            if (
+                !_.isEmpty(destination.imageDestination) &&
+                destination.imageDestination.length > 0
+            ) {
+                imagelink = destination.imageDestination[0].imageFile;
+            }
+
             documents.push({
                 id: documents.length,
                 link: `${destinationNamespace}/${destination.id}`,
@@ -126,6 +134,7 @@ class App extends Component {
                 text: `${destination.description} ${destination.airport} ${
                     destination.province
                 } destination`,
+                image: imagelink,
                 data: destination
             });
         });
@@ -134,6 +143,13 @@ class App extends Component {
         * DOCUMENTS FOR ACCOMMODATION
         */
         _.map(accommodationList.accommodations, destination => {
+            let imagelink;
+            if (
+                !_.isEmpty(destination.imageDestination) &&
+                destination.imageDestination.length > 0
+            ) {
+                imagelink = destination.imageDestination[0].imageFile;
+            }
             documents.push({
                 id: documents.length,
                 link: `${accomodationNamespace}/${destination.id} `,
@@ -141,9 +157,14 @@ class App extends Component {
                 text: `${destination.title} ${
                     destination.description
                 } accommodation hotel`,
+                image: imagelink,
                 data: destination
             });
             _.map(destination.accomodationDestination, accommodation => {
+                let imagelink;
+                if (!_.isEmpty(accommodation.logo)) {
+                    imagelink = accommodation.logo;
+                }
                 documents.push({
                     id: documents.length,
                     link: `${accomodationNamespace}/${destination.id}/${
@@ -155,6 +176,7 @@ class App extends Component {
                     }   ${accommodation.phone} ${
                         destination.title
                     } accommodation hotel`,
+                    image: imagelink,
                     data: accommodation
                 });
             });
@@ -164,12 +186,20 @@ class App extends Component {
         * DOCUMENTS FOR ACTIVITY
         */
         _.map(activityList.activities, activity => {
+            let imagelink;
+            if (
+                !_.isEmpty(activity.imageActivity) &&
+                activity.imageActivity.length > 0
+            ) {
+                imagelink = activity.imageActivity[0].imageFile;
+            }
             documents.push({
                 id: documents.length,
                 link: `${activityNamespace}/${activity.id}
                 }`,
                 title: activity.title,
                 text: `${activity.title} activity`,
+                image: imagelink,
                 data: activity
             });
 
@@ -183,6 +213,7 @@ class App extends Component {
                     text: `${activity.title} ${eachActivity.title}   ${
                         eachActivity.description
                     }  activity`,
+                    image: imagelink,
                     data: eachActivity
                 });
 
@@ -198,6 +229,7 @@ class App extends Component {
                             text: `${activity.title} ${eachActivity.title}   ${
                                 eachActivity.description
                             } ${eachTourActivityDestination.title} activity`,
+                            image: imagelink,
                             data: eachTourActivityDestination
                         });
                     }
@@ -209,6 +241,10 @@ class App extends Component {
         * DOCUMENTS FOR EVENT
         */
         _.map(eventList.events, event => {
+            let imagelink;
+            if (!_.isEmpty(event.imageEvent) && event.imageEvent.length > 0) {
+                imagelink = event.imageEvent[0].imageFile;
+            }
             documents.push({
                 id: documents.length,
                 link: `${eventNamespace}/${event.id}`,
@@ -216,6 +252,7 @@ class App extends Component {
                 text: `${event.description} ${event.title} ${
                     event.location
                 } event`,
+                image: imagelink,
                 data: event
             });
         });
@@ -224,6 +261,13 @@ class App extends Component {
         * DOCUMENTS FOR RESTAURANT
         */
         _.map(restaurantList.restaurants, restaurant => {
+            let imagelink;
+            if (
+                !_.isEmpty(restaurant.imageRestaurant) &&
+                restaurant.imageRestaurant.length > 0
+            ) {
+                imagelink = restaurant.imageRestaurant[0].imageFile;
+            }
             documents.push({
                 id: documents.length,
                 link: `${diningNamespace}/${restaurant.id}`,
@@ -231,6 +275,7 @@ class App extends Component {
                 text: `${restaurant.description} ${restaurant.address} ${
                     restaurant.guide.cuisine
                 } restaurant dining`,
+                image: imagelink,
                 data: restaurant
             });
         });
@@ -239,14 +284,28 @@ class App extends Component {
         * DOCUMENTS FOR ESSENTIAL SERVICE
         */
         _.map(essentialServiceTypeList.serviceTypes, serviceType => {
+            let imagelink;
+            if (
+                !_.isEmpty(serviceType.imageServiceType) &&
+                serviceType.imageServiceType.length > 0
+            ) {
+                imagelink = serviceType.imageServiceType[0].imageFile;
+            }
+
             documents.push({
                 id: documents.length,
                 link: `${essentialNamespace}/${serviceType.id}`,
                 title: serviceType.title,
                 text: ` ${serviceType.title} essential service`,
+                image: imagelink,
                 data: serviceType
             });
             _.map(serviceType.essentialServiceServiceType, serviceItem => {
+                let imagelink;
+                if (!_.isEmpty(serviceItem.logo)) {
+                    imagelink = serviceItem.logo;
+                }
+
                 documents.push({
                     id: documents.length,
                     link: `${essentialNamespace}/${serviceType.id}/${
@@ -256,6 +315,7 @@ class App extends Component {
                     text: `${serviceItem.description} ${
                         serviceType.title
                     } essential service`,
+                    image: imagelink,
                     data: serviceItem
                 });
             });
@@ -265,14 +325,28 @@ class App extends Component {
         * DOCUMENTS FOR TRANSPORT SERVICE
         */
         _.map(transportServiceTypeList.serviceTypes, serviceType => {
+            let imagelink;
+            if (
+                !_.isEmpty(serviceType.imageServiceType) &&
+                serviceType.imageServiceType.length > 0
+            ) {
+                imagelink = serviceType.imageServiceType[0].imageFile;
+            }
             documents.push({
                 id: documents.length,
                 link: `${transportNamespace}/${serviceType.id}`,
                 title: serviceType.title,
                 text: ` ${serviceType.title} transport car hire`,
+                image: imagelink,
+
                 data: serviceType
             });
             _.map(serviceType.transportationServiceType, serviceItem => {
+                let imagelink;
+                if (!_.isEmpty(serviceItem.logo)) {
+                    imagelink = serviceItem.logo;
+                }
+
                 documents.push({
                     id: documents.length,
                     link: `${transportNamespace}/${serviceType.id}/${
@@ -282,6 +356,8 @@ class App extends Component {
                     text: `${serviceItem.description} ${
                         serviceType.title
                     } transport car hire`,
+                    image: imagelink,
+
                     data: serviceItem
                 });
             });
@@ -291,14 +367,26 @@ class App extends Component {
         * DOCUMENTS FOR MINING SERVICE
         */
         _.map(miningServiceTypeList.serviceTypes, serviceType => {
+            let imagelink;
+            if (
+                !_.isEmpty(serviceType.imageServiceType) &&
+                serviceType.imageServiceType.length > 0
+            ) {
+                imagelink = serviceType.imageServiceType[0].imageFile;
+            }
             documents.push({
                 id: documents.length,
                 link: `${miningNamespace}`,
                 title: serviceType.title,
                 text: ` ${serviceType.title} mining resource`,
+                image: imagelink,
                 data: serviceType
             });
             _.map(serviceType.miningServiceType, serviceItem => {
+                let imagelink;
+                if (!_.isEmpty(serviceItem.logo)) {
+                    imagelink = serviceItem.logo;
+                }
                 documents.push({
                     id: documents.length,
                     link: `${miningNamespace}/${serviceType.id}/${
@@ -308,6 +396,7 @@ class App extends Component {
                     text: `${serviceItem.description} ${
                         serviceType.title
                     } mining resource`,
+                    image: imagelink,
                     data: serviceItem
                 });
             });
@@ -317,14 +406,26 @@ class App extends Component {
         * DOCUMENTS FOR RETAIL SERVICE
         */
         _.map(retailServiceTypeList.serviceTypes, serviceType => {
+            let imagelink;
+            if (
+                !_.isEmpty(serviceType.imageServiceType) &&
+                serviceType.imageServiceType.length > 0
+            ) {
+                imagelink = serviceType.imageServiceType[0].imageFile;
+            }
             documents.push({
                 id: documents.length,
                 link: `${retailNamespace}`,
                 title: serviceType.title,
                 text: ` ${serviceType.title} retail service`,
+                image: imagelink,
                 data: serviceType
             });
             _.map(serviceType.retailServiceType, serviceItem => {
+                let imagelink;
+                if (!_.isEmpty(serviceItem.logo)) {
+                    imagelink = serviceItem.logo;
+                }
                 documents.push({
                     id: documents.length,
                     link: `${retailNamespace}/${serviceType.id}/${
@@ -334,6 +435,7 @@ class App extends Component {
                     text: `${serviceItem.description} ${
                         serviceType.title
                     } retail service`,
+                    image: imagelink,
                     data: serviceItem
                 });
             });

@@ -40,28 +40,63 @@ class SearchResult extends Component {
         const { searchResult, searchDocuments } = this.props;
         if (!_.isEmpty(searchResult.results)) {
             return _.map(searchResult.results, item => {
+                let image = {};
+                if (!_.isEmpty(searchDocuments.documents[item.ref].image)) {
+                    image = {
+                        backgroundImage:
+                            'url(' +
+                            searchDocuments.documents[item.ref].image +
+                            ')',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                    };
+                }
+
                 return (
-                    <div
-                        key={`${item.ref}`}
-                        className="searchResultContainer--content--resultItem"
+                    <Link
+                        to={searchDocuments.documents[item.ref].link}
+                        style={{ textDecoration: 'none', color: 'white' }}
+                        onClick={() => {
+                            this.props.setDisplaySearchResultsBoolean(false);
+                        }}
                     >
-                        <Link
-                            to={searchDocuments.documents[item.ref].link}
-                            style={{ textDecoration: 'none', color: 'white' }}
-                            onClick={() => {
-                                this.props.setDisplaySearchResultsBoolean(
-                                    false
-                                );
-                            }}
+                        <div
+                            key={`${item.ref}`}
+                            className="searchResultContainer--content--resultItem"
                         >
-                            <p className="searchResultContainer--content--resultItem--title">
-                                {searchDocuments.documents[item.ref].title}
-                            </p>
-                            <p className="searchResultContainer--content--resultItem--description">
-                                {searchDocuments.documents[item.ref].text}
-                            </p>
-                        </Link>
-                    </div>
+                            {!_.isEmpty(
+                                searchDocuments.documents[item.ref].image
+                            ) ? (
+                                <div
+                                    className="searchResultContainer--content--resultItem--image"
+                                    style={image}
+                                />
+                            ) : (
+                                <div
+                                    className="searchResultContainer--content--resultItem--image"
+                                    style={this.styles.horizontalVerticalCenter}
+                                >
+                                    No Image
+                                </div>
+                            )}
+
+                            <div className="searchResultContainer--content--resultItem--content">
+                                <p className="searchResultContainer--content--resultItem--content--title">
+                                    {searchDocuments.documents[item.ref].title}
+                                </p>
+                                <p className="searchResultContainer--content--resultItem--content--description">
+                                    {searchDocuments.documents[item.ref].text
+                                        .length > 300
+                                        ? `${searchDocuments.documents[
+                                              item.ref
+                                          ].text.substring(0, 300)}...`
+                                        : searchDocuments.documents[item.ref]
+                                              .text}
+                                </p>
+                            </div>
+                        </div>
+                    </Link>
                 );
             });
         } else {
@@ -114,7 +149,7 @@ class SearchResult extends Component {
 
                     <div
                         className="searchResultContainer--up"
-                        tyle={{
+                        style={{
                             ...this.styles.horizontalVerticalCenter
                         }}
                         onClick={this.goUp}
@@ -128,7 +163,7 @@ class SearchResult extends Component {
 
                     <div
                         className="searchResultContainer--down"
-                        tyle={{
+                        style={{
                             ...this.styles.horizontalVerticalCenter
                         }}
                         onClick={this.goUp}

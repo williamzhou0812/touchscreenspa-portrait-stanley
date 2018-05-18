@@ -26,30 +26,46 @@
         grid-column: 1 / -1;
         grid-row: 3 / 4;
         background-color: white;
-        grid-row-gap: 3px;
+        grid-row-gap: 2px;
 
         display: grid;
         grid-template-rows: auto;
-
         grid-template-columns: 100%;
         overflow: auto;
+
         &--resultItem {
             grid-column: 1 / -1;
-            height: 200px;
+            height: 10.9vh;
             background-color: rgb(5, 151, 165);
-            padding-top: 10px;
-            padding-bottom: 10px;
-            padding-left: 50px;
-            padding-right: 50px;
-            text-decoration: none;
-            &--title {
+
+            display: grid;
+            grid-template-rows: 10.9vh;
+            grid-template-columns: 30vw 56vw;
+
+            &--image {
+                grid-column: 1 / 2;
+                grid-row: 1 / -1;
                 font-size: 20pt;
-                text-decoration: none;
+                letter-spacing: 3px;
             }
-            &--description {
-                font-size: 16pt;
-                text-align: left;
-                text-decoration: none;
+
+            &--content {
+                grid-column: 2 / 3;
+                grid-row: 1 / -1;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+
+                &--title {
+                    font-size: 18pt;
+                    text-decoration: none;
+                }
+                &--description {
+                    font-size: 15pt;
+                    text-align: left;
+                    text-decoration: none;
+                }
             }
         }
         &--noResultPage {
