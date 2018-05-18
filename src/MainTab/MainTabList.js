@@ -149,6 +149,8 @@ class MainTabList extends React.Component {
                                 this.props.setDisplaySearchResultsBoolean(
                                     false
                                 );
+                                this.props.setShowSearchBarBoolean(false);
+                                this.props.setShowKeyboard(false);
                             }}
                         />
                     );
