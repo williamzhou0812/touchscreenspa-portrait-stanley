@@ -111,7 +111,7 @@ class SearchResult extends Component {
         return (
             <div
                 style={{ width: '100%', height: '54vh', display: 'flex' }}
-                className="section--bottom--animation"
+                className="search--rotate--animation"
             >
                 <div
                     onClick={this.returnFromExplore}
