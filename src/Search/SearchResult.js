@@ -36,6 +36,10 @@ class SearchResult extends Component {
         }
     };
 
+    componentWillUnmount() {
+        console.log('componentWillUnmount');
+        this.props.resetSearchResults();
+    }
     renderSearchResultItem() {
         const { searchResult, searchDocuments } = this.props;
         if (!_.isEmpty(searchResult.results)) {
@@ -59,6 +63,8 @@ class SearchResult extends Component {
                         style={{ textDecoration: 'none', color: 'white' }}
                         onClick={() => {
                             this.props.setDisplaySearchResultsBoolean(false);
+                            this.props.setShowKeyboard(false);
+                            this.props.setShowSearchBarBoolean(false);
                         }}
                     >
                         <div

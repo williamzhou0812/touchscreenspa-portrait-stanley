@@ -36,7 +36,8 @@ import {
     setSearchDocuments,
     setDisplaySearchResultsBoolean,
     setSearchResults,
-    setShowSearchBarBoolean
+    setShowSearchBarBoolean,
+    resetSearchResults
 } from './search';
 import { setShowKeyboard } from './keyboard';
 
@@ -77,5 +78,6 @@ export {
     setDisplaySearchResultsBoolean,
     setSearchResults,
     setShowKeyboard,
-    setShowSearchBarBoolean
+    setShowSearchBarBoolean,
+    resetSearchResults
 };
