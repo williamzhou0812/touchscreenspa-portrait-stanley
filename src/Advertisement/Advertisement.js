@@ -18,6 +18,7 @@ import {
     retailNamespace,
     airportMapNamespace,
     airportInfoNamespace,
+    searchResultNamespace,
     mapListNamespace,
     AD_SLIDE_INTERVAL,
     randomiseButKeepOrder,
@@ -33,7 +34,7 @@ class Advertisement extends React.Component {
             ads: [],
             status: null,
             showAds: true
-        }
+        };
     }
     componentDidMount() {
         this.getAdvertisementsBasedOnLocation();
@@ -49,18 +50,28 @@ class Advertisement extends React.Component {
             this.setState({
                 ads: ads,
                 status: 200,
-                showAds: true,
+                showAds: true
             });
         });
     }
     getAdvertisementsBasedOnLocation() {
         const { location } = this.props;
-        const pathnameArray = location.pathname.split("/");
+        const pathnameArray = location.pathname.split('/');
         const currentNamespace = pathnameArray[1];
-        const serviceDifferentiatorNamespace = (pathnameArray.length > 2) && pathnameArray[2];
+        const serviceDifferentiatorNamespace =
+            pathnameArray.length > 2 && pathnameArray[2];
         const {
-            adsDestination, adsRestaurant, adsEvent, adsAccommodation, adsActivityDestination, adsEssential,
-            adsMining, adsRetail, adsTransport, adsServices } = this.props.advertisementList;
+            adsDestination,
+            adsRestaurant,
+            adsEvent,
+            adsAccommodation,
+            adsActivityDestination,
+            adsEssential,
+            adsMining,
+            adsRetail,
+            adsTransport,
+            adsServices
+        } = this.props.advertisementList;
         if (destinationNamespace.includes(currentNamespace)) {
             //Get ads from destinations
             return this.setAdsStatus(adsDestination);
@@ -74,12 +85,12 @@ class Advertisement extends React.Component {
                 const { restaurants } = this.props.specificAdsRestaurantList;
                 const restaurantID = parseInt(pathnameArray[2], DECIMAL_RADIX);
                 if (restaurantID) {
-                    const restaurant = restaurants.find((rest) => {
+                    const restaurant = restaurants.find(rest => {
                         return rest.id === restaurantID;
                     });
                     if (restaurant && restaurant.onlyShowSpecificAds) {
                         //Show only specific restaurant ads
-                        const ads = adsRestaurant.filter((ad) => {
+                        const ads = adsRestaurant.filter(ad => {
                             return ad.restaurant === restaurantID;
                         });
                         if (ads.length > 0) {
@@ -111,12 +122,12 @@ class Advertisement extends React.Component {
                 const { events } = this.props.specificAdsEventList;
                 const eventID = parseInt(pathnameArray[2], DECIMAL_RADIX);
                 if (eventID) {
-                    const event = events.find((e) => {
+                    const event = events.find(e => {
                         return e.id === eventID;
                     });
                     if (event && event.onlyShowSpecificAds) {
                         //Show only specific event service ads
-                        const ads = adsEvent.filter((ad) => {
+                        const ads = adsEvent.filter(ad => {
                             return ad.event === eventID;
                         });
                         if (ads.length > 0) {
@@ -145,15 +156,17 @@ class Advertisement extends React.Component {
                 //Don't show ads
                 this.setState({ showAds: false }); */
                 //Check if we only need to display specific ads only
-                const { accommodations } = this.props.specificAdsAccommodationList;
+                const {
+                    accommodations
+                } = this.props.specificAdsAccommodationList;
                 const accoID = parseInt(pathnameArray[3], DECIMAL_RADIX);
                 if (accoID) {
-                    const accomodation = accommodations.find((a) => {
+                    const accomodation = accommodations.find(a => {
                         return a.id === accoID;
                     });
                     if (accomodation && accomodation.onlyShowSpecificAds) {
                         //Show only specific accommodation service ads
-                        const ads = adsAccommodation.filter((ad) => {
+                        const ads = adsAccommodation.filter(ad => {
                             return ad.accomodation === accoID;
                         });
                         if (ads.length > 0) {
@@ -179,15 +192,22 @@ class Advertisement extends React.Component {
                 return this.setAdsStatus(adsActivityDestination);
             } else {
                 //Check if we only need to display specific ads only
-                const { activityDestinations } = this.props.specificAdsActivityDestinationList;
+                const {
+                    activityDestinations
+                } = this.props.specificAdsActivityDestinationList;
                 const destID = parseInt(pathnameArray[3], DECIMAL_RADIX);
                 if (destID) {
-                    const activityDestination = activityDestinations.find((dest) => {
-                        return dest.id === destID;
-                    });
-                    if (activityDestination && activityDestination.onlyShowSpecificAds) {
+                    const activityDestination = activityDestinations.find(
+                        dest => {
+                            return dest.id === destID;
+                        }
+                    );
+                    if (
+                        activityDestination &&
+                        activityDestination.onlyShowSpecificAds
+                    ) {
                         //Show only specific destination for activity ads
-                        const ads = adsActivityDestination.filter((ad) => {
+                        const ads = adsActivityDestination.filter(ad => {
                             return ad.activityDestination === destID;
                         });
                         if (ads.length > 0) {
@@ -206,7 +226,9 @@ class Advertisement extends React.Component {
                     return this.setAdsStatus(adsActivityDestination);
                 }
             }
-        } else if (essentialNamespace.includes(serviceDifferentiatorNamespace)) {
+        } else if (
+            essentialNamespace.includes(serviceDifferentiatorNamespace)
+        ) {
             //Get ads from essential services
             if (pathnameArray.length === 3 || pathnameArray.length === 4) {
                 //Combined ads
@@ -216,12 +238,12 @@ class Advertisement extends React.Component {
                 const { essentials } = this.props.specificAdsEssentialList;
                 const serviceID = parseInt(pathnameArray[4], DECIMAL_RADIX);
                 if (serviceID) {
-                    const essential = essentials.find((ess) => {
+                    const essential = essentials.find(ess => {
                         return ess.id === serviceID;
                     });
                     if (essential && essential.onlyShowSpecificAds) {
                         //Show only specific essential service ads
-                        const ads = adsEssential.filter((ad) => {
+                        const ads = adsEssential.filter(ad => {
                             return ads.essentialservice === serviceID;
                         });
                         if (ads.length > 0) {
@@ -240,7 +262,9 @@ class Advertisement extends React.Component {
                     return this.setAdsStatus(adsEssential);
                 }
             }
-        } else if (transportNamespace.includes(serviceDifferentiatorNamespace)) {
+        } else if (
+            transportNamespace.includes(serviceDifferentiatorNamespace)
+        ) {
             //Get ads from car hire & transport services
             if (pathnameArray.length === 3 || pathnameArray.length === 4) {
                 //First level ads only
@@ -250,12 +274,12 @@ class Advertisement extends React.Component {
                 const { transports } = this.props.specificAdsTransportList;
                 const serviceID = parseInt(pathnameArray[4], DECIMAL_RADIX);
                 if (serviceID) {
-                    const transport = transports.find((tra) => {
+                    const transport = transports.find(tra => {
                         return tra.id === serviceID;
                     });
                     if (transport && transport.onlyShowSpecificAds) {
                         //Show only specific transport service ads
-                        const ads = adsTransport.filter((ad) => {
+                        const ads = adsTransport.filter(ad => {
                             return ad.transportation === serviceID;
                         });
                         if (ads.length > 0) {
@@ -284,12 +308,12 @@ class Advertisement extends React.Component {
                 const { minings } = this.props.specificAdsMiningList;
                 const serviceID = parseInt(pathnameArray[4], DECIMAL_RADIX);
                 if (serviceID) {
-                    const mine = minings.find((min) => {
+                    const mine = minings.find(min => {
                         return min.id === serviceID;
                     });
                     if (mine && mine.onlyShowSpecificAds) {
                         //Show only specific mining service ads
-                        const ads = adsMining.filter((ad) => {
+                        const ads = adsMining.filter(ad => {
                             return ad.mining === serviceID;
                         });
                         if (ads.length > 0) {
@@ -318,12 +342,12 @@ class Advertisement extends React.Component {
                 const { retails } = this.props.specificAdsRetailList;
                 const serviceID = parseInt(pathnameArray[4], DECIMAL_RADIX);
                 if (serviceID) {
-                    const retail = retails.find((ret) => {
+                    const retail = retails.find(ret => {
                         return ret.id === serviceID;
                     });
                     if (retail && retail.onlyShowSpecificAds) {
                         //Show only specific retail service ads
-                        const ads = adsRetail.filter((ad) => {
+                        const ads = adsRetail.filter(ad => {
                             return ad.retail === serviceID;
                         });
                         if (ads.length > 0) {
@@ -345,24 +369,53 @@ class Advertisement extends React.Component {
         } else if (serviceNamespace.includes(currentNamespace)) {
             //Get ads from services
             return this.setAdsStatus(adsServices);
-        } else if (airportMapNamespace.includes(currentNamespace) || airportInfoNamespace.includes(currentNamespace)) {
+        } else if (
+            airportMapNamespace.includes(currentNamespace) ||
+            airportInfoNamespace.includes(currentNamespace)
+        ) {
             //Show random ads in Airport page
-            const allAds = [adsDestination, adsRestaurant, adsEvent, adsAccommodation, adsActivityDestination,
-                adsEssential, adsMining, adsRetail, adsTransport, adsServices];
+            const allAds = [
+                adsDestination,
+                adsRestaurant,
+                adsEvent,
+                adsAccommodation,
+                adsActivityDestination,
+                adsEssential,
+                adsMining,
+                adsRetail,
+                adsTransport,
+                adsServices
+            ];
             const randomAds = allAds[Math.floor(Math.random() * allAds.length)];
             return this.setAdsStatus(randomAds);
         } else if (mapListNamespace.includes(currentNamespace)) {
-            const allAds = [adsDestination, adsRestaurant, adsEvent, adsAccommodation, adsActivityDestination,
-                adsEssential, adsMining, adsRetail, adsTransport, adsServices];
+            const allAds = [
+                adsDestination,
+                adsRestaurant,
+                adsEvent,
+                adsAccommodation,
+                adsActivityDestination,
+                adsEssential,
+                adsMining,
+                adsRetail,
+                adsTransport,
+                adsServices
+            ];
             const randomAds = allAds[Math.floor(Math.random() * allAds.length)];
             return this.setAdsStatus(randomAds);
+        } else if (searchResultNamespace.includes(currentNamespace)) {
+            this.setState({
+                ads: [],
+                showAds: false,
+                status: null
+            });
         }
     }
     formatAdRedirectTo(redirectTo) {
         if (!redirectTo) {
             return null;
         } else {
-            if (redirectTo[0] === "/" || redirectTo[0] === '/') {
+            if (redirectTo[0] === '/' || redirectTo[0] === '/') {
                 return redirectTo;
             } else {
                 return `/${redirectTo}`;
@@ -374,16 +427,24 @@ class Advertisement extends React.Component {
         let images = [];
         if (ads.length === 1) {
             //If there is only a single ad
-            ads[0].imageAdvertisement.forEach((img) => {
-                images.push({...img, redirectTo: this.formatAdRedirectTo(ads[0].redirectTo), advID: ads[0].id});
+            ads[0].imageAdvertisement.forEach(img => {
+                images.push({
+                    ...img,
+                    redirectTo: this.formatAdRedirectTo(ads[0].redirectTo),
+                    advID: ads[0].id
+                });
             });
         } else {
             //Randomise ads and keep order (if there is any order whatsoever)
             const randomisedAds = randomiseButKeepOrder(ads);
-            randomisedAds.forEach((ad) => {
+            randomisedAds.forEach(ad => {
                 if (ad.imageAdvertisement && ad.imageAdvertisement.length > 0) {
-                    ad.imageAdvertisement.forEach((img) => {
-                        images.push({...img, redirectTo: this.formatAdRedirectTo(ad.redirectTo), advID: ad.id});
+                    ad.imageAdvertisement.forEach(img => {
+                        images.push({
+                            ...img,
+                            redirectTo: this.formatAdRedirectTo(ad.redirectTo),
+                            advID: ad.id
+                        });
                     });
                 }
             });
@@ -397,17 +458,38 @@ class Advertisement extends React.Component {
             // axios.post(createURL(`advertisementpostshow/${image.advID}/`)); //Log image being shown in the SPA
             if (image.redirectTo) {
                 return (
-                    <Link style={{width: '50%', height: '100%', backgroundImage: `url(${image.imageFile})`, backgroundSize: "cover", backgroundPosition: "center"}} to={image.redirectTo} />
+                    <Link
+                        style={{
+                            width: '50%',
+                            height: '100%',
+                            backgroundImage: `url(${image.imageFile})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center'
+                        }}
+                        to={image.redirectTo}
+                    />
                 );
             } else {
                 return (
-                    <div style={{width: '50%', height: '100%', backgroundImage: `url(${image.imageFile})`, backgroundSize: "cover", backgroundPosition: "center"}} />
+                    <div
+                        style={{
+                            width: '50%',
+                            height: '100%',
+                            backgroundImage: `url(${image.imageFile})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center'
+                        }}
+                    />
                 );
             }
         } else if (images.length > 1) {
             //Preparing images
-            const modifiedImages = images.map((image) => {
-                return {original: image.imageFile, redirectTo: image.redirectTo, advID: image.advID};
+            const modifiedImages = images.map(image => {
+                return {
+                    original: image.imageFile,
+                    redirectTo: image.redirectTo,
+                    advID: image.advID
+                };
             });
             return (
                 <MuiThemeProvider>
@@ -419,7 +501,7 @@ class Advertisement extends React.Component {
                         showFullscreenButton={false}
                         autoPlay={true}
                         showNav={true}
-                        renderItem={(item) => {
+                        renderItem={item => {
                             //Record Advertisement being shown in the SPA
                             // axios.post(createURL(`advertisementpostshow/${item.advID}/`));
                             if (item.redirectTo) {
@@ -430,7 +512,7 @@ class Advertisement extends React.Component {
                                             //Record Advertisement being clicked in the SPA
                                             // axios.post(createURL(`advertisementpostclick/${item.advID}/`));
                                         }}
-                                        className='image-gallery-image'
+                                        className="image-gallery-image"
                                     >
                                         <img
                                             src={item.original}
@@ -438,14 +520,17 @@ class Advertisement extends React.Component {
                                             srcSet={item.srcSet}
                                             sizes={item.sizes}
                                             title={item.originalTitle}
-                                            style={{width: '50vw', height: '16vh'}}
+                                            style={{
+                                                width: '50vw',
+                                                height: '16vh'
+                                            }}
                                         />
                                     </Link>
                                 );
                             } else {
                                 return (
                                     <div
-                                        className='image-gallery-image'
+                                        className="image-gallery-image"
                                         onClick={() => {
                                             //Record Advertisement being clicked in the SPA
                                             // axios.post(createURL(`advertisementpostclick/${item.advID}/`));
@@ -457,7 +542,10 @@ class Advertisement extends React.Component {
                                             srcSet={item.srcSet}
                                             sizes={item.sizes}
                                             title={item.originalTitle}
-                                            style={{width: '50vw', height: '16vh'}}
+                                            style={{
+                                                width: '50vw',
+                                                height: '16vh'
+                                            }}
                                         />
                                     </div>
                                 );
@@ -470,7 +558,11 @@ class Advertisement extends React.Component {
                                         className="image-gallery-play-button active"
                                         onClick={onClick}
                                         color="rgba(0,0,0,0.3)"
-                                        style={{ padding: 0, height: 32, width: 32 }}
+                                        style={{
+                                            padding: 0,
+                                            height: 32,
+                                            width: 32
+                                        }}
                                     />
                                 );
                             } else {
@@ -479,7 +571,11 @@ class Advertisement extends React.Component {
                                         className="image-gallery-play-button"
                                         onClick={onClick}
                                         color="rgba(0,0,0,0.3)"
-                                        style={{ padding: 0, height: 32, width: 32 }}
+                                        style={{
+                                            padding: 0,
+                                            height: 32,
+                                            width: 32
+                                        }}
                                     />
                                 );
                             }
@@ -494,9 +590,9 @@ class Advertisement extends React.Component {
         const { showAds, status } = this.state;
         if (showAds) {
             return (
-                <div style={{width: "100%", height: "100%", display: "flex"}}>
+                <div style={{ width: '100%', height: '100%', display: 'flex' }}>
                     {status === 200 && this.renderAdvertisementImages()}
-                    <div style={{width: "50%", backgroundColor: 'black'}}>
+                    <div style={{ width: '50%', backgroundColor: 'black' }}>
                         {continuePlaying && <AdOrRestVideo />}
                     </div>
                 </div>
@@ -504,24 +600,34 @@ class Advertisement extends React.Component {
         }
     }
     render() {
-        return(
+        return (
             <div style={{ width: '100%', height: '100%' }}>
                 {this.renderAds()}
             </div>
         );
     }
 }
-function mapStateToProps(
-        {
-            advertisementList, specificAdsActivityDestinationList, specificAdsEssentialList, specificAdsMiningList,
-            specificAdsRestaurantList, specificAdsRetailList, specificAdsTransportList, specificAdsAccommodationList,
-            specificAdsEventList,
-        }
-    ) {
+function mapStateToProps({
+    advertisementList,
+    specificAdsActivityDestinationList,
+    specificAdsEssentialList,
+    specificAdsMiningList,
+    specificAdsRestaurantList,
+    specificAdsRetailList,
+    specificAdsTransportList,
+    specificAdsAccommodationList,
+    specificAdsEventList
+}) {
     return {
-        advertisementList, specificAdsActivityDestinationList, specificAdsEssentialList, specificAdsMiningList,
-        specificAdsRestaurantList, specificAdsRetailList, specificAdsTransportList, specificAdsAccommodationList,
-        specificAdsEventList,
+        advertisementList,
+        specificAdsActivityDestinationList,
+        specificAdsEssentialList,
+        specificAdsMiningList,
+        specificAdsRestaurantList,
+        specificAdsRetailList,
+        specificAdsTransportList,
+        specificAdsAccommodationList,
+        specificAdsEventList
     };
 }
 
