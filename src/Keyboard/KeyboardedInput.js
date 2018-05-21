@@ -148,6 +148,10 @@ class KeyboardedInput extends React.Component {
                         ref={e => {
                             this.input = e;
                         }}
+                        style={{
+                            lineHeight: 'normal',
+                            paddingTop: '5px'
+                        }}
                     />
                 </div>
                 {this.props.enabled &&
