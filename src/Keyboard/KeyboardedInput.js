@@ -85,8 +85,13 @@ class KeyboardedInput extends React.Component {
                 !document.activeElement.classList.contains('keyboard-row')
             ) {
                 that.setState({ ...that.state, showKeyboard: false }, () => {
-                    this.props.setShowKeyboard(false);
-                    this.props.setShowSearchBarBoolean(false);
+                    this.props.setShowKeyboardOutAnimation(true);
+                    this.props.setShowSearchBarOutAnimation(true);
+
+                    setTimeout(() => {
+                        this.props.setShowKeyboard(false);
+                        this.props.setShowSearchBarBoolean(false);
+                    }, 800);
                 });
             }
         }, 0);
@@ -94,15 +99,31 @@ class KeyboardedInput extends React.Component {
 
     hideKeyboard() {
         this.setState({ ...this.state, showKeyboard: false }, () => {
-            this.props.setShowKeyboard(false);
-            this.props.setShowSearchBarBoolean(false);
+            this.props.setShowKeyboardOutAnimation(true);
+            this.props.setShowSearchBarOutAnimation(true);
+
+            setTimeout(() => {
+                this.props.setShowKeyboard(false);
+                this.props.setShowSearchBarBoolean(false);
+            }, 800);
         });
     }
 
     render() {
         return (
             <div>
-                <div className="section--right--animation">
+                <div
+                    className={
+                        this.props.showSearchBarOutAnimation.boolean
+                            ? 'search--bar--out--animation'
+                            : 'search--bar--in--animation'
+                    }
+                    style={{
+                        opacity: this.props.showSearchBarOutAnimation.boolean
+                            ? 0
+                            : 1
+                    }}
+                >
                     <img
                         src={search_icon}
                         style={{
@@ -151,10 +172,15 @@ class KeyboardedInput extends React.Component {
     }
 }
 
-const mapStateToProps = ({ showKeyboard, showSearchBarBoolean }) => {
+const mapStateToProps = ({
+    showKeyboard,
+    showSearchBarBoolean,
+    showSearchBarOutAnimation
+}) => {
     return {
         showKeyboard,
-        showSearchBarBoolean
+        showSearchBarBoolean,
+        showSearchBarOutAnimation
     };
 };
 

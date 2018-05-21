@@ -62,9 +62,13 @@ class SearchResult extends Component {
                         to={searchDocuments.documents[item.ref].link}
                         style={{ textDecoration: 'none', color: 'white' }}
                         onClick={() => {
+                            this.props.setShowKeyboardOutAnimation(true);
+                            this.props.setShowSearchBarOutAnimation(true);
+                            setTimeout(() => {
+                                this.props.setShowKeyboard(false);
+                                this.props.setShowSearchBarBoolean(false);
+                            }, 800);
                             this.props.setDisplaySearchResultsBoolean(false);
-                            this.props.setShowKeyboard(false);
-                            this.props.setShowSearchBarBoolean(false);
                         }}
                     >
                         <div

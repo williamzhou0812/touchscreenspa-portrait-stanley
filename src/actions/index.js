@@ -37,9 +37,10 @@ import {
     setDisplaySearchResultsBoolean,
     setSearchResults,
     setShowSearchBarBoolean,
-    resetSearchResults
+    resetSearchResults,
+    setShowSearchBarOutAnimation
 } from './search';
-import { setShowKeyboard } from './keyboard';
+import { setShowKeyboard, setShowKeyboardOutAnimation } from './keyboard';
 
 export {
     fetchDestinationList,
@@ -79,5 +80,7 @@ export {
     setSearchResults,
     setShowKeyboard,
     setShowSearchBarBoolean,
-    resetSearchResults
+    resetSearchResults,
+    setShowKeyboardOutAnimation,
+    setShowSearchBarOutAnimation
 };

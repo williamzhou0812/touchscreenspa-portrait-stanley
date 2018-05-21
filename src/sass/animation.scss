@@ -97,6 +97,40 @@
     }
 }
 
+.search--bar--in--animation {
+    animation-name: moveSearchBarIn;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes moveSearchBarIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.search--bar--out--animation {
+    animation-name: moveSearchBarOut;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes moveSearchBarOut {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
 @keyframes moveInUp {
     0% {
         transform: translateY(-200%);

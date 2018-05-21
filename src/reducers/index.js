@@ -33,6 +33,8 @@ import searchResultReducer from './searchResultReducer';
 import displaySearchResultsBooleanReducer from './displaySearchResultsBooleanReducer';
 import showKeyboardReducer from './showKeyboardReducer';
 import showSearchBarReducer from './showSearchBarReducer';
+import showKeyboardOutAnimationReducer from './showKeyboardOutAnimationReducer';
+import showSearchBarOutAnimationReducer from './showSearchBarOutAnimationReducer';
 
 export default combineReducers({
     windowSize: windowSizeReducer,
@@ -68,5 +70,7 @@ export default combineReducers({
     searchResult: searchResultReducer,
     displaySearchResultsBoolean: displaySearchResultsBooleanReducer,
     showKeyboard: showKeyboardReducer,
-    showSearchBarBoolean: showSearchBarReducer
+    showSearchBarBoolean: showSearchBarReducer,
+    showKeyboardOutAnimation: showKeyboardOutAnimationReducer,
+    showSearchBarOutAnimation: showSearchBarOutAnimationReducer
 });

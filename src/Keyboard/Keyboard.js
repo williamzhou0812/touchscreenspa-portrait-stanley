@@ -243,12 +243,22 @@ class Keyboard extends PureComponent {
         inputNode.dispatchEvent(new CustomEvent('input'));
     }
 
+    componentWillUnmount() {
+        console.log('keyboard componentWillUnmount');
+
+        setTimeout(() => {
+            console.log('keyboard componentWillUnmount');
+            this.props.setShowKeyboardOutAnimation(false);
+        }, 1000);
+    }
+
     render() {
         const {
             inputNode,
             secondaryKeyboard,
             showKeyboard,
-            showSearchBarBoolean
+            showSearchBarBoolean,
+            showKeyboardOutAnimation
         } = this.props;
         const keys = this.getKeys();
         const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
@@ -264,19 +274,24 @@ class Keyboard extends PureComponent {
                             ? this.props.keyboardClassName
                             : ''
                     } ${
-                        showKeyboard.showKeyboard ||
+                        /*showKeyboard.showKeyboard ||
                         showSearchBarBoolean.boolean
                             ? 'keyboard--bottom--in--animation'
-                            : 'keyboard--bottom--out--animation'
+                            : 'keyboard--bottom--out--animation'*/
+
+                        showKeyboardOutAnimation.boolean
+                            ? 'keyboard--bottom--out--animation'
+                            : 'keyboard--bottom--in--animation'
                     }`}
                     style={{
                         opacity: `${
-                            showKeyboard.showKeyboard ||
+                            /*showKeyboard.showKeyboard ||
                             showSearchBarBoolean.boolean
                                 ? typeof this.props.opacity !== 'undefined'
                                   ? this.props.opacity
                                   : 1
-                                : 0
+                                : 0*/
+                            showKeyboardOutAnimation.boolean ? 0 : 1
                         }`
                     }}
                 >
@@ -365,10 +380,15 @@ class Keyboard extends PureComponent {
     }
 }
 
-const mapStateToProps = ({ showKeyboard, showSearchBarBoolean }) => {
+const mapStateToProps = ({
+    showKeyboard,
+    showSearchBarBoolean,
+    showKeyboardOutAnimation
+}) => {
     return {
         showKeyboard,
-        showSearchBarBoolean
+        showSearchBarBoolean,
+        showKeyboardOutAnimation
     };
 };
 

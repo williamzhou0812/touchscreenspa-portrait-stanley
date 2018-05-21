@@ -572,14 +572,17 @@ class App extends Component {
                                                 height: '100%'
                                             }}
                                             onClick={() => {
-                                                console.log(
-                                                    'search icon clicked'
-                                                );
                                                 this.props.setShowSearchBarBoolean(
                                                     true
                                                 );
                                                 this.props.setShowKeyboard(
                                                     true
+                                                );
+                                                this.props.setShowKeyboardOutAnimation(
+                                                    false
+                                                );
+                                                this.props.setShowSearchBarOutAnimation(
+                                                    false
                                                 );
                                             }}
                                         >

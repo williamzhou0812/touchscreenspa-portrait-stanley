@@ -3,7 +3,8 @@ import {
     DISPLAY_SEARCH_RESULTS_PAGE,
     SEARCH_RESULTS,
     SHOW_SEARCH_BAR,
-    RESET_SEARCH_RESULTS
+    RESET_SEARCH_RESULTS,
+    SHOW_SEARCH_BAR_OUT_ANIMATION
 } from './types';
 
 export const setSearchDocuments = documents => async dispatch => {
@@ -46,5 +47,12 @@ export const resetSearchResults = () => async dispatch => {
     dispatch({
         type: RESET_SEARCH_RESULTS,
         payload: {}
+    });
+};
+
+export const setShowSearchBarOutAnimation = boolean => async dispatch => {
+    dispatch({
+        type: SHOW_SEARCH_BAR_OUT_ANIMATION,
+        payload: { boolean: boolean }
     });
 };
