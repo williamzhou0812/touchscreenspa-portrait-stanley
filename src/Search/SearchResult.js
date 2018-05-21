@@ -12,6 +12,12 @@ import { LightOrange } from '../Constants';
 class SearchResult extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            searchResult: null,
+            currentSearchResult: null,
+            searchDocuments: null,
+            currentsearchDocuments: null
+        };
     }
     styles = {
         horizontalVerticalCenter: {
@@ -37,13 +43,43 @@ class SearchResult extends Component {
         }
     };
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            searchResult: nextProps.searchResult.results,
+            currentSearchResult: nextProps.searchResult.results
+        });
+    }
+
     componentWillUnmount() {
         this.props.resetSearchResults();
     }
+
+    processDirectoryOrder(action) {
+        const { currentSearchResult } = this.state;
+        let processedSearchResult = [...currentSearchResult];
+        if (action === 'down') {
+            //get the last element via pop() and add to the begining of the array via unshift()
+            processedSearchResult.unshift(processedSearchResult.pop());
+            this.setState({
+                currentSearchResult: processedSearchResult
+            });
+        }
+
+        if (action === 'up') {
+            //get the first element via shift() and add to the end of the array via push()
+            processedSearchResult.push(processedSearchResult.shift());
+            this.setState({
+                currentSearchResult: processedSearchResult
+            });
+        }
+    }
+
     renderSearchResultItem() {
-        const { searchResult, searchDocuments } = this.props;
-        if (!_.isEmpty(searchResult.results)) {
-            return _.map(searchResult.results, item => {
+        const { searchDocuments } = this.props;
+        const { currentSearchResult } = this.state;
+
+        if (!_.isEmpty(currentSearchResult)) {
+            return _.map(currentSearchResult, item => {
                 let image = {};
                 if (!_.isEmpty(searchDocuments.documents[item.ref].image)) {
                     image = {
@@ -112,7 +148,7 @@ class SearchResult extends Component {
         } else {
             return (
                 <div className="searchResultContainer--content--noResultPage">
-                    {!_.isEmpty(searchResult) ? (
+                    {!_.isEmpty(currentSearchResult) ? (
                         <p>No results found</p>
                     ) : (
                         <p>Start search by entering keywords</p>
@@ -166,7 +202,11 @@ class SearchResult extends Component {
                         style={{
                             ...this.styles.horizontalVerticalCenter
                         }}
-                        onClick={this.goUp}
+                        onClick={() => {
+                            if (!_.isEmpty(this.state.currentSearchResult)) {
+                                this.processDirectoryOrder('up');
+                            }
+                        }}
                     >
                         <img src={UpButton} style={{ width: '5%' }} alt="Up" />
                     </div>
@@ -180,7 +220,11 @@ class SearchResult extends Component {
                         style={{
                             ...this.styles.horizontalVerticalCenter
                         }}
-                        onClick={this.goUp}
+                        onClick={() => {
+                            if (!_.isEmpty(this.state.currentSearchResult)) {
+                                this.processDirectoryOrder('down');
+                            }
+                        }}
                     >
                         <img
                             src={DownButton}
