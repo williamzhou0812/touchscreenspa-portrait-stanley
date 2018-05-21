@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-//import KeyboardedInput from 'react-touch-screen-keyboard';
-
 import KeyboardedInput from '../Keyboard';
-
 import '../Keyboard/Keyboard.css';
 import lunr from 'lunr';
 import './Search.css';
@@ -22,12 +19,12 @@ class Search extends Component {
 
     handleValueChange(val) {
         this.setState({ value: val }, () => {
-            console.log(`${val}`);
             if (!_.isEmpty(val)) {
-                let result = idx.search(`${val}~2`);
-                console.log(result);
-                for (var item in result) {
-                    var ref = result[item].ref;
+                let result = !val.replace(/\s/g, '').length
+                    ? idx.search(`${val}`)
+                    : idx.search(`${val}~2`);
+                for (let item in result) {
+                    let ref = result[item].ref;
                 }
                 this.props.setSearchResults(result);
             }
