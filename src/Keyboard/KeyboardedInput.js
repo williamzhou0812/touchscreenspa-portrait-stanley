@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Keyboard from './Keyboard';
+import search_icon from '../interface/SearchIcon.png';
 
 import { connect } from 'react-redux';
 import * as actions from '../actions';
@@ -102,6 +103,13 @@ class KeyboardedInput extends React.Component {
         return (
             <div>
                 <div className="section--right--animation">
+                    <img
+                        src={search_icon}
+                        style={{
+                            height: '45px',
+                            paddingRight: '30px'
+                        }}
+                    />
                     <input
                         name={this.props.name}
                         className={this.props.inputClassName}

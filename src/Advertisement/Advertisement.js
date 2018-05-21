@@ -403,13 +403,13 @@ class Advertisement extends React.Component {
             ];
             const randomAds = allAds[Math.floor(Math.random() * allAds.length)];
             return this.setAdsStatus(randomAds);
-        } else if (searchResultNamespace.includes(currentNamespace)) {
+        } /*else if (searchResultNamespace.includes(currentNamespace)) {
             this.setState({
                 ads: [],
                 showAds: false,
                 status: null
             });
-        }
+        }*/
     }
     formatAdRedirectTo(redirectTo) {
         if (!redirectTo) {

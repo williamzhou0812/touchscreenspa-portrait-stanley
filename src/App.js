@@ -51,7 +51,7 @@ import Search from './Search/Search';
 import SearchResult from './Search/SearchResult';
 import lunr from 'lunr';
 import _ from 'lodash';
-import search_icon from './interface/search_icon.png';
+import search_icon from './interface/SearchIcon.png';
 
 export let idx;
 

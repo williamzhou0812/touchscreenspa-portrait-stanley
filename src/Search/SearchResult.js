@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { HeavyOrange } from '../Constants';
 import _ from 'lodash';
-import DownButton from '../interface/DownButton.png';
-import UpButton from '../interface/UpButton.png';
+import UpButton from '../Destination/icons/UpExploreButton.png';
+import DownButton from '../Destination/icons/DownExploreButton.png';
 import { LightOrange } from '../Constants';
+
 class SearchResult extends Component {
     constructor(props) {
         super(props);
@@ -37,7 +38,6 @@ class SearchResult extends Component {
     };
 
     componentWillUnmount() {
-        console.log('componentWillUnmount');
         this.props.resetSearchResults();
     }
     renderSearchResultItem() {
@@ -109,9 +109,9 @@ class SearchResult extends Component {
             return (
                 <div className="searchResultContainer--content--noResultPage">
                     {!_.isEmpty(searchResult) ? (
-                        <p>Sorry, No search results for you !</p>
+                        <p>No results found</p>
                     ) : (
-                        <p>Start search by entering keywords !</p>
+                        <p>Start search by entering keywords</p>
                     )}
                 </div>
             );
