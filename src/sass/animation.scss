@@ -58,6 +58,41 @@
     animation-timing-function: ease-in-out;
 }
 
+.keyboard--bottom--out--animation {
+    animation-name: moveOuutBottomKeyboard;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+}
+
+.search--bar--in--animation {
+    animation-name: moveSearchBarIn;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+}
+
+.search--bar--out--animation {
+    animation-name: moveSearchBarOut;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+}
+
+.searchResult--right--animation {
+    animation-name: moveInRightSearchResult;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes moveInRightSearchResult {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 @keyframes moveInBottomKeyboard {
     0% {
         transform: translateY(100%);
@@ -67,12 +102,6 @@
         transform: translateY(0);
         opacity: 1;
     }
-}
-
-.keyboard--bottom--out--animation {
-    animation-name: moveOuutBottomKeyboard;
-    animation-duration: 0.8s;
-    animation-timing-function: ease-in-out;
 }
 
 @keyframes moveInBottomKeyboard {
@@ -97,12 +126,6 @@
     }
 }
 
-.search--bar--in--animation {
-    animation-name: moveSearchBarIn;
-    animation-duration: 0.8s;
-    animation-timing-function: ease-in-out;
-}
-
 @keyframes moveSearchBarIn {
     0% {
         transform: translateX(-100%);
@@ -112,12 +135,6 @@
         transform: translateX(0);
         opacity: 1;
     }
-}
-
-.search--bar--out--animation {
-    animation-name: moveSearchBarOut;
-    animation-duration: 0.8s;
-    animation-timing-function: ease-in-out;
 }
 
 @keyframes moveSearchBarOut {
