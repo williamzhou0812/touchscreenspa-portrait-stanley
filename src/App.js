@@ -533,7 +533,7 @@ class App extends Component {
                 this.initialiseSearchEngine();
             }
             return (
-                <Router history={this.props.history}>
+                <Router history={this.props.history} className="app-parent-div">
                     <div className="App section--rotate--animation">
                         <div
                             style={{
