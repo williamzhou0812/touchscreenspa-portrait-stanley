@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
-import { MAX_ZOOM_LEVEL, MAP_HEIGHT, MAP_WIDTH } from '../Constants';
+import { MAX_ZOOM_LEVEL, MAP_HEIGHT, MAP_WIDTH, HOVER_DELAY } from '../Constants';
 import ReactImageMagnify from 'react-image-magnify';
 import AirportMap from '../Maps/PortMoresbyAirportMap.png';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -87,6 +87,7 @@ class AirportMapModal extends React.Component {
                                     width: MAX_ZOOM_LEVEL * MAP_WIDTH,
                                     height: MAX_ZOOM_LEVEL * MAP_HEIGHT
                                 },
+                                hoverOffDelayInMs: HOVER_DELAY,
                                 enlargedImagePosition: 'over',
                                 isHintEnabled: true,
                                 isActivatedOnTouch: true,

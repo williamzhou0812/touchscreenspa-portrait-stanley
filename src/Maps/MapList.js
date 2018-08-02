@@ -12,7 +12,8 @@ import {
     LightBlue,
     MAX_ZOOM_LEVEL,
     MAP_HEIGHT,
-    MAP_WIDTH
+    MAP_WIDTH,
+    HOVER_DELAY
 } from '../Constants';
 import { Modal } from 'react-bootstrap';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -275,6 +276,7 @@ class MapList extends React.Component {
                                                                     MAX_ZOOM_LEVEL *
                                                                     MAP_HEIGHT
                                                             },
+                                                            hoverOffDelayInMs: HOVER_DELAY,
                                                             enlargedImagePosition:
                                                                 'over',
                                                             isHintEnabled: true,

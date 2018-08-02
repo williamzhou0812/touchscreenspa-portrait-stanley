@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
-import { MAX_ZOOM_LEVEL, MAP_HEIGHT, MAP_WIDTH, HeavyOrange } from '../Constants';
+import { MAX_ZOOM_LEVEL, MAP_HEIGHT, MAP_WIDTH, HeavyOrange, HOVER_DELAY } from '../Constants';
 import ReactImageMagnify from 'react-image-magnify';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CloseIcon from 'material-ui/svg-icons/navigation/close';
@@ -56,6 +56,7 @@ class MapModal extends React.Component {
                                 width: MAX_ZOOM_LEVEL * MAP_WIDTH,
                                 height: MAX_ZOOM_LEVEL * MAP_HEIGHT
                             },
+                            hoverOffDelayInMs: HOVER_DELAY,
                             enlargedImagePosition: 'over',
                             isHintEnabled: true,
                             isActivatedOnTouch: true,

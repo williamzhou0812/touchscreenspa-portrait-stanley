@@ -5,7 +5,8 @@ import {
     MAP_HEIGHT,
     MAP_WIDTH,
     HeavyOrange,
-    LightOrange
+    LightOrange,
+    HOVER_DELAY
 } from '../Constants';
 import ReactImageMagnify from 'react-image-magnify';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -107,6 +108,7 @@ class SidebarMapModel extends React.Component {
                                             width: MAX_ZOOM_LEVEL * MAP_WIDTH,
                                             height: MAX_ZOOM_LEVEL * MAP_HEIGHT
                                         },
+                                        hoverOffDelayInMs: HOVER_DELAY,
                                         enlargedImagePosition: 'over',
                                         isHintEnabled: true,
                                         isActivatedOnTouch: true,

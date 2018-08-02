@@ -15,6 +15,7 @@ import RetailIcon from './Service/icons/RETAIL_ICON.png';
 import TransportIcon from './Service/icons/TRANSPORT_ICON.png';
 
 export const timezone = 'Pacific/Port_Moresby';
+export const HOVER_DELAY = 2000;
 
 //const RGBA color
 export const HeavyOrange = 'rgb(221, 120, 35)';
