@@ -1,56 +1,56 @@
-import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import LeftIcon from 'material-ui/svg-icons/navigation/chevron-left';
-import RightIcon from 'material-ui/svg-icons/navigation/chevron-right';
-import PlayIcon from 'material-ui/svg-icons/av/play-arrow';
-import PauseIcon from 'material-ui/svg-icons/av/pause';
-import ImageGallery from 'react-image-gallery';
-import '../node_modules/react-image-gallery/styles/css/image-gallery-no-icon.css';
-import Rating from 'react-rating';
-import FullStar from 'material-ui/svg-icons/toggle/star';
-import EmptyStar from 'material-ui/svg-icons/toggle/star-border';
-import EssentialIcon from './Service/icons/ESSENTIAL_ICON.png';
-import MiningIcon from './Service/icons/MINING_ICON.png';
-import RetailIcon from './Service/icons/RETAIL_ICON.png';
-import TransportIcon from './Service/icons/TRANSPORT_ICON.png';
+import React from "react";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import LeftIcon from "material-ui/svg-icons/navigation/chevron-left";
+import RightIcon from "material-ui/svg-icons/navigation/chevron-right";
+import PlayIcon from "material-ui/svg-icons/av/play-arrow";
+import PauseIcon from "material-ui/svg-icons/av/pause";
+import ImageGallery from "react-image-gallery";
+import "../node_modules/react-image-gallery/styles/css/image-gallery-no-icon.css";
+import Rating from "react-rating";
+import FullStar from "material-ui/svg-icons/toggle/star";
+import EmptyStar from "material-ui/svg-icons/toggle/star-border";
+import EssentialIcon from "./Service/icons/ESSENTIAL_ICON.png";
+import MiningIcon from "./Service/icons/MINING_ICON.png";
+import RetailIcon from "./Service/icons/RETAIL_ICON.png";
+import TransportIcon from "./Service/icons/TRANSPORT_ICON.png";
 
-export const timezone = 'Pacific/Port_Moresby';
+export const timezone = "Pacific/Port_Moresby";
 export const HOVER_DELAY = 2000;
 
 //const RGBA color
-export const HeavyOrange = 'rgb(221, 120, 35)';
-export const MediumOrange = 'rgb(220, 156, 56)';
-export const LightOrange = 'rgb(225, 173, 56)';
-export const HeavyBlue = 'rgb(5, 151, 165)';
-export const MediumBlue = 'rgb(73, 175, 189)';
-export const LightBlue = 'rgba(73, 175, 189, 0.4)';
-export const LightBlueButtonBackground = 'rgb(1, 155, 167)';
-export const ExtraHeavyBlueGreen = 'rgb(5, 140, 155)';
-export const SelectedBorderColor = 'rgb(183, 223, 228)';
+export const HeavyOrange = "rgb(221, 120, 35)";
+export const MediumOrange = "rgb(220, 156, 56)";
+export const LightOrange = "rgb(225, 173, 56)";
+export const HeavyBlue = "rgb(5, 151, 165)";
+export const MediumBlue = "rgb(73, 175, 189)";
+export const LightBlue = "rgba(73, 175, 189, 0.4)";
+export const LightBlueButtonBackground = "rgb(1, 155, 167)";
+export const ExtraHeavyBlueGreen = "rgb(5, 140, 155)";
+export const SelectedBorderColor = "rgb(183, 223, 228)";
 
 // CONSTANT FOR SPA ROUTING
-export const accomodationNamespace = '/accomodations';
-export const eventNamespace = '/events';
-export const diningNamespace = '/dining';
-export const destinationNamespace = '/destinations';
-export const serviceNamespace = '/services';
-export const triviaNamespace = '/trivia';
-export const mapListNamespace = '/maplist';
-export const activityNamespace = '/activities';
+export const accomodationNamespace = "/accomodations";
+export const eventNamespace = "/events";
+export const diningNamespace = "/dining";
+export const destinationNamespace = "/destinations";
+export const serviceNamespace = "/services";
+export const triviaNamespace = "/trivia";
+export const mapListNamespace = "/maplist";
+export const activityNamespace = "/activities";
 export const essentialNamespace = `${serviceNamespace}/essential`;
 export const transportNamespace = `${serviceNamespace}/transport`;
 export const retailNamespace = `${serviceNamespace}/retail`;
 export const miningNamespace = `${serviceNamespace}/mining`;
-export const airportMapNamespace = '/airportmap';
-export const airportInfoNamespace = '/airportinfo';
-export const searchResultNamespace = '/searchresult';
+export const airportMapNamespace = "/airportmap";
+export const airportInfoNamespace = "/airportinfo";
+export const searchResultNamespace = "/searchresult";
 
 // END OF CONSTANTS FOR SPA ROUTING
 
-export const HOST = '192.168.0.160';
-export const HOST_SPA = 'localhost';
-export const PORT = '8000';
-export const PORT_SPA = '3000';
+export const HOST = "192.168.0.160";
+export const HOST_SPA = "localhost";
+export const PORT = "8000";
+export const PORT_SPA = "3000";
 export const DECIMAL_RADIX = 10;
 export const SECTION_LIST_ENTRIES = 3;
 export const SUBSECTION_LIST_ENTRIES = 6;
@@ -62,10 +62,10 @@ export const MAP_WIDTH = 1080;
 export const MAP_HEIGHT = 607.5;
 
 export function createURL(namespace) {
-    return 'http://' + HOST + ':' + PORT + '/' + namespace;
+    return "http://" + HOST + ":" + PORT + "/" + namespace;
 }
 
-export function getHeaderImagesNoMap(images, mapTitle = 'map') {
+export function getHeaderImagesNoMap(images, mapTitle = "map") {
     let output = [];
     images.forEach((i, _) => {
         const title = i.title.toLowerCase();
@@ -206,13 +206,13 @@ export function renderRating(initialRating, starSize = 50) {
     return (
         <MuiThemeProvider>
             <Rating
-                emptySymbol={
+                empty={
                     <EmptyStar
                         color="white"
                         style={{ width: starSize, height: starSize }}
                     />
                 }
-                fullSymbol={
+                full={
                     <FullStar
                         color="white"
                         style={{ width: starSize, height: starSize }}
@@ -220,14 +220,14 @@ export function renderRating(initialRating, starSize = 50) {
                 }
                 fractions={2}
                 readonly={true}
-                initialRating={initialRating}
+                initialRate={initialRating}
             />
         </MuiThemeProvider>
     );
 }
 
 export function removeHttp(website) {
-    return website.replace(/^https?:\/\//i, '');
+    return website.replace(/^https?:\/\//i, "");
 }
 
 export function getServiceTypeListBasedLocation(pathname, serviceTypes) {
@@ -245,39 +245,39 @@ export function getServiceTypeListBasedLocation(pathname, serviceTypes) {
 export function getServiceTypeDetailBasedLocation(pathname) {
     if (pathname.includes(essentialNamespace)) {
         return {
-            title: 'ESSENTIAL SERVICES',
+            title: "ESSENTIAL SERVICES",
             icon: EssentialIcon,
             namespace: essentialNamespace,
-            listKey: 'essentialServiceServiceType',
-            imageKey: 'imageEssentialService',
-            mapKey: 'mapEssentialService'
+            listKey: "essentialServiceServiceType",
+            imageKey: "imageEssentialService",
+            mapKey: "mapEssentialService"
         };
     } else if (pathname.includes(miningNamespace)) {
         return {
-            title: 'MINING & RESOURCES',
+            title: "MINING & RESOURCES",
             icon: MiningIcon,
             namespace: miningNamespace,
-            listKey: 'miningServiceType',
-            imageKey: 'imageMining',
-            mapKey: 'mapMining'
+            listKey: "miningServiceType",
+            imageKey: "imageMining",
+            mapKey: "mapMining"
         };
     } else if (pathname.includes(retailNamespace)) {
         return {
-            title: 'RETAIL & SERVICES',
+            title: "RETAIL & SERVICES",
             icon: RetailIcon,
             namespace: retailNamespace,
-            listKey: 'retailServiceType',
-            imageKey: 'imageRetail',
-            mapKey: 'mapRetail'
+            listKey: "retailServiceType",
+            imageKey: "imageRetail",
+            mapKey: "mapRetail"
         };
     } else if (pathname.includes(transportNamespace)) {
         return {
-            title: 'CAR HIRE & TRANSPORT',
+            title: "CAR HIRE & TRANSPORT",
             icon: TransportIcon,
             namespace: transportNamespace,
-            listKey: 'transportationServiceType',
-            imageKey: 'imageTransportation',
-            mapKey: 'mapTransportation'
+            listKey: "transportationServiceType",
+            imageKey: "imageTransportation",
+            mapKey: "mapTransportation"
         };
     }
 }
@@ -350,7 +350,7 @@ function combineItems(randomised, constantItems, orderKey) {
     return output;
 }
 
-export function randomiseButKeepOrder(items, orderKey = 'order') {
+export function randomiseButKeepOrder(items, orderKey = "order") {
     let temp = sortByKey(items, orderKey);
     let separated = separateItems(temp, orderKey);
     const randomised = separated[0];

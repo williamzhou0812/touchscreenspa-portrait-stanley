@@ -1,5 +1,5 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 import {
     DECIMAL_RADIX,
     accomodationNamespace,
@@ -9,10 +9,10 @@ import {
     renderRating,
     ExtraHeavyBlueGreen,
     LightOrange
-} from '../Constants';
-import { Link } from 'react-router-dom';
-import AllAreasIcon from '../Destination/icons/AllAreas.png';
-import HotelListIcon from './icons/HotelListIcon.png';
+} from "../Constants";
+import { Link } from "react-router-dom";
+import AllAreasIcon from "../Destination/icons/AllAreas.png";
+import HotelListIcon from "./icons/HotelListIcon.png";
 import MapModal from "../Maps/MapModal";
 
 class HotelDetail extends React.Component {
@@ -56,24 +56,24 @@ class HotelDetail extends React.Component {
 
     styles = {
         horizontalVerticalCenter: {
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
         }
     };
 
     renderImages() {
         const { imageAccomodation: images } = this.state.accommodation;
         if (images.length > 1) {
-            return imageGallery(images, '100%', '22.68vh');
+            return imageGallery(images, "100%", "22.68vh");
         } else if (images.length === 1) {
             return (
                 <div
                     style={{
-                        height: '42%',
+                        height: "42%",
                         backgroundImage: `url(${images[0].imageFile})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center'
+                        backgroundSize: "cover",
+                        backgroundPosition: "center"
                     }}
                 />
             );
@@ -81,7 +81,7 @@ class HotelDetail extends React.Component {
             return (
                 <div
                     style={{
-                        height: '42%',
+                        height: "42%",
                         backgroundColor: HeavyOrange,
                         ...this.styles.horizontalVerticalCenter
                     }}
@@ -141,18 +141,18 @@ class HotelDetail extends React.Component {
                         title={map1.title}
                         buttonStyle={{
                             backgroundColor: LightBlueButtonBackground,
-                            width: '100%',
-                            height: '50px',
-                            marginTop: '5%',
-                            marginBottom: '5%',
-                            borderRadius: '5px',
-                            fontSize: '20px',
+                            width: "100%",
+                            height: "50px",
+                            marginTop: "5%",
+                            marginBottom: "5%",
+                            borderRadius: "5px",
+                            fontSize: "20px",
                             fontWeight: 500,
-                            boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.5)',
-                            color: 'white',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
+                            boxShadow: "0px 0px 10px 1px rgba(0,0,0,0.5)",
+                            color: "white",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center"
                         }}
                         textStyle={{}}
                         mapImage={map1.mapImage}
@@ -162,18 +162,18 @@ class HotelDetail extends React.Component {
                         title={map2.title}
                         buttonStyle={{
                             backgroundColor: LightBlueButtonBackground,
-                            width: '100%',
-                            height: '50px',
-                            marginTop: '5%',
-                            marginBottom: '5%',
-                            borderRadius: '5px',
-                            fontSize: '20px',
+                            width: "100%",
+                            height: "50px",
+                            marginTop: "5%",
+                            marginBottom: "5%",
+                            borderRadius: "5px",
+                            fontSize: "20px",
                             fontWeight: 500,
-                            boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.5)',
-                            color: 'white',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
+                            boxShadow: "0px 0px 10px 1px rgba(0,0,0,0.5)",
+                            color: "white",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center"
                         }}
                         textStyle={{}}
                         mapImage={map2.mapImage}
@@ -207,18 +207,18 @@ class HotelDetail extends React.Component {
                     title={map1.title}
                     buttonStyle={{
                         backgroundColor: LightBlueButtonBackground,
-                        width: '100%',
-                        height: '50px',
-                        marginTop: '5%',
-                        marginBottom: '5%',
-                        borderRadius: '5px',
-                        fontSize: '20px',
+                        width: "100%",
+                        height: "50px",
+                        marginTop: "5%",
+                        marginBottom: "5%",
+                        borderRadius: "5px",
+                        fontSize: "20px",
                         fontWeight: 500,
-                        boxShadow: '0px 0px 10px 1px rgba(0,0,0,0.5)',
-                        color: 'white',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
+                        boxShadow: "0px 0px 10px 1px rgba(0,0,0,0.5)",
+                        color: "white",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
                     }}
                     textStyle={{}}
                     mapImage={map1.mapImage}
@@ -240,96 +240,98 @@ class HotelDetail extends React.Component {
         return (
             <div
                 style={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    color: 'white'
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    color: "white"
                 }}
                 className="section--bottom--animation"
             >
                 <div
                     style={{
                         backgroundColor: HeavyOrange,
-                        width: '14%',
-                        height: '100%',
-                        boxShadow: '9.899px 0px 7px 0px rgba(0,0,0,0.6)',
+                        width: "14%",
+                        height: "100%",
+                        boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)",
                         zIndex: 1
                     }}
                 >
                     <Link
                         style={{
-                            height: '14%',
-                            textDecoration: 'none'
+                            height: "14%",
+                            textDecoration: "none"
                         }}
                         to={accomodationNamespace}
                     >
                         <div
                             style={{
-                                borderStyle: 'none none solid none',
+                                borderStyle: "none none solid none",
                                 borderColor: LightOrange,
-                                paddingBottom: '35px'
+                                paddingBottom: "35px"
                             }}
                         >
                             <img
                                 src={AllAreasIcon}
-                                style={{ width: '33%', paddingTop: '33px' }}
+                                style={{ width: "33%", paddingTop: "33px" }}
                                 alt="All Areas Icon"
                             />
-                            <div style={{ color: 'white', fontSize: '16px' }}>
+                            <div style={{ color: "white", fontSize: "16px" }}>
                                 ALL AREAS
                             </div>
                         </div>
                     </Link>
                     <Link
                         style={{
-                            height: '14%',
-                            textDecoration: 'none'
+                            height: "14%",
+                            textDecoration: "none"
                         }}
                         to={`${accomodationNamespace}/${destID}`}
                     >
                         <div
                             style={{
-                                borderStyle: 'none none solid none',
+                                borderStyle: "none none solid none",
                                 borderColor: LightOrange,
-                                paddingBottom: '28px'
+                                paddingBottom: "28px"
                             }}
                         >
                             <img
                                 src={HotelListIcon}
-                                style={{ width: '33%', paddingTop: '33px' }}
+                                style={{ width: "33%", paddingTop: "33px" }}
                                 alt="Hotel List Icon"
                             />
-                            <div style={{ color: 'white', fontSize: '16px' }}>
+                            <div style={{ color: "white", fontSize: "16px" }}>
                                 {destName} HOTELS
                             </div>
                         </div>
                     </Link>
                     <div
                         style={{
-                            color: 'white',
-                            fontSize: '40pt',
+                            color: "white",
+                            fontSize: "40pt",
                             fontWeight: 500,
-                            letterSpacing: '10px',
-                            height: '72%',
+                            letterSpacing: "10px",
+                            height: "72%",
                             ...this.styles.horizontalVerticalCenter
                         }}
                     >
-                        <span style={{transform: 'rotate(-90deg)'}}>HOTELS</span>
+                        <span style={{ transform: "rotate(-90deg)" }}>
+                            HOTELS
+                        </span>
                     </div>
                 </div>
                 {!!accommodation && (
-                    <div style={{ width: '86%', height: '100%' }}>
+                    <div style={{ width: "86%", height: "100%" }}>
                         {this.renderImages()}
-                        <div style={{ height: '58%' }}>
-                            <div style={{ height: '26%', display: 'flex' }}>
+                        <div style={{ height: "58%" }}>
+                            <div style={{ height: "26%", display: "flex" }}>
                                 <div
                                     style={{
-                                        flexBasis: '33%',
+                                        flexBasis: "33%",
                                         backgroundImage: `url(${
                                             accommodation.logo
                                         })`,
-                                        backgroundSize: 'cover',
-                                        backgroundPosition: 'center'
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center"
                                     }}
                                 />
                                 <div
@@ -340,13 +342,13 @@ class HotelDetail extends React.Component {
                                 >
                                     <div
                                         style={{
-                                            height: '50%',
-                                            display: 'flex',
-                                            alignItems: 'flex-end',
-                                            textAlign: 'left',
-                                            fontSize: '30px',
-                                            lineHeight: '115%',
-                                            letterSpacing: '3px',
+                                            height: "50%",
+                                            display: "flex",
+                                            alignItems: "flex-end",
+                                            textAlign: "left",
+                                            fontSize: "30px",
+                                            lineHeight: "115%",
+                                            letterSpacing: "3px",
                                             paddingLeft: 35
                                         }}
                                     >
@@ -354,13 +356,13 @@ class HotelDetail extends React.Component {
                                     </div>
                                     <div
                                         style={{
-                                            height: '50%',
-                                            display: 'flex',
-                                            alignItems: 'flex-start',
-                                            textAlign: 'left',
-                                            fontSize: '30px',
-                                            lineHeight: '115%',
-                                            letterSpacing: '3px',
+                                            height: "50%",
+                                            display: "flex",
+                                            alignItems: "flex-start",
+                                            textAlign: "left",
+                                            fontSize: "30px",
+                                            lineHeight: "115%",
+                                            letterSpacing: "3px",
                                             paddingLeft: 35
                                         }}
                                     >
@@ -370,38 +372,38 @@ class HotelDetail extends React.Component {
                             </div>
                             <div
                                 style={{
-                                    height: '74%',
-                                    display: 'flex',
+                                    height: "74%",
+                                    display: "flex",
                                     backgroundColor: ExtraHeavyBlueGreen
                                 }}
                             >
                                 <div
                                     style={{
-                                        height: '100%',
-                                        overflow: 'hidden',
-                                        width: '50%'
+                                        height: "100%",
+                                        overflow: "hidden",
+                                        width: "50%"
                                     }}
                                 >
                                     <div
                                         style={{
-                                            height: '100%',
+                                            height: "100%",
                                             paddingTop: 20,
                                             paddingLeft: 35,
                                             paddingRight: 20,
-                                            fontSize: '19px',
-                                            lineHeight: '115%',
-                                            letterSpacing: '3px',
-                                            textAlign: 'left',
-                                            overflow: 'auto',
-                                            maxHeight: '100vh',
-                                            marginRight: '-40px'
+                                            fontSize: "19px",
+                                            lineHeight: "115%",
+                                            letterSpacing: "3px",
+                                            textAlign: "left",
+                                            overflow: "auto",
+                                            maxHeight: "100vh",
+                                            marginRight: "-40px"
                                         }}
                                     >
                                         <div
                                             style={{
-                                                height: '100%',
-                                                overflow: 'auto',
-                                                paddingRight: '40px'
+                                                height: "100%",
+                                                overflow: "auto",
+                                                paddingRight: "40px"
                                             }}
                                         >
                                             {accommodation.description}
@@ -410,14 +412,14 @@ class HotelDetail extends React.Component {
                                 </div>
                                 <div
                                     style={{
-                                        width: '50%',
+                                        width: "50%",
                                         paddingTop: 20,
                                         paddingLeft: 35,
                                         paddingRight: 20,
-                                        fontSize: '20px',
-                                        lineHeight: '130%',
-                                        letterSpacing: '3px',
-                                        textAlign: 'left'
+                                        fontSize: "20px",
+                                        lineHeight: "130%",
+                                        letterSpacing: "3px",
+                                        textAlign: "left"
                                     }}
                                 >
                                     <div>CALL TODAY: {accommodation.phone}</div>
@@ -442,4 +444,7 @@ const mapStateToProps = ({ accommodationList }) => {
     };
 };
 
-export default connect(mapStateToProps, null)(HotelDetail);
+export default connect(
+    mapStateToProps,
+    null
+)(HotelDetail);
