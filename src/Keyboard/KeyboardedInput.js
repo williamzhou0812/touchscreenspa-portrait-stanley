@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import Keyboard from './Keyboard';
-import search_icon from '../interface/SearchIcon.png';
+import Keyboard from "./Keyboard";
+import search_icon from "../interface/SearchIcon.png";
 
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { Link } from 'react-router-dom';
-import { searchResultNamespace } from '../Constants';
+import { connect } from "react-redux";
+import * as actions from "../actions";
+// import { Link } from 'react-router-dom';
+// import { searchResultNamespace } from '../Constants';
 class KeyboardedInput extends React.Component {
     static propTypes = {
         name: PropTypes.any,
@@ -47,11 +47,11 @@ class KeyboardedInput extends React.Component {
     }
 
     componentDidMount() {
-        this.input.addEventListener('input', this.handleChange);
+        this.input.addEventListener("input", this.handleChange);
     }
 
     componentWillUnmount() {
-        this.input.removeEventListener('input', this.handleChange);
+        this.input.removeEventListener("input", this.handleChange);
     }
 
     handleChange(event) {
@@ -62,7 +62,7 @@ class KeyboardedInput extends React.Component {
         const that = this;
         // Prevent blinking of the keyboard if opaque
         setTimeout(() => {
-            if (typeof that.props.value !== 'undefined') {
+            if (typeof that.props.value !== "undefined") {
                 that.input.focus();
                 that.input.select();
                 that.input.setSelectionRange(
@@ -80,9 +80,9 @@ class KeyboardedInput extends React.Component {
         const that = this;
         setTimeout(() => {
             if (
-                !document.activeElement.classList.contains('keyboard-button') &&
-                !document.activeElement.classList.contains('keyboard') &&
-                !document.activeElement.classList.contains('keyboard-row')
+                !document.activeElement.classList.contains("keyboard-button") &&
+                !document.activeElement.classList.contains("keyboard") &&
+                !document.activeElement.classList.contains("keyboard-row")
             ) {
                 that.setState({ ...that.state, showKeyboard: false }, () => {
                     this.props.setShowKeyboardOutAnimation(true);
@@ -115,8 +115,8 @@ class KeyboardedInput extends React.Component {
                 <div
                     className={
                         this.props.showSearchBarOutAnimation.boolean
-                            ? 'search--bar--out--animation'
-                            : 'search--bar--in--animation'
+                            ? "search--bar--out--animation"
+                            : "search--bar--in--animation"
                     }
                     style={{
                         opacity: this.props.showSearchBarOutAnimation.boolean
@@ -127,9 +127,10 @@ class KeyboardedInput extends React.Component {
                     <img
                         src={search_icon}
                         style={{
-                            height: '45px',
-                            paddingRight: '30px'
+                            height: "45px",
+                            paddingRight: "30px"
                         }}
+                        alt="search button"
                     />
                     <input
                         name={this.props.name}
@@ -149,28 +150,27 @@ class KeyboardedInput extends React.Component {
                             this.input = e;
                         }}
                         style={{
-                            lineHeight: 'normal',
-                            paddingTop: '5px'
+                            lineHeight: "normal",
+                            paddingTop: "5px"
                         }}
                     />
                 </div>
-                {this.props.enabled &&
-                    this.props.readOnly !== true && (
-                        <Keyboard
-                            hideKeyboard={this.hideKeyboard}
-                            defaultKeyboard={this.props.defaultKeyboard}
-                            secondaryKeyboard={this.props.secondaryKeyboard}
-                            inputNode={this.input}
-                            dataset={this.props.dataset}
-                            opacity={this.props.opacity}
-                            isDraggable={this.props.isDraggable}
-                            isFirstLetterUppercase={
-                                this.props.isFirstLetterUppercase
-                            }
-                            uppercaseAfterSpace={this.props.uppercaseAfterSpace}
-                            keyboardClassName={this.props.keyboardClassName}
-                        />
-                    )}
+                {this.props.enabled && this.props.readOnly !== true && (
+                    <Keyboard
+                        hideKeyboard={this.hideKeyboard}
+                        defaultKeyboard={this.props.defaultKeyboard}
+                        secondaryKeyboard={this.props.secondaryKeyboard}
+                        inputNode={this.input}
+                        dataset={this.props.dataset}
+                        opacity={this.props.opacity}
+                        isDraggable={this.props.isDraggable}
+                        isFirstLetterUppercase={
+                            this.props.isFirstLetterUppercase
+                        }
+                        uppercaseAfterSpace={this.props.uppercaseAfterSpace}
+                        keyboardClassName={this.props.keyboardClassName}
+                    />
+                )}
             </div>
         );
     }
@@ -188,4 +188,7 @@ const mapStateToProps = ({
     };
 };
 
-export default connect(mapStateToProps, actions)(KeyboardedInput);
+export default connect(
+    mapStateToProps,
+    actions
+)(KeyboardedInput);

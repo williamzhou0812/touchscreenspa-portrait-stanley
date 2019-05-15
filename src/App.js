@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import './App.css';
-import Clock from './Clock';
-import MainLogo from './interface/main_logo.png';
-import MainTabList from './MainTab/MainTabList';
-import { Redirect, Route, NavLink } from 'react-router-dom';
-import { ConnectedRouter as Router } from 'react-router-redux';
-import { connect } from 'react-redux';
-import * as actions from './actions';
-import ReactLoading from 'react-loading';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import "./App.css";
+import Clock from "./Clock";
+import MainLogo from "./interface/main_logo.png";
+import MainTabList from "./MainTab/MainTabList";
+import { Redirect, Route, NavLink } from "react-router-dom";
+import { ConnectedRouter as Router } from "react-router-redux";
+import { connect } from "react-redux";
+import * as actions from "./actions";
+import ReactLoading from "react-loading";
+import { Link } from "react-router-dom";
 
 import {
     accomodationNamespace,
@@ -25,33 +25,33 @@ import {
     IDLE_TIME,
     activityNamespace,
     searchResultNamespace
-} from './Constants';
-import DestinationList from './Destination/DestinationList';
-import DestinationDetail from './Destination/DestinationDetail';
-import EventList from './Event/EventList';
-import EventDetail from './Event/EventDetail';
-import DiningList from './Dining/DiningList';
-import DiningDetail from './Dining/DiningDetail';
-import HotelList from './Hotel/HotelList';
-import HotelDetail from './Hotel/HotelDetail';
-import ServiceInitialList from './Service/ServiceInitialList';
-import ServiceTypeList from './Service/ServiceTypeList';
-import ServiceList from './Service/ServiceList';
-import ServiceDetail from './Service/ServiceDetail';
-import ActivityList from './Activity/ActivityList';
-import ActivityDestinationList from './Activity/ActivityDestinationList';
-import ActivityDestinationDetail from './Activity/ActivityDestinationDetail';
-import MapList from './Maps/MapList';
-import Advertisement from './Advertisement/Advertisement';
-import idleJS from 'idle-js';
-import RestComponent from './RestMode/RestComponent';
-import AirportInfo from './Airport/AirportInfo';
-import AirportMapModal from './Airport/AirportMapModal';
-import Search from './Search/Search';
-import SearchResult from './Search/SearchResult';
-import lunr from 'lunr';
-import _ from 'lodash';
-import search_icon from './interface/SearchIcon.png';
+} from "./Constants";
+import DestinationList from "./Destination/DestinationList";
+import DestinationDetail from "./Destination/DestinationDetail";
+import EventList from "./Event/EventList";
+import EventDetail from "./Event/EventDetail";
+import DiningList from "./Dining/DiningList";
+import DiningDetail from "./Dining/DiningDetail";
+import HotelList from "./Hotel/HotelList";
+import HotelDetail from "./Hotel/HotelDetail";
+import ServiceInitialList from "./Service/ServiceInitialList";
+import ServiceTypeList from "./Service/ServiceTypeList";
+import ServiceList from "./Service/ServiceList";
+import ServiceDetail from "./Service/ServiceDetail";
+import ActivityList from "./Activity/ActivityList";
+import ActivityDestinationList from "./Activity/ActivityDestinationList";
+import ActivityDestinationDetail from "./Activity/ActivityDestinationDetail";
+import MapList from "./Maps/MapList";
+import Advertisement from "./Advertisement/Advertisement";
+import idleJS from "idle-js";
+import RestComponent from "./RestMode/RestComponent";
+import AirportInfo from "./Airport/AirportInfo";
+import AirportMapModal from "./Airport/AirportMapModal";
+import Search from "./Search/Search";
+import SearchResult from "./Search/SearchResult";
+import lunr from "lunr";
+import { map, isEmpty } from "lodash";
+import search_icon from "./interface/SearchIcon.png";
 
 export let idx;
 
@@ -72,7 +72,10 @@ class App extends Component {
         this.props.setShowSearchBarBoolean(false);
     }
     setSPAActive() {
-        this.setState({ isIdle: false });
+        const { isIdle } = this.state;
+        if (isIdle) {
+            this.setState({ isIdle: false });
+        }
     }
 
     componentDidMount() {
@@ -122,12 +125,12 @@ class App extends Component {
         let documents = [];
 
         /*
-        * DOCUMENTS FOR DESTINATION
-        */
-        _.map(destinationList.destinations, destination => {
+         * DOCUMENTS FOR DESTINATION
+         */
+        map(destinationList.destinations, destination => {
             let imagelink;
             if (
-                !_.isEmpty(destination.imageDestination) &&
+                !isEmpty(destination.imageDestination) &&
                 destination.imageDestination.length > 0
             ) {
                 imagelink = destination.imageDestination[0].imageFile;
@@ -146,12 +149,12 @@ class App extends Component {
         });
 
         /*
-        * DOCUMENTS FOR ACCOMMODATION
-        */
-        _.map(accommodationList.accommodations, destination => {
+         * DOCUMENTS FOR ACCOMMODATION
+         */
+        map(accommodationList.accommodations, destination => {
             let imagelink;
             if (
-                !_.isEmpty(destination.imageDestination) &&
+                !isEmpty(destination.imageDestination) &&
                 destination.imageDestination.length > 0
             ) {
                 imagelink = destination.imageDestination[0].imageFile;
@@ -166,9 +169,9 @@ class App extends Component {
                 image: imagelink,
                 data: destination
             });
-            _.map(destination.accomodationDestination, accommodation => {
+            map(destination.accomodationDestination, accommodation => {
                 let imagelink;
-                if (!_.isEmpty(accommodation.logo)) {
+                if (!isEmpty(accommodation.logo)) {
                     imagelink = accommodation.logo;
                 }
                 documents.push({
@@ -189,12 +192,12 @@ class App extends Component {
         });
 
         /*
-        * DOCUMENTS FOR ACTIVITY
-        */
-        _.map(activityList.activities, activity => {
+         * DOCUMENTS FOR ACTIVITY
+         */
+        map(activityList.activities, activity => {
             let imagelink;
             if (
-                !_.isEmpty(activity.imageActivity) &&
+                !isEmpty(activity.imageActivity) &&
                 activity.imageActivity.length > 0
             ) {
                 imagelink = activity.imageActivity[0].imageFile;
@@ -209,7 +212,7 @@ class App extends Component {
                 data: activity
             });
 
-            _.map(activity.activityDestinationActivity, eachActivity => {
+            map(activity.activityDestinationActivity, eachActivity => {
                 documents.push({
                     id: documents.length,
                     link: `${activityNamespace}/${activity.id}/${
@@ -223,7 +226,7 @@ class App extends Component {
                     data: eachActivity
                 });
 
-                _.map(
+                map(
                     eachActivity.tourActivityDestination,
                     eachTourActivityDestination => {
                         documents.push({
@@ -244,11 +247,11 @@ class App extends Component {
         });
 
         /*
-        * DOCUMENTS FOR EVENT
-        */
-        _.map(eventList.events, event => {
+         * DOCUMENTS FOR EVENT
+         */
+        map(eventList.events, event => {
             let imagelink;
-            if (!_.isEmpty(event.imageEvent) && event.imageEvent.length > 0) {
+            if (!isEmpty(event.imageEvent) && event.imageEvent.length > 0) {
                 imagelink = event.imageEvent[0].imageFile;
             }
             documents.push({
@@ -264,12 +267,12 @@ class App extends Component {
         });
 
         /*
-        * DOCUMENTS FOR RESTAURANT
-        */
-        _.map(restaurantList.restaurants, restaurant => {
+         * DOCUMENTS FOR RESTAURANT
+         */
+        map(restaurantList.restaurants, restaurant => {
             let imagelink;
             if (
-                !_.isEmpty(restaurant.imageRestaurant) &&
+                !isEmpty(restaurant.imageRestaurant) &&
                 restaurant.imageRestaurant.length > 0
             ) {
                 imagelink = restaurant.imageRestaurant[0].imageFile;
@@ -287,12 +290,12 @@ class App extends Component {
         });
 
         /*
-        * DOCUMENTS FOR ESSENTIAL SERVICE
-        */
-        _.map(essentialServiceTypeList.serviceTypes, serviceType => {
+         * DOCUMENTS FOR ESSENTIAL SERVICE
+         */
+        map(essentialServiceTypeList.serviceTypes, serviceType => {
             let imagelink;
             if (
-                !_.isEmpty(serviceType.imageServiceType) &&
+                !isEmpty(serviceType.imageServiceType) &&
                 serviceType.imageServiceType.length > 0
             ) {
                 imagelink = serviceType.imageServiceType[0].imageFile;
@@ -306,9 +309,9 @@ class App extends Component {
                 image: imagelink,
                 data: serviceType
             });
-            _.map(serviceType.essentialServiceServiceType, serviceItem => {
+            map(serviceType.essentialServiceServiceType, serviceItem => {
                 let imagelink;
-                if (!_.isEmpty(serviceItem.logo)) {
+                if (!isEmpty(serviceItem.logo)) {
                     imagelink = serviceItem.logo;
                 }
 
@@ -328,12 +331,12 @@ class App extends Component {
         });
 
         /*
-        * DOCUMENTS FOR TRANSPORT SERVICE
-        */
-        _.map(transportServiceTypeList.serviceTypes, serviceType => {
+         * DOCUMENTS FOR TRANSPORT SERVICE
+         */
+        map(transportServiceTypeList.serviceTypes, serviceType => {
             let imagelink;
             if (
-                !_.isEmpty(serviceType.imageServiceType) &&
+                !isEmpty(serviceType.imageServiceType) &&
                 serviceType.imageServiceType.length > 0
             ) {
                 imagelink = serviceType.imageServiceType[0].imageFile;
@@ -347,9 +350,9 @@ class App extends Component {
 
                 data: serviceType
             });
-            _.map(serviceType.transportationServiceType, serviceItem => {
+            map(serviceType.transportationServiceType, serviceItem => {
                 let imagelink;
-                if (!_.isEmpty(serviceItem.logo)) {
+                if (!isEmpty(serviceItem.logo)) {
                     imagelink = serviceItem.logo;
                 }
 
@@ -370,12 +373,12 @@ class App extends Component {
         });
 
         /*
-        * DOCUMENTS FOR MINING SERVICE
-        */
-        _.map(miningServiceTypeList.serviceTypes, serviceType => {
+         * DOCUMENTS FOR MINING SERVICE
+         */
+        map(miningServiceTypeList.serviceTypes, serviceType => {
             let imagelink;
             if (
-                !_.isEmpty(serviceType.imageServiceType) &&
+                !isEmpty(serviceType.imageServiceType) &&
                 serviceType.imageServiceType.length > 0
             ) {
                 imagelink = serviceType.imageServiceType[0].imageFile;
@@ -388,9 +391,9 @@ class App extends Component {
                 image: imagelink,
                 data: serviceType
             });
-            _.map(serviceType.miningServiceType, serviceItem => {
+            map(serviceType.miningServiceType, serviceItem => {
                 let imagelink;
-                if (!_.isEmpty(serviceItem.logo)) {
+                if (!isEmpty(serviceItem.logo)) {
                     imagelink = serviceItem.logo;
                 }
                 documents.push({
@@ -409,12 +412,12 @@ class App extends Component {
         });
 
         /*
-        * DOCUMENTS FOR RETAIL SERVICE
-        */
-        _.map(retailServiceTypeList.serviceTypes, serviceType => {
+         * DOCUMENTS FOR RETAIL SERVICE
+         */
+        map(retailServiceTypeList.serviceTypes, serviceType => {
             let imagelink;
             if (
-                !_.isEmpty(serviceType.imageServiceType) &&
+                !isEmpty(serviceType.imageServiceType) &&
                 serviceType.imageServiceType.length > 0
             ) {
                 imagelink = serviceType.imageServiceType[0].imageFile;
@@ -427,9 +430,9 @@ class App extends Component {
                 image: imagelink,
                 data: serviceType
             });
-            _.map(serviceType.retailServiceType, serviceItem => {
+            map(serviceType.retailServiceType, serviceItem => {
                 let imagelink;
-                if (!_.isEmpty(serviceItem.logo)) {
+                if (!isEmpty(serviceItem.logo)) {
                     imagelink = serviceItem.logo;
                 }
                 documents.push({
@@ -451,9 +454,9 @@ class App extends Component {
         this.props.setSearchDocuments(documents);
 
         idx = lunr(function() {
-            this.ref('id');
-            this.field('title');
-            this.field('text');
+            this.ref("id");
+            this.field("title");
+            this.field("text");
             documents.forEach(function(doc) {
                 this.add(doc);
             }, this);
@@ -484,8 +487,7 @@ class App extends Component {
             specificAdsTransportList,
             specificAdsAccommodationList,
             specificAdsEventList,
-            featuredAdvertisementList,
-            displaySearchResultsBoolean
+            featuredAdvertisementList
         } = this.props;
 
         if (
@@ -519,8 +521,8 @@ class App extends Component {
 
                         <ReactLoading
                             className="loadingAnimation"
-                            type={'bubbles'}
-                            color={'#b9dfe3'}
+                            type={"bubbles"}
+                            color={"#b9dfe3"}
                             height="900"
                             width="393"
                             delay={0}
@@ -529,7 +531,7 @@ class App extends Component {
                 </div>
             );
         } else {
-            if (_.isEmpty(this.props.searchDocuments)) {
+            if (isEmpty(this.props.searchDocuments)) {
                 this.initialiseSearchEngine();
             }
             return (
@@ -537,39 +539,41 @@ class App extends Component {
                     <div className="App section--rotate--animation">
                         <div
                             style={{
-                                width: '100vw',
-                                height: '15vh',
+                                width: "100vw",
+                                height: "15vh",
                                 backgroundImage: `url(${MainLogo})`,
-                                backgroundPosition: 'center',
-                                backgroundSize: 'cover'
+                                backgroundPosition: "center",
+                                backgroundSize: "cover"
                             }}
+                            onClick={this.setSPAIdle}
                         />
                         <div
                             style={{
-                                width: '100vw',
-                                height: '3vh',
-                                display: 'grid',
-                                gridTemplateColumns: '53% 47%'
+                                width: "100vw",
+                                height: "3vh",
+                                display: "grid",
+                                gridTemplateColumns: "53% 47%"
                             }}
+                            onMouseMove={this.setSPAActive}
                         >
                             {!this.props.showSearchBarBoolean.boolean ? (
                                 <div
                                     style={{
-                                        width: '100vw',
-                                        display: 'grid',
-                                        gridTemplateColumns: '6vw 23.5vw 23.5vw'
+                                        width: "100vw",
+                                        display: "grid",
+                                        gridTemplateColumns: "6vw 23.5vw 23.5vw"
                                     }}
                                 >
                                     <Link to={searchResultNamespace}>
                                         <div
                                             style={{
                                                 backgroundColor:
-                                                    'rgb(13,109,121)',
+                                                    "rgb(13,109,121)",
                                                 borderStyle:
-                                                    'solid solid solid none',
-                                                borderWidth: '1px',
-                                                borderColor: 'rgb(104,199,197)',
-                                                height: '100%'
+                                                    "solid solid solid none",
+                                                borderWidth: "1px",
+                                                borderColor: "rgb(104,199,197)",
+                                                height: "100%"
                                             }}
                                             onClick={() => {
                                                 this.props.setShowSearchBarBoolean(
@@ -589,35 +593,36 @@ class App extends Component {
                                             <img
                                                 src={search_icon}
                                                 style={{
-                                                    paddingTop: '5px',
-                                                    height: '45px'
+                                                    paddingTop: "5px",
+                                                    height: "45px"
                                                 }}
+                                                alt="search button"
                                             />
                                         </div>
                                     </Link>
                                     <NavLink
                                         activeStyle={{
-                                            backgroundColor: 'rgb(243,158,49)',
+                                            backgroundColor: "rgb(243,158,49)",
                                             borderStyle:
-                                                'solid solid solid none',
-                                            borderWidth: '1px',
-                                            borderColor: 'rgb(104,199,197)'
+                                                "solid solid solid none",
+                                            borderWidth: "1px",
+                                            borderColor: "rgb(104,199,197)"
                                         }}
                                         style={{
-                                            display: 'flex',
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
                                             borderStyle:
-                                                'solid solid solid none',
-                                            borderWidth: '1px',
-                                            borderColor: 'rgb(104,199,197)',
-                                            backgroundColor: 'rgb(13,109,121)',
-                                            textDecoration: 'none',
-                                            color: 'white',
-                                            fontSize: '22px',
+                                                "solid solid solid none",
+                                            borderWidth: "1px",
+                                            borderColor: "rgb(104,199,197)",
+                                            backgroundColor: "rgb(13,109,121)",
+                                            textDecoration: "none",
+                                            color: "white",
+                                            fontSize: "22px",
                                             fontWeight: 500,
-                                            letterSpacing: '1px',
-                                            paddingTop: '10px'
+                                            letterSpacing: "1px",
+                                            paddingTop: "10px"
                                         }}
                                         to={airportInfoNamespace}
                                         onClick={() => {
@@ -636,7 +641,7 @@ class App extends Component {
 
                             <Clock />
                         </div>
-                        <div style={{ width: '100vw', height: '8vh' }}>
+                        <div style={{ width: "100vw", height: "8vh" }}>
                             <Route component={MainTabList} />
                         </div>
                         <img
@@ -646,7 +651,7 @@ class App extends Component {
                             width="1080"
                         />
                         {isIdle ? (
-                            <div style={{ width: '100%', height: '74vh' }}>
+                            <div style={{ width: "100%", height: "74vh" }}>
                                 {this.props.adVideoList.status === 200 &&
                                     this.props.advertisementList.status ===
                                         200 &&
@@ -655,7 +660,7 @@ class App extends Component {
                             </div>
                         ) : (
                             <div>
-                                <div style={{ width: '100vw', height: '54vh' }}>
+                                <div style={{ width: "100vw", height: "54vh" }}>
                                     <Route
                                         exact
                                         path={destinationNamespace}
@@ -668,19 +673,19 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path={destinationNamespace + '/:id'}
+                                        path={destinationNamespace + "/:id"}
                                         component={DestinationDetail}
                                     />
                                     <Route
                                         exact
-                                        path={accomodationNamespace + '/:id'}
+                                        path={accomodationNamespace + "/:id"}
                                         component={HotelList}
                                     />
                                     <Route
                                         exact
                                         path={
                                             accomodationNamespace +
-                                            '/:destid/:accoid'
+                                            "/:destid/:accoid"
                                         }
                                         component={HotelDetail}
                                     />
@@ -691,7 +696,7 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path={eventNamespace + '/:id'}
+                                        path={eventNamespace + "/:id"}
                                         component={EventDetail}
                                     />
                                     <Route
@@ -701,7 +706,7 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path={diningNamespace + '/:id'}
+                                        path={diningNamespace + "/:id"}
                                         component={DiningDetail}
                                     />
                                     <Route
@@ -716,14 +721,14 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path={essentialNamespace + '/:serid'}
+                                        path={essentialNamespace + "/:serid"}
                                         component={ServiceList}
                                     />
                                     <Route
                                         exact
                                         path={
                                             essentialNamespace +
-                                            '/:serid/:serid2'
+                                            "/:serid/:serid2"
                                         }
                                         component={ServiceDetail}
                                     />
@@ -734,13 +739,13 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path={miningNamespace + '/:serid'}
+                                        path={miningNamespace + "/:serid"}
                                         component={ServiceList}
                                     />
                                     <Route
                                         exact
                                         path={
-                                            miningNamespace + '/:serid/:serid2'
+                                            miningNamespace + "/:serid/:serid2"
                                         }
                                         component={ServiceDetail}
                                     />
@@ -751,13 +756,13 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path={retailNamespace + '/:serid'}
+                                        path={retailNamespace + "/:serid"}
                                         component={ServiceList}
                                     />
                                     <Route
                                         exact
                                         path={
-                                            retailNamespace + '/:serid/:serid2'
+                                            retailNamespace + "/:serid/:serid2"
                                         }
                                         component={ServiceDetail}
                                     />
@@ -768,14 +773,14 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path={transportNamespace + '/:serid'}
+                                        path={transportNamespace + "/:serid"}
                                         component={ServiceList}
                                     />
                                     <Route
                                         exact
                                         path={
                                             transportNamespace +
-                                            '/:serid/:serid2'
+                                            "/:serid/:serid2"
                                         }
                                         component={ServiceDetail}
                                     />
@@ -786,13 +791,13 @@ class App extends Component {
                                     />
                                     <Route
                                         exact
-                                        path={activityNamespace + '/:id'}
+                                        path={activityNamespace + "/:id"}
                                         component={ActivityDestinationList}
                                     />
                                     <Route
                                         exact
                                         path={
-                                            activityNamespace + '/:id/:destid'
+                                            activityNamespace + "/:id/:destid"
                                         }
                                         component={ActivityDestinationDetail}
                                     />
@@ -818,10 +823,10 @@ class App extends Component {
                                 </div>
                                 <div
                                     style={{
-                                        width: '100vw',
-                                        height: '16vh',
-                                        zIndex: '99',
-                                        position: 'relative'
+                                        width: "100vw",
+                                        height: "16vh",
+                                        zIndex: "99",
+                                        position: "relative"
                                     }}
                                 >
                                     {!isIdle &&
@@ -858,20 +863,20 @@ class App extends Component {
                                 </div>
                                 <div
                                     style={{
-                                        width: '100vw',
-                                        height: '4vh',
-                                        display: 'flex',
-                                        backgroundColor: '#058c9b',
-                                        color: 'white',
-                                        zIndex: '99',
-                                        position: 'relative'
+                                        width: "100vw",
+                                        height: "4vh",
+                                        display: "flex",
+                                        backgroundColor: "#058c9b",
+                                        color: "white",
+                                        zIndex: "99",
+                                        position: "relative"
                                     }}
                                 >
                                     <div
                                         style={{
                                             flex: 1,
-                                            display: 'flex',
-                                            alignItems: 'center'
+                                            display: "flex",
+                                            alignItems: "center"
                                         }}
                                     >
                                         <span
@@ -881,14 +886,15 @@ class App extends Component {
                                             }}
                                         >
                                             &copy;
-                                        </span>JBG HOSPITALITY 2018
+                                        </span>
+                                        JBG HOSPITALITY 2018
                                     </div>
                                     <div
                                         style={{
                                             flex: 1,
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'flex-end',
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "flex-end",
                                             marginRight: 20
                                         }}
                                     >
@@ -967,4 +973,7 @@ function mapStateToProps({
         showSearchBarBoolean
     };
 }
-export default connect(mapStateToProps, actions)(App);
+export default connect(
+    mapStateToProps,
+    actions
+)(App);

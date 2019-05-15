@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './SearchResult.css';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { HeavyOrange } from '../Constants';
-import _ from 'lodash';
-import UpButton from '../Destination/icons/UpExploreButton.png';
-import DownButton from '../Destination/icons/DownExploreButton.png';
-import { LightOrange } from '../Constants';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./SearchResult.css";
+import { connect } from "react-redux";
+import * as actions from "../actions";
+import { HeavyOrange } from "../Constants";
+import { map, isEmpty } from "lodash";
+import UpButton from "../Destination/icons/UpExploreButton.png";
+import DownButton from "../Destination/icons/DownExploreButton.png";
+import { LightOrange } from "../Constants";
 
 class SearchResult extends Component {
     constructor(props) {
@@ -21,25 +21,25 @@ class SearchResult extends Component {
     }
     styles = {
         horizontalVerticalCenter: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
         },
         upArrow: {
-            borderStyle: 'none none solid none',
+            borderStyle: "none none solid none",
             borderColor: LightOrange,
-            height: '14%',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
+            height: "14%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
         },
         downArrow: {
-            borderStyle: 'solid none none none',
+            borderStyle: "solid none none none",
             borderColor: LightOrange,
-            height: '14%',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
+            height: "14%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
         }
     };
 
@@ -57,7 +57,7 @@ class SearchResult extends Component {
     processDirectoryOrder(action) {
         const { currentSearchResult } = this.state;
         let processedSearchResult = [...currentSearchResult];
-        if (action === 'down') {
+        if (action === "down") {
             //get the last element via pop() and add to the begining of the array via unshift()
             processedSearchResult.unshift(processedSearchResult.pop());
             this.setState({
@@ -65,7 +65,7 @@ class SearchResult extends Component {
             });
         }
 
-        if (action === 'up') {
+        if (action === "up") {
             //get the first element via shift() and add to the end of the array via push()
             processedSearchResult.push(processedSearchResult.shift());
             this.setState({
@@ -78,25 +78,25 @@ class SearchResult extends Component {
         const { searchDocuments } = this.props;
         const { currentSearchResult } = this.state;
 
-        if (!_.isEmpty(currentSearchResult)) {
-            return _.map(currentSearchResult, item => {
+        if (!isEmpty(currentSearchResult)) {
+            return map(currentSearchResult, item => {
                 let image = {};
-                if (!_.isEmpty(searchDocuments.documents[item.ref].image)) {
+                if (!isEmpty(searchDocuments.documents[item.ref].image)) {
                     image = {
                         backgroundImage:
-                            'url(' +
+                            "url(" +
                             searchDocuments.documents[item.ref].image +
-                            ')',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center'
+                            ")",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center"
                     };
                 }
 
                 return (
                     <Link
                         to={searchDocuments.documents[item.ref].link}
-                        style={{ textDecoration: 'none', color: 'white' }}
+                        style={{ textDecoration: "none", color: "white" }}
                         onClick={() => {
                             this.props.setShowKeyboardOutAnimation(true);
                             this.props.setShowSearchBarOutAnimation(true);
@@ -111,7 +111,7 @@ class SearchResult extends Component {
                             key={`${item.ref}`}
                             className="searchResultContainer--content--resultItem"
                         >
-                            {!_.isEmpty(
+                            {!isEmpty(
                                 searchDocuments.documents[item.ref].image
                             ) ? (
                                 <div
@@ -148,7 +148,7 @@ class SearchResult extends Component {
         } else {
             return (
                 <div className="searchResultContainer--content--noResultPage">
-                    {!_.isEmpty(currentSearchResult) ? (
+                    {!isEmpty(currentSearchResult) ? (
                         <p>No results found</p>
                     ) : (
                         <p>Start search by entering keywords</p>
@@ -160,37 +160,37 @@ class SearchResult extends Component {
     render() {
         return (
             <div
-                style={{ width: '100%', height: '54vh', display: 'flex' }}
+                style={{ width: "100%", height: "54vh", display: "flex" }}
                 className="searchResult--right--animation"
             >
                 <div
                     onClick={this.returnFromExplore}
                     style={{
                         backgroundColor: HeavyOrange,
-                        width: '14%',
-                        height: '100%',
-                        boxShadow: '9.899px 0px 7px 0px rgba(0,0,0,0.6)',
+                        width: "14%",
+                        height: "100%",
+                        boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)",
                         zIndex: 1
                     }}
                 >
                     <div
                         style={{
-                            height: '86%',
+                            height: "86%",
                             ...this.styles.horizontalVerticalCenter,
-                            color: 'white',
-                            fontSize: '40pt',
+                            color: "white",
+                            fontSize: "40pt",
                             fontWeight: 500,
-                            letterSpacing: '10px'
+                            letterSpacing: "10px"
                         }}
                     >
-                        <span style={{ transform: 'rotate(-90deg)' }}>
+                        <span style={{ transform: "rotate(-90deg)" }}>
                             SEARCH
                         </span>
                     </div>
                 </div>
 
                 <div
-                    style={{ width: '86%', height: '100%' }}
+                    style={{ width: "86%", height: "100%" }}
                     className="searchResultContainer"
                 >
                     <div className="searchResultContainer--title">
@@ -203,12 +203,12 @@ class SearchResult extends Component {
                             ...this.styles.horizontalVerticalCenter
                         }}
                         onClick={() => {
-                            if (!_.isEmpty(this.state.currentSearchResult)) {
-                                this.processDirectoryOrder('up');
+                            if (!isEmpty(this.state.currentSearchResult)) {
+                                this.processDirectoryOrder("up");
                             }
                         }}
                     >
-                        <img src={UpButton} style={{ width: '5%' }} alt="Up" />
+                        <img src={UpButton} style={{ width: "5%" }} alt="Up" />
                     </div>
 
                     <div className="searchResultContainer--content">
@@ -221,14 +221,14 @@ class SearchResult extends Component {
                             ...this.styles.horizontalVerticalCenter
                         }}
                         onClick={() => {
-                            if (!_.isEmpty(this.state.currentSearchResult)) {
-                                this.processDirectoryOrder('down');
+                            if (!isEmpty(this.state.currentSearchResult)) {
+                                this.processDirectoryOrder("down");
                             }
                         }}
                     >
                         <img
                             src={DownButton}
-                            style={{ width: '5%' }}
+                            style={{ width: "5%" }}
                             alt="Up"
                         />
                     </div>
@@ -245,4 +245,7 @@ const mapStateToProps = ({ searchResult, searchDocuments }) => {
     };
 };
 
-export default connect(mapStateToProps, actions)(SearchResult);
+export default connect(
+    mapStateToProps,
+    actions
+)(SearchResult);

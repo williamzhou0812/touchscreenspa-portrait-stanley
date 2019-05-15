@@ -1,10 +1,10 @@
-import React from 'react';
-import AdOrRestVideo from './AdOrRestVideo';
-import ImageGallery from 'react-image-gallery';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import PlayIcon from 'material-ui/svg-icons/av/play-arrow';
-import PauseIcon from 'material-ui/svg-icons/av/pause';
-import { Link } from 'react-router-dom';
+import React from "react";
+import AdOrRestVideo from "./AdOrRestVideo";
+import ImageGallery from "react-image-gallery";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import PlayIcon from "material-ui/svg-icons/av/play-arrow";
+import PauseIcon from "material-ui/svg-icons/av/pause";
+import { Link } from "react-router-dom";
 import {
     accomodationNamespace,
     eventNamespace,
@@ -18,14 +18,13 @@ import {
     retailNamespace,
     airportMapNamespace,
     airportInfoNamespace,
-    searchResultNamespace,
     mapListNamespace,
     AD_SLIDE_INTERVAL,
     randomiseButKeepOrder,
     DECIMAL_RADIX
-} from '../Constants';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
+} from "../Constants";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class Advertisement extends React.Component {
     constructor(props) {
@@ -56,7 +55,7 @@ class Advertisement extends React.Component {
     }
     getAdvertisementsBasedOnLocation() {
         const { location } = this.props;
-        const pathnameArray = location.pathname.split('/');
+        const pathnameArray = location.pathname.split("/");
         const currentNamespace = pathnameArray[1];
         const serviceDifferentiatorNamespace =
             pathnameArray.length > 2 && pathnameArray[2];
@@ -415,7 +414,7 @@ class Advertisement extends React.Component {
         if (!redirectTo) {
             return null;
         } else {
-            if (redirectTo[0] === '/' || redirectTo[0] === '/') {
+            if (redirectTo[0] === "/" || redirectTo[0] === "/") {
                 return redirectTo;
             } else {
                 return `/${redirectTo}`;
@@ -460,11 +459,11 @@ class Advertisement extends React.Component {
                 return (
                     <Link
                         style={{
-                            width: '50%',
-                            height: '100%',
+                            width: "50%",
+                            height: "100%",
                             backgroundImage: `url(${image.imageFile})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center'
+                            backgroundSize: "cover",
+                            backgroundPosition: "center"
                         }}
                         to={image.redirectTo}
                     />
@@ -473,11 +472,11 @@ class Advertisement extends React.Component {
                 return (
                     <div
                         style={{
-                            width: '50%',
-                            height: '100%',
+                            width: "50%",
+                            height: "100%",
                             backgroundImage: `url(${image.imageFile})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center'
+                            backgroundSize: "cover",
+                            backgroundPosition: "center"
                         }}
                     />
                 );
@@ -521,8 +520,8 @@ class Advertisement extends React.Component {
                                             sizes={item.sizes}
                                             title={item.originalTitle}
                                             style={{
-                                                width: '50vw',
-                                                height: '16vh'
+                                                width: "50vw",
+                                                height: "16vh"
                                             }}
                                         />
                                     </Link>
@@ -543,8 +542,8 @@ class Advertisement extends React.Component {
                                             sizes={item.sizes}
                                             title={item.originalTitle}
                                             style={{
-                                                width: '50vw',
-                                                height: '16vh'
+                                                width: "50vw",
+                                                height: "16vh"
                                             }}
                                         />
                                     </div>
@@ -590,9 +589,9 @@ class Advertisement extends React.Component {
         const { showAds, status } = this.state;
         if (showAds) {
             return (
-                <div style={{ width: '100%', height: '100%', display: 'flex' }}>
+                <div style={{ width: "100%", height: "100%", display: "flex" }}>
                     {status === 200 && this.renderAdvertisementImages()}
-                    <div style={{ width: '50%', backgroundColor: 'black' }}>
+                    <div style={{ width: "50%", backgroundColor: "black" }}>
                         {continuePlaying && <AdOrRestVideo />}
                     </div>
                 </div>
@@ -601,7 +600,7 @@ class Advertisement extends React.Component {
     }
     render() {
         return (
-            <div style={{ width: '100%', height: '100%' }}>
+            <div style={{ width: "100%", height: "100%" }}>
                 {this.renderAds()}
             </div>
         );
@@ -631,4 +630,7 @@ function mapStateToProps({
     };
 }
 
-export default connect(mapStateToProps, actions)(Advertisement);
+export default connect(
+    mapStateToProps,
+    actions
+)(Advertisement);

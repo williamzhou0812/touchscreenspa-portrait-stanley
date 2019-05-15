@@ -1,21 +1,21 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import Draggable from 'react-draggable'; // The default
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import Draggable from "react-draggable"; // The default
 
-import KeyboardButton from './KeyboardButton';
+import KeyboardButton from "./KeyboardButton";
 
-import LatinLayout from './layouts/LatinLayout';
-import CyrillicLayout from './layouts/CyrillicLayout';
-import SymbolsLayout from './layouts/SymbolsLayout';
-import GermanLayout from './layouts/GermanLayout';
+import LatinLayout from "./layouts/LatinLayout";
+import CyrillicLayout from "./layouts/CyrillicLayout";
+import SymbolsLayout from "./layouts/SymbolsLayout";
+import GermanLayout from "./layouts/GermanLayout";
 
-import BackspaceIcon from './icons/BackspaceIcon';
-import LanguageIcon from './icons/LanguageIcon';
-import ShiftIcon from './icons/ShiftIcon';
-import DraggableIcon from './icons/DraggableIcon';
+import BackspaceIcon from "./icons/BackspaceIcon";
+import LanguageIcon from "./icons/LanguageIcon";
+import ShiftIcon from "./icons/ShiftIcon";
+import DraggableIcon from "./icons/DraggableIcon";
 
-import { connect } from 'react-redux';
-import * as actions from '../actions';
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class Keyboard extends PureComponent {
     static propTypes = {
@@ -37,12 +37,12 @@ class Keyboard extends PureComponent {
         isFirstLetterUppercase: true,
         uppercaseAfterSpace: false,
         isDraggable: true,
-        defaultKeyboard: 'us',
-        dataset: { type: 'input' }
+        defaultKeyboard: "us",
+        dataset: { type: "input" }
     };
 
     constructor(props) {
-        console.log('FROM Keyboard');
+        console.log("FROM Keyboard");
         super(props);
         this.handleLetterButtonClick = this.handleLetterButtonClick.bind(this);
         this.handleBackspaceClick = this.handleBackspaceClick.bind(this);
@@ -63,11 +63,11 @@ class Keyboard extends PureComponent {
         let keysSet;
         if (this.state.showSymbols) {
             keysSet = SymbolsLayout;
-        } else if (this.state.currentLanguage === 'us') {
+        } else if (this.state.currentLanguage === "us") {
             keysSet = LatinLayout;
-        } else if (this.state.currentLanguage === 'de') {
+        } else if (this.state.currentLanguage === "de") {
             keysSet = GermanLayout;
-        } else if (this.state.currentLanguage === 'ru') {
+        } else if (this.state.currentLanguage === "ru") {
             keysSet = CyrillicLayout;
         } else if (this.state.currentLanguage) {
             keysSet = this.state.currentLanguage;
@@ -85,16 +85,16 @@ class Keyboard extends PureComponent {
     getSymbolsKeyValue() {
         let symbolsKeyValue;
         if (!this.state.showSymbols) {
-            symbolsKeyValue = '.?!&';
+            symbolsKeyValue = ".?!&";
         } else if (
-            this.state.currentLanguage === 'us' ||
-            this.state.currentLanguage === 'de'
+            this.state.currentLanguage === "us" ||
+            this.state.currentLanguage === "de"
         ) {
-            symbolsKeyValue = 'Abc';
-        } else if (this.state.currentLanguage === 'ru') {
-            symbolsKeyValue = 'Абв';
+            symbolsKeyValue = "Abc";
+        } else if (this.state.currentLanguage === "ru") {
+            symbolsKeyValue = "Абв";
         } else {
-            symbolsKeyValue = 'Abc';
+            symbolsKeyValue = "Abc";
         }
         return symbolsKeyValue;
     }
@@ -111,15 +111,15 @@ class Keyboard extends PureComponent {
     clearInput() {
         const { inputNode } = this.props;
 
-        inputNode.value = '';
+        inputNode.value = "";
         if (this.props.onClick) {
-            this.props.onClick('');
+            this.props.onClick("");
         }
 
         setTimeout(() => {
             inputNode.focus();
         }, 0);
-        inputNode.dispatchEvent(new CustomEvent('input'));
+        inputNode.dispatchEvent(new CustomEvent("input"));
     }
 
     handleShiftClick() {
@@ -164,7 +164,7 @@ class Keyboard extends PureComponent {
             }
         });
         this.setState({ uppercase: this.isUppercase() });
-        inputNode.dispatchEvent(new CustomEvent('input'));
+        inputNode.dispatchEvent(new CustomEvent("input"));
     }
 
     handleDragKeyClick() {
@@ -183,11 +183,11 @@ class Keyboard extends PureComponent {
         } = this.props;
         if (inputNode && dataset) {
             return (
-                inputNode.type !== 'password' &&
-                dataset.type !== 'email' &&
+                inputNode.type !== "password" &&
+                dataset.type !== "email" &&
                 ((!inputNode.value.length && isFirstLetterUppercase) ||
                     (inputNode.value.length > 0 &&
-                        inputNode.value[inputNode.value.length - 1] === ' ' &&
+                        inputNode.value[inputNode.value.length - 1] === " " &&
                         uppercaseAfterSpace))
             );
         } else {
@@ -240,24 +240,24 @@ class Keyboard extends PureComponent {
             }
         }, 0);
         this.setState({ uppercase: this.isUppercase() });
-        inputNode.dispatchEvent(new CustomEvent('input'));
+        inputNode.dispatchEvent(new CustomEvent("input"));
     }
 
     componentWillUnmount() {
-        console.log('keyboard componentWillUnmount');
+        console.log("keyboard componentWillUnmount");
 
         setTimeout(() => {
-            console.log('keyboard componentWillUnmount');
+            console.log("keyboard componentWillUnmount");
             this.props.setShowKeyboardOutAnimation(false);
         }, 1000);
     }
 
     render() {
         const {
-            inputNode,
+            // inputNode,
             secondaryKeyboard,
-            showKeyboard,
-            showSearchBarBoolean,
+            // showKeyboard,
+            // showSearchBarBoolean,
             showKeyboardOutAnimation
         } = this.props;
         const keys = this.getKeys();
@@ -270,9 +270,9 @@ class Keyboard extends PureComponent {
             >
                 <div
                     className={`keyboard keyboard-wrapper   ${
-                        typeof this.props.keyboardClassName !== 'undefined'
+                        typeof this.props.keyboardClassName !== "undefined"
                             ? this.props.keyboardClassName
-                            : ''
+                            : ""
                     } ${
                         /*showKeyboard.showKeyboard ||
                         showSearchBarBoolean.boolean
@@ -280,8 +280,8 @@ class Keyboard extends PureComponent {
                             : 'keyboard--bottom--out--animation'*/
 
                         showKeyboardOutAnimation.boolean
-                            ? 'keyboard--bottom--out--animation'
-                            : 'keyboard--bottom--in--animation'
+                            ? "keyboard--bottom--out--animation"
+                            : "keyboard--bottom--in--animation"
                     }`}
                     style={{
                         opacity: `${
@@ -300,7 +300,7 @@ class Keyboard extends PureComponent {
                             <KeyboardButton
                                 value={button}
                                 onClick={this.handleLetterButtonClick}
-                                classes={'keyboard-numberButton'}
+                                classes={"keyboard-numberButton"}
                                 key={button}
                             />
                         ))}
@@ -338,7 +338,7 @@ class Keyboard extends PureComponent {
                     ))}
 
                     <div className="keyboard-row">
-                        {typeof secondaryKeyboard !== 'undefined' ? (
+                        {typeof secondaryKeyboard !== "undefined" ? (
                             <KeyboardButton
                                 value={<LanguageIcon />}
                                 onClick={this.handleLanguageClick}
@@ -358,7 +358,7 @@ class Keyboard extends PureComponent {
                             />
                         ) : null}
                         <KeyboardButton
-                            value={' '}
+                            value={" "}
                             classes="keyboard-space"
                             onClick={this.handleLetterButtonClick}
                         />
@@ -369,7 +369,7 @@ class Keyboard extends PureComponent {
                             />
                         ) : null*/}
                         <KeyboardButton
-                            value={String.fromCharCode('8615')}
+                            value={String.fromCharCode("8615")}
                             classes="keyboard-submit-button"
                             onClick={this.props.hideKeyboard}
                         />
@@ -392,4 +392,7 @@ const mapStateToProps = ({
     };
 };
 
-export default connect(mapStateToProps, actions)(Keyboard);
+export default connect(
+    mapStateToProps,
+    actions
+)(Keyboard);
