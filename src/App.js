@@ -554,8 +554,6 @@ class App extends Component {
                                 display: "grid",
                                 gridTemplateColumns: "53% 47%"
                             }}
-                            onMouseMove={this.setSPAActive}
-                            onTouchStart={this.setSPAActive}
                         >
                             {!this.props.showSearchBarBoolean.boolean ? (
                                 <div
@@ -652,7 +650,11 @@ class App extends Component {
                             width="1080"
                         />
                         {isIdle ? (
-                            <div style={{ width: "100%", height: "74vh" }}>
+                            <div
+                                style={{ width: "100%", height: "74vh" }}
+                                onMouseMove={this.setSPAActive}
+                                onTouchStart={this.setSPAActive}
+                            >
                                 {this.props.adVideoList.status === 200 &&
                                     this.props.advertisementList.status ===
                                         200 &&
