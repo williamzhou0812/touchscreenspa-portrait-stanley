@@ -555,6 +555,7 @@ class App extends Component {
                                 gridTemplateColumns: "53% 47%"
                             }}
                             onMouseMove={this.setSPAActive}
+                            onTouchStart={this.setSPAActive}
                         >
                             {!this.props.showSearchBarBoolean.boolean ? (
                                 <div
