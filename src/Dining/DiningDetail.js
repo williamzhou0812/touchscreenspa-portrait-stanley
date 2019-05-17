@@ -195,7 +195,7 @@ class DiningDetail extends React.Component {
                                                 this.styles.contactDetailText
                                             }
                                         >
-                                            CALL TODAY1: {restaurant.phone}
+                                            CALL TODAY: {restaurant.phone}
                                         </p>
                                     )}
                                     {restaurant.website && (

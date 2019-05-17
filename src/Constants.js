@@ -60,6 +60,20 @@ export const IDLE_TIME = 90000; //1.5 Minutes TIMEOUT
 export const MAX_ZOOM_LEVEL = 2;
 export const MAP_WIDTH = 1080;
 export const MAP_HEIGHT = 607.5;
+export const MONTH_INDEX = {
+    JANUARY: 1,
+    FEBRUARY: 2,
+    MARCH: 3,
+    APRIL: 4,
+    MAY: 5,
+    JUNE: 6,
+    JULY: 7,
+    AUGUST: 8,
+    SEPTEMBER: 9,
+    OCTOBER: 10,
+    NOVEMBER: 11,
+    DECEMBER: 12
+};
 
 export function createURL(namespace) {
     return "http://" + HOST + ":" + PORT + "/" + namespace;
