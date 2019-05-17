@@ -1,5 +1,5 @@
 import React from "react";
-import AdOrRestVideo from "./AdOrRestVideo";
+// import AdOrRestVideo from "./AdOrRestVideo";
 import ImageGallery from "react-image-gallery";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import PlayIcon from "material-ui/svg-icons/av/play-arrow";
@@ -459,7 +459,8 @@ class Advertisement extends React.Component {
                 return (
                     <Link
                         style={{
-                            width: "50%",
+                            // width: "50%",
+                            width: "100%",
                             height: "100%",
                             backgroundImage: `url(${image.imageFile})`,
                             backgroundSize: "cover",
@@ -472,7 +473,8 @@ class Advertisement extends React.Component {
                 return (
                     <div
                         style={{
-                            width: "50%",
+                            // width: "50%",
+                            width: "100%",
                             height: "100%",
                             backgroundImage: `url(${image.imageFile})`,
                             backgroundSize: "cover",
@@ -520,8 +522,10 @@ class Advertisement extends React.Component {
                                             sizes={item.sizes}
                                             title={item.originalTitle}
                                             style={{
-                                                width: "50vw",
-                                                height: "16vh"
+                                                // width: "50vw",
+                                                // height: "16vh"
+                                                width: "100vw",
+                                                height: "18vh"
                                             }}
                                         />
                                     </Link>
@@ -542,8 +546,10 @@ class Advertisement extends React.Component {
                                             sizes={item.sizes}
                                             title={item.originalTitle}
                                             style={{
-                                                width: "50vw",
-                                                height: "16vh"
+                                                // width: "50vw",
+                                                // height: "16vh"
+                                                width: "100vw",
+                                                height: "18vh"
                                             }}
                                         />
                                     </div>
@@ -585,15 +591,15 @@ class Advertisement extends React.Component {
         }
     }
     renderAds() {
-        const { continuePlaying } = this.props;
+        // const { continuePlaying } = this.props;
         const { showAds, status } = this.state;
         if (showAds) {
             return (
                 <div style={{ width: "100%", height: "100%", display: "flex" }}>
                     {status === 200 && this.renderAdvertisementImages()}
-                    <div style={{ width: "50%", backgroundColor: "black" }}>
+                    {/* <div style={{ width: "50%", backgroundColor: "black" }}>
                         {continuePlaying && <AdOrRestVideo />}
-                    </div>
+                    </div> */}
                 </div>
             );
         }

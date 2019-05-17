@@ -554,6 +554,8 @@ class App extends Component {
                                 display: "grid",
                                 gridTemplateColumns: "53% 47%"
                             }}
+                            {...isIdle && { onMouseMove: this.setSPAActive }}
+                            {...isIdle && { onTouchStart: this.setSPAActive }}
                         >
                             {!this.props.showSearchBarBoolean.boolean ? (
                                 <div
@@ -640,7 +642,11 @@ class App extends Component {
 
                             <Clock />
                         </div>
-                        <div style={{ width: "100vw", height: "8vh" }}>
+                        <div
+                            style={{ width: "100vw", height: "8vh" }}
+                            {...isIdle && { onMouseMove: this.setSPAActive }}
+                            {...isIdle && { onTouchStart: this.setSPAActive }}
+                        >
                             <Route component={MainTabList} />
                         </div>
                         <img
@@ -827,7 +833,7 @@ class App extends Component {
                                 <div
                                     style={{
                                         width: "100vw",
-                                        height: "16vh",
+                                        height: "18vh",
                                         zIndex: "99",
                                         position: "relative"
                                     }}
@@ -867,7 +873,7 @@ class App extends Component {
                                 <div
                                     style={{
                                         width: "100vw",
-                                        height: "4vh",
+                                        height: "2vh",
                                         display: "flex",
                                         backgroundColor: "#058c9b",
                                         color: "white",
@@ -890,7 +896,8 @@ class App extends Component {
                                         >
                                             &copy;
                                         </span>
-                                        JBG HOSPITALITY 2018
+                                        JBG Hospitality Publications & Supplies{" "}
+                                        {new Date().getFullYear()}
                                     </div>
                                     <div
                                         style={{

@@ -1,18 +1,20 @@
-import React from 'react'
-import { connect } from 'react-redux';
-import ImageGallery from 'react-image-gallery';
-import { randomiseButKeepOrder, getRandomImage } from '../Constants';
+import React from "react";
+import { connect } from "react-redux";
+import ImageGallery from "react-image-gallery";
+import { randomiseButKeepOrder, getRandomImage } from "../Constants";
 
-export const RestInternalAds = (props) => {
+export const RestInternalAds = props => {
     const { ads } = props;
-    const modifiedImages = randomiseButKeepOrder(ads).filter(ad => {
-        return ad.imageAdvertisement && ad.imageAdvertisement.length > 0;
-    }).map(ad => {
-        return { original: getRandomImage(ad.imageAdvertisement) };
-    });
-    return(
-        <div style={{width: "100%", height: "100%"}}>
-           <ImageGallery
+    const modifiedImages = randomiseButKeepOrder(ads)
+        .filter(ad => {
+            return ad.imageAdvertisement && ad.imageAdvertisement.length > 0;
+        })
+        .map(ad => {
+            return { original: getRandomImage(ad.imageAdvertisement) };
+        });
+    return (
+        <div style={{ width: "100%", height: "100%" }}>
+            <ImageGallery
                 items={modifiedImages}
                 slideInterval={10000}
                 showThumbnails={false}
@@ -20,6 +22,7 @@ export const RestInternalAds = (props) => {
                 showFullscreenButton={false}
                 autoPlay={true}
                 showNav={false}
+                isRTL={true}
                 renderItem={item => {
                     return (
                         <div className="image-gallery-image">
@@ -30,7 +33,7 @@ export const RestInternalAds = (props) => {
                                 sizes={item.sizes}
                                 title={item.originalTitle}
                                 style={{
-                                    width: '100%',
+                                    width: "100%",
                                     height: "8.88vh"
                                 }}
                             />
@@ -39,14 +42,17 @@ export const RestInternalAds = (props) => {
                 }}
             />
         </div>
-    )
-}
+    );
+};
 
 const mapStateToProps = ({ featuredAdvertisementList }) => {
     const { ads } = featuredAdvertisementList;
     return {
         ads
-    }
-}
+    };
+};
 
-export default connect(mapStateToProps, null)(RestInternalAds);
+export default connect(
+    mapStateToProps,
+    null
+)(RestInternalAds);

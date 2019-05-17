@@ -1,4 +1,4 @@
-@import './sass/animation.scss';
+@import "./sass/animation.scss";
 
 a {
     text-decoration: none;
@@ -7,7 +7,9 @@ a {
     text-align: center;
     width: 100vw;
     height: 100vh;
-    position: relative;
+    // position: relative;
+    padding: 0px;
+    margin: 0px;
 }
 
 .loadingContainer {
