@@ -252,7 +252,7 @@ class SubsectionList extends React.Component {
                                 style={{
                                     height: '100%',
                                     overflow: 'auto',
-                                    paddingRight: '30px'
+                                    //paddingRight: '30px'
                                 }}
                             >
                                 {toRender.map((item, index) => {

@@ -119,7 +119,7 @@ class SectionList extends React.Component {
                             style={{
                                 height: '100%',
                                 overflow: 'auto',
-                                paddingRight: '30px'
+                                //paddingRight: '30px'
                             }}
                         >
                             {data.map((item, index) => {
