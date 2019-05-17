@@ -52,6 +52,7 @@ class DestinationDetail extends React.Component {
             justifyContent: 'center'
         },
         mapButtonStyle: {
+            width: "100%",
             height: "100%",
             marginLeft: 10,
             marginTop: '5%',
