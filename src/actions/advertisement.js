@@ -1,43 +1,56 @@
 import {
-    ADVERTISEMENT_LIST, FEATURED_ADVERTISEMENT_LIST, SPECIFC_ADS_RESTAURANT_LIST, SPECIFIC_ADS_ACTIVITY_DESTINATION_LIST,
-    SPECIFIC_ADS_ESSENTIAL_LIST, SPECIFIC_ADS_MINING_LIST, SPECIFIC_ADS_RETAIL_LIST, SPECIFIC_ADS_TRANSPORT_LIST,
-    SPECIFIC_ADS_ACCOMMODATION_LIST, SPECIFIC_ADS_EVENT_LIST
-} from './types';
-import axios from 'axios';
-import { createURL } from '../Constants';
+    ADVERTISEMENT_LIST,
+    FEATURED_ADVERTISEMENT_LIST,
+    SPECIFC_ADS_RESTAURANT_LIST,
+    SPECIFIC_ADS_ACTIVITY_DESTINATION_LIST,
+    SPECIFIC_ADS_ESSENTIAL_LIST,
+    SPECIFIC_ADS_MINING_LIST,
+    SPECIFIC_ADS_RETAIL_LIST,
+    SPECIFIC_ADS_TRANSPORT_LIST,
+    SPECIFIC_ADS_ACCOMMODATION_LIST,
+    SPECIFIC_ADS_EVENT_LIST,
+    SHOWCASE_ADVERTISEMENT_LIST
+} from "./types";
+import axios from "axios";
+import { createURL } from "../Constants";
 
 export const fetchAdvertisementList = () => async dispatch => {
-    const res = await axios.get(createURL('advertisement/'));
+    const res = await axios.get(createURL("interactivead/"));
     const advertisements = res.data.slice();
-    const adsDestination = advertisements.filter((item) => {
+    const adsDestination = advertisements.filter(item => {
         return item.destination;
     });
-    const adsRestaurant = advertisements.filter((item) => {
+    const adsRestaurant = advertisements.filter(item => {
         return item.restaurant;
     });
-    const adsEvent = advertisements.filter((item) => {
+    const adsEvent = advertisements.filter(item => {
         return item.event;
     });
-    const adsAccommodation = advertisements.filter((item) => {
+    const adsAccommodation = advertisements.filter(item => {
         return item.accomodation;
     });
-    const adsActvityDestination= advertisements.filter((item) => {
+    const adsActvityDestination = advertisements.filter(item => {
         return item.activityDestination;
     });
-    const adsEssential= advertisements.filter((item) => {
+    const adsEssential = advertisements.filter(item => {
         return item.essentialservice;
     });
-    const adsMining= advertisements.filter((item) => {
+    const adsMining = advertisements.filter(item => {
         return item.mining;
     });
-    const adsRetail = advertisements.filter((item) => {
+    const adsRetail = advertisements.filter(item => {
         return item.retail;
     });
-    const adsTransport = advertisements.filter((item) => {
+    const adsTransport = advertisements.filter(item => {
         return item.transportation;
     });
-    const adsServices = advertisements.filter((item) => {
-        return item.essentialservice || item.mining || item.retail || item.transportation;
+    const adsServices = advertisements.filter(item => {
+        return (
+            item.essentialservice ||
+            item.mining ||
+            item.retail ||
+            item.transportation
+        );
     });
     dispatch({
         type: ADVERTISEMENT_LIST,
@@ -59,7 +72,7 @@ export const fetchAdvertisementList = () => async dispatch => {
 };
 
 export const fetchFeaturedAdvertisementList = () => async dispatch => {
-    const res = await axios.get(createURL('featuredad/'));
+    const res = await axios.get(createURL("featuredad/"));
     dispatch({
         type: FEATURED_ADVERTISEMENT_LIST,
         payload: {
@@ -69,8 +82,19 @@ export const fetchFeaturedAdvertisementList = () => async dispatch => {
     });
 };
 
+export const fetchShowcaseAdvertisementList = () => async dispatch => {
+    const res = await axios.get(createURL("showcasead/"));
+    dispatch({
+        type: SHOWCASE_ADVERTISEMENT_LIST,
+        payload: {
+            ads: res.data,
+            status: res.status
+        }
+    });
+};
+
 export const fetchSpecificAdsRestaurantList = () => async dispatch => {
-    const res = await axios.get(createURL('restaurantsimple/'));
+    const res = await axios.get(createURL("restaurantsimple/"));
     dispatch({
         type: SPECIFC_ADS_RESTAURANT_LIST,
         payload: {
@@ -81,7 +105,7 @@ export const fetchSpecificAdsRestaurantList = () => async dispatch => {
 };
 
 export const fetchSpecificAdsActivityDestinationList = () => async dispatch => {
-    const res = await axios.get(createURL('activitydestinationsimple/'));
+    const res = await axios.get(createURL("activitydestinationsimple/"));
     dispatch({
         type: SPECIFIC_ADS_ACTIVITY_DESTINATION_LIST,
         payload: {
@@ -92,7 +116,7 @@ export const fetchSpecificAdsActivityDestinationList = () => async dispatch => {
 };
 
 export const fetchSpecificAdsEssentialList = () => async dispatch => {
-    const res = await axios.get(createURL('essentialsimple/'));
+    const res = await axios.get(createURL("essentialsimple/"));
     dispatch({
         type: SPECIFIC_ADS_ESSENTIAL_LIST,
         payload: {
@@ -103,7 +127,7 @@ export const fetchSpecificAdsEssentialList = () => async dispatch => {
 };
 
 export const fetchSpecificAdsMiningList = () => async dispatch => {
-    const res = await axios.get(createURL('miningsimple/'));
+    const res = await axios.get(createURL("miningsimple/"));
     dispatch({
         type: SPECIFIC_ADS_MINING_LIST,
         payload: {
@@ -114,7 +138,7 @@ export const fetchSpecificAdsMiningList = () => async dispatch => {
 };
 
 export const fetchSpecificAdsRetailList = () => async dispatch => {
-    const res = await axios.get(createURL('retailsimple/'));
+    const res = await axios.get(createURL("retailsimple/"));
     dispatch({
         type: SPECIFIC_ADS_RETAIL_LIST,
         payload: {
@@ -125,7 +149,7 @@ export const fetchSpecificAdsRetailList = () => async dispatch => {
 };
 
 export const fetchSpecificAdsTransportList = () => async dispatch => {
-    const res = await axios.get(createURL('transportationsimple/'));
+    const res = await axios.get(createURL("transportationsimple/"));
     dispatch({
         type: SPECIFIC_ADS_TRANSPORT_LIST,
         payload: {
@@ -136,7 +160,7 @@ export const fetchSpecificAdsTransportList = () => async dispatch => {
 };
 
 export const fetchSpecificAccommodationList = () => async dispatch => {
-    const res = await axios.get(createURL('accomodationsimple/'));
+    const res = await axios.get(createURL("accomodationsimple/"));
     dispatch({
         type: SPECIFIC_ADS_ACCOMMODATION_LIST,
         payload: {
@@ -147,7 +171,7 @@ export const fetchSpecificAccommodationList = () => async dispatch => {
 };
 
 export const fetchSpecificAdsEventList = () => async dispatch => {
-    const res = await axios.get(createURL('eventsimple/'));
+    const res = await axios.get(createURL("eventsimple/"));
     dispatch({
         type: SPECIFIC_ADS_EVENT_LIST,
         payload: {

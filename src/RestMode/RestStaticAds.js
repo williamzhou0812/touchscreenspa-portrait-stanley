@@ -1,18 +1,20 @@
-import React from 'react';
-import { randomiseButKeepOrder, getRandomImage } from '../Constants';
-import { connect } from 'react-redux';
-import ImageGallery from 'react-image-gallery';
+import React from "react";
+import { randomiseButKeepOrder, getRandomImage } from "../Constants";
+import { connect } from "react-redux";
+import ImageGallery from "react-image-gallery";
 
-export const ReactStaticAds = (props) => {
-    const { advertisements : ads } = props;
-    const modifiedImages = randomiseButKeepOrder(ads).filter(ad => {
-        return ad.imageAdvertisement && ad.imageAdvertisement.length > 0;
-    }).map(ad => {
-        return { original: getRandomImage(ad.imageAdvertisement) };       
-    });
-    return(
-        <div style={{width: "100%", height: "100%"}}>
-           <ImageGallery
+export const ReactStaticAds = props => {
+    const { ads } = props;
+    const modifiedImages = randomiseButKeepOrder(ads)
+        .filter(ad => {
+            return ad.imageAdvertisement && ad.imageAdvertisement.length > 0;
+        })
+        .map(ad => {
+            return { original: getRandomImage(ad.imageAdvertisement) };
+        });
+    return (
+        <div style={{ width: "100%", height: "100%" }}>
+            <ImageGallery
                 items={modifiedImages}
                 slideInterval={10000}
                 showThumbnails={false}
@@ -30,7 +32,7 @@ export const ReactStaticAds = (props) => {
                                 sizes={item.sizes}
                                 title={item.originalTitle}
                                 style={{
-                                    width: '100%',
+                                    width: "100%",
                                     height: "33.3vh"
                                 }}
                             />
@@ -39,13 +41,16 @@ export const ReactStaticAds = (props) => {
                 }}
             />
         </div>
-    )
-}
+    );
+};
 
-const mapStateToProps = ({ advertisementList }) => {
-    const { advertisements } = advertisementList;
+const mapStateToProps = ({ showcaseAdvertisementList }) => {
+    const { ads } = showcaseAdvertisementList;
     return {
-        advertisements
-    }
-}
-export default connect(mapStateToProps, null)(ReactStaticAds);
+        ads
+    };
+};
+export default connect(
+    mapStateToProps,
+    null
+)(ReactStaticAds);

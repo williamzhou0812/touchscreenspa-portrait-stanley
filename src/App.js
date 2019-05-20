@@ -100,6 +100,7 @@ class App extends Component {
         this.props.fetchSpecificAccommodationList();
         this.props.fetchSpecificAdsEventList();
         this.props.fetchFeaturedAdvertisementList();
+        this.props.fetchShowcaseAdvertisementList();
         this.props.fetchAirportDetail();
 
         //Set idle timer
@@ -487,7 +488,8 @@ class App extends Component {
             specificAdsTransportList,
             specificAdsAccommodationList,
             specificAdsEventList,
-            featuredAdvertisementList
+            featuredAdvertisementList,
+            showcaseAdvertisementList
         } = this.props;
 
         if (
@@ -512,7 +514,8 @@ class App extends Component {
             specificAdsTransportList.status !== 200 ||
             specificAdsAccommodationList.status !== 200 ||
             specificAdsEventList.status !== 200 ||
-            featuredAdvertisementList.status !== 200
+            featuredAdvertisementList.status !== 200 ||
+            showcaseAdvertisementList.status !== 200
         ) {
             return (
                 <div className="loadingContainer">
@@ -665,6 +668,8 @@ class App extends Component {
                                     this.props.advertisementList.status ===
                                         200 &&
                                     this.props.featuredAdvertisementList
+                                        .status === 200 &&
+                                    this.props.showcaseAdvertisementList
                                         .status === 200 && <RestComponent />}
                             </div>
                         ) : (
@@ -932,6 +937,7 @@ function mapStateToProps({
     specificAdsRetailList,
     specificAdsTransportList,
     featuredAdvertisementList,
+    showcaseAdvertisementList,
     destinationList,
     accommodationList,
     restaurantList,
@@ -963,6 +969,7 @@ function mapStateToProps({
         specificAdsRetailList,
         specificAdsTransportList,
         featuredAdvertisementList,
+        showcaseAdvertisementList,
         destinationList,
         accommodationList,
         restaurantList,

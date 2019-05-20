@@ -21,7 +21,8 @@ import {
     mapListNamespace,
     AD_SLIDE_INTERVAL,
     randomiseButKeepOrder,
-    DECIMAL_RADIX
+    DECIMAL_RADIX,
+    HeavyOrange
 } from "../Constants";
 import { connect } from "react-redux";
 import * as actions from "../actions";
@@ -433,7 +434,7 @@ class Advertisement extends React.Component {
                     advID: ads[0].id
                 });
             });
-        } else {
+        } else if (ads.length >= 1) {
             //Randomise ads and keep order (if there is any order whatsoever)
             const randomisedAds = randomiseButKeepOrder(ads);
             randomisedAds.forEach(ad => {
@@ -587,6 +588,22 @@ class Advertisement extends React.Component {
                         }}
                     />
                 </MuiThemeProvider>
+            );
+        } else if (images.length === 0) {
+            return (
+                <div
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                        backgroundColor: HeavyOrange,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        color: "white"
+                    }}
+                >
+                    <h1>NO INTERACTIVE ADS</h1>
+                </div>
             );
         }
     }
