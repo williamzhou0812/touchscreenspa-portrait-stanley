@@ -91,7 +91,7 @@ class KeyboardedInput extends React.Component {
                     setTimeout(() => {
                         this.props.setShowKeyboard(false);
                         this.props.setShowSearchBarBoolean(false);
-                    }, 800);
+                    }, 0);
                 });
             }
         }, 0);

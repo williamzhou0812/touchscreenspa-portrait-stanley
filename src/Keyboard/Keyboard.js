@@ -317,12 +317,14 @@ class Keyboard extends PureComponent {
                                     classes="shift-symbols"
                                     value={<ShiftIcon />}
                                     onClick={this.handleShiftClick}
+                                    onTouchEnd={this.handleShiftClick}
                                 />
                             )}
                             {row.map((button, ii) => (
                                 <KeyboardButton
                                     value={button}
                                     onClick={this.handleLetterButtonClick}
+                                    onTouchEnd={this.handleLetterButtonClick}
                                     key={`b${ii}`}
                                 />
                             ))}
@@ -332,6 +334,7 @@ class Keyboard extends PureComponent {
                                     classes="shift-symbols"
                                     value={symbolsKeyValue}
                                     onClick={this.handleSymbolsClick}
+                                    onTouchEnd={this.handleSymbolsClick}
                                 />
                             )}
                         </div>
@@ -342,6 +345,7 @@ class Keyboard extends PureComponent {
                             <KeyboardButton
                                 value={<LanguageIcon />}
                                 onClick={this.handleLanguageClick}
+                                onTouchEnd={this.handleLanguageClick}
                             />
                         ) : null}
                         {/*inputNode.dataset.type === 'email' ? (
@@ -355,12 +359,14 @@ class Keyboard extends PureComponent {
                                 value={<DraggableIcon />}
                                 classes=""
                                 onClick={this.handleDragKeyClick}
+                                onTouchEnd={this.handleDragKeyClick}
                             />
                         ) : null}
                         <KeyboardButton
                             value={" "}
                             classes="keyboard-space"
                             onClick={this.handleLetterButtonClick}
+                            onTouchEnd={this.handleLetterButtonClick}
                         />
                         {/*inputNode.dataset.type === 'email' ? (
                             <KeyboardButton
@@ -372,6 +378,7 @@ class Keyboard extends PureComponent {
                             value={String.fromCharCode("8615")}
                             classes="keyboard-submit-button"
                             onClick={this.props.hideKeyboard}
+                            onTouchEnd={this.props.hideKeyboard}
                         />
                     </div>
                 </div>
