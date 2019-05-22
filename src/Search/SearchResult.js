@@ -7,7 +7,7 @@ import { HeavyOrange } from "../Constants";
 import { map, isEmpty } from "lodash";
 import UpButton from "../Destination/icons/UpExploreButton.png";
 import DownButton from "../Destination/icons/DownExploreButton.png";
-import { LightOrange } from "../Constants";
+import { LightOrange, SEARCH_ENTRIES, addNullItemToData } from "../Constants";
 
 class SearchResult extends Component {
     constructor(props) {
@@ -43,11 +43,22 @@ class SearchResult extends Component {
         }
     };
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            searchResult: nextProps.searchResult.results,
-            currentSearchResult: nextProps.searchResult.results
-        });
+    // componentWillReceiveProps(nextProps) {
+    //     this.setState({
+    //         searchResult: nextProps.searchResult.results,
+    //         currentSearchResult: nextProps.searchResult.results
+    //     });
+    // }
+
+    componentDidUpdate(prevProps) {
+        const { results: currentSearchResult } = this.props.searchResult;
+        const { results: prevSearchResult } = prevProps.searchResult;
+        if (prevSearchResult !== currentSearchResult) {
+            this.setState({
+                searchResult: currentSearchResult,
+                currentSearchResult
+            });
+        }
     }
 
     componentWillUnmount() {
@@ -79,71 +90,94 @@ class SearchResult extends Component {
         const { currentSearchResult } = this.state;
 
         if (!isEmpty(currentSearchResult)) {
-            return map(currentSearchResult, item => {
-                let image = {};
-                if (!isEmpty(searchDocuments.documents[item.ref].image)) {
-                    image = {
-                        backgroundImage:
-                            "url(" +
-                            searchDocuments.documents[item.ref].image +
-                            ")",
-                        backgroundRepeat: "no-repeat",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center"
-                    };
-                }
-
-                return (
-                    <Link
-                        to={searchDocuments.documents[item.ref].link}
-                        style={{ textDecoration: "none", color: "white" }}
-                        onClick={() => {
-                            this.props.setShowKeyboardOutAnimation(true);
-                            this.props.setShowSearchBarOutAnimation(true);
-                            setTimeout(() => {
-                                this.props.setShowKeyboard(false);
-                                this.props.setShowSearchBarBoolean(false);
-                            }, 800);
-                            this.props.setDisplaySearchResultsBoolean(false);
-                        }}
-                    >
-                        <div
-                            key={`${item.ref}`}
-                            className="searchResultContainer--content--resultItem"
+            const toRender = addNullItemToData(
+                currentSearchResult,
+                SEARCH_ENTRIES
+            );
+            return map(toRender, (item, index) => {
+                if (!isEmpty(item)) {
+                    let image = {};
+                    if (!isEmpty(searchDocuments.documents[item.ref].image)) {
+                        image = {
+                            backgroundImage:
+                                "url(" +
+                                searchDocuments.documents[item.ref].image +
+                                ")",
+                            backgroundRepeat: "no-repeat",
+                            backgroundSize: "cover",
+                            backgroundPosition: "center"
+                        };
+                    }
+                    return (
+                        <Link
+                            to={searchDocuments.documents[item.ref].link}
+                            style={{ textDecoration: "none", color: "white" }}
+                            onClick={() => {
+                                this.props.setShowKeyboardOutAnimation(true);
+                                this.props.setShowSearchBarOutAnimation(true);
+                                setTimeout(() => {
+                                    this.props.setShowKeyboard(false);
+                                    this.props.setShowSearchBarBoolean(false);
+                                }, 800);
+                                this.props.setDisplaySearchResultsBoolean(
+                                    false
+                                );
+                            }}
                         >
-                            {!isEmpty(
-                                searchDocuments.documents[item.ref].image
-                            ) ? (
-                                <div
-                                    className="searchResultContainer--content--resultItem--image"
-                                    style={image}
-                                />
-                            ) : (
-                                <div
-                                    className="searchResultContainer--content--resultItem--image"
-                                    style={this.styles.horizontalVerticalCenter}
-                                >
-                                    No Image
-                                </div>
-                            )}
+                            <div
+                                key={`${item.ref}`}
+                                className="searchResultContainer--content--resultItem"
+                            >
+                                {!isEmpty(
+                                    searchDocuments.documents[item.ref].image
+                                ) ? (
+                                    <div
+                                        className="searchResultContainer--content--resultItem--image"
+                                        style={image}
+                                    />
+                                ) : (
+                                    <div
+                                        className="searchResultContainer--content--resultItem--image"
+                                        style={
+                                            this.styles.horizontalVerticalCenter
+                                        }
+                                    >
+                                        No Image
+                                    </div>
+                                )}
 
-                            <div className="searchResultContainer--content--resultItem--content">
-                                <p className="searchResultContainer--content--resultItem--content--title">
-                                    {searchDocuments.documents[item.ref].title}
-                                </p>
-                                <p className="searchResultContainer--content--resultItem--content--description">
-                                    {searchDocuments.documents[item.ref].text
-                                        .length > 300
-                                        ? `${searchDocuments.documents[
-                                              item.ref
-                                          ].text.substring(0, 300)}...`
-                                        : searchDocuments.documents[item.ref]
-                                              .text}
-                                </p>
+                                <div className="searchResultContainer--content--resultItem--content">
+                                    <p className="searchResultContainer--content--resultItem--content--title">
+                                        {
+                                            searchDocuments.documents[item.ref]
+                                                .title
+                                        }
+                                    </p>
+                                    <p className="searchResultContainer--content--resultItem--content--description">
+                                        {searchDocuments.documents[item.ref]
+                                            .text.length > 300
+                                            ? `${searchDocuments.documents[
+                                                  item.ref
+                                              ].text.substring(0, 300)}...`
+                                            : searchDocuments.documents[
+                                                  item.ref
+                                              ].text}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </Link>
-                );
+                        </Link>
+                    );
+                } else {
+                    return (
+                        <div
+                            key={`NULL-${index}`}
+                            style={{
+                                height: "10.9vh",
+                                backgroundColor: "rgb(5, 151, 165)"
+                            }}
+                        />
+                    );
+                }
             });
         } else {
             return (
