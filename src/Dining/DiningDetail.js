@@ -1,6 +1,6 @@
-import React from 'react';
-import * as actions from '../actions/dining';
-import { connect } from 'react-redux';
+import React from "react";
+import * as actions from "../actions/dining";
+import { connect } from "react-redux";
 import {
     DECIMAL_RADIX,
     diningNamespace,
@@ -9,10 +9,11 @@ import {
     LightBlueButtonBackground,
     ExtraHeavyBlueGreen,
     LightOrange
-} from '../Constants';
-import { Link } from 'react-router-dom';
-import RestaurantListIcon from './icons/RestaurantListIcon.png';
-import MapModal from '../Maps/MapModal';
+} from "../Constants";
+import { Link } from "react-router-dom";
+import RestaurantListIcon from "./icons/RestaurantListIcon.png";
+import MapModal from "../Maps/MapModal";
+import Markdown from "../Markdown";
 
 class DiningDetail extends React.Component {
     constructor(props) {
@@ -49,15 +50,15 @@ class DiningDetail extends React.Component {
     renderImages() {
         const { imageRestaurant: images } = this.props.restaurant;
         if (images.length > 1) {
-            return imageGallery(images, '100%', '27vh');
+            return imageGallery(images, "100%", "27vh");
         } else if (images.length === 1) {
             return (
                 <div
                     style={{
-                        height: '50%',
+                        height: "50%",
                         backgroundImage: `url(${images[0].imageFile})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center'
+                        backgroundSize: "cover",
+                        backgroundPosition: "center"
                     }}
                 />
             );
@@ -65,7 +66,7 @@ class DiningDetail extends React.Component {
             return (
                 <div
                     style={{
-                        height: '50%',
+                        height: "50%",
                         backgroundColor: HeavyOrange,
                         ...this.styles.horizontalVerticalCenter
                     }}
@@ -77,16 +78,16 @@ class DiningDetail extends React.Component {
     }
     styles = {
         horizontalVerticalCenter: {
-            display: 'flex',
-            justifyContent: 'center'
+            display: "flex",
+            justifyContent: "center"
         },
         contactDetailText: {
-            textAlign: 'left',
+            textAlign: "left",
             margin: 0,
             padding: 0,
-            lineHeight: '130%',
-            letterSpacing: '2px',
-            fontSize: '20px'
+            lineHeight: "130%",
+            letterSpacing: "2px",
+            fontSize: "20px"
         }
     };
     render() {
@@ -94,46 +95,46 @@ class DiningDetail extends React.Component {
         return (
             <div
                 style={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    color: 'white'
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    color: "white"
                 }}
                 className="section--bottom--animation"
             >
                 <div
                     style={{
                         backgroundColor: HeavyOrange,
-                        width: '14%',
-                        boxShadow: '9.899px 0px 7px 0px rgba(0,0,0,0.6)',
+                        width: "14%",
+                        boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)",
                         zIndex: 1
                     }}
                 >
                     <Link
                         style={{
-                            height: '14%',
-                            textDecoration: 'none'
+                            height: "14%",
+                            textDecoration: "none"
                         }}
                         to={diningNamespace}
                     >
                         <div
                             style={{
-                                borderStyle: 'none none solid none',
+                                borderStyle: "none none solid none",
                                 borderColor: LightOrange,
-                                paddingBottom: '20px'
+                                paddingBottom: "20px"
                             }}
                         >
                             <img
                                 src={RestaurantListIcon}
-                                style={{ width: '33%', paddingTop: '30px' }}
+                                style={{ width: "33%", paddingTop: "30px" }}
                                 alt="Restaurant List Icon"
                             />
                             <div
                                 style={{
-                                    color: 'white',
-                                    letterSpacing: '2px',
-                                    fontSize: '18px',
-                                    paddingTop: '10px'
+                                    color: "white",
+                                    letterSpacing: "2px",
+                                    fontSize: "18px",
+                                    paddingTop: "10px"
                                 }}
                             >
                                 RESTAURANT LIST
@@ -142,17 +143,17 @@ class DiningDetail extends React.Component {
                     </Link>
                     <div
                         style={{
-                            color: 'white',
-                            height: '86%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            fontSize: '40pt',
+                            color: "white",
+                            height: "86%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            fontSize: "40pt",
                             fontWeight: 500,
-                            letterSpacing: '10px'
+                            letterSpacing: "10px"
                         }}
                     >
-                        <span style={{ transform: 'rotate(-90deg)' }}>
+                        <span style={{ transform: "rotate(-90deg)" }}>
                             DINING
                         </span>
                     </div>
@@ -160,32 +161,32 @@ class DiningDetail extends React.Component {
                 {status === 200 && (
                     <div style={{ flex: 1 }}>
                         {this.renderImages()}
-                        <div style={{ height: '25%', display: 'flex' }}>
+                        <div style={{ height: "25%", display: "flex" }}>
                             <div
                                 style={{
-                                    flexBasis: '50%',
+                                    flexBasis: "50%",
                                     backgroundImage: `url(${restaurant.logo})`,
-                                    backgroundRepeat: 'no-repeat',
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center'
+                                    backgroundRepeat: "no-repeat",
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center"
                                 }}
                             />
                             <div
                                 style={{
-                                    flexBasis: '50%',
+                                    flexBasis: "50%",
                                     backgroundColor: LightBlueButtonBackground
                                 }}
                             >
                                 <div
                                     style={{
-                                        height: '50%',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        justifyContent: 'flex-end',
+                                        height: "50%",
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        justifyContent: "flex-end",
                                         paddingBottom: 20,
-                                        paddingTop: '10px',
-                                        paddingLeft: '20px',
-                                        paddingRight: '20px',
+                                        paddingTop: "10px",
+                                        paddingLeft: "20px",
+                                        paddingRight: "20px",
                                         ...this.styles.horizontalVerticalCenter
                                     }}
                                 >
@@ -220,7 +221,7 @@ class DiningDetail extends React.Component {
                                 {restaurant.mapRestaurant.length > 0 && (
                                     <div
                                         style={{
-                                            height: '50%',
+                                            height: "50%",
                                             paddingLeft: 20,
                                             paddingRight: 20
                                         }}
@@ -232,17 +233,17 @@ class DiningDetail extends React.Component {
                                             title={restaurant.title}
                                             buttonStyle={{
                                                 backgroundColor: HeavyOrange,
-                                                width: '100%',
-                                                height: '50%',
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
+                                                width: "100%",
+                                                height: "50%",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
                                                 boxShadow:
-                                                    '0px 0px 10px 1px rgba(0,0,0,0.5)',
-                                                borderRadius: '5px',
-                                                fontSize: '20px',
+                                                    "0px 0px 10px 1px rgba(0,0,0,0.5)",
+                                                borderRadius: "5px",
+                                                fontSize: "20px",
                                                 fontWeight: 500,
-                                                paddingTop: '5px'
+                                                paddingTop: "5px"
                                             }}
                                             textStyle={{}}
                                             mapImage={
@@ -256,42 +257,42 @@ class DiningDetail extends React.Component {
                         </div>
                         <div
                             style={{
-                                height: '25%',
-                                display: 'flex',
+                                height: "25%",
+                                display: "flex",
                                 backgroundColor: ExtraHeavyBlueGreen
                             }}
                         >
                             <div
                                 style={{
-                                    flexBasis: '50%',
+                                    flexBasis: "50%",
                                     paddingTop: 20,
                                     paddingLeft: 35,
                                     paddingRight: 20,
-                                    fontSize: '19px',
-                                    lineHeight: '115%',
-                                    letterSpacing: '3px',
-                                    textAlign: 'left'
+                                    fontSize: "19px",
+                                    lineHeight: "115%",
+                                    letterSpacing: "1px",
+                                    textAlign: "left"
                                 }}
                             >
-                                {restaurant.description}
+                                <Markdown source={restaurant.description} />
                             </div>
                             <div
                                 style={{
-                                    flexBasis: '50%',
+                                    flexBasis: "50%",
                                     paddingTop: 20,
                                     paddingLeft: 35,
                                     paddingRight: 20,
-                                    fontSize: '19px',
-                                    lineHeight: '115%',
-                                    letterSpacing: '3px',
-                                    textAlign: 'left'
+                                    fontSize: "19px",
+                                    lineHeight: "115%",
+                                    letterSpacing: "1px",
+                                    textAlign: "left"
                                 }}
                             >
                                 <div>CUISINE: {restaurant.guide.cuisine}</div>
                                 <div
                                     style={{
-                                        display: 'flex',
-                                        justifyContent: 'space-between'
+                                        display: "flex",
+                                        justifyContent: "space-between"
                                     }}
                                 >
                                     <span>
@@ -303,14 +304,15 @@ class DiningDetail extends React.Component {
                                     </span>
                                 </div>
                                 <div>
-                                    COURTESY TRANSPORT:{' '}
+                                    COURTESY TRANSPORT:{" "}
                                     {restaurant.guide.courtesy}
                                 </div>
                                 <div>
                                     CARDS ACCEPTED: {restaurant.guide.cards}
                                 </div>
                                 <div>
-                                    PRICE GUIDE:<br />
+                                    PRICE GUIDE:
+                                    <br />
                                     {restaurant.guide.price}
                                 </div>
                             </div>
@@ -331,4 +333,7 @@ const mapStateToProps = ({ restaurantDetail, restaurantList }) => {
         status
     };
 };
-export default connect(mapStateToProps, actions)(DiningDetail);
+export default connect(
+    mapStateToProps,
+    actions
+)(DiningDetail);

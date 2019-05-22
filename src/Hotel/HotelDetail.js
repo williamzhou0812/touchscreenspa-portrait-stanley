@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import AllAreasIcon from "../Destination/icons/AllAreas.png";
 import HotelListIcon from "./icons/HotelListIcon.png";
 import MapModal from "../Maps/MapModal";
+import Markdown from "../Markdown";
 
 class HotelDetail extends React.Component {
     destIndex = -1;
@@ -406,7 +407,11 @@ class HotelDetail extends React.Component {
                                                 paddingRight: "40px"
                                             }}
                                         >
-                                            {accommodation.description}
+                                            <Markdown
+                                                source={
+                                                    accommodation.description
+                                                }
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -418,7 +423,7 @@ class HotelDetail extends React.Component {
                                         paddingRight: 20,
                                         fontSize: "20px",
                                         lineHeight: "130%",
-                                        letterSpacing: "3px",
+                                        letterSpacing: "1px",
                                         textAlign: "left"
                                     }}
                                 >

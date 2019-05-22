@@ -1,6 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions/activity';
+import React from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions/activity";
 import {
     DECIMAL_RADIX,
     activityNamespace,
@@ -11,12 +11,13 @@ import {
     LightOrange,
     ExtraHeavyBlueGreen,
     removeHttp
-} from '../Constants';
-import { Link } from 'react-router-dom';
-import ActivityIcon from '../MainTab/icons/ACTIVITIES_ICON.png';
-import ActivityMapIcon from '../Hotel/icons/HotelsMapIcon.png';
-import TourList from './TourList';
-import SidebarMapModel from '../Maps/SidebarMapModel';
+} from "../Constants";
+import { Link } from "react-router-dom";
+import ActivityIcon from "../MainTab/icons/ACTIVITIES_ICON.png";
+import ActivityMapIcon from "../Hotel/icons/HotelsMapIcon.png";
+import TourList from "./TourList";
+import SidebarMapModel from "../Maps/SidebarMapModel";
+import Markdown from "../Markdown";
 
 class ActivityDestinationDetail extends React.Component {
     retrieveData() {
@@ -61,15 +62,15 @@ class ActivityDestinationDetail extends React.Component {
             imageActivityDestination: images
         } = this.props.activityDestination;
         if (images.length > 1) {
-            return imageGallery(images, '100%', '22.68vh');
+            return imageGallery(images, "100%", "22.68vh");
         } else if (images.length === 1) {
             return (
                 <div
                     style={{
-                        height: '42%',
+                        height: "42%",
                         backgroundImage: `url(${images[0].imageFile})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center'
+                        backgroundSize: "cover",
+                        backgroundPosition: "center"
                     }}
                 />
             );
@@ -77,7 +78,7 @@ class ActivityDestinationDetail extends React.Component {
             return (
                 <div
                     style={{
-                        height: '42%',
+                        height: "42%",
                         backgroundColor: HeavyOrange,
                         ...this.styles.horizontalVerticalCenter
                     }}
@@ -98,19 +99,19 @@ class ActivityDestinationDetail extends React.Component {
             return (
                 <div
                     style={{
-                        height: '100%',
-                        display: 'flex',
-                        backgroundColor: 'rgb(2,61,66)'
+                        height: "100%",
+                        display: "flex",
+                        backgroundColor: "rgb(2,61,66)"
                     }}
                 >
                     <div
                         style={{
                             flex: 1,
                             ...this.styles.horizontalVerticalCenter,
-                            fontSize: '22px',
-                            letterSpacing: '2px',
-                            textTransform: 'uppercase',
-                            paddingTop: '10px'
+                            fontSize: "22px",
+                            letterSpacing: "2px",
+                            textTransform: "uppercase",
+                            paddingTop: "10px"
                         }}
                     >
                         {tour.title}
@@ -120,9 +121,9 @@ class ActivityDestinationDetail extends React.Component {
                             style={{
                                 flex: 1,
                                 ...this.styles.horizontalVerticalCenter,
-                                flexDirection: 'column',
-                                fontSize: '18px',
-                                letterSpacing: '2px'
+                                flexDirection: "column",
+                                fontSize: "18px",
+                                letterSpacing: "2px"
                             }}
                         >
                             {tour.phone && <div>PH: {tour.phone}</div>}
@@ -136,8 +137,8 @@ class ActivityDestinationDetail extends React.Component {
                             style={{
                                 flex: 1,
                                 ...this.styles.horizontalVerticalCenter,
-                                fontSize: '18px',
-                                letterSpacing: '2px'
+                                fontSize: "18px",
+                                letterSpacing: "2px"
                             }}
                         >
                             E: {tour.email}
@@ -149,7 +150,7 @@ class ActivityDestinationDetail extends React.Component {
             return (
                 <div
                     style={{
-                        height: '100%',
+                        height: "100%",
                         backgroundColor: HeavyOrange,
                         ...this.styles.horizontalVerticalCenter
                     }}
@@ -162,9 +163,9 @@ class ActivityDestinationDetail extends React.Component {
 
     styles = {
         horizontalVerticalCenter: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
         }
     };
 
@@ -177,42 +178,42 @@ class ActivityDestinationDetail extends React.Component {
         return (
             <div
                 style={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    color: 'white'
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    color: "white"
                 }}
                 className="section--bottom--animation"
             >
                 <div
                     style={{
                         backgroundColor: HeavyOrange,
-                        width: '14%',
-                        boxShadow: '9.899px 0px 7px 0px rgba(0,0,0,0.6)',
+                        width: "14%",
+                        boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)",
                         zIndex: 1
                     }}
                 >
                     <Link
-                        style={{ height: '14%', textDecoration: 'none' }}
+                        style={{ height: "14%", textDecoration: "none" }}
                         to={activityNamespace}
                     >
                         <div
                             style={{
-                                borderStyle: 'none none solid none',
+                                borderStyle: "none none solid none",
                                 borderColor: LightOrange,
-                                paddingBottom: '35px'
+                                paddingBottom: "35px"
                             }}
                         >
                             <img
                                 src={ActivityIcon}
-                                style={{ width: '33%', paddingTop: '23px' }}
+                                style={{ width: "33%", paddingTop: "23px" }}
                                 alt="Activity Icon"
                             />
                             <div
                                 style={{
-                                    color: 'white',
-                                    fontSize: '16px',
-                                    paddingTop: '10px'
+                                    color: "white",
+                                    fontSize: "16px",
+                                    paddingTop: "10px"
                                 }}
                             >
                                 ALL ACTIVITIES
@@ -232,36 +233,36 @@ class ActivityDestinationDetail extends React.Component {
 
                             <Link
                                 style={{
-                                    height: '14%',
-                                    textDecoration: 'none'
+                                    height: "14%",
+                                    textDecoration: "none"
                                 }}
                                 to={
                                     activityNamespace +
-                                    '/' +
+                                    "/" +
                                     this.props.match.params.id
                                 }
                             >
                                 <div
                                     style={{
-                                        height: '14%',
-                                        borderStyle: 'none none solid none',
+                                        height: "14%",
+                                        borderStyle: "none none solid none",
                                         borderColor: LightOrange,
-                                        paddingBottom: '38px'
+                                        paddingBottom: "38px"
                                     }}
                                 >
                                     <img
                                         src={activity.icon}
                                         style={{
-                                            width: '33%',
-                                            paddingTop: '33px'
+                                            width: "33%",
+                                            paddingTop: "33px"
                                         }}
                                         alt="Activity Icon"
                                     />
                                     <div
                                         style={{
-                                            color: 'white',
-                                            fontSize: '16px',
-                                            paddingTop: '10px'
+                                            color: "white",
+                                            fontSize: "16px",
+                                            paddingTop: "10px"
                                         }}
                                     >
                                         {activity.title.toUpperCase()} AREAS
@@ -272,48 +273,48 @@ class ActivityDestinationDetail extends React.Component {
                     )}
                     <div
                         style={{
-                            color: 'white',
-                            height: '60%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            fontSize: '40pt',
+                            color: "white",
+                            height: "60%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            fontSize: "40pt",
                             fontWeight: 500,
-                            letterSpacing: '10px'
+                            letterSpacing: "10px"
                         }}
                     >
-                        <span style={{ transform: 'rotate(-90deg)' }}>
+                        <span style={{ transform: "rotate(-90deg)" }}>
                             ACTIVITIES
                         </span>
                     </div>
                 </div>
                 {status === 200 && (
-                    <div style={{ width: '86%', height: '100%' }}>
+                    <div style={{ width: "86%", height: "100%" }}>
                         {this.renderImages()}
-                        <div style={{ height: '58%' }}>
+                        <div style={{ height: "58%" }}>
                             <div
                                 style={{
-                                    height: '16%',
+                                    height: "16%",
                                     ...this.styles.horizontalVerticalCenter,
                                     backgroundColor: MediumOrange,
-                                    paddingTop: '10px',
-                                    fontSize: '40px',
-                                    letterSpacing: '3px'
+                                    paddingTop: "10px",
+                                    fontSize: "40px",
+                                    letterSpacing: "3px"
                                 }}
                             >
                                 {activity.title.toUpperCase()}
                             </div>
-                            <div style={{ height: '11%', display: 'flex' }}>
+                            <div style={{ height: "11%", display: "flex" }}>
                                 <Link
                                     style={{
-                                        flexBasis: '14%',
+                                        flexBasis: "14%",
                                         ...this.styles.horizontalVerticalCenter,
-                                        backgroundColor: 'rgb(101,199,197)',
-                                        color: 'white',
-                                        fontSize: '20px',
-                                        letterSpacing: '3px',
-                                        paddingTop: '10px',
-                                        textDecoration: 'none'
+                                        backgroundColor: "rgb(101,199,197)",
+                                        color: "white",
+                                        fontSize: "20px",
+                                        letterSpacing: "3px",
+                                        paddingTop: "10px",
+                                        textDecoration: "none"
                                     }}
                                     to={this.getPrevLink()}
                                 >
@@ -321,13 +322,13 @@ class ActivityDestinationDetail extends React.Component {
                                 </Link>
                                 <div
                                     style={{
-                                        flexBasis: '72%',
+                                        flexBasis: "72%",
                                         backgroundColor: LightBlueButtonBackground,
-                                        fontWrap: 'bold',
-                                        fontSize: '35px',
+                                        fontWrap: "bold",
+                                        fontSize: "35px",
                                         letterSpacing: 5,
                                         fontWeight: 500,
-                                        paddingTop: '10px',
+                                        paddingTop: "10px",
                                         ...this.styles.horizontalVerticalCenter
                                     }}
                                 >
@@ -335,14 +336,14 @@ class ActivityDestinationDetail extends React.Component {
                                 </div>
                                 <Link
                                     style={{
-                                        flexBasis: '14%',
+                                        flexBasis: "14%",
                                         ...this.styles.horizontalVerticalCenter,
-                                        backgroundColor: 'rgb(101,199,197)',
-                                        color: 'white',
-                                        fontSize: '20px',
-                                        letterSpacing: '3px',
-                                        paddingTop: '10px',
-                                        textDecoration: 'none'
+                                        backgroundColor: "rgb(101,199,197)",
+                                        color: "white",
+                                        fontSize: "20px",
+                                        letterSpacing: "3px",
+                                        paddingTop: "10px",
+                                        textDecoration: "none"
                                     }}
                                     to={this.getNextLink()}
                                 >
@@ -351,35 +352,35 @@ class ActivityDestinationDetail extends React.Component {
                             </div>
                             <div
                                 style={{
-                                    height: tours.length > 2 ? '36%' : '43%',
+                                    height: tours.length > 2 ? "36%" : "43%",
                                     backgroundColor: ExtraHeavyBlueGreen,
-                                    textAlign: 'left',
-                                    letterSpacing: '2px',
-                                    fontSize: '20px',
-                                    lineHeight: '130%',
-                                    paddingTop: '30px',
-                                    paddingLeft: '30px',
-                                    paddingRight: '30px'
+                                    textAlign: "left",
+                                    letterSpacing: "1px",
+                                    fontSize: "20px",
+                                    lineHeight: "130%",
+                                    paddingTop: "30px",
+                                    paddingLeft: "30px",
+                                    paddingRight: "30px"
                                 }}
                             >
-                                {dest.description}
+                                <Markdown source={dest.description} />
                             </div>
                             <div
                                 style={{
-                                    height: '7%',
-                                    backgroundColor: 'rgb(14,154,167)',
+                                    height: "7%",
+                                    backgroundColor: "rgb(14,154,167)",
                                     ...this.styles.horizontalVerticalCenter,
-                                    borderTop: '1px solid rgb(184,223,228)',
-                                    borderBottom: '1px solid rgb(184,223,228)',
-                                    fontSize: '20px',
-                                    letterSpacing: '3px'
+                                    borderTop: "1px solid rgb(184,223,228)",
+                                    borderBottom: "1px solid rgb(184,223,228)",
+                                    fontSize: "20px",
+                                    letterSpacing: "3px"
                                 }}
                             >
                                 FOR MORE INFORMATION CONTACT:
                             </div>
                             <div
                                 style={{
-                                    height: tours.length > 2 ? '30%' : '23%'
+                                    height: tours.length > 2 ? "30%" : "23%"
                                 }}
                             >
                                 {this.renderTours()}
@@ -408,4 +409,7 @@ const mapStateToProps = ({ activityList, activityDestinationDetail }) => {
         status
     };
 };
-export default connect(mapStateToProps, actions)(ActivityDestinationDetail);
+export default connect(
+    mapStateToProps,
+    actions
+)(ActivityDestinationDetail);

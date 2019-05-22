@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
     imageGallery,
     HeavyOrange,
@@ -7,10 +7,11 @@ import {
     removeHttp,
     serviceNamespace,
     LightOrange
-} from '../Constants';
-import { Link } from 'react-router-dom';
-import ServiceTypesIcon from '../Dining/icons/RestaurantListIcon.png';
-import MapModal from '../Maps/MapModal';
+} from "../Constants";
+import { Link } from "react-router-dom";
+import ServiceTypesIcon from "../Dining/icons/RestaurantListIcon.png";
+import MapModal from "../Maps/MapModal";
+import Markdown from "../Markdown";
 
 class ServiceBranch extends React.Component {
     constructor(props) {
@@ -58,9 +59,9 @@ class ServiceBranch extends React.Component {
     }
     styles = {
         horizontalVerticalCenter: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
         }
     };
     renderImages() {
@@ -69,15 +70,15 @@ class ServiceBranch extends React.Component {
         const { imageKey } = serviceTypeData;
         const images = branches[branchIndex][imageKey];
         if (images.length > 1) {
-            return imageGallery(images, '100%', '22.68vh');
+            return imageGallery(images, "100%", "22.68vh");
         } else if (images.length === 1) {
             return (
                 <div
                     style={{
-                        height: '42%',
+                        height: "42%",
                         backgroundImage: `url(${images[0].imageFile})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center'
+                        backgroundSize: "cover",
+                        backgroundPosition: "center"
                     }}
                 />
             );
@@ -85,7 +86,7 @@ class ServiceBranch extends React.Component {
             return (
                 <div
                     style={{
-                        height: '42%',
+                        height: "42%",
                         backgroundColor: HeavyOrange,
                         ...this.styles.horizontalVerticalCenter
                     }}
@@ -104,44 +105,44 @@ class ServiceBranch extends React.Component {
         return (
             <div
                 style={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    color: 'white'
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    color: "white"
                 }}
             >
                 <div
                     style={{
                         backgroundColor: HeavyOrange,
-                        width: '14%',
-                        boxShadow: '9.899px 0px 7px 0px rgba(0,0,0,0.6)',
+                        width: "14%",
+                        boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)",
                         zIndex: 1
                     }}
                 >
                     <Link
                         style={{
-                            height: '14%',
-                            textDecoration: 'none'
+                            height: "14%",
+                            textDecoration: "none"
                         }}
                         to={serviceNamespace}
                     >
                         <div
                             style={{
-                                borderStyle: 'none none solid none',
+                                borderStyle: "none none solid none",
                                 borderColor: LightOrange,
-                                paddingBottom: '35px'
+                                paddingBottom: "35px"
                             }}
                         >
                             <img
                                 src={ServiceTypesIcon}
-                                style={{ width: '33%', paddingTop: '23px' }}
+                                style={{ width: "33%", paddingTop: "23px" }}
                                 alt="Service Types Icon"
                             />
                             <div
                                 style={{
-                                    color: 'white',
-                                    fontSize: '16px',
-                                    paddingTop: '10px'
+                                    color: "white",
+                                    fontSize: "16px",
+                                    paddingTop: "10px"
                                 }}
                             >
                                 SERVICE TYPES
@@ -150,28 +151,28 @@ class ServiceBranch extends React.Component {
                     </Link>
                     <Link
                         style={{
-                            height: '14%',
-                            textDecoration: 'none'
+                            height: "14%",
+                            textDecoration: "none"
                         }}
                         to={serviceTypeData.namespace}
                     >
                         <div
                             style={{
-                                borderStyle: 'none none solid none',
+                                borderStyle: "none none solid none",
                                 borderColor: LightOrange,
-                                paddingBottom: '35px'
+                                paddingBottom: "35px"
                             }}
                         >
                             <img
                                 src={serviceTypeData.icon}
-                                style={{ width: '33%', paddingTop: '23px' }}
+                                style={{ width: "33%", paddingTop: "23px" }}
                                 alt="Service Type Icon"
                             />
                             <div
                                 style={{
-                                    color: 'white',
-                                    fontSize: '16px',
-                                    paddingTop: '10px'
+                                    color: "white",
+                                    fontSize: "16px",
+                                    paddingTop: "10px"
                                 }}
                             >
                                 {serviceTypeData.title}
@@ -180,34 +181,34 @@ class ServiceBranch extends React.Component {
                     </Link>
                     <div
                         style={{
-                            color: 'white',
-                            height: '86%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            fontSize: '40pt',
+                            color: "white",
+                            height: "86%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            fontSize: "40pt",
                             fontWeight: 500,
-                            letterSpacing: '10px'
+                            letterSpacing: "10px"
                         }}
                     >
-                        <span style={{ transform: 'rotate(-90deg)' }}>
+                        <span style={{ transform: "rotate(-90deg)" }}>
                             SERVICES
                         </span>
                     </div>
                 </div>
-                <div style={{ width: '86%' }}>
+                <div style={{ width: "86%" }}>
                     {this.renderImages()}
-                    <div style={{ height: '58%' }}>
-                        <div style={{ height: '26%', display: 'flex' }}>
+                    <div style={{ height: "58%" }}>
+                        <div style={{ height: "26%", display: "flex" }}>
                             <div
                                 style={{
-                                    flexBasis: '33%',
+                                    flexBasis: "33%",
                                     backgroundImage: `url(${branch.logo})`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    borderWidth: '1px',
-                                    borderStyle: 'solid solid solid none',
-                                    borderColor: 'rgb(8,152,163)'
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    borderWidth: "1px",
+                                    borderStyle: "solid solid solid none",
+                                    borderColor: "rgb(8,152,163)"
                                 }}
                             />
                             <div
@@ -215,42 +216,42 @@ class ServiceBranch extends React.Component {
                                     flex: 1,
                                     backgroundColor: LightBlueButtonBackground,
                                     ...this.styles.horizontalVerticalCenter,
-                                    borderWidth: '1px',
-                                    borderStyle: 'solid none solid solid',
-                                    borderColor: 'rgb(183,223,228)',
-                                    paddingLeft: '50px',
-                                    paddingTop: '10px',
-                                    fontSize: '28px',
-                                    fontWeight: '500',
-                                    letterSpacing: '3px'
+                                    borderWidth: "1px",
+                                    borderStyle: "solid none solid solid",
+                                    borderColor: "rgb(183,223,228)",
+                                    paddingLeft: "50px",
+                                    paddingTop: "10px",
+                                    fontSize: "28px",
+                                    fontWeight: "500",
+                                    letterSpacing: "3px"
                                 }}
                             >
                                 {data.title.toUpperCase()}
                             </div>
                         </div>
-                        <div style={{ height: '74%', display: 'flex' }}>
+                        <div style={{ height: "74%", display: "flex" }}>
                             <div
                                 style={{
-                                    width: '50%',
+                                    width: "50%",
                                     backgroundColor: ExtraHeavyBlueGreen,
-                                    borderRight: '2px solid rgb(103,195,209)',
-                                    textAlign: 'left',
-                                    paddingTop: '35px',
-                                    paddingLeft: '50px',
-                                    paddingRight: '50px',
-                                    paddingBottom: '35px',
-                                    fontSize: '20px',
-                                    letterSpacing: '1px'
+                                    borderRight: "2px solid rgb(103,195,209)",
+                                    textAlign: "left",
+                                    paddingTop: "35px",
+                                    paddingLeft: "50px",
+                                    paddingRight: "50px",
+                                    paddingBottom: "35px",
+                                    fontSize: "20px",
+                                    letterSpacing: "1px"
                                 }}
                             >
-                                {branch.description}
+                                <Markdown source={branch.description} />
                             </div>
-                            <div style={{ width: '50%' }}>
-                                <div style={{ height: '28%' }}>
+                            <div style={{ width: "50%" }}>
+                                <div style={{ height: "28%" }}>
                                     <div
                                         style={{
-                                            height: '50%',
-                                            display: 'flex'
+                                            height: "50%",
+                                            display: "flex"
                                         }}
                                     >
                                         <div
@@ -259,9 +260,9 @@ class ServiceBranch extends React.Component {
                                                 ...this.styles
                                                     .horizontalVerticalCenter,
                                                 backgroundColor: LightBlueButtonBackground,
-                                                fontSize: '20px',
-                                                letterSpacing: '2px',
-                                                paddingTop: '10px'
+                                                fontSize: "20px",
+                                                letterSpacing: "2px",
+                                                paddingTop: "10px"
                                             }}
                                             onClick={this.prevBranch}
                                         >
@@ -273,11 +274,11 @@ class ServiceBranch extends React.Component {
                                                 ...this.styles
                                                     .horizontalVerticalCenter,
                                                 backgroundColor:
-                                                    'rgb(75,175,188)',
-                                                color: 'rgb(0,109,121)',
-                                                fontSize: '20px',
-                                                letterSpacing: '2px',
-                                                paddingTop: '10px'
+                                                    "rgb(75,175,188)",
+                                                color: "rgb(0,109,121)",
+                                                fontSize: "20px",
+                                                letterSpacing: "2px",
+                                                paddingTop: "10px"
                                             }}
                                         >
                                             LOCATION
@@ -288,9 +289,9 @@ class ServiceBranch extends React.Component {
                                                 ...this.styles
                                                     .horizontalVerticalCenter,
                                                 backgroundColor: LightBlueButtonBackground,
-                                                fontSize: '20px',
-                                                letterSpacing: '2px',
-                                                paddingTop: '10px'
+                                                fontSize: "20px",
+                                                letterSpacing: "2px",
+                                                paddingTop: "10px"
                                             }}
                                             onClick={this.nextBranch}
                                         >
@@ -299,15 +300,15 @@ class ServiceBranch extends React.Component {
                                     </div>
                                     <div
                                         style={{
-                                            height: '50%',
-                                            backgroundColor: 'rgb(183,223,228)',
-                                            color: 'rgb(0,109,121)',
+                                            height: "50%",
+                                            backgroundColor: "rgb(183,223,228)",
+                                            color: "rgb(0,109,121)",
                                             ...this.styles
                                                 .horizontalVerticalCenter,
-                                            paddingTop: '10px',
-                                            fontWeight: '500',
-                                            fontSize: '20px',
-                                            letterSpacing: '1px'
+                                            paddingTop: "10px",
+                                            fontWeight: "500",
+                                            fontSize: "20px",
+                                            letterSpacing: "1px"
                                         }}
                                     >
                                         {branch.title.toUpperCase()}
@@ -315,21 +316,21 @@ class ServiceBranch extends React.Component {
                                 </div>
                                 <div
                                     style={{
-                                        height: '72%',
+                                        height: "72%",
                                         backgroundColor: ExtraHeavyBlueGreen
                                     }}
                                 >
                                     <div
                                         style={{
-                                            height: '69%',
+                                            height: "69%",
 
-                                            textAlign: 'left',
-                                            paddingTop: '35px',
-                                            paddingLeft: '50px',
-                                            paddingRight: '50px',
-                                            paddingBottom: '35px',
-                                            fontSize: '20px',
-                                            letterSpacing: '1px'
+                                            textAlign: "left",
+                                            paddingTop: "35px",
+                                            paddingLeft: "50px",
+                                            paddingRight: "50px",
+                                            paddingBottom: "35px",
+                                            fontSize: "20px",
+                                            letterSpacing: "1px"
                                         }}
                                     >
                                         {branch.phone && (
@@ -339,7 +340,7 @@ class ServiceBranch extends React.Component {
                                         )}
                                         {branch.website && (
                                             <div>
-                                                WEB:{' '}
+                                                WEB:{" "}
                                                 {removeHttp(branch.website)}
                                             </div>
                                         )}
@@ -352,7 +353,7 @@ class ServiceBranch extends React.Component {
                                     </div>
                                     <div
                                         style={{
-                                            height: '31%',
+                                            height: "31%",
                                             ...this.styles
                                                 .horizontalVerticalCenter
                                         }}
@@ -361,26 +362,30 @@ class ServiceBranch extends React.Component {
                                             0 && (
                                             <MapModal
                                                 buttonStyle={{
-                                                    paddingLeft: '30px',
-                                                    paddingRight: '30px',
-                                                    width: '100%'
+                                                    paddingLeft: "30px",
+                                                    paddingRight: "30px",
+                                                    width: "100%"
                                                 }}
                                                 textStyle={{
-                                                    height: '60px',
-                                                    width: '100%',
-                                                    borderRadius: '5px',
-                                                    fontSize: '20px',
+                                                    height: "60px",
+                                                    width: "100%",
+                                                    borderRadius: "5px",
+                                                    fontSize: "20px",
                                                     fontWeight: 500,
                                                     boxShadow:
-                                                        '0px 0px 10px 1px rgba(0,0,0,0.5)',
+                                                        "0px 0px 10px 1px rgba(0,0,0,0.5)",
                                                     backgroundColor: LightBlueButtonBackground,
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center'
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    justifyContent: "center"
                                                 }}
                                                 buttonTitle="SEE MAP"
                                                 title={data.title}
-                                                mapImage={branch[serviceTypeData.mapKey][0].mapImage}
+                                                mapImage={
+                                                    branch[
+                                                        serviceTypeData.mapKey
+                                                    ][0].mapImage
+                                                }
                                             />
                                             // <div
                                             //     style={{
