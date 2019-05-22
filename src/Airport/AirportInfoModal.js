@@ -6,7 +6,7 @@ import {
     LightBlueButtonBackground
 } from "../Constants";
 import { Modal } from "react-bootstrap";
-import nl2br from "react-nl2br";
+// import nl2br from "react-nl2br";
 import "./airportmodal.css";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import CloseIcon from "material-ui/svg-icons/navigation/close";
