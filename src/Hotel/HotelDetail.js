@@ -393,7 +393,7 @@ class HotelDetail extends React.Component {
                                             paddingRight: 20,
                                             fontSize: "19px",
                                             lineHeight: "115%",
-                                            letterSpacing: "3px",
+                                            letterSpacing: "1px",
                                             textAlign: "left",
                                             overflow: "auto",
                                             maxHeight: "100vh",

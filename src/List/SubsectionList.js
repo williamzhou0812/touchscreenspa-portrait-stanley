@@ -1,8 +1,8 @@
-import React from 'react';
-import UpButton from '../Destination/icons/UpExploreButton.png';
-import DownButton from '../Destination/icons/DownExploreButton.png';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React from "react";
+import UpButton from "../Destination/icons/UpExploreButton.png";
+import DownButton from "../Destination/icons/DownExploreButton.png";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import {
     SUBSECTION_LIST_ENTRIES,
     MediumOrange,
@@ -14,8 +14,8 @@ import {
     LightBlue,
     randomiseButKeepOrder,
     addNullItemToData
-} from '../Constants';
-import SidebarMapModel from '../Maps/SidebarMapModel';
+} from "../Constants";
+import SidebarMapModel from "../Maps/SidebarMapModel";
 
 class SubsectionList extends React.Component {
     constructor(props) {
@@ -44,9 +44,9 @@ class SubsectionList extends React.Component {
     }
     styles = {
         horizontalVerticalCenter: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
         }
     };
     render() {
@@ -62,26 +62,28 @@ class SubsectionList extends React.Component {
             renderText,
             useBackgroundImage,
             imgStyle,
-            maps
+            maps,
+            advertiseWithUsOnlyOnce
         } = this.props;
         const itemHeight = `${100 / numberOfEntries}%`;
         let toRender = data.slice();
         if (data.length < numberOfEntries) {
             toRender = addNullItemToData(data, numberOfEntries);
         }
+        let hasRenderedAdvertiseWithUs = false;
         return (
             <div
-                style={{ width: '100%', height: '100%', display: 'flex' }}
+                style={{ width: "100%", height: "100%", display: "flex" }}
                 className="section--bottom--animation"
             >
                 <div
                     style={{
                         backgroundColor: HeavyOrange,
-                        width: '14%',
-                        boxShadow: '9.899px 0px 7px 0px rgba(0,0,0,0.6)',
+                        width: "14%",
+                        boxShadow: "9.899px 0px 7px 0px rgba(0,0,0,0.6)",
                         zIndex: 1,
-                        display: 'flex',
-                        flexDirection: 'column'
+                        display: "flex",
+                        flexDirection: "column"
                     }}
                 >
                     {sideButtons.length > 0 &&
@@ -90,8 +92,8 @@ class SubsectionList extends React.Component {
                                 return (
                                     <Link
                                         style={{
-                                            flexBasis: '14%',
-                                            textDecoration: 'none'
+                                            flexBasis: "14%",
+                                            textDecoration: "none"
                                         }}
                                         key={index}
                                         to={item.link}
@@ -99,23 +101,23 @@ class SubsectionList extends React.Component {
                                         <div
                                             style={{
                                                 borderStyle:
-                                                    'none none solid none',
+                                                    "none none solid none",
                                                 borderColor: LightOrange,
-                                                paddingBottom: '38px'
+                                                paddingBottom: "38px"
                                             }}
                                         >
                                             <img
                                                 src={item.icon}
                                                 style={{
-                                                    width: '33%',
-                                                    paddingTop: '33px'
+                                                    width: "33%",
+                                                    paddingTop: "33px"
                                                 }}
                                                 alt=""
                                             />
                                             <div
                                                 style={{
-                                                    color: 'white',
-                                                    fontSize: '16px'
+                                                    color: "white",
+                                                    fontSize: "16px"
                                                 }}
                                             >
                                                 {item.title}
@@ -126,30 +128,30 @@ class SubsectionList extends React.Component {
                             } else if (item.isClick) {
                                 return (
                                     <div
-                                        style={{ flexBasis: '14%' }}
+                                        style={{ flexBasis: "14%" }}
                                         key={index}
                                         onClick={item.onClick}
                                     >
                                         <div
                                             style={{
                                                 borderStyle:
-                                                    'none none solid none',
+                                                    "none none solid none",
                                                 borderColor: LightOrange,
-                                                paddingBottom: '31px'
+                                                paddingBottom: "31px"
                                             }}
                                         >
                                             <img
                                                 src={item.icon}
                                                 style={{
-                                                    width: '33%',
-                                                    paddingTop: '33px'
+                                                    width: "33%",
+                                                    paddingTop: "33px"
                                                 }}
                                                 alt=""
                                             />
                                             <div
                                                 style={{
-                                                    color: 'white',
-                                                    fontSize: '16px'
+                                                    color: "white",
+                                                    fontSize: "16px"
                                                 }}
                                             >
                                                 {item.title}
@@ -168,29 +170,29 @@ class SubsectionList extends React.Component {
                             } else {
                                 return (
                                     <div
-                                        style={{ flexBasis: '14%' }}
+                                        style={{ flexBasis: "14%" }}
                                         key={index}
                                     >
                                         <div
                                             style={{
                                                 borderStyle:
-                                                    'none none solid none',
+                                                    "none none solid none",
                                                 borderColor: LightOrange,
-                                                paddingBottom: '31px'
+                                                paddingBottom: "31px"
                                             }}
                                         >
                                             <img
                                                 src={item.icon}
                                                 style={{
-                                                    width: '33%',
-                                                    paddingTop: '33px'
+                                                    width: "33%",
+                                                    paddingTop: "33px"
                                                 }}
                                                 alt=""
                                             />
                                             <div
                                                 style={{
-                                                    color: 'white',
-                                                    fontSize: '16px'
+                                                    color: "white",
+                                                    fontSize: "16px"
                                                 }}
                                             >
                                                 {item.title}
@@ -203,28 +205,28 @@ class SubsectionList extends React.Component {
                     <div
                         style={{
                             flex: 1,
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            color: 'white',
-                            fontSize: '40pt',
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            color: "white",
+                            fontSize: "40pt",
                             fontWeight: 500,
-                            letterSpacing: '10px'
+                            letterSpacing: "10px"
                         }}
                     >
-                        <span style={{ transform: 'rotate(-90deg)' }}>
+                        <span style={{ transform: "rotate(-90deg)" }}>
                             {sideTitle}
                         </span>
                     </div>
                 </div>
-                <div style={{ width: '86%' }}>
+                <div style={{ width: "86%" }}>
                     <div
                         style={{
-                            height: '8%',
+                            height: "8%",
                             backgroundColor: LightOrange,
-                            color: 'white',
+                            color: "white",
                             ...this.styles.horizontalVerticalCenter,
-                            fontSize: '20pt',
+                            fontSize: "20pt",
                             letterSpacing: 5
                         }}
                     >
@@ -232,26 +234,26 @@ class SubsectionList extends React.Component {
                     </div>
                     <div
                         style={{
-                            height: '6%',
+                            height: "6%",
                             backgroundColor: MediumOrange,
                             ...this.styles.horizontalVerticalCenter
                         }}
                         onClick={this.goUp}
                     >
-                        <img src={UpButton} style={{ width: '5%' }} alt="Up" />
+                        <img src={UpButton} style={{ width: "5%" }} alt="Up" />
                     </div>
-                    <div style={{ height: '80%', overflow: 'hidden' }}>
+                    <div style={{ height: "80%", overflow: "hidden" }}>
                         <div
                             style={{
-                                height: '100%',
-                                overflowY: 'auto',
-                                marginRight: '-30px'
+                                height: "100%",
+                                overflowY: "auto",
+                                marginRight: "-30px"
                             }}
                         >
                             <div
                                 style={{
-                                    height: '100%',
-                                    overflow: 'auto',
+                                    height: "100%",
+                                    overflow: "auto"
                                     //paddingRight: '30px'
                                 }}
                             >
@@ -269,9 +271,9 @@ class SubsectionList extends React.Component {
                                             <Link
                                                 style={{
                                                     height: itemHeight,
-                                                    color: 'white',
-                                                    display: 'flex',
-                                                    textDecoration: 'none'
+                                                    color: "white",
+                                                    display: "flex",
+                                                    textDecoration: "none"
                                                 }}
                                                 to={`${namespace}/${item.id}`}
                                                 key={`${item.id}-${index}`}
@@ -279,23 +281,23 @@ class SubsectionList extends React.Component {
                                                 {useBackgroundImage ? (
                                                     <div
                                                         style={{
-                                                            width: '33%',
+                                                            width: "33%",
                                                             backgroundImage: `url(${imageSrc})`,
                                                             backgroundSize:
-                                                                'cover',
+                                                                "cover",
                                                             backgroundPosition:
-                                                                'center',
+                                                                "center",
                                                             borderBottom: isLastItem
-                                                                ? 'none'
+                                                                ? "none"
                                                                 : `1px solid ${LightBlue}`
                                                         }}
                                                     />
                                                 ) : (
                                                     <div
                                                         style={{
-                                                            width: '33%',
+                                                            width: "33%",
                                                             borderBottom: isLastItem
-                                                                ? 'none'
+                                                                ? "none"
                                                                 : `1px solid ${LightBlue}`,
                                                             backgroundColor: HeavyBlue,
                                                             ...this.styles
@@ -311,16 +313,16 @@ class SubsectionList extends React.Component {
                                                 )}
                                                 <div
                                                     style={{
-                                                        width: '67%',
+                                                        width: "67%",
                                                         backgroundColor: HeavyBlue,
-                                                        display: 'flex',
-                                                        fontSize: '24px',
-                                                        letterSpacing: '3px',
-                                                        alignItems: 'center',
+                                                        display: "flex",
+                                                        fontSize: "24px",
+                                                        letterSpacing: "3px",
+                                                        alignItems: "center",
                                                         paddingLeft: 35,
                                                         borderBottom: isLastItem
-                                                            ? 'none'
-                                                            : '1px solid rgb(183,223,228)'
+                                                            ? "none"
+                                                            : "1px solid rgb(183,223,228)"
                                                     }}
                                                 >
                                                     {renderText(item)}
@@ -332,31 +334,31 @@ class SubsectionList extends React.Component {
                                             <div
                                                 style={{
                                                     height: itemHeight,
-                                                    color: 'white',
-                                                    display: 'flex'
+                                                    color: "white",
+                                                    display: "flex"
                                                 }}
                                                 key={`${item.id}-${index}`}
                                             >
                                                 {useBackgroundImage ? (
                                                     <div
                                                         style={{
-                                                            width: '33%',
+                                                            width: "33%",
                                                             backgroundImage: `url(${imageSrc})`,
                                                             backgroundSize:
-                                                                'cover',
+                                                                "cover",
                                                             backgroundPosition:
-                                                                'center',
+                                                                "center",
                                                             borderBottom: isLastItem
-                                                                ? 'none'
+                                                                ? "none"
                                                                 : `1px solid ${LightBlue}`
                                                         }}
                                                     />
                                                 ) : (
                                                     <div
                                                         style={{
-                                                            width: '33%',
+                                                            width: "33%",
                                                             borderBottom: isLastItem
-                                                                ? 'none'
+                                                                ? "none"
                                                                 : `1px solid ${LightBlue}`,
                                                             backgroundColor: HeavyBlue,
                                                             ...this.styles
@@ -372,68 +374,104 @@ class SubsectionList extends React.Component {
                                                 )}
                                                 <div
                                                     style={{
-                                                        width: '67%',
+                                                        width: "67%",
                                                         backgroundColor: HeavyBlue,
-                                                        display: 'flex',
-                                                        alignItems: 'center',
+                                                        display: "flex",
+                                                        alignItems: "center",
                                                         paddingLeft: 35,
-                                                        fontSize: '24px',
-                                                        letterSpacing: '3px',
+                                                        fontSize: "24px",
+                                                        letterSpacing: "3px",
                                                         borderBottom: isLastItem
-                                                            ? 'none'
-                                                            : '1px solid rgb(183,223,228)'
+                                                            ? "none"
+                                                            : "1px solid rgb(183,223,228)"
                                                     }}
                                                 >
                                                     {renderText(item)}
                                                 </div>
                                             </div>
                                         );
-                                    } else {
+                                    } else if (
+                                        (!Boolean(item) &&
+                                            !hasRenderedAdvertiseWithUs) ||
+                                        (!Boolean(item) &&
+                                            !advertiseWithUsOnlyOnce)
+                                    ) {
                                         //Advertise with us
+                                        hasRenderedAdvertiseWithUs = true;
                                         return (
                                             <div
                                                 style={{
                                                     height: itemHeight,
-                                                    display: 'flex'
+                                                    display: "flex"
+                                                }}
+                                                key={`null-${index}-render`}
+                                            >
+                                                <div
+                                                    style={{
+                                                        width: "33%",
+                                                        borderBottom: isLastItem
+                                                            ? "none"
+                                                            : `1px solid ${LightBlue}`,
+                                                        backgroundColor:
+                                                            "white",
+                                                        ...this.styles
+                                                            .horizontalVerticalCenter,
+                                                        color: "rgb(8,152,163)"
+                                                    }}
+                                                >
+                                                    YOUR
+                                                    <br />
+                                                    LOGO
+                                                    <br />
+                                                    HERE
+                                                </div>
+                                                <div
+                                                    style={{
+                                                        width: "67%",
+                                                        backgroundColor: HeavyBlue,
+                                                        display: "flex",
+                                                        alignItems: "center",
+                                                        paddingLeft: 35,
+                                                        fontSize: "24px",
+                                                        letterSpacing: "3px",
+                                                        borderBottom: isLastItem
+                                                            ? "none"
+                                                            : "1px solid rgb(183,223,228)",
+                                                        color: "white"
+                                                    }}
+                                                >
+                                                    Advertise your business
+                                                    here!
+                                                    <br />
+                                                    For more information,
+                                                    contact:
+                                                    <br />
+                                                    touchscreen@jbg.com.pg
+                                                </div>
+                                            </div>
+                                        );
+                                    } else {
+                                        return (
+                                            <div
+                                                style={{
+                                                    height: itemHeight,
+                                                    display: "flex",
+                                                    backgroundColor: HeavyBlue,
+                                                    borderBottom: Boolean(
+                                                        isLastItem
+                                                    )
+                                                        ? "none"
+                                                        : "1px solid rgb(183,223,228)"
                                                 }}
                                                 key={`null-${index}`}
                                             >
                                                 <div
                                                     style={{
-                                                        width: '33%',
-                                                        borderBottom: isLastItem
-                                                            ? 'none'
-                                                            : `1px solid ${LightBlue}`,
-                                                        backgroundColor:
-                                                            'white',
-                                                        ...this.styles
-                                                            .horizontalVerticalCenter,
-                                                        color: 'rgb(8,152,163)'
+                                                        width: "33%",
+                                                        borderRight:
+                                                            "1px solid rgb(183,223,228)"
                                                     }}
-                                                >
-                                                    YOUR<br />LOGO<br />HERE
-                                                </div>
-                                                <div
-                                                    style={{
-                                                        width: '67%',
-                                                        backgroundColor: HeavyBlue,
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        paddingLeft: 35,
-                                                        fontSize: '24px',
-                                                        letterSpacing: '3px',
-                                                        borderBottom: isLastItem
-                                                            ? 'none'
-                                                            : '1px solid rgb(183,223,228)',
-                                                        color: 'white'
-                                                    }}
-                                                >
-                                                    Advertise your business
-                                                    here!<br />
-                                                    For more information,
-                                                    contact:<br />
-                                                    touchscreen@jbg.com.pg
-                                                </div>
+                                                />
                                             </div>
                                         );
                                     }
@@ -443,7 +481,7 @@ class SubsectionList extends React.Component {
                     </div>
                     <div
                         style={{
-                            height: '6%',
+                            height: "6%",
                             backgroundColor: MediumOrange,
                             ...this.styles.horizontalVerticalCenter
                         }}
@@ -451,7 +489,7 @@ class SubsectionList extends React.Component {
                     >
                         <img
                             src={DownButton}
-                            style={{ width: '5%' }}
+                            style={{ width: "5%" }}
                             alt="Down"
                         />
                     </div>
@@ -465,8 +503,8 @@ SubsectionList.defaultProps = {
     sideButtons: [],
     renderText: item => item.title.toUpperCase(),
     useBackgroundImage: true,
-    advertiseWithUs: true,
-    randomise: true
+    randomise: true,
+    advertiseWithUsOnlyOnce: true
 };
 
 SubsectionList.propTypes = {
@@ -481,8 +519,8 @@ SubsectionList.propTypes = {
     renderText: PropTypes.func,
     useBackgroundImage: PropTypes.bool,
     imgStyle: PropTypes.object,
-    advertiseWithUs: PropTypes.bool,
-    randomise: PropTypes.bool
+    randomise: PropTypes.bool,
+    advertiseWithUsOnlyOnce: PropTypes.bool
 };
 
 export default SubsectionList;

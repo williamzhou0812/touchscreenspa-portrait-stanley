@@ -12,6 +12,7 @@ class DiningList extends React.Component {
                 style={{ width: '100%', height: '100%' }}
             >
                 <SubsectionList
+                    numberOfEntries={4}
                     data={restaurants}
                     sideTitle="DINING"
                     mainTitle="LIST OF RESTAURANTS"
