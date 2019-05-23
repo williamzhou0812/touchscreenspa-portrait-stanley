@@ -330,7 +330,9 @@ class ServiceBranch extends React.Component {
                                             paddingRight: "50px",
                                             paddingBottom: "35px",
                                             fontSize: "20px",
-                                            letterSpacing: "1px"
+                                            letterSpacing: "1px",
+                                            overflowWrap: "break-word",
+                                            wordWrap: "break-word"
                                         }}
                                     >
                                         {branch.phone && (

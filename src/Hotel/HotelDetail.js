@@ -424,7 +424,9 @@ class HotelDetail extends React.Component {
                                         fontSize: "20px",
                                         lineHeight: "130%",
                                         letterSpacing: "1px",
-                                        textAlign: "left"
+                                        textAlign: "left",
+                                        overflowWrap: "break-word",
+                                        wordWrap: "break-word"
                                     }}
                                 >
                                     <div>CALL TODAY: {accommodation.phone}</div>

@@ -327,7 +327,9 @@ class EventDetail extends React.Component {
                                             lineHeight: "150%",
                                             textAlign: "left",
                                             letterSpacing: "1px",
-                                            fontSize: "20px"
+                                            fontSize: "20px",
+                                            overflowWrap: "break-word",
+                                            wordWrap: "break-word"
                                         }}
                                     >
                                         {event.phone && (

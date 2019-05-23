@@ -123,7 +123,9 @@ class ActivityDestinationDetail extends React.Component {
                                 ...this.styles.horizontalVerticalCenter,
                                 flexDirection: "column",
                                 fontSize: "18px",
-                                letterSpacing: "2px"
+                                letterSpacing: "2px",
+                                overflowWrap: "break-word",
+                                wordWrap: "break-word"
                             }}
                         >
                             {tour.phone && <div>PH: {tour.phone}</div>}
@@ -138,7 +140,9 @@ class ActivityDestinationDetail extends React.Component {
                                 flex: 1,
                                 ...this.styles.horizontalVerticalCenter,
                                 fontSize: "18px",
-                                letterSpacing: "2px"
+                                letterSpacing: "2px",
+                                overflowWrap: "break-word",
+                                wordWrap: "break-word"
                             }}
                         >
                             E: {tour.email}
@@ -150,12 +154,18 @@ class ActivityDestinationDetail extends React.Component {
             return (
                 <div
                     style={{
+                        backgroundColor: "rgb(2,61,66)",
                         height: "100%",
-                        backgroundColor: HeavyOrange,
-                        ...this.styles.horizontalVerticalCenter
+                        ...this.styles.horizontalVerticalCenter,
+                        fontSize: "22px",
+                        letterSpacing: "2px"
                     }}
                 >
-                    <h1>NO TOURS FOR THIS ACTIVITY DESTINATION</h1>
+                    Advertise your business here!
+                    <br />
+                    For more information, contact:
+                    <br />
+                    touchscreen@jbg.com.pg
                 </div>
             );
         }

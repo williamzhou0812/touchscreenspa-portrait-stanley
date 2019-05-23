@@ -187,6 +187,8 @@ class DiningDetail extends React.Component {
                                         paddingTop: "10px",
                                         paddingLeft: "20px",
                                         paddingRight: "20px",
+                                        overflowWrap: "break-word",
+                                        wordWrap: "break-word",
                                         ...this.styles.horizontalVerticalCenter
                                     }}
                                 >
