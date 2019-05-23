@@ -66,6 +66,7 @@ class ServiceTypeList extends React.Component {
                             namespace={namespace}
                             useBackgroundImage={false}
                             imgStyle={{width: "50%"}}
+                            fullBorderBottom={true}
                         />
                     }
                 </div>

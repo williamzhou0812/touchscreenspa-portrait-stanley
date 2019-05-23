@@ -63,7 +63,9 @@ class SubsectionList extends React.Component {
             useBackgroundImage,
             imgStyle,
             maps,
-            advertiseWithUsOnlyOnce
+            advertiseWithUsOnlyOnce,
+            fullBorderBottom,
+            fullBorderBottomStyle
         } = this.props;
         const itemHeight = `${100 / numberOfEntries}%`;
         let toRender = data.slice();
@@ -273,7 +275,10 @@ class SubsectionList extends React.Component {
                                                     height: itemHeight,
                                                     color: "white",
                                                     display: "flex",
-                                                    textDecoration: "none"
+                                                    textDecoration: "none",
+                                                    borderBottom: fullBorderBottom
+                                                        ? fullBorderBottomStyle
+                                                        : "none"
                                                 }}
                                                 to={`${namespace}/${item.id}`}
                                                 key={`${item.id}-${index}`}
@@ -287,18 +292,22 @@ class SubsectionList extends React.Component {
                                                                 "cover",
                                                             backgroundPosition:
                                                                 "center",
-                                                            borderBottom: isLastItem
-                                                                ? "none"
-                                                                : `1px solid ${LightBlue}`
+                                                            borderBottom:
+                                                                isLastItem ||
+                                                                fullBorderBottom
+                                                                    ? "none"
+                                                                    : `1px solid ${LightBlue}`
                                                         }}
                                                     />
                                                 ) : (
                                                     <div
                                                         style={{
                                                             width: "33%",
-                                                            borderBottom: isLastItem
-                                                                ? "none"
-                                                                : `1px solid ${LightBlue}`,
+                                                            borderBottom:
+                                                                isLastItem ||
+                                                                fullBorderBottom
+                                                                    ? "none"
+                                                                    : `1px solid ${LightBlue}`,
                                                             backgroundColor: HeavyBlue,
                                                             ...this.styles
                                                                 .horizontalVerticalCenter
@@ -320,9 +329,11 @@ class SubsectionList extends React.Component {
                                                         letterSpacing: "3px",
                                                         alignItems: "center",
                                                         paddingLeft: 35,
-                                                        borderBottom: isLastItem
-                                                            ? "none"
-                                                            : "1px solid rgb(183,223,228)"
+                                                        borderBottom:
+                                                            isLastItem ||
+                                                            fullBorderBottom
+                                                                ? "none"
+                                                                : "1px solid rgb(183,223,228)"
                                                     }}
                                                 >
                                                     {renderText(item)}
@@ -348,18 +359,22 @@ class SubsectionList extends React.Component {
                                                                 "cover",
                                                             backgroundPosition:
                                                                 "center",
-                                                            borderBottom: isLastItem
-                                                                ? "none"
-                                                                : `1px solid ${LightBlue}`
+                                                            borderBottom:
+                                                                isLastItem ||
+                                                                fullBorderBottom
+                                                                    ? "none"
+                                                                    : `1px solid ${LightBlue}`
                                                         }}
                                                     />
                                                 ) : (
                                                     <div
                                                         style={{
                                                             width: "33%",
-                                                            borderBottom: isLastItem
-                                                                ? "none"
-                                                                : `1px solid ${LightBlue}`,
+                                                            borderBottom:
+                                                                isLastItem ||
+                                                                fullBorderBottom
+                                                                    ? "none"
+                                                                    : `1px solid ${LightBlue}`,
                                                             backgroundColor: HeavyBlue,
                                                             ...this.styles
                                                                 .horizontalVerticalCenter
@@ -381,9 +396,11 @@ class SubsectionList extends React.Component {
                                                         paddingLeft: 35,
                                                         fontSize: "24px",
                                                         letterSpacing: "3px",
-                                                        borderBottom: isLastItem
-                                                            ? "none"
-                                                            : "1px solid rgb(183,223,228)"
+                                                        borderBottom:
+                                                            isLastItem ||
+                                                            fullBorderBottom
+                                                                ? "none"
+                                                                : "1px solid rgb(183,223,228)"
                                                     }}
                                                 >
                                                     {renderText(item)}
@@ -409,9 +426,11 @@ class SubsectionList extends React.Component {
                                                 <div
                                                     style={{
                                                         width: "33%",
-                                                        borderBottom: isLastItem
-                                                            ? "none"
-                                                            : `1px solid ${LightBlue}`,
+                                                        borderBottom:
+                                                            isLastItem ||
+                                                            fullBorderBottom
+                                                                ? "none"
+                                                                : `1px solid ${LightBlue}`,
                                                         backgroundColor:
                                                             "white",
                                                         ...this.styles
@@ -434,9 +453,11 @@ class SubsectionList extends React.Component {
                                                         paddingLeft: 35,
                                                         fontSize: "24px",
                                                         letterSpacing: "3px",
-                                                        borderBottom: isLastItem
-                                                            ? "none"
-                                                            : "1px solid rgb(183,223,228)",
+                                                        borderBottom:
+                                                            isLastItem ||
+                                                            fullBorderBottom
+                                                                ? "none"
+                                                                : "1px solid rgb(183,223,228)",
                                                         color: "white"
                                                     }}
                                                 >
@@ -457,11 +478,11 @@ class SubsectionList extends React.Component {
                                                     height: itemHeight,
                                                     display: "flex",
                                                     backgroundColor: HeavyBlue,
-                                                    borderBottom: Boolean(
-                                                        isLastItem
-                                                    )
-                                                        ? "none"
-                                                        : "1px solid rgb(183,223,228)"
+                                                    borderBottom:
+                                                        isLastItem ||
+                                                        fullBorderBottom
+                                                            ? "none"
+                                                            : "1px solid rgb(183,223,228)"
                                                 }}
                                                 key={`null-${index}`}
                                             >
@@ -504,7 +525,9 @@ SubsectionList.defaultProps = {
     renderText: item => item.title.toUpperCase(),
     useBackgroundImage: true,
     randomise: true,
-    advertiseWithUsOnlyOnce: true
+    advertiseWithUsOnlyOnce: true,
+    fullBorderBottom: false,
+    fullBorderBottomStyle: "1px solid rgb(183,223,228)"
 };
 
 SubsectionList.propTypes = {
@@ -520,7 +543,9 @@ SubsectionList.propTypes = {
     useBackgroundImage: PropTypes.bool,
     imgStyle: PropTypes.object,
     randomise: PropTypes.bool,
-    advertiseWithUsOnlyOnce: PropTypes.bool
+    advertiseWithUsOnlyOnce: PropTypes.bool,
+    fullBorderBottom: PropTypes.bool,
+    fullBorderBottomStyle: PropTypes.string
 };
 
 export default SubsectionList;
