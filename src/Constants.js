@@ -342,17 +342,20 @@ function insertItem(array, data, to) {
 }
 
 export function randomiseItems(array) {
+    /* Old version
     let shuffleArray = [];
     let output = [];
     array.forEach((_, index) => {
         shuffleArray.push(index);
         output.push(index);
-    });
+    }); 
     shuffleArray = shuffle(shuffleArray);
     shuffleArray.forEach((item, index) => {
         output[index] = array[item];
     });
-    return output;
+    */
+    //Optimised version
+    return shuffle(Array.from(array.keys())).map(item => array[item]);
 }
 
 function combineItems(randomised, constantItems, orderKey) {
@@ -381,14 +384,7 @@ export function addNullItemToData(items, minNumber) {
         return [];
     }
     if (items.length < minNumber) {
-        // console.log(minNumber);
-        let output = items.slice();
-        for (let i = 0; i < minNumber - items.length; i++) {
-            // console.log(`Index: ${i}, output before appending: `, output);
-            output.push(null);
-        }
-        // console.log('final result: ', output);
-        return output;
+        return items.concat(Array(minNumber - items.length).fill(null));
     } else {
         return [...items];
     }
