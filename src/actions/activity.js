@@ -34,6 +34,8 @@ export const fetchActivityList = () => async dispatch => {
                     if (item.title.toLowerCase().includes("map")) {
                         toRemove = [...toRemove, imageIndex];
                         return true;
+                    } else {
+                        return false;
                     }
                 })
             ];
@@ -108,6 +110,8 @@ export const fetchActivityDestinationDetail = (
               if (dest.id === destid) {
                   index = destIndex;
                   return true;
+              } else {
+                  return false;
               }
           });
     if (activity && activityDestination && index > -1) {
@@ -136,6 +140,8 @@ export const fetchActivityDestinationDetailAvailableData = (
               if (dest.id === destid) {
                   index = i;
                   return true;
+              } else {
+                  return false;
               }
           });
 
