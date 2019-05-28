@@ -389,3 +389,11 @@ export function addNullItemToData(items, minNumber) {
         return [...items];
     }
 }
+
+//Change text to normal title case
+//https://stackoverflow.com/a/196991
+export const toTitleCase = item =>
+    item.replace(
+        /\w\S*/g,
+        txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+    );

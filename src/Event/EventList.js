@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import SubsectionList from '../List/SubsectionList';
-import { eventNamespace } from '../Constants';
+import React from "react";
+import { connect } from "react-redux";
+import SubsectionList from "../List/SubsectionList";
+import { eventNamespace, toTitleCase } from "../Constants";
 
 class DestinationList extends React.Component {
     render() {
@@ -9,7 +9,7 @@ class DestinationList extends React.Component {
         return (
             <div
                 className="section--bottom--animation"
-                style={{ width: '100%', height: '100%' }}
+                style={{ width: "100%", height: "100%" }}
             >
                 <SubsectionList
                     data={events}
@@ -20,32 +20,30 @@ class DestinationList extends React.Component {
                     namespace={eventNamespace}
                     renderText={item => {
                         return (
-                            <div style={{ height: '100%' }}>
+                            <div style={{ height: "100%" }}>
                                 <div
                                     style={{
-                                        height: '33%',
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
+                                        height: "33%",
+                                        display: "flex",
+                                        alignItems: "flex-end",
                                         paddingTop: 60,
                                         paddingLeft: 35,
-                                        fontSize: '24px',
-                                        letterSpacing: '3px'
+                                        fontSize: "24px",
+                                        letterSpacing: "3px"
                                     }}
                                 >
                                     {item.title.toUpperCase()}
                                 </div>
                                 <div
                                     style={{
-                                        height: '33%',
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
-                                        marginTop: 5,
+                                        height: "33%",
+                                        display: "flex",
                                         marginLeft: 35,
-                                        fontSize: '24px',
-                                        letterSpacing: '3px'
+                                        fontSize: "24px",
+                                        letterSpacing: "3px"
                                     }}
                                 >
-                                    {item.eventMonth.toUpperCase()}
+                                    {toTitleCase(item.eventMonth)}
                                 </div>
                             </div>
                         );

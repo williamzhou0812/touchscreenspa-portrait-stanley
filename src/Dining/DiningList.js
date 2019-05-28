@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import SubsectionList from '../List/SubsectionList';
-import { diningNamespace } from '../Constants';
+import React from "react";
+import { connect } from "react-redux";
+import SubsectionList from "../List/SubsectionList";
+import { diningNamespace } from "../Constants";
 
 class DiningList extends React.Component {
     render() {
@@ -9,7 +9,7 @@ class DiningList extends React.Component {
         return (
             <div
                 className="section--bottom--animation"
-                style={{ width: '100%', height: '100%' }}
+                style={{ width: "100%", height: "100%" }}
             >
                 <SubsectionList
                     numberOfEntries={4}
@@ -22,29 +22,27 @@ class DiningList extends React.Component {
                     renderText={item => {
                         if (item.cuisine) {
                             return (
-                                <div style={{ height: '100%' }}>
+                                <div style={{ height: "100%" }}>
                                     <div
                                         style={{
-                                            height: '33%',
-                                            display: 'flex',
-                                            alignItems: 'flex-end',
+                                            height: "50%",
+                                            display: "flex",
+                                            alignItems: "flex-end",
                                             paddingTop: 60,
                                             paddingLeft: 35,
-                                            fontSize: '24px',
-                                            letterSpacing: '3px'
+                                            fontSize: "24px",
+                                            letterSpacing: "3px"
                                         }}
                                     >
                                         {item.title.toUpperCase()}
                                     </div>
                                     <div
                                         style={{
-                                            height: '33%',
-                                            display: 'flex',
-                                            alignItems: 'flex-end',
-                                            marginTop: 10,
+                                            height: "50%",
+                                            display: "flex",
                                             marginLeft: 35,
-                                            fontSize: '24px',
-                                            letterSpacing: '3px'
+                                            fontSize: "24px",
+                                            letterSpacing: "1px"
                                         }}
                                     >
                                         {item.cuisine}
@@ -56,8 +54,8 @@ class DiningList extends React.Component {
                                 <span
                                     style={{
                                         paddingLeft: 35,
-                                        fontSize: '24px',
-                                        letterSpacing: '3px'
+                                        fontSize: "24px",
+                                        letterSpacing: "3px"
                                     }}
                                 >
                                     {item.title.toUpperCase()}
@@ -77,4 +75,7 @@ const mapStateToProps = ({ restaurantList }) => {
         restaurants
     };
 };
-export default connect(mapStateToProps, null)(DiningList);
+export default connect(
+    mapStateToProps,
+    null
+)(DiningList);
