@@ -64,13 +64,19 @@ class HotelList extends React.Component {
                 namespace={`${accomodationNamespace}/${accommodation.id}`}
                 renderText={item => {
                     return (
-                        <div style={{ height: "100%" }}>
+                        <div
+                            style={{
+                                height: "100%",
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "center"
+                            }}
+                        >
                             <div
                                 style={{
                                     height: "33%",
                                     display: "flex",
                                     alignItems: "flex-end",
-                                    paddingTop: 60,
                                     paddingLeft: 35,
                                     fontSize: "24px",
                                     letterSpacing: "3px"

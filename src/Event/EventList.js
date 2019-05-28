@@ -20,13 +20,20 @@ class DestinationList extends React.Component {
                     namespace={eventNamespace}
                     renderText={item => {
                         return (
-                            <div style={{ height: "100%" }}>
+                            <div
+                                style={{
+                                    height: "100%",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    justifyContent: "center"
+                                }}
+                            >
                                 <div
                                     style={{
                                         height: "33%",
                                         display: "flex",
                                         alignItems: "flex-end",
-                                        paddingTop: 60,
+
                                         paddingLeft: 35,
                                         fontSize: "24px",
                                         letterSpacing: "3px"
@@ -40,7 +47,7 @@ class DestinationList extends React.Component {
                                         display: "flex",
                                         marginLeft: 35,
                                         fontSize: "24px",
-                                        letterSpacing: "3px"
+                                        letterSpacing: "1px"
                                     }}
                                 >
                                     {toTitleCase(item.eventMonth)}

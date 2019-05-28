@@ -1,25 +1,62 @@
-import { ACTIVITY_LIST, ACTIVITY_DESTINATION_LIST, ACTIVITY_DESTINATION_DETAIL, RESET_ACTIVITY_DESTINATION_DETAIL, RESET_ACTIVITY_DESTINATION_LIST } from "./types";
-import axios from 'axios';
+import {
+    ACTIVITY_LIST,
+    ACTIVITY_DESTINATION_LIST,
+    ACTIVITY_DESTINATION_DETAIL,
+    RESET_ACTIVITY_DESTINATION_DETAIL,
+    RESET_ACTIVITY_DESTINATION_LIST
+} from "./types";
+import { isEmpty } from "lodash";
+import axios from "axios";
 import { createURL, getHeaderImagesNoMap } from "../Constants";
 
 function getHeaderImageFromActivity(data) {
     let randomImages = [];
     //Getting all images from all accommodations according to destination
     data.forEach((d, _) => {
-        randomImages = [...randomImages, ...getHeaderImagesNoMap(d.imageActivity).map(item => item.imageFile)];
+        randomImages = [
+            ...randomImages,
+            ...getHeaderImagesNoMap(d.imageActivity).map(item => item.imageFile)
+        ];
     });
     return randomImages;
 }
 
 export const fetchActivityList = () => async dispatch => {
-    const res = await axios.get(createURL('activity/'));
+    const res = await axios.get(createURL("activity/"));
     let activities = res.data.slice();
-    activities.forEach((activity) => {
+    activities.forEach(activity => {
         activity.mapActivity = [];
-        activity.activityDestinationActivity.forEach((a) => {
-            activity.mapActivity = [...activity.mapActivity, ...a.imageActivityDestination.filter((item) => {
-                return item.title.toLowerCase().includes("map");
-            })];
+        activity.activityDestinationActivity.forEach((a, activityIndex) => {
+            let toRemove = [];
+            activity.mapActivity = [
+                ...activity.mapActivity,
+                ...a.imageActivityDestination.filter((item, imageIndex) => {
+                    if (item.title.toLowerCase().includes("map")) {
+                        toRemove = [...toRemove, imageIndex];
+                        return true;
+                    }
+                })
+            ];
+            if (toRemove.length > 0) {
+                //Remove image from destination from activity since it is an image
+                activity.activityDestinationActivity = [
+                    ...activity.activityDestinationActivity.slice(
+                        0,
+                        activityIndex
+                    ),
+                    {
+                        ...activity.activityDestinationActivity[activityIndex],
+                        imageActivityDestination: activity.activityDestinationActivity[
+                            activityIndex
+                        ].imageActivityDestination.filter(
+                            (_, index) => !toRemove.includes(index)
+                        )
+                    },
+                    ...activity.activityDestinationActivity.slice(
+                        activityIndex + 1
+                    )
+                ];
+            }
         });
     });
     dispatch({
@@ -34,9 +71,11 @@ export const fetchActivityList = () => async dispatch => {
 
 export const fetchActivityDestinationList = (id, activityList) => dispatch => {
     let status = null;
-    let activity = activityList && activityList.find((item) => {
-        return item.id === id;
-    });
+    let activity =
+        activityList &&
+        activityList.find(item => {
+            return item.id === id;
+        });
     if (activity) {
         status = 200;
     } else {
@@ -51,24 +90,28 @@ export const fetchActivityDestinationList = (id, activityList) => dispatch => {
     });
 };
 
-export const fetchActivityDestinationDetail = (actid, destid, activityList) => dispatch => {
+export const fetchActivityDestinationDetail = (
+    actid,
+    destid,
+    activityList
+) => dispatch => {
     let status = null;
-    let activity = activityList && activityList.find((act) => {
-        return act.id === actid;
-    });
+    let activity =
+        activityList &&
+        activityList.find(act => {
+            return act.id === actid;
+        });
     let index = -1;
-    let activityDestination = null;
-    activity && activity.activityDestinationActivity.forEach((dest, i) => {
-        if (dest.id === destid) {
-            activityDestination = {...dest};
-            index = i;
-        }
-    });
+    const activityDestination = isEmpty(activity)
+        ? null
+        : activity.activityDestinationActivity.find((dest, destIndex) => {
+              if (dest.id === destid) {
+                  index = destIndex;
+                  return true;
+              }
+          });
     if (activity && activityDestination && index > -1) {
         status = 200;
-    } else {
-        activity = null;
-        activityDestination = null;
     }
     dispatch({
         type: ACTIVITY_DESTINATION_DETAIL,
@@ -81,22 +124,23 @@ export const fetchActivityDestinationDetail = (actid, destid, activityList) => d
     });
 };
 
-export const fetchActivityDestinationDetailAvailableData = (destid, activity) => dispatch => {
+export const fetchActivityDestinationDetailAvailableData = (
+    destid,
+    activity
+) => dispatch => {
     let status = null;
-    let activityDestination = null;
     let index = -1;
-    activity && activity.activityDestinationActivity.forEach((dest, i) => {
-        if (dest.id === destid) {
-            activityDestination = {...dest};
-            index = i;
-        }
-    });
-    
+    const activityDestination = isEmpty(activity)
+        ? null
+        : activity.activityDestinationActivity.find((dest, i) => {
+              if (dest.id === destid) {
+                  index = i;
+                  return true;
+              }
+          });
+
     if (activityDestination && index > -1) {
         status = 200;
-    } else {
-        activity = null;
-        activityDestination = null;
     }
     dispatch({
         type: ACTIVITY_DESTINATION_DETAIL,
