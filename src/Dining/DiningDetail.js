@@ -290,33 +290,52 @@ class DiningDetail extends React.Component {
                                     textAlign: "left"
                                 }}
                             >
-                                <div>CUISINE: {restaurant.guide.cuisine}</div>
+                                {restaurant.guide.cuisine && (
+                                    <div>
+                                        CUISINE: {restaurant.guide.cuisine}
+                                    </div>
+                                )}
                                 <div
                                     style={{
                                         display: "flex",
                                         justifyContent: "space-between"
                                     }}
                                 >
-                                    <span>
-                                        TAKEAWAY: {restaurant.guide.takeaway}
-                                    </span>
-                                    <span>WIFI: {restaurant.guide.wifi}</span>
-                                    <span>
-                                        PARKING: {restaurant.guide.parking}
-                                    </span>
+                                    {restaurant.guide.takeaway && (
+                                        <span>
+                                            TAKEAWAY:{" "}
+                                            {restaurant.guide.takeaway}
+                                        </span>
+                                    )}
+                                    {restaurant.guide.wifi && (
+                                        <span>
+                                            WIFI: {restaurant.guide.wifi}
+                                        </span>
+                                    )}
+                                    {restaurant.guide.parking && (
+                                        <span>
+                                            PARKING: {restaurant.guide.parking}
+                                        </span>
+                                    )}
                                 </div>
-                                <div>
-                                    COURTESY TRANSPORT:{" "}
-                                    {restaurant.guide.courtesy}
-                                </div>
-                                <div>
-                                    CARDS ACCEPTED: {restaurant.guide.cards}
-                                </div>
-                                <div>
-                                    PRICE GUIDE:
-                                    <br />
-                                    {restaurant.guide.price}
-                                </div>
+                                {restaurant.guide.courtesy && (
+                                    <div>
+                                        COURTESY TRANSPORT:{" "}
+                                        {restaurant.guide.courtesy}
+                                    </div>
+                                )}
+                                {restaurant.guide.cards && (
+                                    <div>
+                                        CARDS ACCEPTED: {restaurant.guide.cards}
+                                    </div>
+                                )}
+                                {restaurant.guide.price && (
+                                    <div>
+                                        PRICE GUIDE:
+                                        <br />
+                                        {restaurant.guide.price}
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

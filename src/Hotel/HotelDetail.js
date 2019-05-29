@@ -429,10 +429,22 @@ class HotelDetail extends React.Component {
                                         wordWrap: "break-word"
                                     }}
                                 >
-                                    <div>CALL TODAY: {accommodation.phone}</div>
-                                    <div>WEB: {accommodation.website}</div>
-                                    <div>EMAIL: {accommodation.email}</div>
-                                    <div>LOCATION: {accommodation.address}</div>
+                                    {accommodation.phone && (
+                                        <div>
+                                            CALL TODAY: {accommodation.phone}
+                                        </div>
+                                    )}
+                                    {accommodation.website && (
+                                        <div>WEB: {accommodation.website}</div>
+                                    )}
+                                    {accommodation.email && (
+                                        <div>EMAIL: {accommodation.email}</div>
+                                    )}
+                                    {accommodation.address && (
+                                        <div>
+                                            LOCATION: {accommodation.address}
+                                        </div>
+                                    )}
                                     {this.renderMaps()}
                                 </div>
                             </div>

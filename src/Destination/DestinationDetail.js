@@ -295,10 +295,18 @@ class DestinationDetail extends React.Component {
                                                 letterSpacing: "1px"
                                             }}
                                         >
-                                            <span style={{ fontWeight: 500 }}>
-                                                PROVINCE:
-                                            </span>{" "}
-                                            {destination.province}
+                                            {destination.province && (
+                                                <React.Fragment>
+                                                    <span
+                                                        style={{
+                                                            fontWeight: 500
+                                                        }}
+                                                    >
+                                                        PROVINCE:
+                                                    </span>{" "}
+                                                    {destination.province}
+                                                </React.Fragment>
+                                            )}
                                         </div>
                                         <div
                                             style={{
@@ -310,10 +318,18 @@ class DestinationDetail extends React.Component {
                                                 paddingTop: "10px"
                                             }}
                                         >
-                                            <span style={{ fontWeight: 500 }}>
-                                                CLOSEST AIRPORT:
-                                            </span>{" "}
-                                            {destination.airport}
+                                            {destination.airport && (
+                                                <React.Fragment>
+                                                    <span
+                                                        style={{
+                                                            fontWeight: 500
+                                                        }}
+                                                    >
+                                                        CLOSEST AIRPORT:
+                                                    </span>{" "}
+                                                    {destination.airport}
+                                                </React.Fragment>
+                                            )}
                                         </div>
                                         <div
                                             onClick={this.goToExplore}
