@@ -1,5 +1,5 @@
-import { DESTINATION_LIST, DESTINATION_DETAIL } from './types';
-import axios from 'axios';
+import { DESTINATION_LIST, DESTINATION_DETAIL } from "./types";
+import axios from "axios";
 import {
     createURL,
     getRandomImage,
@@ -12,114 +12,128 @@ import {
     retailNamespace,
     miningNamespace,
     essentialNamespace
-} from '../Constants';
-import AccommodationIcon from '../MainTab/icons/ACCOMMODATION_ICON.png';
-import ActivitiesIcon from '../MainTab/icons/ACTIVITIES_ICON.png';
-import DiningIcon from '../MainTab/icons/DINING_ICON.png';
-import EventsIcon from '../MainTab/icons/EVENTS_ICON.png';
-import TransportIcon from '../Service/icons/TRANSPORT_ICON.png';
+} from "../Constants";
+import AccommodationIcon from "../MainTab/icons/ACCOMMODATION_ICON.png";
+import ActivitiesIcon from "../MainTab/icons/ACTIVITIES_ICON.png";
+import DiningIcon from "../MainTab/icons/DINING_ICON.png";
+import EventsIcon from "../MainTab/icons/EVENTS_ICON.png";
+import TransportIcon from "../Service/icons/TRANSPORT_ICON.png";
 import RetailIcon from "../Service/icons/RETAIL_ICON.png";
 import MiningIcon from "../Service/icons/MINING_ICON.png";
 import EssentialIcon from "../Service/icons/ESSENTIAL_ICON.png";
 
 export const fetchDestinationList = () => async dispatch => {
-    const res = await axios.get(createURL('destination/'));
+    const res = await axios.get(createURL("destination/"));
     let randomImages = [];
     let destinations = res.data.slice();
     destinations.forEach((d, _) => {
-        //Select random images
-        randomImages.push(getRandomImage(d.imageDestination));
+        //Select random images either from header images or from all destination images
+        const headerImages = d.imageDestination.filter(
+            ({ isHeaderImage }) => isHeaderImage
+        );
+
+        //If header images are non existent, we one random image take from all of the destination image
+        randomImages.push(
+            getRandomImage(
+                headerImages.length > 0 ? headerImages : d.imageDestination
+            )
+        );
 
         //Generate explore data in advance
         let toRender = [];
         d.eventDestination.forEach((item, _) => {
-            const linkTo = eventNamespace + '/' + item.id;
+            const linkTo = eventNamespace + "/" + item.id;
             toRender.push({
                 id: item.id,
                 period: item.period,
                 title: item.title,
-                type: 'EVENT',
+                type: "EVENT",
                 linkTo: linkTo,
                 icon: EventsIcon
             });
         });
         d.accomodationDestination.forEach((item, _) => {
-            const linkTo = accomodationNamespace + '/' + d.id + '/' + item.id;
+            const linkTo = accomodationNamespace + "/" + d.id + "/" + item.id;
             toRender.push({
                 id: item.id,
                 title: item.title,
-                type: 'HOTEL',
+                type: "HOTEL",
                 linkTo: linkTo,
                 icon: AccommodationIcon
             });
         });
         d.restaurantDestination.forEach((item, _) => {
-            const linkTo = diningNamespace + '/' + item.id;
+            const linkTo = diningNamespace + "/" + item.id;
             toRender.push({
                 id: item.id,
                 title: item.title,
-                type: 'DINING',
+                type: "DINING",
                 linkTo: linkTo,
                 icon: DiningIcon
             });
         });
         d.activityDestinationDestination.forEach((item, _) => {
-            const linkTo = activityNamespace + '/' + item.activity + '/' + item.id;
+            const linkTo =
+                activityNamespace + "/" + item.activity + "/" + item.id;
             toRender.push({
                 id: item.id,
                 title: `${item.activityTitle} IN ${item.title}`,
                 activity: item.activity,
-                type: 'ACTIVITIES',
+                type: "ACTIVITIES",
                 linkTo: linkTo,
                 icon: ActivitiesIcon
             });
         });
-        d.transportationDestination.forEach((item) => {
-            const linkTo = transportNamespace + '/' + item.serviceType + '/' + item.id;
+        d.transportationDestination.forEach(item => {
+            const linkTo =
+                transportNamespace + "/" + item.serviceType + "/" + item.id;
             toRender.push({
                 id: item.id,
                 title: item.title,
                 isBranch: item.isBranch,
-                type: 'CAR HIRE & TRANSPORT',
+                type: "CAR HIRE & TRANSPORT",
                 linkTo: linkTo,
                 icon: TransportIcon
             });
         });
-        d.retailDestination.forEach((item) => {
-            const linkTo = retailNamespace + '/' + item.serviceType + '/' + item.id;
+        d.retailDestination.forEach(item => {
+            const linkTo =
+                retailNamespace + "/" + item.serviceType + "/" + item.id;
             toRender.push({
                 id: item.id,
                 title: item.title,
                 isBranch: item.isBranch,
-                type: 'RETAIL & SERVICES',
+                type: "RETAIL & SERVICES",
                 linkTo: linkTo,
                 icon: RetailIcon
             });
         });
-        d.miningDestination.forEach((item) => {
-            const linkTo = miningNamespace + '/' + item.serviceType + '/' + item.id;
+        d.miningDestination.forEach(item => {
+            const linkTo =
+                miningNamespace + "/" + item.serviceType + "/" + item.id;
             toRender.push({
                 id: item.id,
                 title: item.title,
                 isBranch: item.isBranch,
-                type: 'MINING & RESOURCES',
+                type: "MINING & RESOURCES",
                 linkTo: linkTo,
                 icon: MiningIcon
             });
         });
-        d.essentialServiceDestination.forEach((item) => {
-            const linkTo = essentialNamespace + '/' + item.serviceType + '/' + item.id;
+        d.essentialServiceDestination.forEach(item => {
+            const linkTo =
+                essentialNamespace + "/" + item.serviceType + "/" + item.id;
             toRender.push({
                 id: item.id,
                 title: item.title,
                 isBranch: item.isBranch,
-                type: 'ESSENTIAL SERVICES',
+                type: "ESSENTIAL SERVICES",
                 linkTo: linkTo,
                 icon: EssentialIcon
             });
         });
         d.exploreData = toRender.slice();
-    })
+    });
     dispatch({
         type: DESTINATION_LIST,
         payload: {
@@ -137,7 +151,7 @@ export const fetchDestinationDetail = (
     let [data, responseStatus] = [null, 404];
     // let toRender = [];
     const desDetailiD = parseInt(id, DECIMAL_RADIX);
-    const selectedDestinationDetail = destinationList.find((item) => {
+    const selectedDestinationDetail = destinationList.find(item => {
         return item.id === desDetailiD;
     });
 
