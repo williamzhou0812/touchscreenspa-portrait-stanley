@@ -84,7 +84,7 @@ class AirportInfo extends React.Component {
                         </div>
                         <div
                             style={{
-                                fontFamily: "The Braggest",
+                                // fontFamily: "The Braggest",
                                 fontSize: "70pt",
                                 position: "absolute",
                                 transform: "translateY(15px)"
@@ -150,7 +150,7 @@ class AirportInfo extends React.Component {
                             >
                                 <div
                                     style={{
-                                        border: "1px solid white",
+                                        // border: "1px solid white",
                                         boxShadow:
                                             "5px 5px 5px 0px rgba(0,0,0,0.6)"
                                     }}
