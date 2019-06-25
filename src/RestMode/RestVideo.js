@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions/video";
 import { shuffle } from "../Constants";
-import { isEqual } from "lodash";
 
 class RestVideo extends React.Component {
     constructor(props) {
@@ -12,7 +11,7 @@ class RestVideo extends React.Component {
         );
     }
     state = {
-        prevPlaylist: null,
+        prevVideo: null,
         playlist: null,
         status: null
     };
@@ -24,17 +23,19 @@ class RestVideo extends React.Component {
     componentDidMount() {
         const generatedPlaylist = this.generatePlaylist();
         if (generatedPlaylist) {
-            this.setState(
-                { prevPlaylist: [], playlist: generatedPlaylist, status: 200 },
-                () => {
-                    //Every 3 minutes check if video freeze
-                    this.stoppedPlayingInterval = setInterval(
-                        this.checkAndResolveIfVideoFreeze,
-                        180000
-                    );
-                }
-            );
+            this.setState({
+                playlist: generatedPlaylist,
+                status: 200
+            });
         }
+        //Every 3 minutes check if video freeze (assume no video is longer than 3 minutes)
+        this.stoppedPlayingInterval = setInterval(
+            this.checkAndResolveIfVideoFreeze,
+            180000
+        );
+    }
+    componentDidUpdate() {
+        console.log("refs ", this.refs);
     }
     componentWillUnmount() {
         const { videos } = this.props;
@@ -47,26 +48,40 @@ class RestVideo extends React.Component {
     }
     onVideoEnded = () => {
         const { playlist } = this.state;
+        const { videos } = this.props;
         let newPlaylist = playlist.slice(1); //Combine create new array object and shifting
         if (newPlaylist.length === 0) {
             newPlaylist = this.generatePlaylist();
         }
         this.setState({ status: null }, _ => {
             this.setState({
-                prevPlaylist: playlist,
+                prevVideo: videos[playlist[0]].videoFile,
                 playlist: newPlaylist,
                 status: 200
             });
         });
     };
     checkAndResolveIfVideoFreeze() {
-        const { prevPlaylist, playlist } = this.state;
-        if (
-            Array.isArray(prevPlaylist) &&
-            Array.isArray(playlist) &&
-            prevPlaylist.length === playlist.length &&
-            isEqual(prevPlaylist, playlist)
-        ) {
+        const { prevVideo } = this.state;
+        const currentVideoSrc =
+            Boolean(this.refs) &&
+            Boolean(this.refs.restVideo) &&
+            Boolean(this.refs.restVideo.src)
+                ? this.refs.restVideo.src
+                : null;
+        const isVideoPaused =
+            Boolean(this.refs) &&
+            Boolean(this.refs.restVideo) &&
+            Boolean(this.refs.restVideo.paused);
+        const isVideoError =
+            Boolean(this.refs) &&
+            Boolean(this.refs.restVideo) &&
+            Boolean(this.refs.restVideo.error);
+        console.log("prevVideo: ", prevVideo);
+        console.log("current video playing: ", currentVideoSrc);
+        console.log("isVideoPaused ", isVideoPaused);
+        console.log("isVideoError ", isVideoError);
+        if (prevVideo === currentVideoSrc || isVideoPaused || isVideoError) {
             //Video possibly stuck, try going to next video
             return this.onVideoEnded();
         }
