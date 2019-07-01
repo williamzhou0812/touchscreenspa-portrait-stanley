@@ -97,7 +97,8 @@ class RestVideo extends React.Component {
                         ref="restVideo"
                         src={videos[playlist[0]].videoFile}
                         autoPlay
-                        preload="none"
+                        crossorigin
+                        // preload="auto"
                         onEnded={this.onVideoEnded}
                         style={{ width: "100%" }}
                     />

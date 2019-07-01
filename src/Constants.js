@@ -51,6 +51,7 @@ export const HOST = "localhost";
 export const HOST_SPA = "localhost";
 export const PORT = "8000";
 export const PORT_SPA = "3000";
+export const PORT_STREAMING = "1337"
 export const DECIMAL_RADIX = 10;
 export const SECTION_LIST_ENTRIES = 3;
 export const SUBSECTION_LIST_ENTRIES = 6;
