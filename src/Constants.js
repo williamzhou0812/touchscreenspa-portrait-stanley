@@ -51,7 +51,7 @@ export const HOST = "localhost";
 export const HOST_SPA = "localhost";
 export const PORT = "8000";
 export const PORT_SPA = "3000";
-export const PORT_STREAMING = "1337"
+export const PORT_STREAMING = "1337";
 export const DECIMAL_RADIX = 10;
 export const SECTION_LIST_ENTRIES = 3;
 export const SUBSECTION_LIST_ENTRIES = 6;
@@ -309,17 +309,21 @@ function sortByKey(array, key) {
 
 //Separating entries with attribute order value equal to zeroes and greater than zeroes
 function separateItems(array, orderKey) {
-    let others = [];
-    let items = array.slice();
-    let i = items.length - 1;
-    while (true) {
-        if (items[i][orderKey] === 0) {
-            return [items, others];
-        } else {
-            others.push(items.pop());
-        }
-        i -= 1;
-    }
+    // let others = [];
+    // let items = array.slice();
+    // let i = items.length - 1;
+    // while (true) {
+    //     if (items[i][orderKey] === 0) {
+    //         return [items, others];
+    //     } else {
+    //         others.push(items.pop());
+    //     }
+    //     i -= 1;
+    // }
+    return [
+        array.filter(item => item[orderKey] === 0),
+        array.filter(item => item[orderKey] !== 0)
+    ];
 }
 
 //http://stackoverflow.com/questions/5836833/create-a-array-with-random-values-in-javascript
